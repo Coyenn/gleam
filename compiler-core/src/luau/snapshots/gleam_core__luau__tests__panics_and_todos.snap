@@ -1,0 +1,21 @@
+---
+source: compiler-core/src/luau/tests.rs
+expression: "\npub fn let_test() {\n  todo\n  panic\n}\n"
+---
+----- SOURCE CODE
+
+pub fn let_test() {
+  todo
+  panic
+}
+
+
+----- COMPILED LUAU
+local function let_test()
+  error("TODO")
+  return error("panic")
+end
+
+return {
+  let_test = let_test
+}

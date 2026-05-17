@@ -1,0 +1,30 @@
+---
+source: compiler-core/src/luau/tests.rs
+expression: "\npub fn higher_order(f: fn(Int) -> Int) -> Int {\n  f(1)\n}\n\npub fn run() {\n  higher_order(fn(x) { x + 1 })\n}\n"
+---
+----- SOURCE CODE
+
+pub fn higher_order(f: fn(Int) -> Int) -> Int {
+  f(1)
+}
+
+pub fn run() {
+  higher_order(fn(x) { x + 1 })
+}
+
+
+----- COMPILED LUAU
+local function higher_order(f)
+  return f(1)
+end
+
+local function run()
+  return higher_order(function(x)
+    return x + 1
+  end)
+end
+
+return {
+  higher_order = higher_order,
+  run = run
+}

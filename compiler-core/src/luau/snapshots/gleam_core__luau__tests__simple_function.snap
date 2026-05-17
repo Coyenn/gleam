@@ -1,0 +1,19 @@
+---
+source: compiler-core/src/luau/tests.rs
+expression: "\npub fn add(a: Int, b: Int) -> Int {\n  a + b\n}\n"
+---
+----- SOURCE CODE
+
+pub fn add(a: Int, b: Int) -> Int {
+  a + b
+}
+
+
+----- COMPILED LUAU
+local function add(a, b)
+  return a + b
+end
+
+return {
+  add = add
+}

@@ -1,0 +1,23 @@
+---
+source: compiler-core/src/luau/tests.rs
+expression: "\npub fn let_test() {\n  let a = [1, 2, 3]\n  let b = #(1, \"a\", 3.0)\n  a\n}\n"
+---
+----- SOURCE CODE
+
+pub fn let_test() {
+  let a = [1, 2, 3]
+  let b = #(1, "a", 3.0)
+  a
+}
+
+
+----- COMPILED LUAU
+local function let_test()
+  local a = {1, 2, 3}
+  local b = {1, "a", 3.0}
+  return a
+end
+
+return {
+  let_test = let_test
+}

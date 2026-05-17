@@ -1,0 +1,27 @@
+---
+source: compiler-core/src/luau/tests.rs
+expression: "\nimport other_module\nimport other_module.{do_something} as renamed_module\npub fn run() {\n  other_module.do_something()\n  do_something()\n}\n"
+---
+----- SOURCE CODE
+
+import other_module
+import other_module.{do_something} as renamed_module
+pub fn run() {
+  other_module.do_something()
+  do_something()
+}
+
+
+----- COMPILED LUAU
+local other_module = require("../../my_package/other_module")
+local renamed_module = require("../../my_package/other_module")
+local do_something = renamed_module.do_something
+
+local function run()
+  other_module.do_something()
+  return do_something()
+end
+
+return {
+  run = run
+}

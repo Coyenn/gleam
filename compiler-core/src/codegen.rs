@@ -7,6 +7,7 @@ use crate::{
     erlang,
     io::FileSystemWriter,
     javascript::{self, ModuleConfig},
+    luau::{self, ModuleConfig as LuauModuleConfig},
     line_numbers::LineNumbers,
 };
 use ecow::EcoString;
@@ -290,6 +291,73 @@ impl<'a> JavaScript<'a> {
                 String::from_utf8(output).expect("Sourcemap did not generate valid UTF-8.");
             let source_map_path = self.output_directory.join(format!("{js_name}.mjs.map"));
             tracing::debug!(path = ?source_map_path, name = ?js_name, "Emitting sourcemap for module");
+            writer.write(&source_map_path, &content)?;
+        }
+        Ok(())
+    }
+}
+
+#[derive(Debug)]
+pub struct Luau<'a> {
+    output_directory: &'a Utf8Path,
+    project_root: &'a Utf8Path,
+    source_map: bool,
+}
+
+impl<'a> Luau<'a> {
+    pub fn new(
+        output_directory: &'a Utf8Path,
+        source_map: bool,
+        project_root: &'a Utf8Path,
+    ) -> Self {
+        Self {
+            output_directory,
+            project_root,
+            source_map,
+        }
+    }
+
+    pub fn render(
+        &self,
+        writer: &impl FileSystemWriter,
+        modules: &[Module],
+    ) -> Result<()> {
+        for module in modules {
+            let luau_name = module.name.clone();
+            self.luau_module(writer, module, &luau_name)?
+        }
+        Ok(())
+    }
+
+    fn luau_module(
+        &self,
+        writer: &impl FileSystemWriter,
+        module: &Module,
+        luau_name: &str,
+    ) -> Result<()> {
+        let name = format!("{luau_name}.luau");
+        let path = self.output_directory.join(name);
+        let line_numbers = LineNumbers::new(&module.code);
+        let (output, source_map) = luau::module(LuauModuleConfig {
+            module: &module.ast,
+            line_numbers: &line_numbers,
+            path: &module.input_path,
+            project_root: self.project_root,
+            src: &module.code,
+            source_map: self.source_map,
+        });
+        tracing::debug!(name = ?luau_name, "Generated luau module");
+        writer.write(&path, &output)?;
+
+        if let Some(source_map) = source_map {
+            let mut output = Vec::new();
+            source_map
+                .to_writer(&mut output)
+                .expect("Failed to write sourcemap to memory.");
+            let content =
+                String::from_utf8(output).expect("Sourcemap did not generate valid UTF-8.");
+            let source_map_path = self.output_directory.join(format!("{luau_name}.luau.map"));
+            tracing::debug!(path = ?source_map_path, name = ?luau_name, "Emitting sourcemap for module");
             writer.write(&source_map_path, &content)?;
         }
         Ok(())
