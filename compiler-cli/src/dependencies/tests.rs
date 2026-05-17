@@ -1289,6 +1289,7 @@ fn package_config(
                 location: None,
             },
         },
+        luau: Default::default(),
         target: Target::Erlang,
         internal_modules: None,
     }

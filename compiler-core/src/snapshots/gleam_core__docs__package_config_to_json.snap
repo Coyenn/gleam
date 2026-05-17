@@ -120,6 +120,9 @@ allow_read = ["./database.sqlite"]
         "location": null
       }
     },
+    "luau": {
+      "runtime": null
+    },
     "target": "erlang",
     "internal_modules": [
       "my_app/internal"

@@ -184,6 +184,8 @@ pub struct PackageConfig {
     pub erlang: ErlangConfig,
     #[serde(default)]
     pub javascript: JavaScriptConfig,
+    #[serde(default)]
+    pub luau: LuauConfig,
     #[serde(default = "erlang_target")]
     pub target: Target,
     #[serde(default)]
@@ -733,6 +735,7 @@ impl Default for PackageConfig {
             dependencies: Default::default(),
             erlang: Default::default(),
             javascript: Default::default(),
+            luau: Default::default(),
             repository: Default::default(),
             dev_dependencies: Default::default(),
             licences: Default::default(),
@@ -769,6 +772,12 @@ pub struct JavaScriptConfig {
     pub runtime: Runtime,
     #[serde(default, rename = "deno")]
     pub deno: DenoConfig,
+}
+
+#[derive(Deserialize, Serialize, Debug, PartialEq, Eq, Default, Clone)]
+pub struct LuauConfig {
+    #[serde(default)]
+    pub runtime: Option<EcoString>,
 }
 
 #[derive(Deserialize, Debug, PartialEq, Eq, Clone)]
@@ -1281,6 +1290,29 @@ allow_ffi = true
 allow_env = ["DATABASE_URL"]
 allow_net = ["example.com:443"]
 allow_read = ["./database.sqlite"]
+
+[luau]
+runtime = "roblox"
+"#;
+
+    let config = toml::from_str::<PackageConfig>(input).unwrap();
+    let json = serde_json::to_string_pretty(&config).unwrap();
+    let output = format!("--- GLEAM.TOML\n{input}\n\n--- EXPORTED JSON\n\n{json}");
+    insta::assert_snapshot!(output);
+
+    let roundtrip = serde_json::from_str::<PackageConfig>(&json).unwrap();
+    assert_eq!(config, roundtrip);
+}
+
+#[test]
+fn luau_package_config_to_json() {
+    let input = r#"
+name = "my_project"
+version = "1.0.0"
+target = "luau"
+
+[luau]
+runtime = "roblox"
 "#;
 
     let config = toml::from_str::<PackageConfig>(input).unwrap();

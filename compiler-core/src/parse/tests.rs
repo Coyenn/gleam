@@ -727,6 +727,16 @@ pub fn one() {}"#
 }
 
 #[test]
+fn luau_target() {
+    assert_parse_module!(
+        r#"
+@target(luau)
+pub fn one() {}
+"#
+    );
+}
+
+#[test]
 fn missing_target() {
     assert_module_error!(
         r#"

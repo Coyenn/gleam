@@ -68,6 +68,7 @@ pub enum Target {
     #[serde(alias = "js")]
     #[clap(alias = "js")]
     JavaScript,
+    Luau,
 }
 
 impl Target {
@@ -75,6 +76,7 @@ impl Target {
         match self {
             Target::Erlang => "Erlang",
             Target::JavaScript => "JavaScript",
+            Target::Luau => "Luau",
         }
     }
 
@@ -96,6 +98,14 @@ impl Target {
     #[must_use]
     pub fn is_erlang(&self) -> bool {
         matches!(self, Self::Erlang)
+    }
+
+    /// Returns `true` if the target is [`Luau`].
+    ///
+    /// [`Luau`]: Target::Luau
+    #[must_use]
+    pub fn is_luau(&self) -> bool {
+        matches!(self, Self::Luau)
     }
 }
 
@@ -180,6 +190,7 @@ pub enum TargetCodegenConfiguration {
     Erlang {
         app_file: Option<ErlangAppCodegenConfiguration>,
     },
+    Luau,
 }
 
 impl TargetCodegenConfiguration {
@@ -187,6 +198,7 @@ impl TargetCodegenConfiguration {
         match self {
             Self::JavaScript { .. } => Target::JavaScript,
             Self::Erlang { .. } => Target::Erlang,
+            Self::Luau => Target::Luau,
         }
     }
 }

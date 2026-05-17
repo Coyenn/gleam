@@ -6,6 +6,10 @@ expression: output
 
 name = "my_project"
 version = "1.0.0"
+target = "luau"
+
+[luau]
+runtime = "roblox"
 
 
 --- EXPORTED JSON
@@ -47,8 +51,8 @@ version = "1.0.0"
     }
   },
   "luau": {
-    "runtime": null
+    "runtime": "roblox"
   },
-  "target": "erlang",
+  "target": "luau",
   "internal_modules": null
 }

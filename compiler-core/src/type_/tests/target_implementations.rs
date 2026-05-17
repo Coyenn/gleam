@@ -2,7 +2,8 @@ use ecow::EcoString;
 use itertools::Itertools;
 
 use crate::{
-    analyse::TargetSupport, assert_module_error, build::Target, type_::expression::Implementations,
+    analyse::TargetSupport, assert_luau_module_error, assert_module_error, build::Target,
+    type_::expression::Implementations,
 };
 
 use super::compile_module_with_opts;
@@ -451,4 +452,18 @@ pub fn no_valid_javascript_impl() {
         None,
     );
     assert!(out.into_result().is_err());
+}
+
+#[test]
+pub fn invalid_luau_with_external() {
+    assert_luau_module_error!(
+        r#"
+@external(javascript, "wibble", "wobble")
+fn javascript_only() -> Int
+
+pub fn no_valid_luau_impl() {
+  javascript_only()
+}
+"#
+    );
 }

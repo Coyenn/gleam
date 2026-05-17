@@ -153,6 +153,10 @@ pub fn setup(
                 run_javascript_bun_command(paths, &main_function.package, &module, arguments)
             }
         },
+        Target::Luau => Err(Error::InvalidRuntime {
+            target: Target::Luau,
+            invalid_runtime: runtime.unwrap_or_default(),
+        }),
     }
 }
 

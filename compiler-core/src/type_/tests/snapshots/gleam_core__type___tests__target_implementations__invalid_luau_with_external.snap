@@ -1,0 +1,25 @@
+---
+source: compiler-core/src/type_/tests/target_implementations.rs
+expression: "\n@external(javascript, \"wibble\", \"wobble\")\nfn javascript_only() -> Int\n\npub fn no_valid_luau_impl() {\n  javascript_only()\n}\n"
+---
+----- SOURCE CODE
+
+@external(javascript, "wibble", "wobble")
+fn javascript_only() -> Int
+
+pub fn no_valid_luau_impl() {
+  javascript_only()
+}
+
+
+----- ERROR
+error: Unsupported target
+  ┌─ /src/one/two.gleam:6:3
+  │
+6 │   javascript_only()
+  │   ^^^^^^^^^^^^^^^
+
+This value is not available as it is defined using externals, and there is
+no implementation for the Luau target.
+
+Hint: Did you mean to build for a different target?

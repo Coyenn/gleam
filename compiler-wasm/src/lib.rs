@@ -184,6 +184,7 @@ fn do_compile_package(project: Project, target: Target) -> Result<(), Error> {
             emit_source_maps: false,
             prelude_location: Utf8PathBuf::from("./gleam_prelude.mjs"),
         },
+        Target::Luau => TargetCodegenConfiguration::Luau,
     };
 
     tracing::info!("Compiling package");

@@ -142,6 +142,19 @@ macro_rules! assert_js_module_error {
 }
 
 #[macro_export]
+macro_rules! assert_luau_module_error {
+    ($src:expr) => {
+        let error = $crate::type_::tests::module_error_with_target(
+            $src,
+            vec![],
+            $crate::build::Target::Luau,
+        );
+        let output = format!("----- SOURCE CODE\n{}\n\n----- ERROR\n{}", $src, error);
+        insta::assert_snapshot!(insta::internals::AutoName, output, $src);
+    };
+}
+
+#[macro_export]
 macro_rules! assert_module_syntax_error {
     ($src:expr) => {
         let error = $crate::type_::tests::syntax_error($src);

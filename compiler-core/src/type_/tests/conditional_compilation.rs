@@ -1,4 +1,4 @@
-use crate::assert_module_infer;
+use crate::{assert_module_infer, build::Target, type_::tests::infer_module_with_target};
 
 #[test]
 fn excluded_error() {
@@ -10,6 +10,24 @@ pub const x = 1
 ",
         vec![("x", "Int")],
     );
+}
+
+#[test]
+fn luau_target() {
+    let constructors = infer_module_with_target(
+        "test_module",
+        "
+@target(luau)
+pub fn luau_value() { 1 }
+
+@target(erlang)
+pub fn erlang_value() { 2 }
+",
+        vec![],
+        Target::Luau,
+    );
+    let expected = crate::type_::tests::stringify_tuple_strs(vec![("luau_value", "fn() -> Int")]);
+    assert_eq!(constructors, expected);
 }
 
 #[test]

@@ -1,0 +1,92 @@
+---
+source: compiler-core/src/parse/tests.rs
+expression: "\n@target(luau)\npub fn one() {}\n"
+---
+Parsed {
+    module: Module {
+        name: "",
+        documentation: [],
+        type_info: (),
+        definitions: [
+            TargetedDefinition {
+                definition: Function(
+                    Function {
+                        location: SrcSpan {
+                            start: 15,
+                            end: 27,
+                        },
+                        body_start: Some(
+                            28,
+                        ),
+                        end_position: 30,
+                        name: Some(
+                            (
+                                SrcSpan {
+                                    start: 22,
+                                    end: 25,
+                                },
+                                "one",
+                            ),
+                        ),
+                        arguments: [],
+                        body: [
+                            Expression(
+                                Todo {
+                                    kind: EmptyFunction {
+                                        function_location: SrcSpan {
+                                            start: 15,
+                                            end: 27,
+                                        },
+                                    },
+                                    location: SrcSpan {
+                                        start: 29,
+                                        end: 30,
+                                    },
+                                    message: None,
+                                },
+                            ),
+                        ],
+                        publicity: Public,
+                        deprecation: NotDeprecated,
+                        return_annotation: None,
+                        return_type: (),
+                        documentation: None,
+                        external_erlang: None,
+                        external_javascript: None,
+                        implementations: Implementations {
+                            gleam: true,
+                            can_run_on_erlang: true,
+                            can_run_on_javascript: true,
+                            uses_erlang_externals: false,
+                            uses_javascript_externals: false,
+                        },
+                        purity: Pure,
+                    },
+                ),
+                target: Some(
+                    Luau,
+                ),
+            },
+        ],
+        names: Names {
+            local_types: {},
+            imported_modules: {},
+            type_variables: {},
+            local_value_constructors: {},
+            reexport_aliases: {},
+        },
+        unused_definition_positions: {},
+    },
+    extra: ModuleExtra {
+        module_comments: [],
+        doc_comments: [],
+        comments: [],
+        empty_lines: [],
+        new_lines: [
+            0,
+            14,
+            30,
+        ],
+        trailing_commas: [],
+    },
+}

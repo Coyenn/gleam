@@ -34,6 +34,7 @@ pub fn prepare(path: &str) -> String {
             emit_source_maps: config.javascript.source_maps,
             prelude_location: Utf8PathBuf::from("../prelude.mjs"),
         },
+        Target::Luau => TargetCodegenConfiguration::Luau,
     };
 
     let ids = gleam_core::uid::UniqueIdGenerator::new();

@@ -40,6 +40,9 @@ allow_env = ["DATABASE_URL"]
 allow_net = ["example.com:443"]
 allow_read = ["./database.sqlite"]
 
+[luau]
+runtime = "roblox"
+
 
 --- EXPORTED JSON
 
@@ -118,6 +121,9 @@ allow_read = ["./database.sqlite"]
       "unstable": false,
       "location": null
     }
+  },
+  "luau": {
+    "runtime": "roblox"
   },
   "target": "erlang",
   "internal_modules": [

@@ -47,6 +47,9 @@ version = "1.0.0"
         "location": null
       }
     },
+    "luau": {
+      "runtime": null
+    },
     "target": "erlang",
     "internal_modules": null
   }
