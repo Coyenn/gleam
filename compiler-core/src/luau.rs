@@ -26,10 +26,11 @@ pub struct ModuleConfig<'a> {
     pub source_map: bool,
     pub path: &'a Utf8Path,
     pub project_root: &'a Utf8Path,
+    pub runtime: Option<EcoString>,
 }
 
 pub fn module(config: ModuleConfig<'_>) -> (String, Option<SourceMap>) {
-    let mut generator = Generator::new(config.module.name.clone(), config.line_numbers);
+    let mut generator = Generator::new(config.module.name.clone(), config.line_numbers, config.runtime);
     let document = generator.compile_module(config.module);
     (document.to_pretty_string(80), None)
 }
@@ -43,14 +44,51 @@ struct Generator<'a> {
     module_name: EcoString,
     line_numbers: &'a LineNumbers,
     tracker: UsageTracker,
+    runtime: Option<EcoString>,
 }
 
 impl<'a> Generator<'a> {
-    fn new(module_name: EcoString, line_numbers: &'a LineNumbers) -> Self {
+    fn new(
+        module_name: EcoString,
+        line_numbers: &'a LineNumbers,
+        runtime: Option<EcoString>,
+    ) -> Self {
         Self {
             module_name,
             line_numbers,
             tracker: UsageTracker::default(),
+            runtime,
+        }
+    }
+
+    fn require_expr(&self, path: &str) -> Document<'a> {
+        if self.runtime.as_deref() == Some("roblox") {
+            let mut expr = "script".to_string();
+            // In Roblox, `script` is the module itself.
+            // So the current directory (`.`) is `script.Parent`.
+            // The parent directory (`..`) is `script.Parent.Parent`.
+            for (i, segment) in path.split('/').enumerate() {
+                if i == 0 {
+                    if segment == "." {
+                        expr.push_str(".Parent");
+                    } else if segment == ".." {
+                        expr.push_str(".Parent.Parent");
+                    } else {
+                        expr.push_str(&format!(".Parent.{}", segment));
+                    }
+                } else {
+                    if segment == "." {
+                        // `././` is just `./`, so we don't need to do anything
+                    } else if segment == ".." {
+                        expr.push_str(".Parent");
+                    } else {
+                        expr.push_str(&format!(".{}", segment));
+                    }
+                }
+            }
+            docvec!["require(", Document::eco_string(expr.into()), ")"]
+        } else {
+            docvec!["require(\"", Document::eco_string(path.into()), "\")"]
         }
     }
 
@@ -134,7 +172,7 @@ impl<'a> Generator<'a> {
                     match ext {
                         ExternalLuauFunction::Module { module, function: ext_fn, .. } => {
                             statements.push(docvec![
-                                "local ", name.clone(), " = require(\"", module.clone(), "\").", ext_fn.clone()
+                                "local ", name.clone(), " = ", self.require_expr(module), ".", ext_fn.clone()
                             ]);
                         }
                         ExternalLuauFunction::Property { property, .. } => {
@@ -207,9 +245,8 @@ impl<'a> Generator<'a> {
                 eco_format!("{prefix}gleam")
             };
             imports.push(docvec![
-                "local _gleam = require(\"",
-                prelude_path,
-                "\")",
+                "local _gleam = ",
+                self.require_expr(&prelude_path),
             ]);
         }
 
@@ -236,9 +273,8 @@ impl<'a> Generator<'a> {
             imports.push(docvec![
                 "local ",
                 alias.clone(),
-                " = require(\"",
-                path,
-                "\")",
+                " = ",
+                self.require_expr(&path),
             ]);
             
             for unqualified in &import.unqualified_values {

@@ -1,0 +1,15 @@
+---
+source: compiler-core/src/luau/tests.rs
+assertion_line: 343
+expression: output
+---
+local other_module = require(script.Parent.Parent.Parent.my_package.other_module)
+local my_gleam = require(script.Parent.Parent.Parent.my_gleam.my_gleam)
+
+local function main()
+  return other_module.my_func()
+end
+
+return {
+  main = main
+}

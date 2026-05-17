@@ -308,6 +308,7 @@ pub struct Luau<'a> {
     output_directory: &'a Utf8Path,
     project_root: &'a Utf8Path,
     source_map: bool,
+    runtime: Option<EcoString>,
 }
 
 impl<'a> Luau<'a> {
@@ -315,11 +316,13 @@ impl<'a> Luau<'a> {
         output_directory: &'a Utf8Path,
         source_map: bool,
         project_root: &'a Utf8Path,
+        runtime: Option<EcoString>,
     ) -> Self {
         Self {
             output_directory,
             project_root,
             source_map,
+            runtime,
         }
     }
 
@@ -354,6 +357,7 @@ impl<'a> Luau<'a> {
             project_root: self.project_root,
             src: &module.code,
             source_map: self.source_map,
+            runtime: self.runtime.clone(),
         });
         tracing::debug!(name = ?luau_name, "Generated luau module");
         writer.write(&path, &output)?;

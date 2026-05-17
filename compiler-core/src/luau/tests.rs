@@ -110,6 +110,7 @@ pub fn compile_luau(src: &str, deps: Vec<(&str, &str, &str)>) -> String {
         source_map: false,
         path: Utf8Path::new("src/module.gleam"),
         project_root: "project/root".into(),
+        runtime: None,
     });
 
     output
@@ -313,4 +314,31 @@ pub fn use_them(x) {
 }
 "#
     );
+}
+
+#[test]
+fn roblox_require() {
+    let src = r#"
+import other_module
+import my_gleam
+pub fn main() {
+  other_module.my_func()
+}
+"#;
+    let ast = compile(src, vec![
+        ("my_package", "other_module", "pub fn my_func() { Nil }"),
+        ("my_gleam", "my_gleam", "pub fn my_func() { Nil }")
+    ]);
+    let line_numbers = LineNumbers::new(src);
+    let (output, _) = module(ModuleConfig {
+        module: &ast,
+        line_numbers: &line_numbers,
+        src: &"".into(),
+        source_map: false,
+        path: Utf8Path::new("src/module.gleam"),
+        project_root: "project/root".into(),
+        runtime: Some("roblox".into()),
+    });
+
+    insta::assert_snapshot!(output);
 }
