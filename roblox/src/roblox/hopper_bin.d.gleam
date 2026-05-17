@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type BinType, type CFrame, type Content, type ContentId, type HopperBin, type Instance, type ModelLevelOfDetail, type ModelStreamingMode, type Player, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type BinType, type CFrame, type Content, type ContentId, type HopperBin, type Instance, type ModelLevelOfDetail, type ModelStreamingMode, type OptionDouble, type OptionInt64, type Player, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("Active")
 pub fn get_active(instance: HopperBin) -> Bool
@@ -121,7 +122,7 @@ pub fn get_sandboxed(instance: HopperBin) -> Bool
 pub fn set_sandboxed(instance: HopperBin, value: Bool) -> HopperBin
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: HopperBin) -> Int
+pub fn get_source_asset_id(instance: HopperBin) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: HopperBin) -> UniqueId
@@ -166,7 +167,7 @@ pub fn get_actor(instance: HopperBin) -> Actor
 pub fn get_attribute(instance: HopperBin, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: HopperBin, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: HopperBin, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: HopperBin) -> Dynamic
@@ -184,7 +185,7 @@ pub fn get_full_name(instance: HopperBin) -> String
 pub fn get_styled(instance: HopperBin, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: HopperBin, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: HopperBin, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: HopperBin) -> List(Dynamic)
@@ -214,7 +215,7 @@ pub fn reset_property_to_default(instance: HopperBin, property: String) -> Nil
 pub fn set_attribute(instance: HopperBin, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: HopperBin, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: HopperBin, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: HopperBin) -> RBXScriptSignal(Dynamic)
@@ -244,7 +245,7 @@ pub fn styled_properties_changed(instance: HopperBin) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: HopperBin) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: HopperBin, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: HopperBin, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: HopperBin, class_name: String) -> Bool

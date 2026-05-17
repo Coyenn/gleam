@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type ServerStorage, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type ServerStorage, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: ServerStorage) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: ServerStorage) -> Bool
 pub fn set_sandboxed(instance: ServerStorage, value: Bool) -> ServerStorage
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ServerStorage) -> Int
+pub fn get_source_asset_id(instance: ServerStorage) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ServerStorage) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: ServerStorage) -> Actor
 pub fn get_attribute(instance: ServerStorage, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ServerStorage, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ServerStorage, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ServerStorage) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: ServerStorage) -> String
 pub fn get_styled(instance: ServerStorage, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ServerStorage, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ServerStorage, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ServerStorage) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: ServerStorage, property: String) -> N
 pub fn set_attribute(instance: ServerStorage, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ServerStorage, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ServerStorage, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ServerStorage) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: ServerStorage) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: ServerStorage) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ServerStorage, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ServerStorage, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ServerStorage, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AssetTypeVerification, type BasePart, type BrickColor, type CameraMode, type ChatMode, type ChatRestrictionStatus, type DevCameraOcclusionMode, type DevComputerCameraMovementMode, type DevComputerMovementMode, type DevTouchCameraMovementMode, type DevTouchMovementMode, type HumanoidDescription, type Instance, type MembershipType, type Model, type Mouse, type Player, type PlayerData, type SecurityCapabilities, type SpawnLocation, type Team, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AssetTypeVerification, type BasePart, type BrickColor, type CameraMode, type ChatMode, type ChatRestrictionStatus, type DevCameraOcclusionMode, type DevComputerCameraMovementMode, type DevComputerMovementMode, type DevTouchCameraMovementMode, type DevTouchMovementMode, type HumanoidDescription, type Instance, type MembershipType, type Model, type Mouse, type OptionDouble, type OptionInt64, type Player, type PlayerData, type SecurityCapabilities, type SpawnLocation, type Team, type UniqueId, type Vector3}
 
 @luau.property("AccountAge")
 pub fn get_account_age(instance: Player) -> Int
@@ -43,10 +44,10 @@ pub fn get_character(instance: Player) -> Model
 pub fn set_character(instance: Player, value: Model) -> Player
 
 @luau.property("CharacterAppearanceId")
-pub fn get_character_appearance_id(instance: Player) -> Int
+pub fn get_character_appearance_id(instance: Player) -> OptionInt64
 
 @luau.set_property("CharacterAppearanceId")
-pub fn set_character_appearance_id(instance: Player, value: Int) -> Player
+pub fn set_character_appearance_id(instance: Player, value: OptionInt64) -> Player
 
 @luau.property("ChatAvailabilityStatus")
 pub fn get_chat_availability_status(instance: Player) -> String
@@ -97,7 +98,7 @@ pub fn get_display_name(instance: Player) -> String
 pub fn set_display_name(instance: Player, value: String) -> Player
 
 @luau.property("FollowUserId")
-pub fn get_follow_user_id(instance: Player) -> Int
+pub fn get_follow_user_id(instance: Player) -> OptionInt64
 
 @luau.property("GameplayPaused")
 pub fn get_gameplay_paused(instance: Player) -> Bool
@@ -196,10 +197,10 @@ pub fn get_third_party_text_chat_restriction_status(instance: Player) -> ChatRes
 pub fn get_unfiltered_chat(instance: Player) -> Bool
 
 @luau.property("UserId")
-pub fn get_user_id(instance: Player) -> Int
+pub fn get_user_id(instance: Player) -> OptionInt64
 
 @luau.set_property("UserId")
-pub fn set_user_id(instance: Player, value: Int) -> Player
+pub fn set_user_id(instance: Player, value: OptionInt64) -> Player
 
 @luau.property("VRDevice")
 pub fn get_vr_device(instance: Player) -> String
@@ -253,16 +254,16 @@ pub fn get_friends_online_async(instance: Player, max_friends: Int) -> List(Dyna
 pub fn get_friends_who_played_async(instance: Player) -> List(Dynamic)
 
 @luau.method("GetRankInGroupAsync")
-pub fn get_rank_in_group_async(instance: Player, group_id: Int) -> Int
+pub fn get_rank_in_group_async(instance: Player, group_id: OptionInt64) -> Int
 
 @luau.method("GetRoleInGroupAsync")
-pub fn get_role_in_group_async(instance: Player, group_id: Int) -> String
+pub fn get_role_in_group_async(instance: Player, group_id: OptionInt64) -> String
 
 @luau.method("IsFriendsWithAsync")
-pub fn is_friends_with_async(instance: Player, user_id: Int) -> Bool
+pub fn is_friends_with_async(instance: Player, user_id: OptionInt64) -> Bool
 
 @luau.method("IsInGroupAsync")
-pub fn is_in_group_async(instance: Player, group_id: Int) -> Bool
+pub fn is_in_group_async(instance: Player, group_id: OptionInt64) -> Bool
 
 @luau.method("LoadCharacterAsync")
 pub fn load_character_async(instance: Player) -> Nil
@@ -271,7 +272,7 @@ pub fn load_character_async(instance: Player) -> Nil
 pub fn load_character_with_humanoid_description_async(instance: Player, humanoid_description: HumanoidDescription, asset_type_verification: AssetTypeVerification) -> Nil
 
 @luau.method("RequestStreamAroundAsync")
-pub fn request_stream_around_async(instance: Player, position: Vector3, time_out: Float) -> Nil
+pub fn request_stream_around_async(instance: Player, position: Vector3, time_out: OptionDouble) -> Nil
 
 @luau.event("CharacterAdded")
 pub fn character_added(instance: Player) -> RBXScriptSignal(Dynamic)
@@ -325,7 +326,7 @@ pub fn get_sandboxed(instance: Player) -> Bool
 pub fn set_sandboxed(instance: Player, value: Bool) -> Player
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Player) -> Int
+pub fn get_source_asset_id(instance: Player) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Player) -> UniqueId
@@ -370,7 +371,7 @@ pub fn get_actor(instance: Player) -> Actor
 pub fn get_attribute(instance: Player, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Player, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Player, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Player) -> Dynamic
@@ -388,7 +389,7 @@ pub fn get_full_name(instance: Player) -> String
 pub fn get_styled(instance: Player, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Player, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Player, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Player) -> List(Dynamic)
@@ -418,7 +419,7 @@ pub fn reset_property_to_default(instance: Player, property: String) -> Nil
 pub fn set_attribute(instance: Player, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Player, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Player, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Player) -> RBXScriptSignal(Dynamic)
@@ -448,7 +449,7 @@ pub fn styled_properties_changed(instance: Player) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Player) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Player, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Player, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Player, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type SlimAnimationReplicationService, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type SlimAnimationReplicationService, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: SlimAnimationReplicationService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: SlimAnimationReplicationService) -> Bool
 pub fn set_sandboxed(instance: SlimAnimationReplicationService, value: Bool) -> SlimAnimationReplicationService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: SlimAnimationReplicationService) -> Int
+pub fn get_source_asset_id(instance: SlimAnimationReplicationService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: SlimAnimationReplicationService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: SlimAnimationReplicationService) -> Actor
 pub fn get_attribute(instance: SlimAnimationReplicationService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: SlimAnimationReplicationService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: SlimAnimationReplicationService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: SlimAnimationReplicationService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: SlimAnimationReplicationService) -> String
 pub fn get_styled(instance: SlimAnimationReplicationService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: SlimAnimationReplicationService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: SlimAnimationReplicationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: SlimAnimationReplicationService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: SlimAnimationReplicationService, prop
 pub fn set_attribute(instance: SlimAnimationReplicationService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: SlimAnimationReplicationService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: SlimAnimationReplicationService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: SlimAnimationReplicationService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: SlimAnimationReplicationService) -> R
 pub fn get_class_name(instance: SlimAnimationReplicationService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: SlimAnimationReplicationService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: SlimAnimationReplicationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: SlimAnimationReplicationService, class_name: String) -> Bool

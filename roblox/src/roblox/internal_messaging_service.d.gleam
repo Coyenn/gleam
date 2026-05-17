@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type InternalMessagingService, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type InternalMessagingService, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: InternalMessagingService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: InternalMessagingService) -> Bool
 pub fn set_sandboxed(instance: InternalMessagingService, value: Bool) -> InternalMessagingService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: InternalMessagingService) -> Int
+pub fn get_source_asset_id(instance: InternalMessagingService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: InternalMessagingService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: InternalMessagingService) -> Actor
 pub fn get_attribute(instance: InternalMessagingService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: InternalMessagingService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: InternalMessagingService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: InternalMessagingService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: InternalMessagingService) -> String
 pub fn get_styled(instance: InternalMessagingService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: InternalMessagingService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: InternalMessagingService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: InternalMessagingService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: InternalMessagingService, property: S
 pub fn set_attribute(instance: InternalMessagingService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: InternalMessagingService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: InternalMessagingService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: InternalMessagingService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: InternalMessagingService) -> RBXScrip
 pub fn get_class_name(instance: InternalMessagingService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: InternalMessagingService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: InternalMessagingService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: InternalMessagingService, class_name: String) -> Bool

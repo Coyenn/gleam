@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type DockWidgetPluginGui, type Instance, type LocalizationTable, type Plugin, type Rect, type SecurityCapabilities, type SelectionBehavior, type UniqueId, type Vector2, type ZIndexBehavior}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type DockWidgetPluginGui, type Instance, type LocalizationTable, type OptionDouble, type OptionInt64, type Plugin, type Rect, type SecurityCapabilities, type SelectionBehavior, type UniqueId, type Vector2, type ZIndexBehavior}
 
 @luau.property("HostWidgetWasRestored")
 pub fn get_host_widget_was_restored(instance: DockWidgetPluginGui) -> Bool
@@ -139,7 +140,7 @@ pub fn get_sandboxed(instance: DockWidgetPluginGui) -> Bool
 pub fn set_sandboxed(instance: DockWidgetPluginGui, value: Bool) -> DockWidgetPluginGui
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: DockWidgetPluginGui) -> Int
+pub fn get_source_asset_id(instance: DockWidgetPluginGui) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: DockWidgetPluginGui) -> UniqueId
@@ -184,7 +185,7 @@ pub fn get_actor(instance: DockWidgetPluginGui) -> Actor
 pub fn get_attribute(instance: DockWidgetPluginGui, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: DockWidgetPluginGui, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: DockWidgetPluginGui, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: DockWidgetPluginGui) -> Dynamic
@@ -202,7 +203,7 @@ pub fn get_full_name(instance: DockWidgetPluginGui) -> String
 pub fn get_styled(instance: DockWidgetPluginGui, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: DockWidgetPluginGui, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: DockWidgetPluginGui, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: DockWidgetPluginGui) -> List(Dynamic)
@@ -232,7 +233,7 @@ pub fn reset_property_to_default(instance: DockWidgetPluginGui, property: String
 pub fn set_attribute(instance: DockWidgetPluginGui, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: DockWidgetPluginGui, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: DockWidgetPluginGui, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: DockWidgetPluginGui) -> RBXScriptSignal(Dynamic)
@@ -262,7 +263,7 @@ pub fn styled_properties_changed(instance: DockWidgetPluginGui) -> RBXScriptSign
 pub fn get_class_name(instance: DockWidgetPluginGui) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: DockWidgetPluginGui, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: DockWidgetPluginGui, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: DockWidgetPluginGui, class_name: String) -> Bool

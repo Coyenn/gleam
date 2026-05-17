@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type CFrame, type Instance, type ManualGlue, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type CFrame, type Instance, type ManualGlue, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Active")
 pub fn get_active(instance: ManualGlue) -> Bool
@@ -70,7 +71,7 @@ pub fn get_sandboxed(instance: ManualGlue) -> Bool
 pub fn set_sandboxed(instance: ManualGlue, value: Bool) -> ManualGlue
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ManualGlue) -> Int
+pub fn get_source_asset_id(instance: ManualGlue) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ManualGlue) -> UniqueId
@@ -115,7 +116,7 @@ pub fn get_actor(instance: ManualGlue) -> Actor
 pub fn get_attribute(instance: ManualGlue, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ManualGlue, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ManualGlue, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ManualGlue) -> Dynamic
@@ -133,7 +134,7 @@ pub fn get_full_name(instance: ManualGlue) -> String
 pub fn get_styled(instance: ManualGlue, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ManualGlue, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ManualGlue, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ManualGlue) -> List(Dynamic)
@@ -163,7 +164,7 @@ pub fn reset_property_to_default(instance: ManualGlue, property: String) -> Nil
 pub fn set_attribute(instance: ManualGlue, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ManualGlue, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ManualGlue, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ManualGlue) -> RBXScriptSignal(Dynamic)
@@ -193,7 +194,7 @@ pub fn styled_properties_changed(instance: ManualGlue) -> RBXScriptSignal(Dynami
 pub fn get_class_name(instance: ManualGlue) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ManualGlue, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ManualGlue, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ManualGlue, class_name: String) -> Bool

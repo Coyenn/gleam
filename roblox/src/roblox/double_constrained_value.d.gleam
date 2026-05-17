@@ -1,31 +1,32 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type DoubleConstrainedValue, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type DoubleConstrainedValue, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("ConstrainedValue")
-pub fn get_constrained_value(instance: DoubleConstrainedValue) -> Float
+pub fn get_constrained_value(instance: DoubleConstrainedValue) -> OptionDouble
 
 @luau.set_property("ConstrainedValue")
-pub fn set_constrained_value(instance: DoubleConstrainedValue, value: Float) -> DoubleConstrainedValue
+pub fn set_constrained_value(instance: DoubleConstrainedValue, value: OptionDouble) -> DoubleConstrainedValue
 
 @luau.property("MaxValue")
-pub fn get_max_value(instance: DoubleConstrainedValue) -> Float
+pub fn get_max_value(instance: DoubleConstrainedValue) -> OptionDouble
 
 @luau.set_property("MaxValue")
-pub fn set_max_value(instance: DoubleConstrainedValue, value: Float) -> DoubleConstrainedValue
+pub fn set_max_value(instance: DoubleConstrainedValue, value: OptionDouble) -> DoubleConstrainedValue
 
 @luau.property("MinValue")
-pub fn get_min_value(instance: DoubleConstrainedValue) -> Float
+pub fn get_min_value(instance: DoubleConstrainedValue) -> OptionDouble
 
 @luau.set_property("MinValue")
-pub fn set_min_value(instance: DoubleConstrainedValue, value: Float) -> DoubleConstrainedValue
+pub fn set_min_value(instance: DoubleConstrainedValue, value: OptionDouble) -> DoubleConstrainedValue
 
 @luau.property("Value")
-pub fn get_value(instance: DoubleConstrainedValue) -> Float
+pub fn get_value(instance: DoubleConstrainedValue) -> OptionDouble
 
 @luau.set_property("Value")
-pub fn set_value(instance: DoubleConstrainedValue, value: Float) -> DoubleConstrainedValue
+pub fn set_value(instance: DoubleConstrainedValue, value: OptionDouble) -> DoubleConstrainedValue
 
 @luau.event("Changed")
 pub fn changed(instance: DoubleConstrainedValue) -> RBXScriptSignal(Dynamic)
@@ -64,7 +65,7 @@ pub fn get_sandboxed(instance: DoubleConstrainedValue) -> Bool
 pub fn set_sandboxed(instance: DoubleConstrainedValue, value: Bool) -> DoubleConstrainedValue
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: DoubleConstrainedValue) -> Int
+pub fn get_source_asset_id(instance: DoubleConstrainedValue) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: DoubleConstrainedValue) -> UniqueId
@@ -109,7 +110,7 @@ pub fn get_actor(instance: DoubleConstrainedValue) -> Actor
 pub fn get_attribute(instance: DoubleConstrainedValue, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: DoubleConstrainedValue, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: DoubleConstrainedValue, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: DoubleConstrainedValue) -> Dynamic
@@ -127,7 +128,7 @@ pub fn get_full_name(instance: DoubleConstrainedValue) -> String
 pub fn get_styled(instance: DoubleConstrainedValue, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: DoubleConstrainedValue, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: DoubleConstrainedValue, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: DoubleConstrainedValue) -> List(Dynamic)
@@ -157,7 +158,7 @@ pub fn reset_property_to_default(instance: DoubleConstrainedValue, property: Str
 pub fn set_attribute(instance: DoubleConstrainedValue, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: DoubleConstrainedValue, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: DoubleConstrainedValue, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: DoubleConstrainedValue) -> RBXScriptSignal(Dynamic)
@@ -187,7 +188,7 @@ pub fn styled_properties_changed(instance: DoubleConstrainedValue) -> RBXScriptS
 pub fn get_class_name(instance: DoubleConstrainedValue) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: DoubleConstrainedValue, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: DoubleConstrainedValue, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: DoubleConstrainedValue, class_name: String) -> Bool

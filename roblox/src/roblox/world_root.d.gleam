@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type BulkMoveMode, type CFrame, type Instance, type ModelLevelOfDetail, type ModelStreamingMode, type OverlapParams, type Player, type RaycastParams, type RaycastResult?, type SecurityCapabilities, type UniqueId, type Vector3, type WorldRoot}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type BulkMoveMode, type CFrame, type Instance, type ModelLevelOfDetail, type ModelStreamingMode, type OptionDouble, type OptionInt64, type OptionRaycastResult, type OverlapParams, type Player, type RaycastParams, type SecurityCapabilities, type UniqueId, type Vector3, type WorldRoot}
 
 @luau.property("PhysicsStepTime")
 pub fn get_physics_step_time(instance: WorldRoot) -> Float
@@ -10,7 +11,7 @@ pub fn get_physics_step_time(instance: WorldRoot) -> Float
 pub fn are_parts_touching_others(instance: WorldRoot, part_list: List(Instance), overlap_ignored: Float) -> Bool
 
 @luau.method("Blockcast")
-pub fn blockcast(instance: WorldRoot, cframe: CFrame, size: Vector3, direction: Vector3, params: RaycastParams) -> RaycastResult?
+pub fn blockcast(instance: WorldRoot, cframe: CFrame, size: Vector3, direction: Vector3, params: RaycastParams) -> OptionRaycastResult
 
 @luau.method("BulkMoveTo")
 pub fn bulk_move_to(instance: WorldRoot, part_list: List(Instance), cframe_list: List(Dynamic), event_mode: BulkMoveMode) -> Nil
@@ -25,13 +26,13 @@ pub fn get_part_bounds_in_radius(instance: WorldRoot, position: Vector3, radius:
 pub fn get_parts_in_part(instance: WorldRoot, part: BasePart, overlap_params: OverlapParams) -> List(Instance)
 
 @luau.method("Raycast")
-pub fn raycast(instance: WorldRoot, origin: Vector3, direction: Vector3, raycast_params: RaycastParams) -> RaycastResult?
+pub fn raycast(instance: WorldRoot, origin: Vector3, direction: Vector3, raycast_params: RaycastParams) -> OptionRaycastResult
 
 @luau.method("Shapecast")
-pub fn shapecast(instance: WorldRoot, part: BasePart, direction: Vector3, params: RaycastParams) -> RaycastResult?
+pub fn shapecast(instance: WorldRoot, part: BasePart, direction: Vector3, params: RaycastParams) -> OptionRaycastResult
 
 @luau.method("Spherecast")
-pub fn spherecast(instance: WorldRoot, position: Vector3, radius: Float, direction: Vector3, params: RaycastParams) -> RaycastResult?
+pub fn spherecast(instance: WorldRoot, position: Vector3, radius: Float, direction: Vector3, params: RaycastParams) -> OptionRaycastResult
 
 @luau.property("LevelOfDetail")
 pub fn get_level_of_detail(instance: WorldRoot) -> ModelLevelOfDetail
@@ -121,7 +122,7 @@ pub fn get_sandboxed(instance: WorldRoot) -> Bool
 pub fn set_sandboxed(instance: WorldRoot, value: Bool) -> WorldRoot
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: WorldRoot) -> Int
+pub fn get_source_asset_id(instance: WorldRoot) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: WorldRoot) -> UniqueId
@@ -166,7 +167,7 @@ pub fn get_actor(instance: WorldRoot) -> Actor
 pub fn get_attribute(instance: WorldRoot, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: WorldRoot, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: WorldRoot, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: WorldRoot) -> Dynamic
@@ -184,7 +185,7 @@ pub fn get_full_name(instance: WorldRoot) -> String
 pub fn get_styled(instance: WorldRoot, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: WorldRoot, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: WorldRoot, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: WorldRoot) -> List(Dynamic)
@@ -214,7 +215,7 @@ pub fn reset_property_to_default(instance: WorldRoot, property: String) -> Nil
 pub fn set_attribute(instance: WorldRoot, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: WorldRoot, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: WorldRoot, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: WorldRoot) -> RBXScriptSignal(Dynamic)
@@ -244,7 +245,7 @@ pub fn styled_properties_changed(instance: WorldRoot) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: WorldRoot) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: WorldRoot, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: WorldRoot, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: WorldRoot, class_name: String) -> Bool

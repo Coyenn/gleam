@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Color3, type Instance, type PVInstance, type SecurityCapabilities, type UniqueId, type Vector3, type WorkspaceAnnotation}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Color3, type Instance, type OptionDouble, type OptionInt64, type PVInstance, type SecurityCapabilities, type UniqueId, type Vector3, type WorkspaceAnnotation}
 
 @luau.property("Adornee")
 pub fn get_adornee(instance: WorkspaceAnnotation) -> PVInstance
@@ -13,7 +14,7 @@ pub fn get_adornee_offset(instance: WorkspaceAnnotation) -> Vector3
 pub fn get_author_color3(instance: WorkspaceAnnotation) -> Color3
 
 @luau.property("AuthorId")
-pub fn get_author_id(instance: WorkspaceAnnotation) -> Int
+pub fn get_author_id(instance: WorkspaceAnnotation) -> OptionInt64
 
 @luau.property("ChannelId")
 pub fn get_channel_id(instance: WorkspaceAnnotation) -> String
@@ -22,16 +23,16 @@ pub fn get_channel_id(instance: WorkspaceAnnotation) -> String
 pub fn get_contents(instance: WorkspaceAnnotation) -> String
 
 @luau.property("CreationTimeUnix")
-pub fn get_creation_time_unix(instance: WorkspaceAnnotation) -> Int
+pub fn get_creation_time_unix(instance: WorkspaceAnnotation) -> OptionInt64
 
 @luau.property("LastModifiedTimeUnix")
-pub fn get_last_modified_time_unix(instance: WorkspaceAnnotation) -> Int
+pub fn get_last_modified_time_unix(instance: WorkspaceAnnotation) -> OptionInt64
 
 @luau.property("LoadingReplies")
 pub fn get_loading_replies(instance: WorkspaceAnnotation) -> Bool
 
 @luau.property("ReplyCount")
-pub fn get_reply_count(instance: WorkspaceAnnotation) -> Int
+pub fn get_reply_count(instance: WorkspaceAnnotation) -> OptionInt64
 
 @luau.property("Resolved")
 pub fn get_resolved(instance: WorkspaceAnnotation) -> Bool
@@ -73,7 +74,7 @@ pub fn get_sandboxed(instance: WorkspaceAnnotation) -> Bool
 pub fn set_sandboxed(instance: WorkspaceAnnotation, value: Bool) -> WorkspaceAnnotation
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: WorkspaceAnnotation) -> Int
+pub fn get_source_asset_id(instance: WorkspaceAnnotation) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: WorkspaceAnnotation) -> UniqueId
@@ -118,7 +119,7 @@ pub fn get_actor(instance: WorkspaceAnnotation) -> Actor
 pub fn get_attribute(instance: WorkspaceAnnotation, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: WorkspaceAnnotation, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: WorkspaceAnnotation, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: WorkspaceAnnotation) -> Dynamic
@@ -136,7 +137,7 @@ pub fn get_full_name(instance: WorkspaceAnnotation) -> String
 pub fn get_styled(instance: WorkspaceAnnotation, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: WorkspaceAnnotation, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: WorkspaceAnnotation, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: WorkspaceAnnotation) -> List(Dynamic)
@@ -166,7 +167,7 @@ pub fn reset_property_to_default(instance: WorkspaceAnnotation, property: String
 pub fn set_attribute(instance: WorkspaceAnnotation, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: WorkspaceAnnotation, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: WorkspaceAnnotation, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: WorkspaceAnnotation) -> RBXScriptSignal(Dynamic)
@@ -196,7 +197,7 @@ pub fn styled_properties_changed(instance: WorkspaceAnnotation) -> RBXScriptSign
 pub fn get_class_name(instance: WorkspaceAnnotation) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: WorkspaceAnnotation, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: WorkspaceAnnotation, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: WorkspaceAnnotation, class_name: String) -> Bool

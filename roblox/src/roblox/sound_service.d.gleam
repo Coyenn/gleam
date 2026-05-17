@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type ListenerLocation, type ListenerType, type ReverbType, type RolloutState, type SecurityCapabilities, type SoundService, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type ListenerLocation, type ListenerType, type OptionDouble, type OptionInt64, type ReverbType, type RolloutState, type SecurityCapabilities, type SoundService, type UniqueId}
 
 @luau.property("AcousticSimulationEnabled")
 pub fn get_acoustic_simulation_enabled(instance: SoundService) -> Bool
@@ -55,7 +56,7 @@ pub fn set_rolloff_scale(instance: SoundService, value: Float) -> SoundService
 pub fn get_listener(instance: SoundService) -> Dynamic
 
 @luau.method("GetMixerTime")
-pub fn get_mixer_time(instance: SoundService) -> Float
+pub fn get_mixer_time(instance: SoundService) -> OptionDouble
 
 @luau.method("PlayLocalSound")
 pub fn play_local_sound(instance: SoundService, sound: Instance) -> Nil
@@ -100,7 +101,7 @@ pub fn get_sandboxed(instance: SoundService) -> Bool
 pub fn set_sandboxed(instance: SoundService, value: Bool) -> SoundService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: SoundService) -> Int
+pub fn get_source_asset_id(instance: SoundService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: SoundService) -> UniqueId
@@ -145,7 +146,7 @@ pub fn get_actor(instance: SoundService) -> Actor
 pub fn get_attribute(instance: SoundService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: SoundService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: SoundService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: SoundService) -> Dynamic
@@ -163,7 +164,7 @@ pub fn get_full_name(instance: SoundService) -> String
 pub fn get_styled(instance: SoundService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: SoundService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: SoundService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: SoundService) -> List(Dynamic)
@@ -193,7 +194,7 @@ pub fn reset_property_to_default(instance: SoundService, property: String) -> Ni
 pub fn set_attribute(instance: SoundService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: SoundService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: SoundService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: SoundService) -> RBXScriptSignal(Dynamic)
@@ -223,7 +224,7 @@ pub fn styled_properties_changed(instance: SoundService) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: SoundService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: SoundService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: SoundService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: SoundService, class_name: String) -> Bool

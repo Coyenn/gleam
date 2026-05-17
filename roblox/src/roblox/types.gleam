@@ -1,1365 +1,1362 @@
 // Generated types for Roblox API
 
-pub opaque type AccessModifierType
-pub opaque type Accessory
-pub opaque type AccessoryDescription
-pub opaque type AccessoryType
-pub opaque type AccountService
-pub opaque type Accoutrement
-pub opaque type AchievementService
-pub opaque type ActionOnAutoResumeSync
-pub opaque type ActionOnStopSync
-pub opaque type ActivityHistoryEventService
-pub opaque type Actor
-pub opaque type ActuatorRelativeTo
-pub opaque type ActuatorType
-pub opaque type AdFormat
-pub opaque type AdGui
-pub opaque type AdPortal
-pub opaque type AdReward
-pub opaque type AdService
-pub opaque type AdShape
-pub opaque type AdTeleportMethod
-pub opaque type AdUIEventType
-pub opaque type AdUnitStatus
-pub opaque type AdornCullingMode
-pub opaque type AdornShading
-pub opaque type AdvancedDragger
-pub opaque type AirController
-pub opaque type AlignOrientation
-pub opaque type AlignPosition
-pub opaque type AlignType
-pub opaque type AlphaMode
-pub opaque type AnalyticsEconomyAction
-pub opaque type AnalyticsEconomyFlowType
-pub opaque type AnalyticsLogLevel
-pub opaque type AnalyticsProgressionStatus
-pub opaque type AnalyticsProgressionType
-pub opaque type AnalyticsService
-pub opaque type AngularVelocity
-pub opaque type Animation
-pub opaque type AnimationClip
-pub opaque type AnimationClipProvider
-pub opaque type AnimationConstraint
-pub opaque type AnimationController
-pub opaque type AnimationFromVideoCreatorService
-pub opaque type AnimationFromVideoCreatorStudioService
-pub opaque type AnimationGraphDefinition
-pub opaque type AnimationImportData
-pub opaque type AnimationNode
-pub opaque type AnimationNodeDefinition
-pub opaque type AnimationNodeType
-pub opaque type AnimationPriority
-pub opaque type AnimationRigData
-pub opaque type AnimationStreamTrack
-pub opaque type AnimationTrack
-pub opaque type Animator
-pub opaque type AnimatorRetargetingMode
-pub opaque type Annotation
-pub opaque type AnnotationChannelContentPreference
-pub opaque type AnnotationEditingMode
-pub opaque type AnnotationPlaceContentPreference
-pub opaque type AnnotationRequestStatus
-pub opaque type AnnotationsService
-pub opaque type AntiAliasing
-pub opaque type AppAgeSignalsService
-pub opaque type AppLifecycleManagerState
-pub opaque type AppLifecycleObserverService
-pub opaque type AppRatingPromptService
-pub opaque type AppShellActionType
-pub opaque type AppShellFeature
-pub opaque type AppStorageService
-pub opaque type AppUpdateService
-pub opaque type ApplyStrokeMode
-pub opaque type ArcHandles
-pub opaque type Array?
-pub opaque type AspectType
-pub opaque type AssetCounterService
-pub opaque type AssetCreatorType
-pub opaque type AssetDeliveryProxy
-pub opaque type AssetFetchStatus
-pub opaque type AssetImportService
-pub opaque type AssetImportSession
-pub opaque type AssetManagerService
-pub opaque type AssetPatchSettings
-pub opaque type AssetQualityService
-pub opaque type AssetRepresentation
-pub opaque type AssetService
-pub opaque type AssetSoundEffect
-pub opaque type AssetType
-pub opaque type AssetTypeVerification
-pub opaque type Atmosphere
-pub opaque type AtmosphereSensor
-pub opaque type Attachment
-pub opaque type AudioAnalyzer
-pub opaque type AudioApiRollout
-pub opaque type AudioChannelLayout
-pub opaque type AudioChannelMixer
-pub opaque type AudioChannelSplitter
-pub opaque type AudioChorus
-pub opaque type AudioCompressor
-pub opaque type AudioDeviceInput
-pub opaque type AudioDeviceOutput
-pub opaque type AudioDistortion
-pub opaque type AudioEcho
-pub opaque type AudioEmitter
-pub opaque type AudioEqualizer
-pub opaque type AudioFader
-pub opaque type AudioFilter
-pub opaque type AudioFilterType
-pub opaque type AudioFlanger
-pub opaque type AudioFocusService
-pub opaque type AudioGate
-pub opaque type AudioLimiter
-pub opaque type AudioListener
-pub opaque type AudioPages
-pub opaque type AudioPitchShifter
-pub opaque type AudioPlayer
-pub opaque type AudioRecorder
-pub opaque type AudioReverb
-pub opaque type AudioSearchParams
-pub opaque type AudioSimulationFidelity
-pub opaque type AudioSpeechToText
-pub opaque type AudioSubType
-pub opaque type AudioTextToSpeech
-pub opaque type AudioTremolo
-pub opaque type AudioWindowSize
-pub opaque type AuroraScript
-pub opaque type AuroraScriptObject
-pub opaque type AuthorityMode
-pub opaque type AutoIndentRule
-pub opaque type AutomaticSize
-pub opaque type AvatarAbilityRules
-pub opaque type AvatarAccessoryRules
-pub opaque type AvatarAnimationRules
-pub opaque type AvatarAssetType
-pub opaque type AvatarBodyRules
-pub opaque type AvatarChatService
-pub opaque type AvatarChatServiceFeature
-pub opaque type AvatarClothingRules
-pub opaque type AvatarCollisionRules
-pub opaque type AvatarCreationService
-pub opaque type AvatarEditorService
-pub opaque type AvatarImportService
-pub opaque type AvatarItemType
-pub opaque type AvatarRules
-pub opaque type AvatarSettings
-pub opaque type AvatarSettingsAccessoryLimitMethod
-pub opaque type AvatarSettingsAccessoryMode
-pub opaque type AvatarSettingsAnimationClipsMode
-pub opaque type AvatarSettingsAnimationPacksMode
-pub opaque type AvatarSettingsAppearanceMode
-pub opaque type AvatarSettingsBuildMode
-pub opaque type AvatarSettingsCharacterControllerMode
-pub opaque type AvatarSettingsClothingMode
-pub opaque type AvatarSettingsCollisionMode
-pub opaque type AvatarSettingsCustomAccessoryMode
-pub opaque type AvatarSettingsCustomBodyType
-pub opaque type AvatarSettingsCustomClothingMode
-pub opaque type AvatarSettingsHitAndTouchDetectionMode
-pub opaque type AvatarSettingsLegacyCollisionMode
-pub opaque type AvatarSettingsScaleMode
-pub opaque type AvatarThumbnailCustomizationType
-pub opaque type AvatarUnificationMode
-pub opaque type Axes
-pub opaque type Axis
-pub opaque type Backpack
-pub opaque type BackpackItem
-pub opaque type BadgeService
-pub opaque type BallSocketConstraint
-pub opaque type BanHistoryPages
-pub opaque type BaseCoreGuiConfiguration
-pub opaque type BaseImportData
-pub opaque type BasePart
-pub opaque type BasePlayerGui
-pub opaque type BaseRemoteEvent
-pub opaque type BaseScript
-pub opaque type BaseWrap
-pub opaque type Beam
-pub opaque type BevelMesh
-pub opaque type BillboardGui
-pub opaque type BinType
-pub opaque type BinaryString
-pub opaque type BinaryStringValue
-pub opaque type BindableEvent
-pub opaque type BindableFunction
-pub opaque type BlockMesh
-pub opaque type BloomEffect
-pub opaque type BlurEffect
-pub opaque type BodyAngularVelocity
-pub opaque type BodyColors
-pub opaque type BodyForce
-pub opaque type BodyGyro
-pub opaque type BodyMover
-pub opaque type BodyPart
-pub opaque type BodyPartDescription
-pub opaque type BodyPartR15
-pub opaque type BodyPosition
-pub opaque type BodyThrust
-pub opaque type BodyVelocity
-pub opaque type Bone
-pub opaque type BoolValue
-pub opaque type BorderMode
-pub opaque type BorderStrokePosition
-pub opaque type BoxHandleAdornment
-pub opaque type Breakpoint
-pub opaque type BrickColor
-pub opaque type BrickColorValue
-pub opaque type BrowserService
-pub opaque type BubbleChatConfiguration
-pub opaque type BubbleChatMessageProperties
-pub opaque type BugReporterService
-pub opaque type BulkImportService
-pub opaque type BulkMoveMode
-pub opaque type BuoyancySensor
-pub opaque type Button
-pub opaque type ButtonStyle
-pub opaque type CFrame
-pub opaque type CFrameValue
-pub opaque type CSGDictionaryService
-pub opaque type CacheableContentProvider
-pub opaque type CageType
-pub opaque type CalloutService
-pub opaque type Camera
-pub opaque type CameraMode
-pub opaque type CameraNavigationModel
-pub opaque type CameraPanMode
-pub opaque type CameraSpeedAdjustBinding
-pub opaque type CameraType
-pub opaque type CanvasGroup
-pub opaque type Capture
-pub opaque type CaptureGalleryPermission
-pub opaque type CaptureService
-pub opaque type CaptureType
-pub opaque type CapturesPages
-pub opaque type CapturesViewConfiguration
-pub opaque type CatalogPages
-pub opaque type CatalogSearchParams
-pub opaque type CellBlock
-pub opaque type CellMaterial
-pub opaque type CellOrientation
-pub opaque type CenterDialogType
-pub opaque type ChangeHistoryService
-pub opaque type ChangeHistoryStreamingService
-pub opaque type ChannelSelectorSoundEffect
-pub opaque type ChannelTabsConfiguration
-pub opaque type CharacterAppearance
-pub opaque type CharacterControlMode
-pub opaque type CharacterMesh
-pub opaque type Chat
-pub opaque type ChatCallbackType
-pub opaque type ChatColor
-pub opaque type ChatInputBarConfiguration
-pub opaque type ChatMode
-pub opaque type ChatRestrictionStatus
-pub opaque type ChatStyle
-pub opaque type ChatVersion
-pub opaque type ChatWindowConfiguration
-pub opaque type ChatWindowMessageProperties
-pub opaque type ChorusSoundEffect
-pub opaque type ClickDetector
-pub opaque type ClientAnimatorThrottlingMode
-pub opaque type ClientReplicator
-pub opaque type ClimbController
-pub opaque type ClipEvaluator
-pub opaque type Clothing
-pub opaque type CloudCRUDService
-pub opaque type CloudExecutionService
-pub opaque type CloudLocalizationTable
-pub opaque type Clouds
-pub opaque type ClusterPacketCache
-pub opaque type Collaborator
-pub opaque type CollaboratorStatus
-pub opaque type CollaboratorsService
-pub opaque type CollectionService
-pub opaque type CollisionFidelity
-pub opaque type Color3
-pub opaque type Color3?
-pub opaque type Color3Value
-pub opaque type ColorCorrectionEffect
-pub opaque type ColorGradingEffect
-pub opaque type ColorSequence
-pub opaque type CommerceService
-pub opaque type CompileTarget
-pub opaque type CompletionAcceptanceBehavior
-pub opaque type CompositeValueCurve
-pub opaque type CompositeValueCurveType
-pub opaque type CompressionAlgorithm
-pub opaque type CompressorSoundEffect
-pub opaque type ComputerCameraMovementMode
-pub opaque type ComputerMovementMode
-pub opaque type ConeHandleAdornment
-pub opaque type ConfigService
-pub opaque type ConfigSnapshot
-pub opaque type ConfigSnapshotErrorState
-pub opaque type Configuration
-pub opaque type ConfigureServerService
-pub opaque type ConnectionError
-pub opaque type ConnectivityService
-pub opaque type Constraint
-pub opaque type Content
-pub opaque type ContentId
-pub opaque type ContentProvider
-pub opaque type ContextActionService
-pub opaque type ControlMode
-pub opaque type Controller
-pub opaque type ControllerBase
-pub opaque type ControllerManager
-pub opaque type ControllerPartSensor
-pub opaque type ControllerSensor
-pub opaque type ControllerService
-pub opaque type CookiesService
-pub opaque type CoordinateFrame?
-pub opaque type CoreGui
-pub opaque type CoreGuiConfiguration
-pub opaque type CoreGuiType
-pub opaque type CorePackages
-pub opaque type CoreScript
-pub opaque type CoreScriptDebuggingManagerHelper
-pub opaque type CoreScriptSyncService
-pub opaque type CornerWedgePart
-pub opaque type CreationDBService
-pub opaque type CreatorStoreService
-pub opaque type CreatorType
-pub opaque type CrossDMScriptChangeListener
-pub opaque type CurrencyType
-pub opaque type CurveAnimation
-pub opaque type CustomCameraMode
-pub opaque type CustomEvent
-pub opaque type CustomEventReceiver
-pub opaque type CustomLog
-pub opaque type CustomSoundEffect
-pub opaque type CylinderHandleAdornment
-pub opaque type CylinderMesh
-pub opaque type CylindricalConstraint
-pub opaque type DataModel
-pub opaque type DataModelMesh
-pub opaque type DataModelPatchService
-pub opaque type DataModelSession
-pub opaque type DataStore
-pub opaque type DataStoreGetOptions
-pub opaque type DataStoreIncrementOptions
-pub opaque type DataStoreInfo
-pub opaque type DataStoreKey
-pub opaque type DataStoreKeyInfo
-pub opaque type DataStoreKeyPages
-pub opaque type DataStoreListingPages
-pub opaque type DataStoreObjectVersionInfo
-pub opaque type DataStoreOptions
-pub opaque type DataStorePages
-pub opaque type DataStoreRequestType
-pub opaque type DataStoreService
-pub opaque type DataStoreSetOptions
-pub opaque type DataStoreVersionPages
-pub opaque type DateTime
-pub opaque type Debris
-pub opaque type DebugBreakModeType
-pub opaque type DebugSettings
-pub opaque type DebuggablePluginWatcher
-pub opaque type DebuggerBreakpoint
-pub opaque type DebuggerConnection
-pub opaque type DebuggerConnectionManager
-pub opaque type DebuggerExceptionBreakMode
-pub opaque type DebuggerFrameType
-pub opaque type DebuggerLuaResponse
-pub opaque type DebuggerManager
-pub opaque type DebuggerPauseReason
-pub opaque type DebuggerStatus
-pub opaque type DebuggerUIService
-pub opaque type DebuggerVariable
-pub opaque type DebuggerWatch
-pub opaque type Decal
-pub opaque type DefaultScriptSyncFileType
-pub opaque type DeferredAssetManagerService
-pub opaque type DepthOfFieldEffect
-pub opaque type DevCameraOcclusionMode
-pub opaque type DevComputerCameraMovementMode
-pub opaque type DevComputerMovementMode
-pub opaque type DevTouchCameraMovementMode
-pub opaque type DevTouchMovementMode
-pub opaque type DeveloperMemoryTag
-pub opaque type DeviceFeatureType
-pub opaque type DeviceIdService
-pub opaque type DeviceLevel
-pub opaque type DeviceSimulatorScalingMode
-pub opaque type DeviceType
-pub opaque type Dialog
-pub opaque type DialogBehaviorType
-pub opaque type DialogChoice
-pub opaque type DialogPurpose
-pub opaque type DialogTone
-pub opaque type Dictionary?
-pub opaque type DigitsRigDescription
-pub opaque type DigitsRigDescriptionSide
-pub opaque type DisplayScalingMode
-pub opaque type DisplaySize
-pub opaque type DistortionSoundEffect
-pub opaque type DockWidgetPluginGui
-pub opaque type DockWidgetPluginGuiInfo
-pub opaque type DominantAxis
-pub opaque type DoubleConstrainedValue
-pub opaque type DraftStatusCode
-pub opaque type DraftsService
-pub opaque type DragDetector
-pub opaque type DragDetectorDragStyle
-pub opaque type DragDetectorPermissionPolicy
-pub opaque type DragDetectorResponseStyle
-pub opaque type Dragger
-pub opaque type DraggerCoordinateSpace
-pub opaque type DraggerMovementMode
-pub opaque type DraggerService
-pub opaque type DraggingScrollBar
-pub opaque type DynamicRotate
-pub opaque type EasingDirection
-pub opaque type EasingStyle
-pub opaque type EchoSoundEffect
-pub opaque type EditableImage
-pub opaque type EditableMesh
-pub opaque type EditableService
-pub opaque type ElasticBehavior
-pub opaque type EncodingService
-pub opaque type EngineFolder
-pub opaque type EnviromentalPhysicsThrottle
-pub opaque type EqualizerSoundEffect
-pub opaque type EulerRotationCurve
-pub opaque type EventIngestService
-pub opaque type ExampleV2Service
-pub opaque type ExecutedRemoteCommand
-pub opaque type ExperienceAuthService
-pub opaque type ExperienceInviteOptions
-pub opaque type ExperienceNotificationService
-pub opaque type ExperienceService
-pub opaque type ExperienceStateCaptureSelectionMode
-pub opaque type ExperienceStateCaptureService
-pub opaque type ExperienceStateRecordingLoadMode
-pub opaque type ExperienceStateRecordingLoadSourceType
-pub opaque type ExperienceStateRecordingPlaybackMode
-pub opaque type ExperienceStateRecordingService
-pub opaque type ExplorerFilter
-pub opaque type ExplorerFilterAutocompleter
-pub opaque type ExplorerServiceVisibilityService
-pub opaque type Explosion
-pub opaque type ExplosionType
-pub opaque type ExternalEditorMode
-pub opaque type FACSDataLod
-pub opaque type FaceAnimatorService
-pub opaque type FaceControls
-pub opaque type FaceInstance
-pub opaque type Faces
-pub opaque type FacialAgeEstimationService
-pub opaque type FacialAnimationRecordingService
-pub opaque type FacialAnimationStreamingServiceStats
-pub opaque type FacialAnimationStreamingServiceV2
-pub opaque type FacialAnimationStreamingSubsessionStats
-pub opaque type FacsActionUnit
-pub opaque type FacsImportData
-pub opaque type Feature
-pub opaque type FeatureRestrictionManager
-pub opaque type FieldOfViewMode
-pub opaque type File
-pub opaque type FileManagerService
-pub opaque type FileMesh
-pub opaque type FillDirection
-pub opaque type FinishRecordingOperation
-pub opaque type Fire
-pub opaque type Flag
-pub opaque type FlagStand
-pub opaque type FlagStandService
-pub opaque type FlangeSoundEffect
-pub opaque type FloatCurve
-pub opaque type FloatCurveKey
-pub opaque type FloorWire
-pub opaque type FluidFidelity
-pub opaque type FluidForceSensor
-pub opaque type FluidForces
-pub opaque type FlyweightService
-pub opaque type Folder
-pub opaque type Font
-pub opaque type FontSize
-pub opaque type ForceField
-pub opaque type ForceLimitMode
-pub opaque type FormFactor
-pub opaque type FormFactorPart
-pub opaque type Frame
-pub opaque type FrameStyle
-pub opaque type FramerateManagerMode
-pub opaque type FriendPages
-pub opaque type FriendService
-pub opaque type FriendStatus
-pub opaque type Function?
-pub opaque type FunctionalTest
-pub opaque type GameAvatarType
-pub opaque type GamePassService
-pub opaque type GameSettings
-pub opaque type GamepadService
-pub opaque type GearGenreSetting
-pub opaque type GearType
-pub opaque type GeneratedFolder
-pub opaque type GenerationService
-pub opaque type GenericChallengeService
-pub opaque type GenericSettings
-pub opaque type Genre
-pub opaque type Geometry
-pub opaque type GeometryService
-pub opaque type GetTextBoundsParams
-pub opaque type GlobalDataStore
-pub opaque type GlobalSettings
-pub opaque type Glue
-pub opaque type GongService
-pub opaque type GraphicsMode
-pub opaque type GraphicsOptimizationMode
-pub opaque type GroundController
-pub opaque type GroupImportData
-pub opaque type GroupMembershipStatus
-pub opaque type GroupService
-pub opaque type GuiBase
-pub opaque type GuiBase2d
-pub opaque type GuiBase3d
-pub opaque type GuiButton
-pub opaque type GuiLabel
-pub opaque type GuiMain
-pub opaque type GuiObject
-pub opaque type GuiService
-pub opaque type GuiState
-pub opaque type GuiType
-pub opaque type GuidRegistryService
-pub opaque type HSRDataContentProvider
-pub opaque type HandleAdornment
-pub opaque type Handles
-pub opaque type HandlesBase
-pub opaque type HandlesStyle
-pub opaque type HapticEffect
-pub opaque type HapticEffectType
-pub opaque type HapticService
-pub opaque type HarmonyService
-pub opaque type HashAlgorithm
-pub opaque type Hat
-pub opaque type HeapProfilerService
-pub opaque type HeatmapService
-pub opaque type HeightmapImporterService
-pub opaque type HiddenSurfaceRemovalAsset
-pub opaque type Highlight
-pub opaque type HighlightDepthMode
-pub opaque type HingeConstraint
-pub opaque type Hint
-pub opaque type Hole
-pub opaque type Hopper
-pub opaque type HopperBin
-pub opaque type HorizontalAlignment
-pub opaque type HoverAnimateSpeed
-pub opaque type HttpContentType
-pub opaque type HttpRbxApiService
-pub opaque type HttpRequest
-pub opaque type HttpRequestType
-pub opaque type HttpService
-pub opaque type Humanoid
-pub opaque type HumanoidCollisionType
-pub opaque type HumanoidController
-pub opaque type HumanoidDescription
-pub opaque type HumanoidDisplayDistanceType
-pub opaque type HumanoidHealthDisplayType
-pub opaque type HumanoidRigDescription
-pub opaque type HumanoidRigType
-pub opaque type HumanoidStateType
-pub opaque type IKCollisionsMode
-pub opaque type IKControl
-pub opaque type IKControlConstraintSupport
-pub opaque type IKControlType
-pub opaque type ILegacyStudioBridge
-pub opaque type IXPLoadingStatus
-pub opaque type IXPLoadingStatus?
-pub opaque type IXPService
-pub opaque type ImageButton
-pub opaque type ImageCombineType
-pub opaque type ImageHandleAdornment
-pub opaque type ImageLabel
-pub opaque type ImageScreenCaptureService
-pub opaque type ImportSession
-pub opaque type InOut
-pub opaque type IncrementalPatchBuilder
-pub opaque type InfoType
-pub opaque type InputAction
-pub opaque type InputActionType
-pub opaque type InputBinding
-pub opaque type InputContext
-pub opaque type InputObject
-pub opaque type InputSink
-pub opaque type InputType
-pub opaque type InsertService
-pub opaque type Instance
-pub opaque type InstanceAdornment
-pub opaque type InstanceExtensionsService
-pub opaque type InstanceFileSyncService
-pub opaque type InstanceFileSyncStatus
-pub opaque type IntConstrainedValue
-pub opaque type IntValue
-pub opaque type InternalMessagingService
-pub opaque type InternalMessagingServiceVerifier
-pub opaque type InterpolationThrottlingMode
-pub opaque type IntersectOperation
-pub opaque type InventoryPages
-pub opaque type ItemLineAlignment
-pub opaque type JointCreationMode
-pub opaque type JointImportData
-pub opaque type JointInstance
-pub opaque type JointsService
-pub opaque type KeyCode
-pub opaque type KeyInterpolationMode
-pub opaque type KeyboardService
-pub opaque type Keyframe
-pub opaque type KeyframeMarker
-pub opaque type KeyframeSequence
-pub opaque type KeyframeSequenceProvider
-pub opaque type LSPFileSyncService
-pub opaque type LanguageService
-pub opaque type LayerCollector
-pub opaque type LeftRight
-pub opaque type LegacyStudioBridge
-pub opaque type Light
-pub opaque type Lighting
-pub opaque type LightingStyle
-pub opaque type Limb
-pub opaque type LineForce
-pub opaque type LineHandleAdornment
-pub opaque type LineJoinMode
-pub opaque type LinearVelocity
-pub opaque type LinkingService
-pub opaque type ListDisplayMode
-pub opaque type ListenerLocation
-pub opaque type ListenerType
-pub opaque type LiveScriptingService
-pub opaque type LiveSyncService
-pub opaque type LoadCharacterLayeredClothing
-pub opaque type LoadDynamicHeads
-pub opaque type LocalDebuggerConnection
-pub opaque type LocalScript
-pub opaque type LocalStorageService
-pub opaque type LocalizationService
-pub opaque type LocalizationTable
-pub opaque type LodDataEntity
-pub opaque type LodDataService
-pub opaque type LogReporterService
-pub opaque type LogService
-pub opaque type LoginService
-pub opaque type LuaSettings
-pub opaque type LuaSourceContainer
-pub opaque type LuaWebService
-pub opaque type LuauScriptAnalyzerService
-pub opaque type LuauTypeCheckMode
-pub opaque type MLModelDeliveryService
-pub opaque type MLService
-pub opaque type MLSession
-pub opaque type MakeupDescription
-pub opaque type MakeupType
-pub opaque type ManualGlue
-pub opaque type ManualSurfaceJointInstance
-pub opaque type ManualWeld
-pub opaque type MarkerCurve
-pub opaque type MarketplaceBulkPurchasePromptStatus
-pub opaque type MarketplaceService
-pub opaque type MatchmakingService
-pub opaque type MatchmakingType
-pub opaque type Material
-pub opaque type MaterialGenerationService
-pub opaque type MaterialImportData
-pub opaque type MaterialPattern
-pub opaque type MaterialService
-pub opaque type MaterialVariant
-pub opaque type MemStorageConnection
-pub opaque type MemStorageService
-pub opaque type MembershipType
-pub opaque type MemoryStoreHashMap
-pub opaque type MemoryStoreHashMapPages
-pub opaque type MemoryStoreQueue
-pub opaque type MemoryStoreService
-pub opaque type MemoryStoreSortedMap
-pub opaque type MeshContentProvider
-pub opaque type MeshImportData
-pub opaque type MeshPart
-pub opaque type MeshPartDetailLevel
-pub opaque type MeshPartHeadsAndAccessories
-pub opaque type MeshScaleUnit
-pub opaque type MeshType
-pub opaque type Message
-pub opaque type MessageBusConnection
-pub opaque type MessageBusService
-pub opaque type MessageType
-pub opaque type MessagingService
-pub opaque type MetaBreakpoint
-pub opaque type MetaBreakpointContext
-pub opaque type MetaBreakpointManager
-pub opaque type MicroProfilerService
-pub opaque type Model
-pub opaque type ModelLevelOfDetail
-pub opaque type ModelStreamingBehavior
-pub opaque type ModelStreamingMode
-pub opaque type ModerationService
-pub opaque type ModifierKey
-pub opaque type ModuleScript
-pub opaque type Motor
-pub opaque type Motor6D
-pub opaque type MotorFeature
-pub opaque type Mouse
-pub opaque type MouseBehavior
-pub opaque type MouseService
-pub opaque type MultipleDocumentInterfaceInstance
-pub opaque type NameOcclusion
-pub opaque type NegateOperation
-pub opaque type NetworkClient
-pub opaque type NetworkMarker
-pub opaque type NetworkPeer
-pub opaque type NetworkReplicator
-pub opaque type NetworkServer
-pub opaque type NetworkSettings
-pub opaque type NetworkStatus
-pub opaque type NoCollisionConstraint
-pub opaque type Noise
-pub opaque type NoiseType
-pub opaque type NonReplicatedCSGDictionaryService
-pub opaque type NormalId
-pub opaque type NotificationService
-pub opaque type NumberPose
-pub opaque type NumberRange
-pub opaque type NumberSequence
-pub opaque type NumberValue
-pub opaque type Object
-pub opaque type ObjectValue
-pub opaque type OmniRecommendationsService
-pub opaque type OpenCloudApiV1
-pub opaque type OpenCloudModel
-pub opaque type OpenCloudService
-pub opaque type OperationGraph
-pub opaque type OrderedDataStore
-pub opaque type OrientationAlignmentMode
-pub opaque type OutfitPages
-pub opaque type OutfitSource
-pub opaque type OutfitType
-pub opaque type OutputLayoutMode
-pub opaque type OutputLink
-pub opaque type OverlapParams
-pub opaque type OverrideMouseIconBehavior
-pub opaque type PVAdornment
-pub opaque type PVInstance
-pub opaque type PackageLink
-pub opaque type PackagePermission
-pub opaque type PackageService
-pub opaque type PackageUIService
-pub opaque type Packages
-pub opaque type Pages
-pub opaque type Pants
-pub opaque type ParabolaAdornment
-pub opaque type Part
-pub opaque type PartAdornment
-pub opaque type PartOperation
-pub opaque type PartOperationAsset
-pub opaque type PartType
-pub opaque type ParticleEmitter
-pub opaque type ParticleEmitterShape
-pub opaque type ParticleEmitterShapeInOut
-pub opaque type ParticleEmitterShapeStyle
-pub opaque type ParticleFlipbookLayout
-pub opaque type ParticleFlipbookMode
-pub opaque type ParticleOrientation
-pub opaque type PartyEmulatorService
-pub opaque type PatchBundlerFileWatch
-pub opaque type PatchMapping
-pub opaque type Path
-pub opaque type Path2D
-pub opaque type Path2DControlPoint
-pub opaque type PathStatus
-pub opaque type PathfindingLink
-pub opaque type PathfindingModifier
-pub opaque type PathfindingService
-pub opaque type PathfindingUseImprovedSearch
-pub opaque type PausedState
-pub opaque type PausedStateBreakpoint
-pub opaque type PausedStateException
-pub opaque type PeoplePageLayout
-pub opaque type PerformanceControlService
-pub opaque type PermissionLevelShown
-pub opaque type PermissionsService
-pub opaque type PhysicalConstraintType
-pub opaque type PhysicalProperties
-pub opaque type PhysicsService
-pub opaque type PhysicsSettings
-pub opaque type PhysicsSteppingMethod
-pub opaque type PitchShiftSoundEffect
-pub opaque type PlaceAssetIdsService
-pub opaque type PlaceContentPreference
-pub opaque type PlaceStatsService
-pub opaque type PlacesService
-pub opaque type Plane
-pub opaque type PlaneConstraint
-pub opaque type Platform
-pub opaque type PlatformCloudStorageService
-pub opaque type PlatformFriendsService
-pub opaque type PlatformLibraries
-pub opaque type PlaybackState
-pub opaque type Player
-pub opaque type PlayerCharacterDestroyBehavior
-pub opaque type PlayerData
-pub opaque type PlayerDataErrorState
-pub opaque type PlayerDataLoadFailureBehavior
-pub opaque type PlayerDataRecord
-pub opaque type PlayerDataRecordConfig
-pub opaque type PlayerDataService
-pub opaque type PlayerEmulatorService
-pub opaque type PlayerGui
-pub opaque type PlayerHydrationService
-pub opaque type PlayerListConfiguration
-pub opaque type PlayerMouse
-pub opaque type PlayerScripts
-pub opaque type PlayerViewService
-pub opaque type Players
-pub opaque type Plugin
-pub opaque type PluginAction
-pub opaque type PluginCapabilities
-pub opaque type PluginConnection
-pub opaque type PluginConnectionService
-pub opaque type PluginConnectionTargetType
-pub opaque type PluginDebugService
-pub opaque type PluginDragEvent
-pub opaque type PluginGui
-pub opaque type PluginGuiService
-pub opaque type PluginManagementService
-pub opaque type PluginManager
-pub opaque type PluginManagerInterface
-pub opaque type PluginMenu
-pub opaque type PluginMouse
-pub opaque type PluginPolicyService
-pub opaque type PluginToolbar
-pub opaque type PluginToolbarButton
-pub opaque type PointLight
-pub opaque type PointsService
-pub opaque type PolicyService
-pub opaque type Pose
-pub opaque type PoseBase
-pub opaque type PoseEasingDirection
-pub opaque type PoseEasingStyle
-pub opaque type PositionAlignmentMode
-pub opaque type PostEffect
-pub opaque type PredictionMode
-pub opaque type PredictionStatus
-pub opaque type PreferredInput
-pub opaque type PreferredTextSize
-pub opaque type PrefetchDownloadStatus
-pub opaque type Preloaded
-pub opaque type PrimalPhysicsSolver
-pub opaque type PrismaticConstraint
-pub opaque type ProceduralBehaviorSchedulerService
-pub opaque type ProceduralModel
-pub opaque type ProcessInstancePhysicsService
-pub opaque type PromptExperienceDetailsResult
-pub opaque type PropertyStatus
-pub opaque type ProtectedString
-pub opaque type ProximityPrompt
-pub opaque type ProximityPromptExclusivity
-pub opaque type ProximityPromptService
-pub opaque type ProximityPromptStyle
-pub opaque type PublishService
-pub opaque type PyramidHandleAdornment
-pub opaque type QDir
-pub opaque type QFont
-pub opaque type QWidgetPluginGui
-pub opaque type QualityLevel
-pub opaque type R15CollisionType
-pub opaque type RBXScriptConnection
-pub opaque type RBXScriptSignal
-pub opaque type RTAnimationTracker
-pub opaque type Ray
-pub opaque type RayValue
-pub opaque type RaycastParams
-pub opaque type RaycastResult?
-pub opaque type RbxAnalyticsService
-pub opaque type RealtimeMedia
-pub opaque type ReceiptType
-pub opaque type RecommendationActionType
-pub opaque type RecommendationImpressionType
-pub opaque type RecommendationPages
-pub opaque type RecommendationPreferenceTargetType
-pub opaque type RecommendationPreferenceType
-pub opaque type RecommendationService
-pub opaque type Rect
-pub opaque type ReflectionMetadata
-pub opaque type ReflectionMetadataCallbacks
-pub opaque type ReflectionMetadataClass
-pub opaque type ReflectionMetadataClasses
-pub opaque type ReflectionMetadataEnum
-pub opaque type ReflectionMetadataEnumItem
-pub opaque type ReflectionMetadataEnums
-pub opaque type ReflectionMetadataEvents
-pub opaque type ReflectionMetadataFunctions
-pub opaque type ReflectionMetadataItem
-pub opaque type ReflectionMetadataMember
-pub opaque type ReflectionMetadataProperties
-pub opaque type ReflectionMetadataYieldFunctions
-pub opaque type ReflectionService
-pub opaque type Region3
-pub opaque type Region3int16
-pub opaque type RejectCharacterDeletions
-pub opaque type RelativeGui
-pub opaque type RemoteCommandService
-pub opaque type RemoteCursorService
-pub opaque type RemoteDebuggerServer
-pub opaque type RemoteEvent
-pub opaque type RemoteFunction
-pub opaque type RenderFidelity
-pub opaque type RenderSettings
-pub opaque type RenderingCacheOptimizationMode
-pub opaque type RenderingTest
-pub opaque type RenderingTestComparisonMethod
-pub opaque type ReplicateInstanceDestroySetting
-pub opaque type ReplicatedFirst
-pub opaque type ReplicatedStorage
-pub opaque type ResamplerMode
-pub opaque type ReservedHighlightId
-pub opaque type RestPose
-pub opaque type RestPoseModel
-pub opaque type ReturnKeyType
-pub opaque type ReverbSoundEffect
-pub opaque type ReverbType
-pub opaque type RibbonNotificationService
-pub opaque type RibbonTool
-pub opaque type RigLabel
-pub opaque type RigScale
-pub opaque type RigType
-pub opaque type RigidConstraint
-pub opaque type RobloxPluginGuiService
-pub opaque type RobloxReplicatedStorage
-pub opaque type RobloxSerializableInstance
-pub opaque type RobloxServerStorage
-pub opaque type RocketPropulsion
-pub opaque type RodConstraint
-pub opaque type RollOffMode
-pub opaque type RolloutState
-pub opaque type RolloutValidation
-pub opaque type RolloutValidationService
-pub opaque type RomarkRbxAnalyticsService
-pub opaque type RomarkService
-pub opaque type RootImportData
-pub opaque type RopeConstraint
-pub opaque type Rotate
-pub opaque type RotateP
-pub opaque type RotateV
-pub opaque type RotationCurve
-pub opaque type RotationCurveKey
-pub opaque type RotationOrder
-pub opaque type RotationType
-pub opaque type RsvpStatus
-pub opaque type RtMessagingService
-pub opaque type RtlTextSupport
-pub opaque type RunContext
-pub opaque type RunService
-pub opaque type RunState
-pub opaque type RunningAverageItemDouble
-pub opaque type RunningAverageItemInt
-pub opaque type RunningAverageTimeIntervalItem
-pub opaque type RuntimeContentService
-pub opaque type RuntimeScriptService
-pub opaque type RuntimeUndoBehavior
-pub opaque type SafeAreaCompatibility
-pub opaque type SafetyService
-pub opaque type SandboxedInstanceMode
-pub opaque type SaveFilter
-pub opaque type SavedQualitySetting
-pub opaque type ScaleType
-pub opaque type SceneAnalysisService
-pub opaque type ScopeCheckResult
-pub opaque type ScreenGui
-pub opaque type ScreenInsets
-pub opaque type ScreenOrientation
-pub opaque type ScreenshotCapture
-pub opaque type ScreenshotHud
-pub opaque type Script
-pub opaque type ScriptBuilder
-pub opaque type ScriptChangeService
-pub opaque type ScriptCloneWatcher
-pub opaque type ScriptCloneWatcherHelper
-pub opaque type ScriptCommitService
-pub opaque type ScriptContext
-pub opaque type ScriptDebugger
-pub opaque type ScriptDebuggerService
-pub opaque type ScriptDocument
-pub opaque type ScriptEditorService
-pub opaque type ScriptProfilerService
-pub opaque type ScriptRegistrationService
-pub opaque type ScriptRuntime
-pub opaque type ScriptService
-pub opaque type ScrollBarInset
-pub opaque type ScrollingDirection
-pub opaque type ScrollingFrame
-pub opaque type Seat
-pub opaque type Secret
-pub opaque type SecurityCapabilities
-pub opaque type Selection
-pub opaque type SelectionBehavior
-pub opaque type SelectionBox
-pub opaque type SelectionHighlightManager
-pub opaque type SelectionLasso
-pub opaque type SelectionPartLasso
-pub opaque type SelectionPointLasso
-pub opaque type SelectionRenderMode
-pub opaque type SelectionSphere
-pub opaque type SelfViewConfiguration
-pub opaque type SelfViewPosition
-pub opaque type SensorBase
-pub opaque type SensorMode
-pub opaque type SensorUpdateType
-pub opaque type SerializationService
-pub opaque type ServerReplicator
-pub opaque type ServerScriptService
-pub opaque type ServerStorage
-pub opaque type ServiceProvider
-pub opaque type ServiceVisibility
-pub opaque type ServiceVisibilityService
-pub opaque type SessionCheckService
-pub opaque type SessionService
-pub opaque type SharedTable
-pub opaque type SharedTable?
-pub opaque type SharedTableRegistry
-pub opaque type Shirt
-pub opaque type ShirtGraphic
-pub opaque type ShowAdResult
-pub opaque type SignalBehavior
-pub opaque type SizeConstraint
-pub opaque type SkateboardController
-pub opaque type SkateboardPlatform
-pub opaque type Skin
-pub opaque type Sky
-pub opaque type SlidingBallConstraint
-pub opaque type SlimAnimationDataEntity
-pub opaque type SlimAnimationReplicationService
-pub opaque type SlimContentProvider
-pub opaque type SlimReplicationService
-pub opaque type SlimService
-pub opaque type Smoke
-pub opaque type SmoothVoxelsUpgraderService
-pub opaque type Snap
-pub opaque type SnippetService
-pub opaque type SocialService
-pub opaque type SolidModelContentProvider
-pub opaque type SolidPrimitiveType
-pub opaque type SolverConvergenceMetricType
-pub opaque type SolverConvergenceVisualizationMode
-pub opaque type SortDirection
-pub opaque type SortOrder
-pub opaque type Sound
-pub opaque type SoundEffect
-pub opaque type SoundGroup
-pub opaque type SoundService
-pub opaque type SoundShimService
-pub opaque type Sparkles
-pub opaque type SpawnLocation
-pub opaque type SpawnerService
-pub opaque type SpecialKey
-pub opaque type SpecialMesh
-pub opaque type SphereHandleAdornment
-pub opaque type SpotLight
-pub opaque type SpringConstraint
-pub opaque type StackFrame
-pub opaque type StandalonePluginScripts
-pub opaque type StandardPages
-pub opaque type StartCorner
-pub opaque type StartPageService
-pub opaque type StarterCharacterScripts
-pub opaque type StarterGear
-pub opaque type StarterGui
-pub opaque type StarterPack
-pub opaque type StarterPlayer
-pub opaque type StarterPlayerScripts
-pub opaque type StartupMessageService
-pub opaque type Stats
-pub opaque type StatsItem
-pub opaque type Status
-pub opaque type StepFrequency
-pub opaque type StopWatchReporter
-pub opaque type StreamOutBehavior
-pub opaque type StreamingIntegrityMode
-pub opaque type StringValue
-pub opaque type StrokeSizingMode
-pub opaque type Studio
-pub opaque type StudioAssetService
-pub opaque type StudioAttachment
-pub opaque type StudioCallout
-pub opaque type StudioCameraService
-pub opaque type StudioCaptureBufferStatus
-pub opaque type StudioCaptureScreenshotFormat
-pub opaque type StudioCaptureService
-pub opaque type StudioCloseMode
-pub opaque type StudioData
-pub opaque type StudioDataModelType
-pub opaque type StudioDeviceEmulatorService
-pub opaque type StudioDeviceSimulatorService
-pub opaque type StudioObjectBase
-pub opaque type StudioPublishService
-pub opaque type StudioScreenshotCapture
-pub opaque type StudioScriptDebugEventListener
-pub opaque type StudioScriptEditorColorPresets
-pub opaque type StudioSdkService
-pub opaque type StudioService
-pub opaque type StudioStyleGuideColor
-pub opaque type StudioStyleGuideModifier
-pub opaque type StudioTestService
-pub opaque type StudioTheme
-pub opaque type StudioUserService
-pub opaque type StudioWidget
-pub opaque type StudioWidgetsService
-pub opaque type Style
-pub opaque type StyleBase
-pub opaque type StyleDerive
-pub opaque type StyleLink
-pub opaque type StyleQuery
-pub opaque type StyleRule
-pub opaque type StyleSheet
-pub opaque type StylingService
-pub opaque type SunRaysEffect
-pub opaque type SurfaceAppearance
-pub opaque type SurfaceGui
-pub opaque type SurfaceGuiBase
-pub opaque type SurfaceGuiShape
-pub opaque type SurfaceGuiSizingMode
-pub opaque type SurfaceLight
-pub opaque type SurfaceSelection
-pub opaque type SurfaceType
-pub opaque type SwimController
-pub opaque type SyncScriptBuilder
-pub opaque type SystemThemeService
-pub opaque type SystemThemeValue
-pub opaque type TableMajorAxis
-pub opaque type TaskScheduler
-pub opaque type Team
-pub opaque type TeamCreateData
-pub opaque type TeamCreatePublishService
-pub opaque type TeamCreateService
-pub opaque type Teams
-pub opaque type Technology
-pub opaque type TelemetryService
-pub opaque type TeleportAsyncResult
-pub opaque type TeleportOptions
-pub opaque type TeleportService
-pub opaque type TemporaryCageMeshProvider
-pub opaque type TemporaryScriptService
-pub opaque type Terrain
-pub opaque type TerrainAcquisitionMethod
-pub opaque type TerrainDetail
-pub opaque type TerrainFace
-pub opaque type TerrainIterateOperation
-pub opaque type TerrainModifyOperation
-pub opaque type TerrainReadOperation
-pub opaque type TerrainRegion
-pub opaque type TerrainWriteOperation
-pub opaque type TestCase
-pub opaque type TestService
-pub opaque type TextBox
-pub opaque type TextBoxService
-pub opaque type TextButton
-pub opaque type TextChannel
-pub opaque type TextChatCommand
-pub opaque type TextChatConfigurations
-pub opaque type TextChatMessage
-pub opaque type TextChatMessageProperties
-pub opaque type TextChatMessageStatus
-pub opaque type TextChatService
-pub opaque type TextDirection
-pub opaque type TextFilterContext
-pub opaque type TextFilterResult
-pub opaque type TextFilterTranslatedResult
-pub opaque type TextGenerator
-pub opaque type TextInputType
-pub opaque type TextLabel
-pub opaque type TextService
-pub opaque type TextSource
-pub opaque type TextTruncate
-pub opaque type TextXAlignment
-pub opaque type TextYAlignment
-pub opaque type Texture
-pub opaque type TextureGenerationPartGroup
-pub opaque type TextureGenerationService
-pub opaque type TextureGenerationUnwrappingRequest
-pub opaque type TextureMode
-pub opaque type TextureQueryType
-pub opaque type ThirdPartyUserService
-pub opaque type ThreadPoolConfig
-pub opaque type ThreadState
-pub opaque type ThrottlingPriority
-pub opaque type ThumbnailSize
-pub opaque type ThumbnailType
-pub opaque type TickCountSampleMethod
-pub opaque type TimerService
-pub opaque type ToastNotificationService
-pub opaque type TonemapperPreset
-pub opaque type Tool
-pub opaque type TopBottom
-pub opaque type Torque
-pub opaque type TorsionSpringConstraint
-pub opaque type TotalCountTimeIntervalItem
-pub opaque type TouchCameraMovementMode
-pub opaque type TouchInputService
-pub opaque type TouchMovementMode
-pub opaque type TouchTransmitter
-pub opaque type TraceRouteService
-pub opaque type TracerService
-pub opaque type TrackerExtrapolationFlagMode
-pub opaque type TrackerFaceTrackingStatus
-pub opaque type TrackerLodController
-pub opaque type TrackerLodFlagMode
-pub opaque type TrackerLodValueMode
-pub opaque type TrackerMode
-pub opaque type TrackerStreamAnimation
-pub opaque type TrackerType
-pub opaque type Trail
-pub opaque type Translator
-pub opaque type TremoloSoundEffect
-pub opaque type TriStateBoolean
-pub opaque type TriangleMeshPart
-pub opaque type TrussPart
-pub opaque type TutorialService
-pub opaque type Tween
-pub opaque type TweenBase
-pub opaque type TweenInfo
-pub opaque type TweenService
-pub opaque type UDim
-pub opaque type UDim2
-pub opaque type UGCAvatarService
-pub opaque type UGCValidationService
-pub opaque type UIAspectRatioConstraint
-pub opaque type UIBase
-pub opaque type UICaptureMode
-pub opaque type UIComponent
-pub opaque type UIConstraint
-pub opaque type UICorner
-pub opaque type UIDragDetector
-pub opaque type UIDragDetectorBoundingBehavior
-pub opaque type UIDragDetectorDragRelativity
-pub opaque type UIDragDetectorDragSpace
-pub opaque type UIDragDetectorDragStyle
-pub opaque type UIDragDetectorResponseStyle
-pub opaque type UIDragDetectorService
-pub opaque type UIDragSpeedAxisMapping
-pub opaque type UIFlexAlignment
-pub opaque type UIFlexItem
-pub opaque type UIFlexMode
-pub opaque type UIGradient
-pub opaque type UIGridLayout
-pub opaque type UIGridStyleLayout
-pub opaque type UILayout
-pub opaque type UIListLayout
-pub opaque type UIPadding
-pub opaque type UIPageLayout
-pub opaque type UIScale
-pub opaque type UIShadow
-pub opaque type UISizeConstraint
-pub opaque type UIStroke
-pub opaque type UITableLayout
-pub opaque type UITextSizeConstraint
-pub opaque type UITheme
-pub opaque type UiMessageType
-pub opaque type UnionOperation
-pub opaque type UniqueId
-pub opaque type UniqueIdLookupService
-pub opaque type UniversalConstraint
-pub opaque type UnreliableRemoteEvent
-pub opaque type UnvalidatedAssetService
-pub opaque type UsageContext
-pub opaque type UserCFrame
-pub opaque type UserGameSettings
-pub opaque type UserInputService
-pub opaque type UserInputState
-pub opaque type UserInputType
-pub opaque type UserService
-pub opaque type UserSettings
-pub opaque type UserStorageService
-pub opaque type VRComfortSetting
-pub opaque type VRControllerModelMode
-pub opaque type VRLaserPointerMode
-pub opaque type VRSafetyBubbleMode
-pub opaque type VRScaling
-pub opaque type VRService
-pub opaque type VRSessionState
-pub opaque type VRStatusService
-pub opaque type VRTouchpad
-pub opaque type VRTouchpadMode
-pub opaque type ValueBase
-pub opaque type ValueCurve
-pub opaque type ValueCurveKey
-pub opaque type Variant?
-pub opaque type Vector2
-pub opaque type Vector2?
-pub opaque type Vector3
-pub opaque type Vector3?
-pub opaque type Vector3Curve
-pub opaque type Vector3Value
-pub opaque type Vector3int16
-pub opaque type VectorForce
-pub opaque type VehicleController
-pub opaque type VehicleSeat
-pub opaque type VelocityConstraintMode
-pub opaque type VelocityMotor
-pub opaque type VersionControlService
-pub opaque type VerticalAlignment
-pub opaque type VerticalScrollBarPosition
-pub opaque type VibrationMotor
-pub opaque type VideoCapture
-pub opaque type VideoCaptureService
-pub opaque type VideoCaptureStartedResult
-pub opaque type VideoDeviceCaptureQuality
-pub opaque type VideoDeviceInput
-pub opaque type VideoDisplay
-pub opaque type VideoFrame
-pub opaque type VideoPlayer
-pub opaque type VideoSampleSize
-pub opaque type VideoSampler
-pub opaque type VideoScreenCaptureService
-pub opaque type VideoService
-pub opaque type ViewMode
-pub opaque type ViewportFrame
-pub opaque type VirtualCursorMode
-pub opaque type VirtualInput
-pub opaque type VirtualInputManager
-pub opaque type VirtualUser
-pub opaque type VisibilityCheckDispatcher
-pub opaque type Visit
-pub opaque type VisualizationMode
-pub opaque type VisualizationModeCategory
-pub opaque type VisualizationModeService
-pub opaque type VoiceChatDistanceAttenuationType
-pub opaque type VoiceChatInternal
-pub opaque type VoiceChatService
-pub opaque type VoiceChatState
-pub opaque type VoiceClientLeaveReasons
-pub opaque type VolumetricAudio
-pub opaque type VoxelBuffer
-pub opaque type WaterDirection
-pub opaque type WaterForce
-pub opaque type WebSocketClient
-pub opaque type WebSocketService
-pub opaque type WebSocketState
-pub opaque type WebStreamClient
-pub opaque type WebStreamClientState
-pub opaque type WebStreamClientType
-pub opaque type WebViewParams?
-pub opaque type WebViewService
-pub opaque type WedgePart
-pub opaque type Weld
-pub opaque type WeldConstraint
-pub opaque type Wire
-pub opaque type WireframeHandleAdornment
-pub opaque type Workspace
-pub opaque type WorkspaceAnnotation
-pub opaque type WorldModel
-pub opaque type WorldRoot
-pub opaque type WrapDeformMeshProvider
-pub opaque type WrapDeformer
-pub opaque type WrapLayer
-pub opaque type WrapLayerAutoSkin
-pub opaque type WrapLayerDebugMode
-pub opaque type WrapTarget
-pub opaque type WrapTargetDebugMode
-pub opaque type WrapTextureTransfer
-pub opaque type ZIndexBehavior
-pub opaque type bool?
-pub opaque type buffer
-pub opaque type double?
-pub opaque type float?
-pub opaque type int64?
-pub opaque type int?
+pub type AccessModifierType
+pub type Accessory
+pub type AccessoryDescription
+pub type AccessoryType
+pub type AccountService
+pub type Accoutrement
+pub type AchievementService
+pub type ActionOnAutoResumeSync
+pub type ActionOnStopSync
+pub type ActivityHistoryEventService
+pub type Actor
+pub type ActuatorRelativeTo
+pub type ActuatorType
+pub type AdFormat
+pub type AdGui
+pub type AdPortal
+pub type AdReward
+pub type AdService
+pub type AdShape
+pub type AdTeleportMethod
+pub type AdUIEventType
+pub type AdUnitStatus
+pub type AdornCullingMode
+pub type AdornShading
+pub type AdvancedDragger
+pub type AirController
+pub type AlignOrientation
+pub type AlignPosition
+pub type AlignType
+pub type AlphaMode
+pub type AnalyticsEconomyAction
+pub type AnalyticsEconomyFlowType
+pub type AnalyticsLogLevel
+pub type AnalyticsProgressionStatus
+pub type AnalyticsProgressionType
+pub type AnalyticsService
+pub type AngularVelocity
+pub type Animation
+pub type AnimationClip
+pub type AnimationClipProvider
+pub type AnimationConstraint
+pub type AnimationController
+pub type AnimationFromVideoCreatorService
+pub type AnimationFromVideoCreatorStudioService
+pub type AnimationGraphDefinition
+pub type AnimationImportData
+pub type AnimationNode
+pub type AnimationNodeDefinition
+pub type AnimationNodeType
+pub type AnimationPriority
+pub type AnimationRigData
+pub type AnimationStreamTrack
+pub type AnimationTrack
+pub type Animator
+pub type AnimatorRetargetingMode
+pub type Annotation
+pub type AnnotationChannelContentPreference
+pub type AnnotationEditingMode
+pub type AnnotationPlaceContentPreference
+pub type AnnotationRequestStatus
+pub type AnnotationsService
+pub type AntiAliasing
+pub type AppAgeSignalsService
+pub type AppLifecycleManagerState
+pub type AppLifecycleObserverService
+pub type AppRatingPromptService
+pub type AppShellActionType
+pub type AppShellFeature
+pub type AppStorageService
+pub type AppUpdateService
+pub type ApplyStrokeMode
+pub type ArcHandles
+pub type AspectType
+pub type AssetCounterService
+pub type AssetCreatorType
+pub type AssetDeliveryProxy
+pub type AssetFetchStatus
+pub type AssetImportService
+pub type AssetImportSession
+pub type AssetManagerService
+pub type AssetPatchSettings
+pub type AssetQualityService
+pub type AssetRepresentation
+pub type AssetService
+pub type AssetSoundEffect
+pub type AssetType
+pub type AssetTypeVerification
+pub type Atmosphere
+pub type AtmosphereSensor
+pub type Attachment
+pub type AudioAnalyzer
+pub type AudioApiRollout
+pub type AudioChannelLayout
+pub type AudioChannelMixer
+pub type AudioChannelSplitter
+pub type AudioChorus
+pub type AudioCompressor
+pub type AudioDeviceInput
+pub type AudioDeviceOutput
+pub type AudioDistortion
+pub type AudioEcho
+pub type AudioEmitter
+pub type AudioEqualizer
+pub type AudioFader
+pub type AudioFilter
+pub type AudioFilterType
+pub type AudioFlanger
+pub type AudioFocusService
+pub type AudioGate
+pub type AudioLimiter
+pub type AudioListener
+pub type AudioPages
+pub type AudioPitchShifter
+pub type AudioPlayer
+pub type AudioRecorder
+pub type AudioReverb
+pub type AudioSearchParams
+pub type AudioSimulationFidelity
+pub type AudioSpeechToText
+pub type AudioSubType
+pub type AudioTextToSpeech
+pub type AudioTremolo
+pub type AudioWindowSize
+pub type AuroraScript
+pub type AuroraScriptObject
+pub type AuthorityMode
+pub type AutoIndentRule
+pub type AutomaticSize
+pub type AvatarAbilityRules
+pub type AvatarAccessoryRules
+pub type AvatarAnimationRules
+pub type AvatarAssetType
+pub type AvatarBodyRules
+pub type AvatarChatService
+pub type AvatarChatServiceFeature
+pub type AvatarClothingRules
+pub type AvatarCollisionRules
+pub type AvatarCreationService
+pub type AvatarEditorService
+pub type AvatarImportService
+pub type AvatarItemType
+pub type AvatarRules
+pub type AvatarSettings
+pub type AvatarSettingsAccessoryLimitMethod
+pub type AvatarSettingsAccessoryMode
+pub type AvatarSettingsAnimationClipsMode
+pub type AvatarSettingsAnimationPacksMode
+pub type AvatarSettingsAppearanceMode
+pub type AvatarSettingsBuildMode
+pub type AvatarSettingsCharacterControllerMode
+pub type AvatarSettingsClothingMode
+pub type AvatarSettingsCollisionMode
+pub type AvatarSettingsCustomAccessoryMode
+pub type AvatarSettingsCustomBodyType
+pub type AvatarSettingsCustomClothingMode
+pub type AvatarSettingsHitAndTouchDetectionMode
+pub type AvatarSettingsLegacyCollisionMode
+pub type AvatarSettingsScaleMode
+pub type AvatarThumbnailCustomizationType
+pub type AvatarUnificationMode
+pub type Axes
+pub type Axis
+pub type Backpack
+pub type BackpackItem
+pub type BadgeService
+pub type BallSocketConstraint
+pub type BanHistoryPages
+pub type BaseCoreGuiConfiguration
+pub type BaseImportData
+pub type BasePart
+pub type BasePlayerGui
+pub type BaseRemoteEvent
+pub type BaseScript
+pub type BaseWrap
+pub type Beam
+pub type BevelMesh
+pub type BillboardGui
+pub type BinType
+pub type BinaryString
+pub type BinaryStringValue
+pub type BindableEvent
+pub type BindableFunction
+pub type BlockMesh
+pub type BloomEffect
+pub type BlurEffect
+pub type BodyAngularVelocity
+pub type BodyColors
+pub type BodyForce
+pub type BodyGyro
+pub type BodyMover
+pub type BodyPart
+pub type BodyPartDescription
+pub type BodyPartR15
+pub type BodyPosition
+pub type BodyThrust
+pub type BodyVelocity
+pub type Bone
+pub type BoolValue
+pub type BorderMode
+pub type BorderStrokePosition
+pub type BoxHandleAdornment
+pub type Breakpoint
+pub type BrickColor
+pub type BrickColorValue
+pub type BrowserService
+pub type BubbleChatConfiguration
+pub type BubbleChatMessageProperties
+pub type Buffer
+pub type BugReporterService
+pub type BulkImportService
+pub type BulkMoveMode
+pub type BuoyancySensor
+pub type Button
+pub type ButtonStyle
+pub type CFrame
+pub type CFrameValue
+pub type CSGDictionaryService
+pub type CacheableContentProvider
+pub type CageType
+pub type CalloutService
+pub type Camera
+pub type CameraMode
+pub type CameraNavigationModel
+pub type CameraPanMode
+pub type CameraSpeedAdjustBinding
+pub type CameraType
+pub type CanvasGroup
+pub type Capture
+pub type CaptureGalleryPermission
+pub type CaptureService
+pub type CaptureType
+pub type CapturesPages
+pub type CapturesViewConfiguration
+pub type CatalogPages
+pub type CatalogSearchParams
+pub type CellBlock
+pub type CellMaterial
+pub type CellOrientation
+pub type CenterDialogType
+pub type ChangeHistoryService
+pub type ChangeHistoryStreamingService
+pub type ChannelSelectorSoundEffect
+pub type ChannelTabsConfiguration
+pub type CharacterAppearance
+pub type CharacterControlMode
+pub type CharacterMesh
+pub type Chat
+pub type ChatCallbackType
+pub type ChatColor
+pub type ChatInputBarConfiguration
+pub type ChatMode
+pub type ChatRestrictionStatus
+pub type ChatStyle
+pub type ChatVersion
+pub type ChatWindowConfiguration
+pub type ChatWindowMessageProperties
+pub type ChorusSoundEffect
+pub type ClickDetector
+pub type ClientAnimatorThrottlingMode
+pub type ClientReplicator
+pub type ClimbController
+pub type ClipEvaluator
+pub type Clothing
+pub type CloudCRUDService
+pub type CloudExecutionService
+pub type CloudLocalizationTable
+pub type Clouds
+pub type ClusterPacketCache
+pub type Collaborator
+pub type CollaboratorStatus
+pub type CollaboratorsService
+pub type CollectionService
+pub type CollisionFidelity
+pub type Color3
+pub type Color3Value
+pub type ColorCorrectionEffect
+pub type ColorGradingEffect
+pub type ColorSequence
+pub type CommerceService
+pub type CompileTarget
+pub type CompletionAcceptanceBehavior
+pub type CompositeValueCurve
+pub type CompositeValueCurveType
+pub type CompressionAlgorithm
+pub type CompressorSoundEffect
+pub type ComputerCameraMovementMode
+pub type ComputerMovementMode
+pub type ConeHandleAdornment
+pub type ConfigService
+pub type ConfigSnapshot
+pub type ConfigSnapshotErrorState
+pub type Configuration
+pub type ConfigureServerService
+pub type ConnectionError
+pub type ConnectivityService
+pub type Constraint
+pub type Content
+pub type ContentId
+pub type ContentProvider
+pub type ContextActionService
+pub type ControlMode
+pub type Controller
+pub type ControllerBase
+pub type ControllerManager
+pub type ControllerPartSensor
+pub type ControllerSensor
+pub type ControllerService
+pub type CookiesService
+pub type CoreGui
+pub type CoreGuiConfiguration
+pub type CoreGuiType
+pub type CorePackages
+pub type CoreScript
+pub type CoreScriptDebuggingManagerHelper
+pub type CoreScriptSyncService
+pub type CornerWedgePart
+pub type CreationDBService
+pub type CreatorStoreService
+pub type CreatorType
+pub type CrossDMScriptChangeListener
+pub type CurrencyType
+pub type CurveAnimation
+pub type CustomCameraMode
+pub type CustomEvent
+pub type CustomEventReceiver
+pub type CustomLog
+pub type CustomSoundEffect
+pub type CylinderHandleAdornment
+pub type CylinderMesh
+pub type CylindricalConstraint
+pub type DataModel
+pub type DataModelMesh
+pub type DataModelPatchService
+pub type DataModelSession
+pub type DataStore
+pub type DataStoreGetOptions
+pub type DataStoreIncrementOptions
+pub type DataStoreInfo
+pub type DataStoreKey
+pub type DataStoreKeyInfo
+pub type DataStoreKeyPages
+pub type DataStoreListingPages
+pub type DataStoreObjectVersionInfo
+pub type DataStoreOptions
+pub type DataStorePages
+pub type DataStoreRequestType
+pub type DataStoreService
+pub type DataStoreSetOptions
+pub type DataStoreVersionPages
+pub type DateTime
+pub type Debris
+pub type DebugBreakModeType
+pub type DebugSettings
+pub type DebuggablePluginWatcher
+pub type DebuggerBreakpoint
+pub type DebuggerConnection
+pub type DebuggerConnectionManager
+pub type DebuggerExceptionBreakMode
+pub type DebuggerFrameType
+pub type DebuggerLuaResponse
+pub type DebuggerManager
+pub type DebuggerPauseReason
+pub type DebuggerStatus
+pub type DebuggerUIService
+pub type DebuggerVariable
+pub type DebuggerWatch
+pub type Decal
+pub type DefaultScriptSyncFileType
+pub type DeferredAssetManagerService
+pub type DepthOfFieldEffect
+pub type DevCameraOcclusionMode
+pub type DevComputerCameraMovementMode
+pub type DevComputerMovementMode
+pub type DevTouchCameraMovementMode
+pub type DevTouchMovementMode
+pub type DeveloperMemoryTag
+pub type DeviceFeatureType
+pub type DeviceIdService
+pub type DeviceLevel
+pub type DeviceSimulatorScalingMode
+pub type DeviceType
+pub type Dialog
+pub type DialogBehaviorType
+pub type DialogChoice
+pub type DialogPurpose
+pub type DialogTone
+pub type DigitsRigDescription
+pub type DigitsRigDescriptionSide
+pub type DisplayScalingMode
+pub type DisplaySize
+pub type DistortionSoundEffect
+pub type DockWidgetPluginGui
+pub type DockWidgetPluginGuiInfo
+pub type DominantAxis
+pub type DoubleConstrainedValue
+pub type DraftStatusCode
+pub type DraftsService
+pub type DragDetector
+pub type DragDetectorDragStyle
+pub type DragDetectorPermissionPolicy
+pub type DragDetectorResponseStyle
+pub type Dragger
+pub type DraggerCoordinateSpace
+pub type DraggerMovementMode
+pub type DraggerService
+pub type DraggingScrollBar
+pub type DynamicRotate
+pub type EasingDirection
+pub type EasingStyle
+pub type EchoSoundEffect
+pub type EditableImage
+pub type EditableMesh
+pub type EditableService
+pub type ElasticBehavior
+pub type EncodingService
+pub type EngineFolder
+pub type EnviromentalPhysicsThrottle
+pub type EqualizerSoundEffect
+pub type EulerRotationCurve
+pub type EventIngestService
+pub type ExampleV2Service
+pub type ExecutedRemoteCommand
+pub type ExperienceAuthService
+pub type ExperienceInviteOptions
+pub type ExperienceNotificationService
+pub type ExperienceService
+pub type ExperienceStateCaptureSelectionMode
+pub type ExperienceStateCaptureService
+pub type ExperienceStateRecordingLoadMode
+pub type ExperienceStateRecordingLoadSourceType
+pub type ExperienceStateRecordingPlaybackMode
+pub type ExperienceStateRecordingService
+pub type ExplorerFilter
+pub type ExplorerFilterAutocompleter
+pub type ExplorerServiceVisibilityService
+pub type Explosion
+pub type ExplosionType
+pub type ExternalEditorMode
+pub type FACSDataLod
+pub type FaceAnimatorService
+pub type FaceControls
+pub type FaceInstance
+pub type Faces
+pub type FacialAgeEstimationService
+pub type FacialAnimationRecordingService
+pub type FacialAnimationStreamingServiceStats
+pub type FacialAnimationStreamingServiceV2
+pub type FacialAnimationStreamingSubsessionStats
+pub type FacsActionUnit
+pub type FacsImportData
+pub type Feature
+pub type FeatureRestrictionManager
+pub type FieldOfViewMode
+pub type File
+pub type FileManagerService
+pub type FileMesh
+pub type FillDirection
+pub type FinishRecordingOperation
+pub type Fire
+pub type Flag
+pub type FlagStand
+pub type FlagStandService
+pub type FlangeSoundEffect
+pub type FloatCurve
+pub type FloatCurveKey
+pub type FloorWire
+pub type FluidFidelity
+pub type FluidForceSensor
+pub type FluidForces
+pub type FlyweightService
+pub type Folder
+pub type Font
+pub type FontSize
+pub type ForceField
+pub type ForceLimitMode
+pub type FormFactor
+pub type FormFactorPart
+pub type Frame
+pub type FrameStyle
+pub type FramerateManagerMode
+pub type FriendPages
+pub type FriendService
+pub type FriendStatus
+pub type FunctionalTest
+pub type GameAvatarType
+pub type GamePassService
+pub type GameSettings
+pub type GamepadService
+pub type GearGenreSetting
+pub type GearType
+pub type GeneratedFolder
+pub type GenerationService
+pub type GenericChallengeService
+pub type GenericSettings
+pub type Genre
+pub type Geometry
+pub type GeometryService
+pub type GetTextBoundsParams
+pub type GlobalDataStore
+pub type GlobalSettings
+pub type Glue
+pub type GongService
+pub type GraphicsMode
+pub type GraphicsOptimizationMode
+pub type GroundController
+pub type GroupImportData
+pub type GroupMembershipStatus
+pub type GroupService
+pub type GuiBase
+pub type GuiBase2d
+pub type GuiBase3d
+pub type GuiButton
+pub type GuiLabel
+pub type GuiMain
+pub type GuiObject
+pub type GuiService
+pub type GuiState
+pub type GuiType
+pub type GuidRegistryService
+pub type HSRDataContentProvider
+pub type HandleAdornment
+pub type Handles
+pub type HandlesBase
+pub type HandlesStyle
+pub type HapticEffect
+pub type HapticEffectType
+pub type HapticService
+pub type HarmonyService
+pub type HashAlgorithm
+pub type Hat
+pub type HeapProfilerService
+pub type HeatmapService
+pub type HeightmapImporterService
+pub type HiddenSurfaceRemovalAsset
+pub type Highlight
+pub type HighlightDepthMode
+pub type HingeConstraint
+pub type Hint
+pub type Hole
+pub type Hopper
+pub type HopperBin
+pub type HorizontalAlignment
+pub type HoverAnimateSpeed
+pub type HttpContentType
+pub type HttpRbxApiService
+pub type HttpRequest
+pub type HttpRequestType
+pub type HttpService
+pub type Humanoid
+pub type HumanoidCollisionType
+pub type HumanoidController
+pub type HumanoidDescription
+pub type HumanoidDisplayDistanceType
+pub type HumanoidHealthDisplayType
+pub type HumanoidRigDescription
+pub type HumanoidRigType
+pub type HumanoidStateType
+pub type IKCollisionsMode
+pub type IKControl
+pub type IKControlConstraintSupport
+pub type IKControlType
+pub type ILegacyStudioBridge
+pub type IXPLoadingStatus
+pub type IXPService
+pub type ImageButton
+pub type ImageCombineType
+pub type ImageHandleAdornment
+pub type ImageLabel
+pub type ImageScreenCaptureService
+pub type ImportSession
+pub type InOut
+pub type IncrementalPatchBuilder
+pub type InfoType
+pub type InputAction
+pub type InputActionType
+pub type InputBinding
+pub type InputContext
+pub type InputObject
+pub type InputSink
+pub type InputType
+pub type InsertService
+pub type Instance
+pub type InstanceAdornment
+pub type InstanceExtensionsService
+pub type InstanceFileSyncService
+pub type InstanceFileSyncStatus
+pub type IntConstrainedValue
+pub type IntValue
+pub type InternalMessagingService
+pub type InternalMessagingServiceVerifier
+pub type InterpolationThrottlingMode
+pub type IntersectOperation
+pub type InventoryPages
+pub type ItemLineAlignment
+pub type JointCreationMode
+pub type JointImportData
+pub type JointInstance
+pub type JointsService
+pub type KeyCode
+pub type KeyInterpolationMode
+pub type KeyboardService
+pub type Keyframe
+pub type KeyframeMarker
+pub type KeyframeSequence
+pub type KeyframeSequenceProvider
+pub type LSPFileSyncService
+pub type LanguageService
+pub type LayerCollector
+pub type LeftRight
+pub type LegacyStudioBridge
+pub type Light
+pub type Lighting
+pub type LightingStyle
+pub type Limb
+pub type LineForce
+pub type LineHandleAdornment
+pub type LineJoinMode
+pub type LinearVelocity
+pub type LinkingService
+pub type ListDisplayMode
+pub type ListenerLocation
+pub type ListenerType
+pub type LiveScriptingService
+pub type LiveSyncService
+pub type LoadCharacterLayeredClothing
+pub type LoadDynamicHeads
+pub type LocalDebuggerConnection
+pub type LocalScript
+pub type LocalStorageService
+pub type LocalizationService
+pub type LocalizationTable
+pub type LodDataEntity
+pub type LodDataService
+pub type LogReporterService
+pub type LogService
+pub type LoginService
+pub type LuaSettings
+pub type LuaSourceContainer
+pub type LuaWebService
+pub type LuauScriptAnalyzerService
+pub type LuauTypeCheckMode
+pub type MLModelDeliveryService
+pub type MLService
+pub type MLSession
+pub type MakeupDescription
+pub type MakeupType
+pub type ManualGlue
+pub type ManualSurfaceJointInstance
+pub type ManualWeld
+pub type MarkerCurve
+pub type MarketplaceBulkPurchasePromptStatus
+pub type MarketplaceService
+pub type MatchmakingService
+pub type MatchmakingType
+pub type Material
+pub type MaterialGenerationService
+pub type MaterialImportData
+pub type MaterialPattern
+pub type MaterialService
+pub type MaterialVariant
+pub type MemStorageConnection
+pub type MemStorageService
+pub type MembershipType
+pub type MemoryStoreHashMap
+pub type MemoryStoreHashMapPages
+pub type MemoryStoreQueue
+pub type MemoryStoreService
+pub type MemoryStoreSortedMap
+pub type MeshContentProvider
+pub type MeshImportData
+pub type MeshPart
+pub type MeshPartDetailLevel
+pub type MeshPartHeadsAndAccessories
+pub type MeshScaleUnit
+pub type MeshType
+pub type Message
+pub type MessageBusConnection
+pub type MessageBusService
+pub type MessageType
+pub type MessagingService
+pub type MetaBreakpoint
+pub type MetaBreakpointContext
+pub type MetaBreakpointManager
+pub type MicroProfilerService
+pub type Model
+pub type ModelLevelOfDetail
+pub type ModelStreamingBehavior
+pub type ModelStreamingMode
+pub type ModerationService
+pub type ModifierKey
+pub type ModuleScript
+pub type Motor
+pub type Motor6D
+pub type MotorFeature
+pub type Mouse
+pub type MouseBehavior
+pub type MouseService
+pub type MultipleDocumentInterfaceInstance
+pub type NameOcclusion
+pub type NegateOperation
+pub type NetworkClient
+pub type NetworkMarker
+pub type NetworkPeer
+pub type NetworkReplicator
+pub type NetworkServer
+pub type NetworkSettings
+pub type NetworkStatus
+pub type NoCollisionConstraint
+pub type Noise
+pub type NoiseType
+pub type NonReplicatedCSGDictionaryService
+pub type NormalId
+pub type NotificationService
+pub type NumberPose
+pub type NumberRange
+pub type NumberSequence
+pub type NumberValue
+pub type Object
+pub type ObjectValue
+pub type OmniRecommendationsService
+pub type OpenCloudApiV1
+pub type OpenCloudModel
+pub type OpenCloudService
+pub type OperationGraph
+pub type OptionBool
+pub type OptionColor3
+pub type OptionCoordinateFrame
+pub type OptionDouble
+pub type OptionFloat
+pub type OptionFunction
+pub type OptionIXPLoadingStatus
+pub type OptionInt
+pub type OptionInt64
+pub type OptionRaycastResult
+pub type OptionSharedTable
+pub type OptionVector2
+pub type OptionVector3
+pub type OptionWebViewParams
+pub type OrderedDataStore
+pub type OrientationAlignmentMode
+pub type OutfitPages
+pub type OutfitSource
+pub type OutfitType
+pub type OutputLayoutMode
+pub type OutputLink
+pub type OverlapParams
+pub type OverrideMouseIconBehavior
+pub type PVAdornment
+pub type PVInstance
+pub type PackageLink
+pub type PackagePermission
+pub type PackageService
+pub type PackageUIService
+pub type Packages
+pub type Pages
+pub type Pants
+pub type ParabolaAdornment
+pub type Part
+pub type PartAdornment
+pub type PartOperation
+pub type PartOperationAsset
+pub type PartType
+pub type ParticleEmitter
+pub type ParticleEmitterShape
+pub type ParticleEmitterShapeInOut
+pub type ParticleEmitterShapeStyle
+pub type ParticleFlipbookLayout
+pub type ParticleFlipbookMode
+pub type ParticleOrientation
+pub type PartyEmulatorService
+pub type PatchBundlerFileWatch
+pub type PatchMapping
+pub type Path
+pub type Path2D
+pub type Path2DControlPoint
+pub type PathStatus
+pub type PathfindingLink
+pub type PathfindingModifier
+pub type PathfindingService
+pub type PathfindingUseImprovedSearch
+pub type PausedState
+pub type PausedStateBreakpoint
+pub type PausedStateException
+pub type PeoplePageLayout
+pub type PerformanceControlService
+pub type PermissionLevelShown
+pub type PermissionsService
+pub type PhysicalConstraintType
+pub type PhysicalProperties
+pub type PhysicsService
+pub type PhysicsSettings
+pub type PhysicsSteppingMethod
+pub type PitchShiftSoundEffect
+pub type PlaceAssetIdsService
+pub type PlaceContentPreference
+pub type PlaceStatsService
+pub type PlacesService
+pub type Plane
+pub type PlaneConstraint
+pub type Platform
+pub type PlatformCloudStorageService
+pub type PlatformFriendsService
+pub type PlatformLibraries
+pub type PlaybackState
+pub type Player
+pub type PlayerCharacterDestroyBehavior
+pub type PlayerData
+pub type PlayerDataErrorState
+pub type PlayerDataLoadFailureBehavior
+pub type PlayerDataRecord
+pub type PlayerDataRecordConfig
+pub type PlayerDataService
+pub type PlayerEmulatorService
+pub type PlayerGui
+pub type PlayerHydrationService
+pub type PlayerListConfiguration
+pub type PlayerMouse
+pub type PlayerScripts
+pub type PlayerViewService
+pub type Players
+pub type Plugin
+pub type PluginAction
+pub type PluginCapabilities
+pub type PluginConnection
+pub type PluginConnectionService
+pub type PluginConnectionTargetType
+pub type PluginDebugService
+pub type PluginDragEvent
+pub type PluginGui
+pub type PluginGuiService
+pub type PluginManagementService
+pub type PluginManager
+pub type PluginManagerInterface
+pub type PluginMenu
+pub type PluginMouse
+pub type PluginPolicyService
+pub type PluginToolbar
+pub type PluginToolbarButton
+pub type PointLight
+pub type PointsService
+pub type PolicyService
+pub type Pose
+pub type PoseBase
+pub type PoseEasingDirection
+pub type PoseEasingStyle
+pub type PositionAlignmentMode
+pub type PostEffect
+pub type PredictionMode
+pub type PredictionStatus
+pub type PreferredInput
+pub type PreferredTextSize
+pub type PrefetchDownloadStatus
+pub type Preloaded
+pub type PrimalPhysicsSolver
+pub type PrismaticConstraint
+pub type ProceduralBehaviorSchedulerService
+pub type ProceduralModel
+pub type ProcessInstancePhysicsService
+pub type PromptExperienceDetailsResult
+pub type PropertyStatus
+pub type ProtectedString
+pub type ProximityPrompt
+pub type ProximityPromptExclusivity
+pub type ProximityPromptService
+pub type ProximityPromptStyle
+pub type PublishService
+pub type PyramidHandleAdornment
+pub type QDir
+pub type QFont
+pub type QWidgetPluginGui
+pub type QualityLevel
+pub type R15CollisionType
+pub type RBXScriptConnection
+pub type RBXScriptSignal
+pub type RTAnimationTracker
+pub type Ray
+pub type RayValue
+pub type RaycastParams
+pub type RbxAnalyticsService
+pub type RealtimeMedia
+pub type ReceiptType
+pub type RecommendationActionType
+pub type RecommendationImpressionType
+pub type RecommendationPages
+pub type RecommendationPreferenceTargetType
+pub type RecommendationPreferenceType
+pub type RecommendationService
+pub type Rect
+pub type ReflectionMetadata
+pub type ReflectionMetadataCallbacks
+pub type ReflectionMetadataClass
+pub type ReflectionMetadataClasses
+pub type ReflectionMetadataEnum
+pub type ReflectionMetadataEnumItem
+pub type ReflectionMetadataEnums
+pub type ReflectionMetadataEvents
+pub type ReflectionMetadataFunctions
+pub type ReflectionMetadataItem
+pub type ReflectionMetadataMember
+pub type ReflectionMetadataProperties
+pub type ReflectionMetadataYieldFunctions
+pub type ReflectionService
+pub type Region3
+pub type Region3int16
+pub type RejectCharacterDeletions
+pub type RelativeGui
+pub type RemoteCommandService
+pub type RemoteCursorService
+pub type RemoteDebuggerServer
+pub type RemoteEvent
+pub type RemoteFunction
+pub type RenderFidelity
+pub type RenderSettings
+pub type RenderingCacheOptimizationMode
+pub type RenderingTest
+pub type RenderingTestComparisonMethod
+pub type ReplicateInstanceDestroySetting
+pub type ReplicatedFirst
+pub type ReplicatedStorage
+pub type ResamplerMode
+pub type ReservedHighlightId
+pub type RestPose
+pub type RestPoseModel
+pub type ReturnKeyType
+pub type ReverbSoundEffect
+pub type ReverbType
+pub type RibbonNotificationService
+pub type RibbonTool
+pub type RigLabel
+pub type RigScale
+pub type RigType
+pub type RigidConstraint
+pub type RobloxPluginGuiService
+pub type RobloxReplicatedStorage
+pub type RobloxSerializableInstance
+pub type RobloxServerStorage
+pub type RocketPropulsion
+pub type RodConstraint
+pub type RollOffMode
+pub type RolloutState
+pub type RolloutValidation
+pub type RolloutValidationService
+pub type RomarkRbxAnalyticsService
+pub type RomarkService
+pub type RootImportData
+pub type RopeConstraint
+pub type Rotate
+pub type RotateP
+pub type RotateV
+pub type RotationCurve
+pub type RotationCurveKey
+pub type RotationOrder
+pub type RotationType
+pub type RsvpStatus
+pub type RtMessagingService
+pub type RtlTextSupport
+pub type RunContext
+pub type RunService
+pub type RunState
+pub type RunningAverageItemDouble
+pub type RunningAverageItemInt
+pub type RunningAverageTimeIntervalItem
+pub type RuntimeContentService
+pub type RuntimeScriptService
+pub type RuntimeUndoBehavior
+pub type SafeAreaCompatibility
+pub type SafetyService
+pub type SandboxedInstanceMode
+pub type SaveFilter
+pub type SavedQualitySetting
+pub type ScaleType
+pub type SceneAnalysisService
+pub type ScopeCheckResult
+pub type ScreenGui
+pub type ScreenInsets
+pub type ScreenOrientation
+pub type ScreenshotCapture
+pub type ScreenshotHud
+pub type Script
+pub type ScriptBuilder
+pub type ScriptChangeService
+pub type ScriptCloneWatcher
+pub type ScriptCloneWatcherHelper
+pub type ScriptCommitService
+pub type ScriptContext
+pub type ScriptDebugger
+pub type ScriptDebuggerService
+pub type ScriptDocument
+pub type ScriptEditorService
+pub type ScriptProfilerService
+pub type ScriptRegistrationService
+pub type ScriptRuntime
+pub type ScriptService
+pub type ScrollBarInset
+pub type ScrollingDirection
+pub type ScrollingFrame
+pub type Seat
+pub type Secret
+pub type SecurityCapabilities
+pub type Selection
+pub type SelectionBehavior
+pub type SelectionBox
+pub type SelectionHighlightManager
+pub type SelectionLasso
+pub type SelectionPartLasso
+pub type SelectionPointLasso
+pub type SelectionRenderMode
+pub type SelectionSphere
+pub type SelfViewConfiguration
+pub type SelfViewPosition
+pub type SensorBase
+pub type SensorMode
+pub type SensorUpdateType
+pub type SerializationService
+pub type ServerReplicator
+pub type ServerScriptService
+pub type ServerStorage
+pub type ServiceProvider
+pub type ServiceVisibility
+pub type ServiceVisibilityService
+pub type SessionCheckService
+pub type SessionService
+pub type SharedTable
+pub type SharedTableRegistry
+pub type Shirt
+pub type ShirtGraphic
+pub type ShowAdResult
+pub type SignalBehavior
+pub type SizeConstraint
+pub type SkateboardController
+pub type SkateboardPlatform
+pub type Skin
+pub type Sky
+pub type SlidingBallConstraint
+pub type SlimAnimationDataEntity
+pub type SlimAnimationReplicationService
+pub type SlimContentProvider
+pub type SlimReplicationService
+pub type SlimService
+pub type Smoke
+pub type SmoothVoxelsUpgraderService
+pub type Snap
+pub type SnippetService
+pub type SocialService
+pub type SolidModelContentProvider
+pub type SolidPrimitiveType
+pub type SolverConvergenceMetricType
+pub type SolverConvergenceVisualizationMode
+pub type SortDirection
+pub type SortOrder
+pub type Sound
+pub type SoundEffect
+pub type SoundGroup
+pub type SoundService
+pub type SoundShimService
+pub type Sparkles
+pub type SpawnLocation
+pub type SpawnerService
+pub type SpecialKey
+pub type SpecialMesh
+pub type SphereHandleAdornment
+pub type SpotLight
+pub type SpringConstraint
+pub type StackFrame
+pub type StandalonePluginScripts
+pub type StandardPages
+pub type StartCorner
+pub type StartPageService
+pub type StarterCharacterScripts
+pub type StarterGear
+pub type StarterGui
+pub type StarterPack
+pub type StarterPlayer
+pub type StarterPlayerScripts
+pub type StartupMessageService
+pub type Stats
+pub type StatsItem
+pub type Status
+pub type StepFrequency
+pub type StopWatchReporter
+pub type StreamOutBehavior
+pub type StreamingIntegrityMode
+pub type StringValue
+pub type StrokeSizingMode
+pub type Studio
+pub type StudioAssetService
+pub type StudioAttachment
+pub type StudioCallout
+pub type StudioCameraService
+pub type StudioCaptureBufferStatus
+pub type StudioCaptureScreenshotFormat
+pub type StudioCaptureService
+pub type StudioCloseMode
+pub type StudioData
+pub type StudioDataModelType
+pub type StudioDeviceEmulatorService
+pub type StudioDeviceSimulatorService
+pub type StudioObjectBase
+pub type StudioPublishService
+pub type StudioScreenshotCapture
+pub type StudioScriptDebugEventListener
+pub type StudioScriptEditorColorPresets
+pub type StudioSdkService
+pub type StudioService
+pub type StudioStyleGuideColor
+pub type StudioStyleGuideModifier
+pub type StudioTestService
+pub type StudioTheme
+pub type StudioUserService
+pub type StudioWidget
+pub type StudioWidgetsService
+pub type Style
+pub type StyleBase
+pub type StyleDerive
+pub type StyleLink
+pub type StyleQuery
+pub type StyleRule
+pub type StyleSheet
+pub type StylingService
+pub type SunRaysEffect
+pub type SurfaceAppearance
+pub type SurfaceGui
+pub type SurfaceGuiBase
+pub type SurfaceGuiShape
+pub type SurfaceGuiSizingMode
+pub type SurfaceLight
+pub type SurfaceSelection
+pub type SurfaceType
+pub type SwimController
+pub type SyncScriptBuilder
+pub type SystemThemeService
+pub type SystemThemeValue
+pub type TableMajorAxis
+pub type TaskScheduler
+pub type Team
+pub type TeamCreateData
+pub type TeamCreatePublishService
+pub type TeamCreateService
+pub type Teams
+pub type Technology
+pub type TelemetryService
+pub type TeleportAsyncResult
+pub type TeleportOptions
+pub type TeleportService
+pub type TemporaryCageMeshProvider
+pub type TemporaryScriptService
+pub type Terrain
+pub type TerrainAcquisitionMethod
+pub type TerrainDetail
+pub type TerrainFace
+pub type TerrainIterateOperation
+pub type TerrainModifyOperation
+pub type TerrainReadOperation
+pub type TerrainRegion
+pub type TerrainWriteOperation
+pub type TestCase
+pub type TestService
+pub type TextBox
+pub type TextBoxService
+pub type TextButton
+pub type TextChannel
+pub type TextChatCommand
+pub type TextChatConfigurations
+pub type TextChatMessage
+pub type TextChatMessageProperties
+pub type TextChatMessageStatus
+pub type TextChatService
+pub type TextDirection
+pub type TextFilterContext
+pub type TextFilterResult
+pub type TextFilterTranslatedResult
+pub type TextGenerator
+pub type TextInputType
+pub type TextLabel
+pub type TextService
+pub type TextSource
+pub type TextTruncate
+pub type TextXAlignment
+pub type TextYAlignment
+pub type Texture
+pub type TextureGenerationPartGroup
+pub type TextureGenerationService
+pub type TextureGenerationUnwrappingRequest
+pub type TextureMode
+pub type TextureQueryType
+pub type ThirdPartyUserService
+pub type ThreadPoolConfig
+pub type ThreadState
+pub type ThrottlingPriority
+pub type ThumbnailSize
+pub type ThumbnailType
+pub type TickCountSampleMethod
+pub type TimerService
+pub type ToastNotificationService
+pub type TonemapperPreset
+pub type Tool
+pub type TopBottom
+pub type Torque
+pub type TorsionSpringConstraint
+pub type TotalCountTimeIntervalItem
+pub type TouchCameraMovementMode
+pub type TouchInputService
+pub type TouchMovementMode
+pub type TouchTransmitter
+pub type TraceRouteService
+pub type TracerService
+pub type TrackerExtrapolationFlagMode
+pub type TrackerFaceTrackingStatus
+pub type TrackerLodController
+pub type TrackerLodFlagMode
+pub type TrackerLodValueMode
+pub type TrackerMode
+pub type TrackerStreamAnimation
+pub type TrackerType
+pub type Trail
+pub type Translator
+pub type TremoloSoundEffect
+pub type TriStateBoolean
+pub type TriangleMeshPart
+pub type TrussPart
+pub type TutorialService
+pub type Tween
+pub type TweenBase
+pub type TweenInfo
+pub type TweenService
+pub type UDim
+pub type UDim2
+pub type UGCAvatarService
+pub type UGCValidationService
+pub type UIAspectRatioConstraint
+pub type UIBase
+pub type UICaptureMode
+pub type UIComponent
+pub type UIConstraint
+pub type UICorner
+pub type UIDragDetector
+pub type UIDragDetectorBoundingBehavior
+pub type UIDragDetectorDragRelativity
+pub type UIDragDetectorDragSpace
+pub type UIDragDetectorDragStyle
+pub type UIDragDetectorResponseStyle
+pub type UIDragDetectorService
+pub type UIDragSpeedAxisMapping
+pub type UIFlexAlignment
+pub type UIFlexItem
+pub type UIFlexMode
+pub type UIGradient
+pub type UIGridLayout
+pub type UIGridStyleLayout
+pub type UILayout
+pub type UIListLayout
+pub type UIPadding
+pub type UIPageLayout
+pub type UIScale
+pub type UIShadow
+pub type UISizeConstraint
+pub type UIStroke
+pub type UITableLayout
+pub type UITextSizeConstraint
+pub type UITheme
+pub type UiMessageType
+pub type UnionOperation
+pub type UniqueId
+pub type UniqueIdLookupService
+pub type UniversalConstraint
+pub type UnreliableRemoteEvent
+pub type UnvalidatedAssetService
+pub type UsageContext
+pub type UserCFrame
+pub type UserGameSettings
+pub type UserInputService
+pub type UserInputState
+pub type UserInputType
+pub type UserService
+pub type UserSettings
+pub type UserStorageService
+pub type VRComfortSetting
+pub type VRControllerModelMode
+pub type VRLaserPointerMode
+pub type VRSafetyBubbleMode
+pub type VRScaling
+pub type VRService
+pub type VRSessionState
+pub type VRStatusService
+pub type VRTouchpad
+pub type VRTouchpadMode
+pub type ValueBase
+pub type ValueCurve
+pub type ValueCurveKey
+pub type Vector2
+pub type Vector3
+pub type Vector3Curve
+pub type Vector3Value
+pub type Vector3int16
+pub type VectorForce
+pub type VehicleController
+pub type VehicleSeat
+pub type VelocityConstraintMode
+pub type VelocityMotor
+pub type VersionControlService
+pub type VerticalAlignment
+pub type VerticalScrollBarPosition
+pub type VibrationMotor
+pub type VideoCapture
+pub type VideoCaptureService
+pub type VideoCaptureStartedResult
+pub type VideoDeviceCaptureQuality
+pub type VideoDeviceInput
+pub type VideoDisplay
+pub type VideoFrame
+pub type VideoPlayer
+pub type VideoSampleSize
+pub type VideoSampler
+pub type VideoScreenCaptureService
+pub type VideoService
+pub type ViewMode
+pub type ViewportFrame
+pub type VirtualCursorMode
+pub type VirtualInput
+pub type VirtualInputManager
+pub type VirtualUser
+pub type VisibilityCheckDispatcher
+pub type Visit
+pub type VisualizationMode
+pub type VisualizationModeCategory
+pub type VisualizationModeService
+pub type VoiceChatDistanceAttenuationType
+pub type VoiceChatInternal
+pub type VoiceChatService
+pub type VoiceChatState
+pub type VoiceClientLeaveReasons
+pub type VolumetricAudio
+pub type VoxelBuffer
+pub type WaterDirection
+pub type WaterForce
+pub type WebSocketClient
+pub type WebSocketService
+pub type WebSocketState
+pub type WebStreamClient
+pub type WebStreamClientState
+pub type WebStreamClientType
+pub type WebViewService
+pub type WedgePart
+pub type Weld
+pub type WeldConstraint
+pub type Wire
+pub type WireframeHandleAdornment
+pub type Workspace
+pub type WorkspaceAnnotation
+pub type WorldModel
+pub type WorldRoot
+pub type WrapDeformMeshProvider
+pub type WrapDeformer
+pub type WrapLayer
+pub type WrapLayerAutoSkin
+pub type WrapLayerDebugMode
+pub type WrapTarget
+pub type WrapTargetDebugMode
+pub type WrapTextureTransfer
+pub type ZIndexBehavior

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ActuatorRelativeTo, type AlignPosition, type Attachment, type BrickColor, type ForceLimitMode, type Instance, type PositionAlignmentMode, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ActuatorRelativeTo, type AlignPosition, type Attachment, type BrickColor, type ForceLimitMode, type Instance, type OptionDouble, type OptionInt64, type PositionAlignmentMode, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("ApplyAtCenterOfMass")
 pub fn get_apply_at_center_of_mass(instance: AlignPosition) -> Bool
@@ -136,7 +137,7 @@ pub fn get_sandboxed(instance: AlignPosition) -> Bool
 pub fn set_sandboxed(instance: AlignPosition, value: Bool) -> AlignPosition
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AlignPosition) -> Int
+pub fn get_source_asset_id(instance: AlignPosition) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AlignPosition) -> UniqueId
@@ -181,7 +182,7 @@ pub fn get_actor(instance: AlignPosition) -> Actor
 pub fn get_attribute(instance: AlignPosition, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AlignPosition, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AlignPosition, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AlignPosition) -> Dynamic
@@ -199,7 +200,7 @@ pub fn get_full_name(instance: AlignPosition) -> String
 pub fn get_styled(instance: AlignPosition, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AlignPosition, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AlignPosition, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AlignPosition) -> List(Dynamic)
@@ -229,7 +230,7 @@ pub fn reset_property_to_default(instance: AlignPosition, property: String) -> N
 pub fn set_attribute(instance: AlignPosition, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AlignPosition, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AlignPosition, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AlignPosition) -> RBXScriptSignal(Dynamic)
@@ -259,7 +260,7 @@ pub fn styled_properties_changed(instance: AlignPosition) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: AlignPosition) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AlignPosition, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AlignPosition, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AlignPosition, class_name: String) -> Bool

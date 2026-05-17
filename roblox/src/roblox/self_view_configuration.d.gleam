@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type SelfViewConfiguration, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type SelfViewConfiguration, type UniqueId}
 
 @luau.property("Open")
 pub fn get_open(instance: SelfViewConfiguration) -> Bool
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: SelfViewConfiguration) -> Bool
 pub fn set_sandboxed(instance: SelfViewConfiguration, value: Bool) -> SelfViewConfiguration
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: SelfViewConfiguration) -> Int
+pub fn get_source_asset_id(instance: SelfViewConfiguration) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: SelfViewConfiguration) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: SelfViewConfiguration) -> Actor
 pub fn get_attribute(instance: SelfViewConfiguration, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: SelfViewConfiguration, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: SelfViewConfiguration, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: SelfViewConfiguration) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: SelfViewConfiguration) -> String
 pub fn get_styled(instance: SelfViewConfiguration, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: SelfViewConfiguration, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: SelfViewConfiguration, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: SelfViewConfiguration) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: SelfViewConfiguration, property: Stri
 pub fn set_attribute(instance: SelfViewConfiguration, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: SelfViewConfiguration, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: SelfViewConfiguration, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: SelfViewConfiguration) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: SelfViewConfiguration) -> RBXScriptSi
 pub fn get_class_name(instance: SelfViewConfiguration) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: SelfViewConfiguration, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: SelfViewConfiguration, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: SelfViewConfiguration, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Attachment, type CFrame, type Instance, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Attachment, type CFrame, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("Axis")
 pub fn get_axis(instance: Attachment) -> Vector3
@@ -106,7 +107,7 @@ pub fn get_sandboxed(instance: Attachment) -> Bool
 pub fn set_sandboxed(instance: Attachment, value: Bool) -> Attachment
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Attachment) -> Int
+pub fn get_source_asset_id(instance: Attachment) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Attachment) -> UniqueId
@@ -151,7 +152,7 @@ pub fn get_actor(instance: Attachment) -> Actor
 pub fn get_attribute(instance: Attachment, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Attachment, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Attachment, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Attachment) -> Dynamic
@@ -169,7 +170,7 @@ pub fn get_full_name(instance: Attachment) -> String
 pub fn get_styled(instance: Attachment, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Attachment, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Attachment, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Attachment) -> List(Dynamic)
@@ -199,7 +200,7 @@ pub fn reset_property_to_default(instance: Attachment, property: String) -> Nil
 pub fn set_attribute(instance: Attachment, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Attachment, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Attachment, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Attachment) -> RBXScriptSignal(Dynamic)
@@ -229,7 +230,7 @@ pub fn styled_properties_changed(instance: Attachment) -> RBXScriptSignal(Dynami
 pub fn get_class_name(instance: Attachment) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Attachment, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Attachment, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Attachment, class_name: String) -> Bool

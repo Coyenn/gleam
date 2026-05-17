@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Animation, type ContentId, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Animation, type ContentId, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("AnimationId")
 pub fn get_animation_id(instance: Animation) -> ContentId
@@ -43,7 +44,7 @@ pub fn get_sandboxed(instance: Animation) -> Bool
 pub fn set_sandboxed(instance: Animation, value: Bool) -> Animation
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Animation) -> Int
+pub fn get_source_asset_id(instance: Animation) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Animation) -> UniqueId
@@ -88,7 +89,7 @@ pub fn get_actor(instance: Animation) -> Actor
 pub fn get_attribute(instance: Animation, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Animation, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Animation, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Animation) -> Dynamic
@@ -106,7 +107,7 @@ pub fn get_full_name(instance: Animation) -> String
 pub fn get_styled(instance: Animation, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Animation, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Animation, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Animation) -> List(Dynamic)
@@ -136,7 +137,7 @@ pub fn reset_property_to_default(instance: Animation, property: String) -> Nil
 pub fn set_attribute(instance: Animation, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Animation, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Animation, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Animation) -> RBXScriptSignal(Dynamic)
@@ -166,7 +167,7 @@ pub fn styled_properties_changed(instance: Animation) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: Animation) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Animation, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Animation, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Animation, class_name: String) -> Bool

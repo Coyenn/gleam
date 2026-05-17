@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Color3, type Instance, type SecurityCapabilities, type SelectionBox, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Color3, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type SelectionBox, type UniqueId}
 
 @luau.property("LineThickness")
 pub fn get_line_thickness(instance: SelectionBox) -> Float
@@ -82,7 +83,7 @@ pub fn get_sandboxed(instance: SelectionBox) -> Bool
 pub fn set_sandboxed(instance: SelectionBox, value: Bool) -> SelectionBox
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: SelectionBox) -> Int
+pub fn get_source_asset_id(instance: SelectionBox) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: SelectionBox) -> UniqueId
@@ -127,7 +128,7 @@ pub fn get_actor(instance: SelectionBox) -> Actor
 pub fn get_attribute(instance: SelectionBox, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: SelectionBox, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: SelectionBox, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: SelectionBox) -> Dynamic
@@ -145,7 +146,7 @@ pub fn get_full_name(instance: SelectionBox) -> String
 pub fn get_styled(instance: SelectionBox, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: SelectionBox, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: SelectionBox, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: SelectionBox) -> List(Dynamic)
@@ -175,7 +176,7 @@ pub fn reset_property_to_default(instance: SelectionBox, property: String) -> Ni
 pub fn set_attribute(instance: SelectionBox, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: SelectionBox, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: SelectionBox, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: SelectionBox) -> RBXScriptSignal(Dynamic)
@@ -205,7 +206,7 @@ pub fn styled_properties_changed(instance: SelectionBox) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: SelectionBox) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: SelectionBox, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: SelectionBox, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: SelectionBox, class_name: String) -> Bool

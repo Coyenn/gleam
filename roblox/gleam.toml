@@ -4,3 +4,5 @@ target = "luau"
 
 [luau]
 runtime = "roblox"
+
+[dependencies]

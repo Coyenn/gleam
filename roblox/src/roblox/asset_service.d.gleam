@@ -1,16 +1,17 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AssetService, type AssetType, type AudioPages, type AudioSearchParams, type Content, type Decal, type Dictionary?, type EditableImage, type EditableMesh, type Instance, type MeshPart, type Object, type Player, type SecurityCapabilities, type SurfaceAppearance, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AssetService, type AssetType, type AudioPages, type AudioSearchParams, type Content, type Decal, type EditableImage, type EditableMesh, type Instance, type MeshPart, type Object, type OptionDouble, type OptionInt64, type Player, type SecurityCapabilities, type SurfaceAppearance, type UniqueId}
 
 @luau.property("AllowInsertFreeAssets")
 pub fn get_allow_insert_free_assets(instance: AssetService) -> Bool
 
 @luau.method("CreateEditableImage")
-pub fn create_editable_image(instance: AssetService, editable_image_options: Dictionary?) -> EditableImage
+pub fn create_editable_image(instance: AssetService, editable_image_options: Dynamic) -> EditableImage
 
 @luau.method("CreateEditableMesh")
-pub fn create_editable_mesh(instance: AssetService, editable_mesh_options: Dictionary?) -> EditableMesh
+pub fn create_editable_mesh(instance: AssetService, editable_mesh_options: Dynamic) -> EditableMesh
 
 @luau.method("ComposeDecalAsync")
 pub fn compose_decal_async(instance: AssetService, decal: Decal, layers: List(Dynamic)) -> Nil
@@ -19,52 +20,52 @@ pub fn compose_decal_async(instance: AssetService, decal: Decal, layers: List(Dy
 pub fn create_asset_async(instance: AssetService, object: Object, asset_type: AssetType, request_parameters: Dynamic) -> Dynamic
 
 @luau.method("CreateAssetVersionAsync")
-pub fn create_asset_version_async(instance: AssetService, object: Object, asset_type: AssetType, asset_id: Int, request_parameters: Dynamic) -> Dynamic
+pub fn create_asset_version_async(instance: AssetService, object: Object, asset_type: AssetType, asset_id: OptionInt64, request_parameters: Dynamic) -> Dynamic
 
 @luau.method("CreateDataModelContentAsync")
-pub fn create_data_model_content_async(instance: AssetService, content: Content, options: Dictionary?) -> Dynamic
+pub fn create_data_model_content_async(instance: AssetService, content: Content, options: Dynamic) -> Dynamic
 
 @luau.method("CreateEditableImageAsync")
-pub fn create_editable_image_async(instance: AssetService, content: Content, editable_image_options: Dictionary?) -> EditableImage
+pub fn create_editable_image_async(instance: AssetService, content: Content, editable_image_options: Dynamic) -> EditableImage
 
 @luau.method("CreateEditableMeshAsync")
-pub fn create_editable_mesh_async(instance: AssetService, content: Content, editable_mesh_options: Dictionary?) -> EditableMesh
+pub fn create_editable_mesh_async(instance: AssetService, content: Content, editable_mesh_options: Dynamic) -> EditableMesh
 
 @luau.method("CreateMeshPartAsync")
 pub fn create_mesh_part_async(instance: AssetService, mesh_content: Content, options: Dynamic) -> MeshPart
 
 @luau.method("CreatePlaceAsync")
-pub fn create_place_async(instance: AssetService, place_name: String, template_place_id: Int, description: String) -> Int
+pub fn create_place_async(instance: AssetService, place_name: String, template_place_id: OptionInt64, description: String) -> OptionInt64
 
 @luau.method("CreatePlaceInPlayerInventoryAsync")
-pub fn create_place_in_player_inventory_async(instance: AssetService, player: Instance, place_name: String, template_place_id: Int, description: String) -> Int
+pub fn create_place_in_player_inventory_async(instance: AssetService, player: Instance, place_name: String, template_place_id: OptionInt64, description: String) -> OptionInt64
 
 @luau.method("CreateSurfaceAppearanceAsync")
 pub fn create_surface_appearance_async(instance: AssetService, content: Dynamic) -> SurfaceAppearance
 
 @luau.method("GetAssetIdsForPackageAsync")
-pub fn get_asset_ids_for_package_async(instance: AssetService, package_asset_id: Int) -> List(Dynamic)
+pub fn get_asset_ids_for_package_async(instance: AssetService, package_asset_id: OptionInt64) -> List(Dynamic)
 
 @luau.method("GetAudioMetadataAsync")
 pub fn get_audio_metadata_async(instance: AssetService, id_list: List(Dynamic)) -> List(Dynamic)
 
 @luau.method("GetBundleDetailsAsync")
-pub fn get_bundle_details_async(instance: AssetService, bundle_id: Int) -> Dynamic
+pub fn get_bundle_details_async(instance: AssetService, bundle_id: OptionInt64) -> Dynamic
 
 @luau.method("GetGamePlacesAsync")
 pub fn get_game_places_async(instance: AssetService) -> Instance
 
 @luau.method("LoadAssetAsync")
-pub fn load_asset_async(instance: AssetService, asset_id: Int) -> Instance
+pub fn load_asset_async(instance: AssetService, asset_id: OptionInt64) -> Instance
 
 @luau.method("PromptCreateAssetAsync")
-pub fn prompt_create_asset_async(instance: AssetService, player: Player, instance: Instance, asset_type: AssetType) -> Dynamic
+pub fn prompt_create_asset_async(instance: AssetService, player: Player, instance_: Instance, asset_type: AssetType) -> Dynamic
 
 @luau.method("PromptImportAnimationClipFromVideoAsync")
 pub fn prompt_import_animation_clip_from_video_async(instance: AssetService, player: Player, progress_callback: Dynamic) -> Dynamic
 
 @luau.method("SavePlaceAsync")
-pub fn save_place_async(instance: AssetService, request_parameters: Dictionary?) -> Nil
+pub fn save_place_async(instance: AssetService, request_parameters: Dynamic) -> Nil
 
 @luau.method("SearchAudioAsync")
 pub fn search_audio_async(instance: AssetService, search_parameters: AudioSearchParams) -> AudioPages
@@ -103,7 +104,7 @@ pub fn get_sandboxed(instance: AssetService) -> Bool
 pub fn set_sandboxed(instance: AssetService, value: Bool) -> AssetService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AssetService) -> Int
+pub fn get_source_asset_id(instance: AssetService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AssetService) -> UniqueId
@@ -148,7 +149,7 @@ pub fn get_actor(instance: AssetService) -> Actor
 pub fn get_attribute(instance: AssetService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AssetService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AssetService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AssetService) -> Dynamic
@@ -166,7 +167,7 @@ pub fn get_full_name(instance: AssetService) -> String
 pub fn get_styled(instance: AssetService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AssetService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AssetService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AssetService) -> List(Dynamic)
@@ -196,7 +197,7 @@ pub fn reset_property_to_default(instance: AssetService, property: String) -> Ni
 pub fn set_attribute(instance: AssetService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AssetService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AssetService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AssetService) -> RBXScriptSignal(Dynamic)
@@ -226,7 +227,7 @@ pub fn styled_properties_changed(instance: AssetService) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: AssetService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AssetService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AssetService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AssetService, class_name: String) -> Bool

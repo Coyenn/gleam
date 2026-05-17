@@ -1,10 +1,11 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type Player, type PlayerDataErrorState, type PlayerDataRecord, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type Player, type PlayerDataErrorState, type PlayerDataRecord, type SecurityCapabilities, type UniqueId}
 
 @luau.property("CreatedTime")
-pub fn get_created_time(instance: PlayerDataRecord) -> Int
+pub fn get_created_time(instance: PlayerDataRecord) -> OptionInt64
 
 @luau.property("DefaultRecordName")
 pub fn get_default_record_name(instance: PlayerDataRecord) -> Bool
@@ -16,13 +17,13 @@ pub fn get_dirty(instance: PlayerDataRecord) -> Bool
 pub fn get_error(instance: PlayerDataRecord) -> PlayerDataErrorState
 
 @luau.property("FlushedTime")
-pub fn get_flushed_time(instance: PlayerDataRecord) -> Int
+pub fn get_flushed_time(instance: PlayerDataRecord) -> OptionInt64
 
 @luau.property("LoadedTime")
-pub fn get_loaded_time(instance: PlayerDataRecord) -> Int
+pub fn get_loaded_time(instance: PlayerDataRecord) -> OptionInt64
 
 @luau.property("ModifiedTime")
-pub fn get_modified_time(instance: PlayerDataRecord) -> Int
+pub fn get_modified_time(instance: PlayerDataRecord) -> OptionInt64
 
 @luau.property("NewRecord")
 pub fn get_new_record(instance: PlayerDataRecord) -> Bool
@@ -43,7 +44,7 @@ pub fn get_player(instance: PlayerDataRecord) -> Player
 pub fn get_value(instance: PlayerDataRecord, key: String) -> Dynamic
 
 @luau.method("GetValueChangedSignal")
-pub fn get_value_changed_signal(instance: PlayerDataRecord, key: String) -> RBXScriptSignal
+pub fn get_value_changed_signal(instance: PlayerDataRecord, key: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("RemoveValue")
 pub fn remove_value(instance: PlayerDataRecord, key: String) -> Nil
@@ -100,7 +101,7 @@ pub fn get_sandboxed(instance: PlayerDataRecord) -> Bool
 pub fn set_sandboxed(instance: PlayerDataRecord, value: Bool) -> PlayerDataRecord
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: PlayerDataRecord) -> Int
+pub fn get_source_asset_id(instance: PlayerDataRecord) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: PlayerDataRecord) -> UniqueId
@@ -145,7 +146,7 @@ pub fn get_actor(instance: PlayerDataRecord) -> Actor
 pub fn get_attribute(instance: PlayerDataRecord, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: PlayerDataRecord, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: PlayerDataRecord, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: PlayerDataRecord) -> Dynamic
@@ -163,7 +164,7 @@ pub fn get_full_name(instance: PlayerDataRecord) -> String
 pub fn get_styled(instance: PlayerDataRecord, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: PlayerDataRecord, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: PlayerDataRecord, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: PlayerDataRecord) -> List(Dynamic)
@@ -193,7 +194,7 @@ pub fn reset_property_to_default(instance: PlayerDataRecord, property: String) -
 pub fn set_attribute(instance: PlayerDataRecord, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: PlayerDataRecord, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: PlayerDataRecord, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: PlayerDataRecord) -> RBXScriptSignal(Dynamic)
@@ -223,7 +224,7 @@ pub fn styled_properties_changed(instance: PlayerDataRecord) -> RBXScriptSignal(
 pub fn get_class_name(instance: PlayerDataRecord) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: PlayerDataRecord, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: PlayerDataRecord, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: PlayerDataRecord, class_name: String) -> Bool

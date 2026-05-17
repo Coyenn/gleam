@@ -1,10 +1,11 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AdPortal, type AdUnitStatus, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AdPortal, type AdUnitStatus, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("PortalVersion")
-pub fn get_portal_version(instance: AdPortal) -> Int
+pub fn get_portal_version(instance: AdPortal) -> OptionInt64
 
 @luau.property("Status")
 pub fn get_status(instance: AdPortal) -> AdUnitStatus
@@ -43,7 +44,7 @@ pub fn get_sandboxed(instance: AdPortal) -> Bool
 pub fn set_sandboxed(instance: AdPortal, value: Bool) -> AdPortal
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AdPortal) -> Int
+pub fn get_source_asset_id(instance: AdPortal) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AdPortal) -> UniqueId
@@ -88,7 +89,7 @@ pub fn get_actor(instance: AdPortal) -> Actor
 pub fn get_attribute(instance: AdPortal, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AdPortal, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AdPortal, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AdPortal) -> Dynamic
@@ -106,7 +107,7 @@ pub fn get_full_name(instance: AdPortal) -> String
 pub fn get_styled(instance: AdPortal, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AdPortal, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AdPortal, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AdPortal) -> List(Dynamic)
@@ -136,7 +137,7 @@ pub fn reset_property_to_default(instance: AdPortal, property: String) -> Nil
 pub fn set_attribute(instance: AdPortal, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AdPortal, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AdPortal, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AdPortal) -> RBXScriptSignal(Dynamic)
@@ -166,7 +167,7 @@ pub fn styled_properties_changed(instance: AdPortal) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: AdPortal) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AdPortal, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AdPortal, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AdPortal, class_name: String) -> Bool

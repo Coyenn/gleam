@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type PluginDragEvent, type SecurityCapabilities, type UniqueId, type Vector2}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type PluginDragEvent, type SecurityCapabilities, type UniqueId, type Vector2}
 
 @luau.property("Data")
 pub fn get_data(instance: PluginDragEvent) -> String
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: PluginDragEvent) -> Bool
 pub fn set_sandboxed(instance: PluginDragEvent, value: Bool) -> PluginDragEvent
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: PluginDragEvent) -> Int
+pub fn get_source_asset_id(instance: PluginDragEvent) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: PluginDragEvent) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: PluginDragEvent) -> Actor
 pub fn get_attribute(instance: PluginDragEvent, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: PluginDragEvent, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: PluginDragEvent, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: PluginDragEvent) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: PluginDragEvent) -> String
 pub fn get_styled(instance: PluginDragEvent, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: PluginDragEvent, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: PluginDragEvent, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: PluginDragEvent) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: PluginDragEvent, property: String) ->
 pub fn set_attribute(instance: PluginDragEvent, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: PluginDragEvent, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: PluginDragEvent, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: PluginDragEvent) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: PluginDragEvent) -> RBXScriptSignal(D
 pub fn get_class_name(instance: PluginDragEvent) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: PluginDragEvent, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: PluginDragEvent, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: PluginDragEvent, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type LuauScriptAnalyzerService, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type LuauScriptAnalyzerService, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: LuauScriptAnalyzerService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: LuauScriptAnalyzerService) -> Bool
 pub fn set_sandboxed(instance: LuauScriptAnalyzerService, value: Bool) -> LuauScriptAnalyzerService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: LuauScriptAnalyzerService) -> Int
+pub fn get_source_asset_id(instance: LuauScriptAnalyzerService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: LuauScriptAnalyzerService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: LuauScriptAnalyzerService) -> Actor
 pub fn get_attribute(instance: LuauScriptAnalyzerService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: LuauScriptAnalyzerService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: LuauScriptAnalyzerService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: LuauScriptAnalyzerService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: LuauScriptAnalyzerService) -> String
 pub fn get_styled(instance: LuauScriptAnalyzerService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: LuauScriptAnalyzerService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: LuauScriptAnalyzerService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: LuauScriptAnalyzerService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: LuauScriptAnalyzerService, property: 
 pub fn set_attribute(instance: LuauScriptAnalyzerService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: LuauScriptAnalyzerService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: LuauScriptAnalyzerService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: LuauScriptAnalyzerService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: LuauScriptAnalyzerService) -> RBXScri
 pub fn get_class_name(instance: LuauScriptAnalyzerService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: LuauScriptAnalyzerService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: LuauScriptAnalyzerService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: LuauScriptAnalyzerService, class_name: String) -> Bool

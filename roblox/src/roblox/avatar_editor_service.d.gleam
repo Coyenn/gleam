@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type AccessoryType, type Actor, type AvatarAssetType, type AvatarEditorService, type AvatarItemType, type CatalogPages, type CatalogSearchParams, type HumanoidDescription, type HumanoidRigType, type Instance, type InventoryPages, type OutfitPages, type OutfitSource, type OutfitType, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type AccessoryType, type Actor, type AvatarAssetType, type AvatarEditorService, type AvatarItemType, type CatalogPages, type CatalogSearchParams, type HumanoidDescription, type HumanoidRigType, type Instance, type InventoryPages, type OptionDouble, type OptionInt64, type OutfitPages, type OutfitSource, type OutfitType, type SecurityCapabilities, type UniqueId}
 
 @luau.method("GetAccessoryType")
 pub fn get_accessory_type(instance: AvatarEditorService, avatar_asset_type: AvatarAssetType) -> AccessoryType
@@ -13,19 +14,19 @@ pub fn prompt_allow_inventory_read_access(instance: AvatarEditorService) -> Nil
 pub fn prompt_create_outfit(instance: AvatarEditorService, outfit: HumanoidDescription, rig_type: HumanoidRigType) -> Nil
 
 @luau.method("PromptDeleteOutfit")
-pub fn prompt_delete_outfit(instance: AvatarEditorService, outfit_id: Int) -> Nil
+pub fn prompt_delete_outfit(instance: AvatarEditorService, outfit_id: OptionInt64) -> Nil
 
 @luau.method("PromptRenameOutfit")
-pub fn prompt_rename_outfit(instance: AvatarEditorService, outfit_id: Int) -> Nil
+pub fn prompt_rename_outfit(instance: AvatarEditorService, outfit_id: OptionInt64) -> Nil
 
 @luau.method("PromptSaveAvatar")
 pub fn prompt_save_avatar(instance: AvatarEditorService, humanoid_description: HumanoidDescription, rig_type: HumanoidRigType) -> Nil
 
 @luau.method("PromptSetFavorite")
-pub fn prompt_set_favorite(instance: AvatarEditorService, item_id: Int, item_type: AvatarItemType, should_favorite: Bool) -> Nil
+pub fn prompt_set_favorite(instance: AvatarEditorService, item_id: OptionInt64, item_type: AvatarItemType, should_favorite: Bool) -> Nil
 
 @luau.method("PromptUpdateOutfit")
-pub fn prompt_update_outfit(instance: AvatarEditorService, outfit_id: Int, updated_outfit: HumanoidDescription, rig_type: HumanoidRigType) -> Nil
+pub fn prompt_update_outfit(instance: AvatarEditorService, outfit_id: OptionInt64, updated_outfit: HumanoidDescription, rig_type: HumanoidRigType) -> Nil
 
 @luau.method("CheckApplyDefaultClothingAsync")
 pub fn check_apply_default_clothing_async(instance: AvatarEditorService, humanoid_description: HumanoidDescription) -> HumanoidDescription
@@ -40,7 +41,7 @@ pub fn get_avatar_rules_async(instance: AvatarEditorService) -> Dynamic
 pub fn get_batch_item_details_async(instance: AvatarEditorService, item_ids: List(Dynamic), item_type: AvatarItemType) -> List(Dynamic)
 
 @luau.method("GetFavoriteAsync")
-pub fn get_favorite_async(instance: AvatarEditorService, item_id: Int, item_type: AvatarItemType) -> Bool
+pub fn get_favorite_async(instance: AvatarEditorService, item_id: OptionInt64, item_type: AvatarItemType) -> Bool
 
 @luau.method("GetHeadShapesAsync")
 pub fn get_head_shapes_async(instance: AvatarEditorService) -> List(Dynamic)
@@ -49,19 +50,19 @@ pub fn get_head_shapes_async(instance: AvatarEditorService) -> List(Dynamic)
 pub fn get_inventory_async(instance: AvatarEditorService, asset_types: List(Dynamic)) -> InventoryPages
 
 @luau.method("GetItemDetailsAsync")
-pub fn get_item_details_async(instance: AvatarEditorService, item_id: Int, item_type: AvatarItemType) -> Dynamic
+pub fn get_item_details_async(instance: AvatarEditorService, item_id: OptionInt64, item_type: AvatarItemType) -> Dynamic
 
 @luau.method("GetOutfitDetailsAsync")
-pub fn get_outfit_details_async(instance: AvatarEditorService, outfit_id: Int) -> Dynamic
+pub fn get_outfit_details_async(instance: AvatarEditorService, outfit_id: OptionInt64) -> Dynamic
 
 @luau.method("GetOutfitsAsync")
 pub fn get_outfits_async(instance: AvatarEditorService, outfit_source: OutfitSource, outfit_type: OutfitType) -> OutfitPages
 
 @luau.method("GetRecommendedAssetsAsync")
-pub fn get_recommended_assets_async(instance: AvatarEditorService, asset_type: AvatarAssetType, context_asset_id: Int) -> List(Dynamic)
+pub fn get_recommended_assets_async(instance: AvatarEditorService, asset_type: AvatarAssetType, context_asset_id: OptionInt64) -> List(Dynamic)
 
 @luau.method("GetRecommendedBundlesAsync")
-pub fn get_recommended_bundles_async(instance: AvatarEditorService, bundle_id: Int) -> List(Dynamic)
+pub fn get_recommended_bundles_async(instance: AvatarEditorService, bundle_id: OptionInt64) -> List(Dynamic)
 
 @luau.method("SearchCatalogAsync")
 pub fn search_catalog_async(instance: AvatarEditorService, search_parameters: CatalogSearchParams) -> CatalogPages
@@ -121,7 +122,7 @@ pub fn get_sandboxed(instance: AvatarEditorService) -> Bool
 pub fn set_sandboxed(instance: AvatarEditorService, value: Bool) -> AvatarEditorService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AvatarEditorService) -> Int
+pub fn get_source_asset_id(instance: AvatarEditorService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AvatarEditorService) -> UniqueId
@@ -166,7 +167,7 @@ pub fn get_actor(instance: AvatarEditorService) -> Actor
 pub fn get_attribute(instance: AvatarEditorService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AvatarEditorService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AvatarEditorService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AvatarEditorService) -> Dynamic
@@ -184,7 +185,7 @@ pub fn get_full_name(instance: AvatarEditorService) -> String
 pub fn get_styled(instance: AvatarEditorService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AvatarEditorService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AvatarEditorService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AvatarEditorService) -> List(Dynamic)
@@ -214,7 +215,7 @@ pub fn reset_property_to_default(instance: AvatarEditorService, property: String
 pub fn set_attribute(instance: AvatarEditorService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AvatarEditorService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AvatarEditorService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AvatarEditorService) -> RBXScriptSignal(Dynamic)
@@ -244,7 +245,7 @@ pub fn styled_properties_changed(instance: AvatarEditorService) -> RBXScriptSign
 pub fn get_class_name(instance: AvatarEditorService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AvatarEditorService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AvatarEditorService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AvatarEditorService, class_name: String) -> Bool

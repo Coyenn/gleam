@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AssetTypeVerification, type BasePart, type BodyPartR15, type Humanoid, type HumanoidDescription, type HumanoidDisplayDistanceType, type HumanoidHealthDisplayType, type HumanoidRigType, type HumanoidStateType, type Instance, type Limb, type Material, type NameOcclusion, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AssetTypeVerification, type BasePart, type BodyPartR15, type Humanoid, type HumanoidDescription, type HumanoidDisplayDistanceType, type HumanoidHealthDisplayType, type HumanoidRigType, type HumanoidStateType, type Instance, type Limb, type Material, type NameOcclusion, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("AutoJumpEnabled")
 pub fn get_auto_jump_enabled(instance: Humanoid) -> Bool
@@ -340,7 +341,7 @@ pub fn get_sandboxed(instance: Humanoid) -> Bool
 pub fn set_sandboxed(instance: Humanoid, value: Bool) -> Humanoid
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Humanoid) -> Int
+pub fn get_source_asset_id(instance: Humanoid) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Humanoid) -> UniqueId
@@ -385,7 +386,7 @@ pub fn get_actor(instance: Humanoid) -> Actor
 pub fn get_attribute(instance: Humanoid, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Humanoid, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Humanoid, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Humanoid) -> Dynamic
@@ -403,7 +404,7 @@ pub fn get_full_name(instance: Humanoid) -> String
 pub fn get_styled(instance: Humanoid, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Humanoid, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Humanoid, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Humanoid) -> List(Dynamic)
@@ -433,7 +434,7 @@ pub fn reset_property_to_default(instance: Humanoid, property: String) -> Nil
 pub fn set_attribute(instance: Humanoid, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Humanoid, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Humanoid, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Humanoid) -> RBXScriptSignal(Dynamic)
@@ -463,7 +464,7 @@ pub fn styled_properties_changed(instance: Humanoid) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Humanoid) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Humanoid, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Humanoid, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Humanoid, class_name: String) -> Bool

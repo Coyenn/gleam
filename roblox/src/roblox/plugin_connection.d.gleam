@@ -1,5 +1,6 @@
+// Generated class bindings for Roblox API
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
+import roblox/dynamic.{type Dynamic}
 import roblox/types.{type PluginConnection, type PluginConnectionTargetType}
 
 @luau.property("Connected")
@@ -15,7 +16,7 @@ pub fn get_type_(instance: PluginConnection) -> PluginConnectionTargetType
 pub fn get_class_name(instance: PluginConnection) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: PluginConnection, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: PluginConnection, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: PluginConnection, class_name: String) -> Bool

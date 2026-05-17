@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type Player, type SecurityCapabilities, type UniqueId, type UnreliableRemoteEvent}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type Player, type SecurityCapabilities, type UniqueId, type UnreliableRemoteEvent}
 
 @luau.method("FireAllClients")
 pub fn fire_all_clients(instance: UnreliableRemoteEvent, arguments: Dynamic) -> Nil
@@ -52,7 +53,7 @@ pub fn get_sandboxed(instance: UnreliableRemoteEvent) -> Bool
 pub fn set_sandboxed(instance: UnreliableRemoteEvent, value: Bool) -> UnreliableRemoteEvent
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: UnreliableRemoteEvent) -> Int
+pub fn get_source_asset_id(instance: UnreliableRemoteEvent) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: UnreliableRemoteEvent) -> UniqueId
@@ -97,7 +98,7 @@ pub fn get_actor(instance: UnreliableRemoteEvent) -> Actor
 pub fn get_attribute(instance: UnreliableRemoteEvent, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: UnreliableRemoteEvent, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: UnreliableRemoteEvent, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: UnreliableRemoteEvent) -> Dynamic
@@ -115,7 +116,7 @@ pub fn get_full_name(instance: UnreliableRemoteEvent) -> String
 pub fn get_styled(instance: UnreliableRemoteEvent, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: UnreliableRemoteEvent, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: UnreliableRemoteEvent, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: UnreliableRemoteEvent) -> List(Dynamic)
@@ -145,7 +146,7 @@ pub fn reset_property_to_default(instance: UnreliableRemoteEvent, property: Stri
 pub fn set_attribute(instance: UnreliableRemoteEvent, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: UnreliableRemoteEvent, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: UnreliableRemoteEvent, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: UnreliableRemoteEvent) -> RBXScriptSignal(Dynamic)
@@ -175,7 +176,7 @@ pub fn styled_properties_changed(instance: UnreliableRemoteEvent) -> RBXScriptSi
 pub fn get_class_name(instance: UnreliableRemoteEvent) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: UnreliableRemoteEvent, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: UnreliableRemoteEvent, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: UnreliableRemoteEvent, class_name: String) -> Bool

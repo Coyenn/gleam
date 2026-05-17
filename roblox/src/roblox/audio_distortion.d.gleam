@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AudioDistortion, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AudioDistortion, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Bypass")
 pub fn get_bypass(instance: AudioDistortion) -> Bool
@@ -61,7 +62,7 @@ pub fn get_sandboxed(instance: AudioDistortion) -> Bool
 pub fn set_sandboxed(instance: AudioDistortion, value: Bool) -> AudioDistortion
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AudioDistortion) -> Int
+pub fn get_source_asset_id(instance: AudioDistortion) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AudioDistortion) -> UniqueId
@@ -106,7 +107,7 @@ pub fn get_actor(instance: AudioDistortion) -> Actor
 pub fn get_attribute(instance: AudioDistortion, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AudioDistortion, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AudioDistortion, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AudioDistortion) -> Dynamic
@@ -124,7 +125,7 @@ pub fn get_full_name(instance: AudioDistortion) -> String
 pub fn get_styled(instance: AudioDistortion, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AudioDistortion, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AudioDistortion, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AudioDistortion) -> List(Dynamic)
@@ -154,7 +155,7 @@ pub fn reset_property_to_default(instance: AudioDistortion, property: String) ->
 pub fn set_attribute(instance: AudioDistortion, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AudioDistortion, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AudioDistortion, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AudioDistortion) -> RBXScriptSignal(Dynamic)
@@ -184,7 +185,7 @@ pub fn styled_properties_changed(instance: AudioDistortion) -> RBXScriptSignal(D
 pub fn get_class_name(instance: AudioDistortion) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AudioDistortion, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AudioDistortion, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AudioDistortion, class_name: String) -> Bool

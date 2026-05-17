@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AnimationPriority, type Instance, type KeyframeSequence, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AnimationPriority, type Instance, type KeyframeSequence, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("AuthoredHipHeight")
 pub fn get_authored_hip_height(instance: KeyframeSequence) -> Float
@@ -67,7 +68,7 @@ pub fn get_sandboxed(instance: KeyframeSequence) -> Bool
 pub fn set_sandboxed(instance: KeyframeSequence, value: Bool) -> KeyframeSequence
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: KeyframeSequence) -> Int
+pub fn get_source_asset_id(instance: KeyframeSequence) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: KeyframeSequence) -> UniqueId
@@ -112,7 +113,7 @@ pub fn get_actor(instance: KeyframeSequence) -> Actor
 pub fn get_attribute(instance: KeyframeSequence, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: KeyframeSequence, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: KeyframeSequence, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: KeyframeSequence) -> Dynamic
@@ -130,7 +131,7 @@ pub fn get_full_name(instance: KeyframeSequence) -> String
 pub fn get_styled(instance: KeyframeSequence, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: KeyframeSequence, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: KeyframeSequence, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: KeyframeSequence) -> List(Dynamic)
@@ -160,7 +161,7 @@ pub fn reset_property_to_default(instance: KeyframeSequence, property: String) -
 pub fn set_attribute(instance: KeyframeSequence, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: KeyframeSequence, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: KeyframeSequence, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: KeyframeSequence) -> RBXScriptSignal(Dynamic)
@@ -190,7 +191,7 @@ pub fn styled_properties_changed(instance: KeyframeSequence) -> RBXScriptSignal(
 pub fn get_class_name(instance: KeyframeSequence) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: KeyframeSequence, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: KeyframeSequence, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: KeyframeSequence, class_name: String) -> Bool

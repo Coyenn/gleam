@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AppUpdateService, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AppUpdateService, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: AppUpdateService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: AppUpdateService) -> Bool
 pub fn set_sandboxed(instance: AppUpdateService, value: Bool) -> AppUpdateService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AppUpdateService) -> Int
+pub fn get_source_asset_id(instance: AppUpdateService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AppUpdateService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: AppUpdateService) -> Actor
 pub fn get_attribute(instance: AppUpdateService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AppUpdateService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AppUpdateService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AppUpdateService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: AppUpdateService) -> String
 pub fn get_styled(instance: AppUpdateService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AppUpdateService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AppUpdateService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AppUpdateService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: AppUpdateService, property: String) -
 pub fn set_attribute(instance: AppUpdateService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AppUpdateService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AppUpdateService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AppUpdateService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: AppUpdateService) -> RBXScriptSignal(
 pub fn get_class_name(instance: AppUpdateService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AppUpdateService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AppUpdateService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AppUpdateService, class_name: String) -> Bool

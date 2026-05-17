@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type LuaWebService, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type LuaWebService, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: LuaWebService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: LuaWebService) -> Bool
 pub fn set_sandboxed(instance: LuaWebService, value: Bool) -> LuaWebService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: LuaWebService) -> Int
+pub fn get_source_asset_id(instance: LuaWebService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: LuaWebService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: LuaWebService) -> Actor
 pub fn get_attribute(instance: LuaWebService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: LuaWebService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: LuaWebService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: LuaWebService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: LuaWebService) -> String
 pub fn get_styled(instance: LuaWebService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: LuaWebService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: LuaWebService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: LuaWebService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: LuaWebService, property: String) -> N
 pub fn set_attribute(instance: LuaWebService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: LuaWebService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: LuaWebService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: LuaWebService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: LuaWebService) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: LuaWebService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: LuaWebService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: LuaWebService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: LuaWebService, class_name: String) -> Bool

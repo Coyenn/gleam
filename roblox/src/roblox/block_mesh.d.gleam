@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BlockMesh, type Instance, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BlockMesh, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("Offset")
 pub fn get_offset(instance: BlockMesh) -> Vector3
@@ -55,7 +56,7 @@ pub fn get_sandboxed(instance: BlockMesh) -> Bool
 pub fn set_sandboxed(instance: BlockMesh, value: Bool) -> BlockMesh
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: BlockMesh) -> Int
+pub fn get_source_asset_id(instance: BlockMesh) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: BlockMesh) -> UniqueId
@@ -100,7 +101,7 @@ pub fn get_actor(instance: BlockMesh) -> Actor
 pub fn get_attribute(instance: BlockMesh, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: BlockMesh, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: BlockMesh, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: BlockMesh) -> Dynamic
@@ -118,7 +119,7 @@ pub fn get_full_name(instance: BlockMesh) -> String
 pub fn get_styled(instance: BlockMesh, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: BlockMesh, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: BlockMesh, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: BlockMesh) -> List(Dynamic)
@@ -148,7 +149,7 @@ pub fn reset_property_to_default(instance: BlockMesh, property: String) -> Nil
 pub fn set_attribute(instance: BlockMesh, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: BlockMesh, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: BlockMesh, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: BlockMesh) -> RBXScriptSignal(Dynamic)
@@ -178,7 +179,7 @@ pub fn styled_properties_changed(instance: BlockMesh) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: BlockMesh) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: BlockMesh, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: BlockMesh, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: BlockMesh, class_name: String) -> Bool

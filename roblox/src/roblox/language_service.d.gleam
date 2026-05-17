@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type LanguageService, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type LanguageService, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.method("GetCapabilitiesUsedInPackageAsync")
 pub fn get_capabilities_used_in_package_async(instance: LanguageService, instances: List(Instance)) -> Dynamic
@@ -40,7 +41,7 @@ pub fn get_sandboxed(instance: LanguageService) -> Bool
 pub fn set_sandboxed(instance: LanguageService, value: Bool) -> LanguageService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: LanguageService) -> Int
+pub fn get_source_asset_id(instance: LanguageService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: LanguageService) -> UniqueId
@@ -85,7 +86,7 @@ pub fn get_actor(instance: LanguageService) -> Actor
 pub fn get_attribute(instance: LanguageService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: LanguageService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: LanguageService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: LanguageService) -> Dynamic
@@ -103,7 +104,7 @@ pub fn get_full_name(instance: LanguageService) -> String
 pub fn get_styled(instance: LanguageService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: LanguageService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: LanguageService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: LanguageService) -> List(Dynamic)
@@ -133,7 +134,7 @@ pub fn reset_property_to_default(instance: LanguageService, property: String) ->
 pub fn set_attribute(instance: LanguageService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: LanguageService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: LanguageService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: LanguageService) -> RBXScriptSignal(Dynamic)
@@ -163,7 +164,7 @@ pub fn styled_properties_changed(instance: LanguageService) -> RBXScriptSignal(D
 pub fn get_class_name(instance: LanguageService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: LanguageService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: LanguageService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: LanguageService, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type EasingDirection, type EasingStyle, type FillDirection, type GuiObject, type HorizontalAlignment, type Instance, type SecurityCapabilities, type SortOrder, type UDim, type UIPageLayout, type UniqueId, type Vector2, type VerticalAlignment}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type EasingDirection, type EasingStyle, type FillDirection, type GuiObject, type HorizontalAlignment, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type SortOrder, type UDim, type UIPageLayout, type UniqueId, type Vector2, type VerticalAlignment}
 
 @luau.property("Animated")
 pub fn get_animated(instance: UIPageLayout) -> Bool
@@ -142,7 +143,7 @@ pub fn get_sandboxed(instance: UIPageLayout) -> Bool
 pub fn set_sandboxed(instance: UIPageLayout, value: Bool) -> UIPageLayout
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: UIPageLayout) -> Int
+pub fn get_source_asset_id(instance: UIPageLayout) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: UIPageLayout) -> UniqueId
@@ -187,7 +188,7 @@ pub fn get_actor(instance: UIPageLayout) -> Actor
 pub fn get_attribute(instance: UIPageLayout, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: UIPageLayout, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: UIPageLayout, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: UIPageLayout) -> Dynamic
@@ -205,7 +206,7 @@ pub fn get_full_name(instance: UIPageLayout) -> String
 pub fn get_styled(instance: UIPageLayout, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: UIPageLayout, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: UIPageLayout, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: UIPageLayout) -> List(Dynamic)
@@ -235,7 +236,7 @@ pub fn reset_property_to_default(instance: UIPageLayout, property: String) -> Ni
 pub fn set_attribute(instance: UIPageLayout, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: UIPageLayout, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: UIPageLayout, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: UIPageLayout) -> RBXScriptSignal(Dynamic)
@@ -265,7 +266,7 @@ pub fn styled_properties_changed(instance: UIPageLayout) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: UIPageLayout) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: UIPageLayout, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: UIPageLayout, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: UIPageLayout, class_name: String) -> Bool

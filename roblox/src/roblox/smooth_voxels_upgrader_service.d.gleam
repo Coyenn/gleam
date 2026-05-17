@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type SmoothVoxelsUpgraderService, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type SmoothVoxelsUpgraderService, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: SmoothVoxelsUpgraderService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: SmoothVoxelsUpgraderService) -> Bool
 pub fn set_sandboxed(instance: SmoothVoxelsUpgraderService, value: Bool) -> SmoothVoxelsUpgraderService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: SmoothVoxelsUpgraderService) -> Int
+pub fn get_source_asset_id(instance: SmoothVoxelsUpgraderService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: SmoothVoxelsUpgraderService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: SmoothVoxelsUpgraderService) -> Actor
 pub fn get_attribute(instance: SmoothVoxelsUpgraderService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: SmoothVoxelsUpgraderService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: SmoothVoxelsUpgraderService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: SmoothVoxelsUpgraderService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: SmoothVoxelsUpgraderService) -> String
 pub fn get_styled(instance: SmoothVoxelsUpgraderService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: SmoothVoxelsUpgraderService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: SmoothVoxelsUpgraderService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: SmoothVoxelsUpgraderService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: SmoothVoxelsUpgraderService, property
 pub fn set_attribute(instance: SmoothVoxelsUpgraderService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: SmoothVoxelsUpgraderService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: SmoothVoxelsUpgraderService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: SmoothVoxelsUpgraderService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: SmoothVoxelsUpgraderService) -> RBXSc
 pub fn get_class_name(instance: SmoothVoxelsUpgraderService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: SmoothVoxelsUpgraderService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: SmoothVoxelsUpgraderService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: SmoothVoxelsUpgraderService, class_name: String) -> Bool

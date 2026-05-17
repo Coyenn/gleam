@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type StandardPages, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type StandardPages, type UniqueId}
 
 @luau.property("IsFinished")
 pub fn get_is_finished(instance: StandardPages) -> Bool
@@ -46,7 +47,7 @@ pub fn get_sandboxed(instance: StandardPages) -> Bool
 pub fn set_sandboxed(instance: StandardPages, value: Bool) -> StandardPages
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: StandardPages) -> Int
+pub fn get_source_asset_id(instance: StandardPages) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: StandardPages) -> UniqueId
@@ -91,7 +92,7 @@ pub fn get_actor(instance: StandardPages) -> Actor
 pub fn get_attribute(instance: StandardPages, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: StandardPages, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: StandardPages, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: StandardPages) -> Dynamic
@@ -109,7 +110,7 @@ pub fn get_full_name(instance: StandardPages) -> String
 pub fn get_styled(instance: StandardPages, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: StandardPages, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: StandardPages, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: StandardPages) -> List(Dynamic)
@@ -139,7 +140,7 @@ pub fn reset_property_to_default(instance: StandardPages, property: String) -> N
 pub fn set_attribute(instance: StandardPages, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: StandardPages, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: StandardPages, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: StandardPages) -> RBXScriptSignal(Dynamic)
@@ -169,7 +170,7 @@ pub fn styled_properties_changed(instance: StandardPages) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: StandardPages) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: StandardPages, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: StandardPages, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: StandardPages, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ContentId, type Instance, type ScreenshotHud, type SecurityCapabilities, type UDim2, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ContentId, type Instance, type OptionDouble, type OptionInt64, type ScreenshotHud, type SecurityCapabilities, type UDim2, type UniqueId}
 
 @luau.property("CameraButtonIcon")
 pub fn get_camera_button_icon(instance: ScreenshotHud) -> ContentId
@@ -79,7 +80,7 @@ pub fn get_sandboxed(instance: ScreenshotHud) -> Bool
 pub fn set_sandboxed(instance: ScreenshotHud, value: Bool) -> ScreenshotHud
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ScreenshotHud) -> Int
+pub fn get_source_asset_id(instance: ScreenshotHud) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ScreenshotHud) -> UniqueId
@@ -124,7 +125,7 @@ pub fn get_actor(instance: ScreenshotHud) -> Actor
 pub fn get_attribute(instance: ScreenshotHud, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ScreenshotHud, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ScreenshotHud, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ScreenshotHud) -> Dynamic
@@ -142,7 +143,7 @@ pub fn get_full_name(instance: ScreenshotHud) -> String
 pub fn get_styled(instance: ScreenshotHud, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ScreenshotHud, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ScreenshotHud, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ScreenshotHud) -> List(Dynamic)
@@ -172,7 +173,7 @@ pub fn reset_property_to_default(instance: ScreenshotHud, property: String) -> N
 pub fn set_attribute(instance: ScreenshotHud, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ScreenshotHud, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ScreenshotHud, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ScreenshotHud) -> RBXScriptSignal(Dynamic)
@@ -202,7 +203,7 @@ pub fn styled_properties_changed(instance: ScreenshotHud) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: ScreenshotHud) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ScreenshotHud, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ScreenshotHud, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ScreenshotHud, class_name: String) -> Bool

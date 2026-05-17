@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AdornCullingMode, type CFrame, type Color3, type ContentId, type ImageHandleAdornment, type Instance, type PVInstance, type SecurityCapabilities, type UniqueId, type Vector2, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AdornCullingMode, type CFrame, type Color3, type ContentId, type ImageHandleAdornment, type Instance, type OptionDouble, type OptionInt64, type PVInstance, type SecurityCapabilities, type UniqueId, type Vector2, type Vector3}
 
 @luau.property("Image")
 pub fn get_image(instance: ImageHandleAdornment) -> ContentId
@@ -118,7 +119,7 @@ pub fn get_sandboxed(instance: ImageHandleAdornment) -> Bool
 pub fn set_sandboxed(instance: ImageHandleAdornment, value: Bool) -> ImageHandleAdornment
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ImageHandleAdornment) -> Int
+pub fn get_source_asset_id(instance: ImageHandleAdornment) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ImageHandleAdornment) -> UniqueId
@@ -163,7 +164,7 @@ pub fn get_actor(instance: ImageHandleAdornment) -> Actor
 pub fn get_attribute(instance: ImageHandleAdornment, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ImageHandleAdornment, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ImageHandleAdornment, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ImageHandleAdornment) -> Dynamic
@@ -181,7 +182,7 @@ pub fn get_full_name(instance: ImageHandleAdornment) -> String
 pub fn get_styled(instance: ImageHandleAdornment, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ImageHandleAdornment, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ImageHandleAdornment, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ImageHandleAdornment) -> List(Dynamic)
@@ -211,7 +212,7 @@ pub fn reset_property_to_default(instance: ImageHandleAdornment, property: Strin
 pub fn set_attribute(instance: ImageHandleAdornment, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ImageHandleAdornment, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ImageHandleAdornment, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ImageHandleAdornment) -> RBXScriptSignal(Dynamic)
@@ -241,7 +242,7 @@ pub fn styled_properties_changed(instance: ImageHandleAdornment) -> RBXScriptSig
 pub fn get_class_name(instance: ImageHandleAdornment) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ImageHandleAdornment, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ImageHandleAdornment, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ImageHandleAdornment, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AssetRepresentation, type AudioPlayer, type Content, type ContentId, type Instance, type NumberRange, type SecurityCapabilities, type UniqueId, type double?, type int64?}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AssetRepresentation, type AudioPlayer, type Content, type ContentId, type Instance, type NumberRange, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Asset")
 pub fn get_asset(instance: AudioPlayer) -> ContentId
@@ -55,19 +56,19 @@ pub fn get_playback_region(instance: AudioPlayer) -> NumberRange
 pub fn set_playback_region(instance: AudioPlayer, value: NumberRange) -> AudioPlayer
 
 @luau.property("PlaybackSpeed")
-pub fn get_playback_speed(instance: AudioPlayer) -> Float
+pub fn get_playback_speed(instance: AudioPlayer) -> OptionDouble
 
 @luau.set_property("PlaybackSpeed")
-pub fn set_playback_speed(instance: AudioPlayer, value: Float) -> AudioPlayer
+pub fn set_playback_speed(instance: AudioPlayer, value: OptionDouble) -> AudioPlayer
 
 @luau.property("TimeLength")
-pub fn get_time_length(instance: AudioPlayer) -> Float
+pub fn get_time_length(instance: AudioPlayer) -> OptionDouble
 
 @luau.property("TimePosition")
-pub fn get_time_position(instance: AudioPlayer) -> Float
+pub fn get_time_position(instance: AudioPlayer) -> OptionDouble
 
 @luau.set_property("TimePosition")
-pub fn set_time_position(instance: AudioPlayer, value: Float) -> AudioPlayer
+pub fn set_time_position(instance: AudioPlayer, value: OptionDouble) -> AudioPlayer
 
 @luau.property("Volume")
 pub fn get_volume(instance: AudioPlayer) -> Float
@@ -76,7 +77,7 @@ pub fn get_volume(instance: AudioPlayer) -> Float
 pub fn set_volume(instance: AudioPlayer, value: Float) -> AudioPlayer
 
 @luau.method("Cancel")
-pub fn cancel(instance: AudioPlayer, action_id: int64?) -> Bool
+pub fn cancel(instance: AudioPlayer, action_id: OptionInt64) -> Bool
 
 @luau.method("GetConnectedWires")
 pub fn get_connected_wires(instance: AudioPlayer, pin: String) -> List(Instance)
@@ -88,10 +89,10 @@ pub fn get_input_pins(instance: AudioPlayer) -> List(Dynamic)
 pub fn get_output_pins(instance: AudioPlayer) -> List(Dynamic)
 
 @luau.method("Play")
-pub fn play(instance: AudioPlayer, at_time: double?) -> int64?
+pub fn play(instance: AudioPlayer, at_time: OptionDouble) -> OptionInt64
 
 @luau.method("Stop")
-pub fn stop(instance: AudioPlayer, at_time: double?) -> int64?
+pub fn stop(instance: AudioPlayer, at_time: OptionDouble) -> OptionInt64
 
 @luau.method("GetWaveformAsync")
 pub fn get_waveform_async(instance: AudioPlayer, time_range: NumberRange, samples: Int) -> List(Dynamic)
@@ -139,7 +140,7 @@ pub fn get_sandboxed(instance: AudioPlayer) -> Bool
 pub fn set_sandboxed(instance: AudioPlayer, value: Bool) -> AudioPlayer
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AudioPlayer) -> Int
+pub fn get_source_asset_id(instance: AudioPlayer) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AudioPlayer) -> UniqueId
@@ -184,7 +185,7 @@ pub fn get_actor(instance: AudioPlayer) -> Actor
 pub fn get_attribute(instance: AudioPlayer, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AudioPlayer, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AudioPlayer, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AudioPlayer) -> Dynamic
@@ -202,7 +203,7 @@ pub fn get_full_name(instance: AudioPlayer) -> String
 pub fn get_styled(instance: AudioPlayer, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AudioPlayer, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AudioPlayer, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AudioPlayer) -> List(Dynamic)
@@ -232,7 +233,7 @@ pub fn reset_property_to_default(instance: AudioPlayer, property: String) -> Nil
 pub fn set_attribute(instance: AudioPlayer, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AudioPlayer, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AudioPlayer, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AudioPlayer) -> RBXScriptSignal(Dynamic)
@@ -262,7 +263,7 @@ pub fn styled_properties_changed(instance: AudioPlayer) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: AudioPlayer) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AudioPlayer, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AudioPlayer, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AudioPlayer, class_name: String) -> Bool

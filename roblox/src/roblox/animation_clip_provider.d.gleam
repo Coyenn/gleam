@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AnimationClip, type AnimationClipProvider, type ClipEvaluator, type ContentId, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AnimationClip, type AnimationClipProvider, type ClipEvaluator, type ContentId, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.method("RegisterActiveAnimationClip")
 pub fn register_active_animation_clip(instance: AnimationClipProvider, animation_clip: AnimationClip) -> ContentId
@@ -13,7 +14,7 @@ pub fn register_animation_clip(instance: AnimationClipProvider, animation_clip: 
 pub fn get_animation_clip_async(instance: AnimationClipProvider, asset_id: ContentId) -> AnimationClip
 
 @luau.method("GetAnimationsAsync")
-pub fn get_animations_async(instance: AnimationClipProvider, user_id: Int) -> Instance
+pub fn get_animations_async(instance: AnimationClipProvider, user_id: OptionInt64) -> Instance
 
 @luau.method("GetClipEvaluatorAsync")
 pub fn get_clip_evaluator_async(instance: AnimationClipProvider, asset_id: ContentId) -> ClipEvaluator
@@ -52,7 +53,7 @@ pub fn get_sandboxed(instance: AnimationClipProvider) -> Bool
 pub fn set_sandboxed(instance: AnimationClipProvider, value: Bool) -> AnimationClipProvider
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AnimationClipProvider) -> Int
+pub fn get_source_asset_id(instance: AnimationClipProvider) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AnimationClipProvider) -> UniqueId
@@ -97,7 +98,7 @@ pub fn get_actor(instance: AnimationClipProvider) -> Actor
 pub fn get_attribute(instance: AnimationClipProvider, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AnimationClipProvider, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AnimationClipProvider, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AnimationClipProvider) -> Dynamic
@@ -115,7 +116,7 @@ pub fn get_full_name(instance: AnimationClipProvider) -> String
 pub fn get_styled(instance: AnimationClipProvider, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AnimationClipProvider, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AnimationClipProvider, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AnimationClipProvider) -> List(Dynamic)
@@ -145,7 +146,7 @@ pub fn reset_property_to_default(instance: AnimationClipProvider, property: Stri
 pub fn set_attribute(instance: AnimationClipProvider, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AnimationClipProvider, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AnimationClipProvider, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AnimationClipProvider) -> RBXScriptSignal(Dynamic)
@@ -175,7 +176,7 @@ pub fn styled_properties_changed(instance: AnimationClipProvider) -> RBXScriptSi
 pub fn get_class_name(instance: AnimationClipProvider) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AnimationClipProvider, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AnimationClipProvider, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AnimationClipProvider, class_name: String) -> Bool

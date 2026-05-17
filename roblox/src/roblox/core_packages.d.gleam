@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CorePackages, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type CorePackages, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: CorePackages) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: CorePackages) -> Bool
 pub fn set_sandboxed(instance: CorePackages, value: Bool) -> CorePackages
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: CorePackages) -> Int
+pub fn get_source_asset_id(instance: CorePackages) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: CorePackages) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: CorePackages) -> Actor
 pub fn get_attribute(instance: CorePackages, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: CorePackages, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: CorePackages, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: CorePackages) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: CorePackages) -> String
 pub fn get_styled(instance: CorePackages, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: CorePackages, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: CorePackages, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: CorePackages) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: CorePackages, property: String) -> Ni
 pub fn set_attribute(instance: CorePackages, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: CorePackages, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: CorePackages, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: CorePackages) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: CorePackages) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: CorePackages) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: CorePackages, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: CorePackages, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: CorePackages, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type MeshScaleUnit, type NormalId, type PhysicalConstraintType, type RestPose, type RigScale, type RigType, type RootImportData, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type MeshScaleUnit, type NormalId, type OptionDouble, type OptionInt64, type PhysicalConstraintType, type RestPose, type RigScale, type RigType, type RootImportData, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("AddModelToInventory")
 pub fn get_add_model_to_inventory(instance: RootImportData) -> Bool
@@ -82,10 +83,10 @@ pub fn set_physical_constraint_type(instance: RootImportData, value: PhysicalCon
 pub fn get_polygon_count(instance: RootImportData) -> Float
 
 @luau.property("PreferredUploadId")
-pub fn get_preferred_upload_id(instance: RootImportData) -> Int
+pub fn get_preferred_upload_id(instance: RootImportData) -> OptionInt64
 
 @luau.set_property("PreferredUploadId")
-pub fn set_preferred_upload_id(instance: RootImportData, value: Int) -> RootImportData
+pub fn set_preferred_upload_id(instance: RootImportData, value: OptionInt64) -> RootImportData
 
 @luau.property("RestPose")
 pub fn get_rest_pose(instance: RootImportData) -> RestPose
@@ -142,10 +143,10 @@ pub fn get_validate_ugc_body(instance: RootImportData) -> Bool
 pub fn set_validate_ugc_body(instance: RootImportData, value: Bool) -> RootImportData
 
 @luau.property("VersionedAssetId")
-pub fn get_versioned_asset_id(instance: RootImportData) -> Int
+pub fn get_versioned_asset_id(instance: RootImportData) -> OptionInt64
 
 @luau.set_property("VersionedAssetId")
-pub fn set_versioned_asset_id(instance: RootImportData, value: Int) -> RootImportData
+pub fn set_versioned_asset_id(instance: RootImportData, value: OptionInt64) -> RootImportData
 
 @luau.property("WorldForward")
 pub fn get_world_forward(instance: RootImportData) -> NormalId
@@ -214,7 +215,7 @@ pub fn get_sandboxed(instance: RootImportData) -> Bool
 pub fn set_sandboxed(instance: RootImportData, value: Bool) -> RootImportData
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: RootImportData) -> Int
+pub fn get_source_asset_id(instance: RootImportData) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: RootImportData) -> UniqueId
@@ -259,7 +260,7 @@ pub fn get_actor(instance: RootImportData) -> Actor
 pub fn get_attribute(instance: RootImportData, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: RootImportData, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: RootImportData, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: RootImportData) -> Dynamic
@@ -277,7 +278,7 @@ pub fn get_full_name(instance: RootImportData) -> String
 pub fn get_styled(instance: RootImportData, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: RootImportData, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: RootImportData, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: RootImportData) -> List(Dynamic)
@@ -307,7 +308,7 @@ pub fn reset_property_to_default(instance: RootImportData, property: String) -> 
 pub fn set_attribute(instance: RootImportData, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: RootImportData, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: RootImportData, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: RootImportData) -> RBXScriptSignal(Dynamic)
@@ -337,7 +338,7 @@ pub fn styled_properties_changed(instance: RootImportData) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: RootImportData) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: RootImportData, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: RootImportData, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: RootImportData, class_name: String) -> Bool

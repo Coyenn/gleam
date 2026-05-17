@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type UIScale, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UIScale, type UniqueId}
 
 @luau.property("Scale")
 pub fn get_scale(instance: UIScale) -> Float
@@ -43,7 +44,7 @@ pub fn get_sandboxed(instance: UIScale) -> Bool
 pub fn set_sandboxed(instance: UIScale, value: Bool) -> UIScale
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: UIScale) -> Int
+pub fn get_source_asset_id(instance: UIScale) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: UIScale) -> UniqueId
@@ -88,7 +89,7 @@ pub fn get_actor(instance: UIScale) -> Actor
 pub fn get_attribute(instance: UIScale, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: UIScale, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: UIScale, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: UIScale) -> Dynamic
@@ -106,7 +107,7 @@ pub fn get_full_name(instance: UIScale) -> String
 pub fn get_styled(instance: UIScale, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: UIScale, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: UIScale, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: UIScale) -> List(Dynamic)
@@ -136,7 +137,7 @@ pub fn reset_property_to_default(instance: UIScale, property: String) -> Nil
 pub fn set_attribute(instance: UIScale, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: UIScale, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: UIScale, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: UIScale) -> RBXScriptSignal(Dynamic)
@@ -166,7 +167,7 @@ pub fn styled_properties_changed(instance: UIScale) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: UIScale) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: UIScale, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: UIScale, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: UIScale, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BinaryString, type ContentId, type Instance, type PackageLink, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BinaryString, type ContentId, type Instance, type OptionDouble, type OptionInt64, type PackageLink, type SecurityCapabilities, type UniqueId}
 
 @luau.property("AutoUpdate")
 pub fn get_auto_update(instance: PackageLink) -> Bool
@@ -22,7 +23,7 @@ pub fn get_package_id(instance: PackageLink) -> ContentId
 pub fn get_serialized_default_attributes(instance: PackageLink) -> BinaryString
 
 @luau.property("VersionNumber")
-pub fn get_version_number(instance: PackageLink) -> Int
+pub fn get_version_number(instance: PackageLink) -> OptionInt64
 
 @luau.property("Status")
 pub fn get_status(instance: PackageLink) -> String
@@ -61,7 +62,7 @@ pub fn get_sandboxed(instance: PackageLink) -> Bool
 pub fn set_sandboxed(instance: PackageLink, value: Bool) -> PackageLink
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: PackageLink) -> Int
+pub fn get_source_asset_id(instance: PackageLink) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: PackageLink) -> UniqueId
@@ -106,7 +107,7 @@ pub fn get_actor(instance: PackageLink) -> Actor
 pub fn get_attribute(instance: PackageLink, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: PackageLink, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: PackageLink, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: PackageLink) -> Dynamic
@@ -124,7 +125,7 @@ pub fn get_full_name(instance: PackageLink) -> String
 pub fn get_styled(instance: PackageLink, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: PackageLink, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: PackageLink, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: PackageLink) -> List(Dynamic)
@@ -154,7 +155,7 @@ pub fn reset_property_to_default(instance: PackageLink, property: String) -> Nil
 pub fn set_attribute(instance: PackageLink, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: PackageLink, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: PackageLink, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: PackageLink) -> RBXScriptSignal(Dynamic)
@@ -184,7 +185,7 @@ pub fn styled_properties_changed(instance: PackageLink) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: PackageLink) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: PackageLink, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: PackageLink, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: PackageLink, class_name: String) -> Bool

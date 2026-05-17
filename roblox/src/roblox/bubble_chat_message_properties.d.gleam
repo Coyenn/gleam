@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BubbleChatMessageProperties, type Color3, type Font, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BubbleChatMessageProperties, type Color3, type Font, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("BackgroundColor3")
 pub fn get_background_color3(instance: BubbleChatMessageProperties) -> Color3
@@ -10,10 +11,10 @@ pub fn get_background_color3(instance: BubbleChatMessageProperties) -> Color3
 pub fn set_background_color3(instance: BubbleChatMessageProperties, value: Color3) -> BubbleChatMessageProperties
 
 @luau.property("BackgroundTransparency")
-pub fn get_background_transparency(instance: BubbleChatMessageProperties) -> Float
+pub fn get_background_transparency(instance: BubbleChatMessageProperties) -> OptionDouble
 
 @luau.set_property("BackgroundTransparency")
-pub fn set_background_transparency(instance: BubbleChatMessageProperties, value: Float) -> BubbleChatMessageProperties
+pub fn set_background_transparency(instance: BubbleChatMessageProperties, value: OptionDouble) -> BubbleChatMessageProperties
 
 @luau.property("FontFace")
 pub fn get_font_face(instance: BubbleChatMessageProperties) -> Font
@@ -34,10 +35,10 @@ pub fn get_text_color3(instance: BubbleChatMessageProperties) -> Color3
 pub fn set_text_color3(instance: BubbleChatMessageProperties, value: Color3) -> BubbleChatMessageProperties
 
 @luau.property("TextSize")
-pub fn get_text_size(instance: BubbleChatMessageProperties) -> Int
+pub fn get_text_size(instance: BubbleChatMessageProperties) -> OptionInt64
 
 @luau.set_property("TextSize")
-pub fn set_text_size(instance: BubbleChatMessageProperties, value: Int) -> BubbleChatMessageProperties
+pub fn set_text_size(instance: BubbleChatMessageProperties, value: OptionInt64) -> BubbleChatMessageProperties
 
 @luau.property("PrefixText")
 pub fn get_prefix_text(instance: BubbleChatMessageProperties) -> String
@@ -91,7 +92,7 @@ pub fn get_sandboxed(instance: BubbleChatMessageProperties) -> Bool
 pub fn set_sandboxed(instance: BubbleChatMessageProperties, value: Bool) -> BubbleChatMessageProperties
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: BubbleChatMessageProperties) -> Int
+pub fn get_source_asset_id(instance: BubbleChatMessageProperties) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: BubbleChatMessageProperties) -> UniqueId
@@ -136,7 +137,7 @@ pub fn get_actor(instance: BubbleChatMessageProperties) -> Actor
 pub fn get_attribute(instance: BubbleChatMessageProperties, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: BubbleChatMessageProperties, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: BubbleChatMessageProperties, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: BubbleChatMessageProperties) -> Dynamic
@@ -154,7 +155,7 @@ pub fn get_full_name(instance: BubbleChatMessageProperties) -> String
 pub fn get_styled(instance: BubbleChatMessageProperties, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: BubbleChatMessageProperties, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: BubbleChatMessageProperties, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: BubbleChatMessageProperties) -> List(Dynamic)
@@ -184,7 +185,7 @@ pub fn reset_property_to_default(instance: BubbleChatMessageProperties, property
 pub fn set_attribute(instance: BubbleChatMessageProperties, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: BubbleChatMessageProperties, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: BubbleChatMessageProperties, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: BubbleChatMessageProperties) -> RBXScriptSignal(Dynamic)
@@ -214,7 +215,7 @@ pub fn styled_properties_changed(instance: BubbleChatMessageProperties) -> RBXSc
 pub fn get_class_name(instance: BubbleChatMessageProperties) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: BubbleChatMessageProperties, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: BubbleChatMessageProperties, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: BubbleChatMessageProperties, class_name: String) -> Bool

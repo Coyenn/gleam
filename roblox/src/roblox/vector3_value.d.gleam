@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type UniqueId, type Vector3, type Vector3Value}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector3, type Vector3Value}
 
 @luau.property("Value")
 pub fn get_value(instance: Vector3Value) -> Vector3
@@ -46,7 +47,7 @@ pub fn get_sandboxed(instance: Vector3Value) -> Bool
 pub fn set_sandboxed(instance: Vector3Value, value: Bool) -> Vector3Value
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Vector3Value) -> Int
+pub fn get_source_asset_id(instance: Vector3Value) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Vector3Value) -> UniqueId
@@ -91,7 +92,7 @@ pub fn get_actor(instance: Vector3Value) -> Actor
 pub fn get_attribute(instance: Vector3Value, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Vector3Value, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Vector3Value, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Vector3Value) -> Dynamic
@@ -109,7 +110,7 @@ pub fn get_full_name(instance: Vector3Value) -> String
 pub fn get_styled(instance: Vector3Value, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Vector3Value, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Vector3Value, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Vector3Value) -> List(Dynamic)
@@ -139,7 +140,7 @@ pub fn reset_property_to_default(instance: Vector3Value, property: String) -> Ni
 pub fn set_attribute(instance: Vector3Value, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Vector3Value, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Vector3Value, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Vector3Value) -> RBXScriptSignal(Dynamic)
@@ -169,7 +170,7 @@ pub fn styled_properties_changed(instance: Vector3Value) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: Vector3Value) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Vector3Value, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Vector3Value, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Vector3Value, class_name: String) -> Bool

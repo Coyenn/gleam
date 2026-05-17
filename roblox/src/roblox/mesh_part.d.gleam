@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Content, type ContentId, type Faces, type FluidFidelity, type Instance, type Material, type MeshPart, type NormalId, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Content, type ContentId, type Faces, type FluidFidelity, type Instance, type Material, type MeshPart, type NormalId, type OptionDouble, type OptionInt64, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type UniqueId, type Vector3}
 
 @luau.property("DoubleSided")
 pub fn get_double_sided(instance: MeshPart) -> Bool
@@ -312,9 +313,6 @@ pub fn get_connected_parts(instance: MeshPart, recursive: Bool) -> List(Instance
 @luau.method("GetJoints")
 pub fn get_joints(instance: MeshPart) -> List(Instance)
 
-@luau.method("GetMass")
-pub fn get_mass(instance: MeshPart) -> Float
-
 @luau.method("GetNetworkOwner")
 pub fn get_network_owner(instance: MeshPart) -> Instance
 
@@ -400,7 +398,7 @@ pub fn get_sandboxed(instance: MeshPart) -> Bool
 pub fn set_sandboxed(instance: MeshPart, value: Bool) -> MeshPart
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: MeshPart) -> Int
+pub fn get_source_asset_id(instance: MeshPart) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: MeshPart) -> UniqueId
@@ -445,7 +443,7 @@ pub fn get_actor(instance: MeshPart) -> Actor
 pub fn get_attribute(instance: MeshPart, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: MeshPart, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: MeshPart, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: MeshPart) -> Dynamic
@@ -463,7 +461,7 @@ pub fn get_full_name(instance: MeshPart) -> String
 pub fn get_styled(instance: MeshPart, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: MeshPart, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: MeshPart, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: MeshPart) -> List(Dynamic)
@@ -493,7 +491,7 @@ pub fn reset_property_to_default(instance: MeshPart, property: String) -> Nil
 pub fn set_attribute(instance: MeshPart, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: MeshPart, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: MeshPart, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: MeshPart) -> RBXScriptSignal(Dynamic)
@@ -523,7 +521,7 @@ pub fn styled_properties_changed(instance: MeshPart) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: MeshPart) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: MeshPart, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: MeshPart, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: MeshPart, class_name: String) -> Bool

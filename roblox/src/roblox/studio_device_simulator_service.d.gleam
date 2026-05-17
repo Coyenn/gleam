@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type StudioDeviceSimulatorService, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type StudioDeviceSimulatorService, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: StudioDeviceSimulatorService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: StudioDeviceSimulatorService) -> Bool
 pub fn set_sandboxed(instance: StudioDeviceSimulatorService, value: Bool) -> StudioDeviceSimulatorService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: StudioDeviceSimulatorService) -> Int
+pub fn get_source_asset_id(instance: StudioDeviceSimulatorService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: StudioDeviceSimulatorService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: StudioDeviceSimulatorService) -> Actor
 pub fn get_attribute(instance: StudioDeviceSimulatorService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: StudioDeviceSimulatorService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: StudioDeviceSimulatorService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: StudioDeviceSimulatorService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: StudioDeviceSimulatorService) -> String
 pub fn get_styled(instance: StudioDeviceSimulatorService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: StudioDeviceSimulatorService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: StudioDeviceSimulatorService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: StudioDeviceSimulatorService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: StudioDeviceSimulatorService, propert
 pub fn set_attribute(instance: StudioDeviceSimulatorService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: StudioDeviceSimulatorService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: StudioDeviceSimulatorService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: StudioDeviceSimulatorService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: StudioDeviceSimulatorService) -> RBXS
 pub fn get_class_name(instance: StudioDeviceSimulatorService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: StudioDeviceSimulatorService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: StudioDeviceSimulatorService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: StudioDeviceSimulatorService, class_name: String) -> Bool

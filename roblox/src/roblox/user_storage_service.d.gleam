@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type UniqueId, type UserStorageService}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type UserStorageService}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: UserStorageService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: UserStorageService) -> Bool
 pub fn set_sandboxed(instance: UserStorageService, value: Bool) -> UserStorageService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: UserStorageService) -> Int
+pub fn get_source_asset_id(instance: UserStorageService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: UserStorageService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: UserStorageService) -> Actor
 pub fn get_attribute(instance: UserStorageService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: UserStorageService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: UserStorageService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: UserStorageService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: UserStorageService) -> String
 pub fn get_styled(instance: UserStorageService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: UserStorageService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: UserStorageService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: UserStorageService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: UserStorageService, property: String)
 pub fn set_attribute(instance: UserStorageService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: UserStorageService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: UserStorageService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: UserStorageService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: UserStorageService) -> RBXScriptSigna
 pub fn get_class_name(instance: UserStorageService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: UserStorageService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: UserStorageService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: UserStorageService, class_name: String) -> Bool

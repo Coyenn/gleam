@@ -1,5 +1,6 @@
+// Generated class bindings for Roblox API
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
+import roblox/dynamic.{type Dynamic}
 import roblox/types.{type KeyCode, type UserInputType, type Vector2, type VirtualInput}
 
 @luau.method("SendKey")
@@ -24,7 +25,7 @@ pub fn send_text_input(instance: VirtualInput, text: String) -> Nil
 pub fn get_class_name(instance: VirtualInput) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: VirtualInput, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: VirtualInput, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: VirtualInput, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type Color3, type HandlesBase, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type Color3, type HandlesBase, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Adornee")
 pub fn get_adornee(instance: HandlesBase) -> BasePart
@@ -61,7 +62,7 @@ pub fn get_sandboxed(instance: HandlesBase) -> Bool
 pub fn set_sandboxed(instance: HandlesBase, value: Bool) -> HandlesBase
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: HandlesBase) -> Int
+pub fn get_source_asset_id(instance: HandlesBase) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: HandlesBase) -> UniqueId
@@ -106,7 +107,7 @@ pub fn get_actor(instance: HandlesBase) -> Actor
 pub fn get_attribute(instance: HandlesBase, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: HandlesBase, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: HandlesBase, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: HandlesBase) -> Dynamic
@@ -124,7 +125,7 @@ pub fn get_full_name(instance: HandlesBase) -> String
 pub fn get_styled(instance: HandlesBase, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: HandlesBase, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: HandlesBase, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: HandlesBase) -> List(Dynamic)
@@ -154,7 +155,7 @@ pub fn reset_property_to_default(instance: HandlesBase, property: String) -> Nil
 pub fn set_attribute(instance: HandlesBase, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: HandlesBase, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: HandlesBase, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: HandlesBase) -> RBXScriptSignal(Dynamic)
@@ -184,7 +185,7 @@ pub fn styled_properties_changed(instance: HandlesBase) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: HandlesBase) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: HandlesBase, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: HandlesBase, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: HandlesBase, class_name: String) -> Bool

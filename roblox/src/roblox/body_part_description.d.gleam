@@ -1,13 +1,14 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BodyPart, type BodyPartDescription, type Color3, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BodyPart, type BodyPartDescription, type Color3, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("AssetId")
-pub fn get_asset_id(instance: BodyPartDescription) -> Int
+pub fn get_asset_id(instance: BodyPartDescription) -> OptionInt64
 
 @luau.set_property("AssetId")
-pub fn set_asset_id(instance: BodyPartDescription, value: Int) -> BodyPartDescription
+pub fn set_asset_id(instance: BodyPartDescription, value: OptionInt64) -> BodyPartDescription
 
 @luau.property("BodyPart")
 pub fn get_body_part(instance: BodyPartDescription) -> BodyPart
@@ -67,7 +68,7 @@ pub fn get_sandboxed(instance: BodyPartDescription) -> Bool
 pub fn set_sandboxed(instance: BodyPartDescription, value: Bool) -> BodyPartDescription
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: BodyPartDescription) -> Int
+pub fn get_source_asset_id(instance: BodyPartDescription) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: BodyPartDescription) -> UniqueId
@@ -112,7 +113,7 @@ pub fn get_actor(instance: BodyPartDescription) -> Actor
 pub fn get_attribute(instance: BodyPartDescription, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: BodyPartDescription, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: BodyPartDescription, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: BodyPartDescription) -> Dynamic
@@ -130,7 +131,7 @@ pub fn get_full_name(instance: BodyPartDescription) -> String
 pub fn get_styled(instance: BodyPartDescription, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: BodyPartDescription, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: BodyPartDescription, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: BodyPartDescription) -> List(Dynamic)
@@ -160,7 +161,7 @@ pub fn reset_property_to_default(instance: BodyPartDescription, property: String
 pub fn set_attribute(instance: BodyPartDescription, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: BodyPartDescription, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: BodyPartDescription, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: BodyPartDescription) -> RBXScriptSignal(Dynamic)
@@ -190,7 +191,7 @@ pub fn styled_properties_changed(instance: BodyPartDescription) -> RBXScriptSign
 pub fn get_class_name(instance: BodyPartDescription) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: BodyPartDescription, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: BodyPartDescription, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: BodyPartDescription, class_name: String) -> Bool

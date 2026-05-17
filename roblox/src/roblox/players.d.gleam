@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AssetTypeVerification, type BanHistoryPages, type FriendPages, type HumanoidDescription, type HumanoidRigType, type Instance, type Model, type Player, type Players, type SecurityCapabilities, type ThumbnailSize, type ThumbnailType, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AssetTypeVerification, type BanHistoryPages, type FriendPages, type HumanoidDescription, type HumanoidRigType, type Instance, type Model, type OptionDouble, type OptionInt64, type Player, type Players, type SecurityCapabilities, type ThumbnailSize, type ThumbnailType, type UniqueId}
 
 @luau.property("BubbleChat")
 pub fn get_bubble_chat(instance: Players) -> Bool
@@ -37,7 +38,7 @@ pub fn get_respawn_time(instance: Players) -> Float
 pub fn set_respawn_time(instance: Players, value: Float) -> Players
 
 @luau.method("GetPlayerByUserId")
-pub fn get_player_by_user_id(instance: Players, user_id: Int) -> Player
+pub fn get_player_by_user_id(instance: Players, user_id: OptionInt64) -> Player
 
 @luau.method("GetPlayerFromCharacter")
 pub fn get_player_from_character(instance: Players, character: Model) -> Player
@@ -52,31 +53,31 @@ pub fn ban_async(instance: Players, config: Dynamic) -> Nil
 pub fn create_humanoid_model_from_description_async(instance: Players, description: HumanoidDescription, rig_type: HumanoidRigType, asset_type_verification: AssetTypeVerification) -> Model
 
 @luau.method("CreateHumanoidModelFromUserIdAsync")
-pub fn create_humanoid_model_from_user_id_async(instance: Players, user_id: Int) -> Model
+pub fn create_humanoid_model_from_user_id_async(instance: Players, user_id: OptionInt64) -> Model
 
 @luau.method("GetBanHistoryAsync")
-pub fn get_ban_history_async(instance: Players, user_id: Int) -> BanHistoryPages
+pub fn get_ban_history_async(instance: Players, user_id: OptionInt64) -> BanHistoryPages
 
 @luau.method("GetCharacterAppearanceInfoAsync")
-pub fn get_character_appearance_info_async(instance: Players, user_id: Int) -> Dynamic
+pub fn get_character_appearance_info_async(instance: Players, user_id: OptionInt64) -> Dynamic
 
 @luau.method("GetFriendsAsync")
-pub fn get_friends_async(instance: Players, user_id: Int) -> FriendPages
+pub fn get_friends_async(instance: Players, user_id: OptionInt64) -> FriendPages
 
 @luau.method("GetHumanoidDescriptionFromOutfitIdAsync")
-pub fn get_humanoid_description_from_outfit_id_async(instance: Players, outfit_id: Int) -> HumanoidDescription
+pub fn get_humanoid_description_from_outfit_id_async(instance: Players, outfit_id: OptionInt64) -> HumanoidDescription
 
 @luau.method("GetHumanoidDescriptionFromUserIdAsync")
-pub fn get_humanoid_description_from_user_id_async(instance: Players, user_id: Int) -> HumanoidDescription
+pub fn get_humanoid_description_from_user_id_async(instance: Players, user_id: OptionInt64) -> HumanoidDescription
 
 @luau.method("GetNameFromUserIdAsync")
-pub fn get_name_from_user_id_async(instance: Players, user_id: Int) -> String
+pub fn get_name_from_user_id_async(instance: Players, user_id: OptionInt64) -> String
 
 @luau.method("GetUserIdFromNameAsync")
-pub fn get_user_id_from_name_async(instance: Players, user_name: String) -> Int
+pub fn get_user_id_from_name_async(instance: Players, user_name: String) -> OptionInt64
 
 @luau.method("GetUserThumbnailAsync")
-pub fn get_user_thumbnail_async(instance: Players, user_id: Int, thumbnail_type: ThumbnailType, thumbnail_size: ThumbnailSize) -> Dynamic
+pub fn get_user_thumbnail_async(instance: Players, user_id: OptionInt64, thumbnail_type: ThumbnailType, thumbnail_size: ThumbnailSize) -> Dynamic
 
 @luau.method("UnbanAsync")
 pub fn unban_async(instance: Players, config: Dynamic) -> Nil
@@ -127,7 +128,7 @@ pub fn get_sandboxed(instance: Players) -> Bool
 pub fn set_sandboxed(instance: Players, value: Bool) -> Players
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Players) -> Int
+pub fn get_source_asset_id(instance: Players) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Players) -> UniqueId
@@ -172,7 +173,7 @@ pub fn get_actor(instance: Players) -> Actor
 pub fn get_attribute(instance: Players, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Players, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Players, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Players) -> Dynamic
@@ -190,7 +191,7 @@ pub fn get_full_name(instance: Players) -> String
 pub fn get_styled(instance: Players, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Players, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Players, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Players) -> List(Dynamic)
@@ -220,7 +221,7 @@ pub fn reset_property_to_default(instance: Players, property: String) -> Nil
 pub fn set_attribute(instance: Players, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Players, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Players, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Players) -> RBXScriptSignal(Dynamic)
@@ -250,7 +251,7 @@ pub fn styled_properties_changed(instance: Players) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Players) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Players, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Players, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Players, class_name: String) -> Bool

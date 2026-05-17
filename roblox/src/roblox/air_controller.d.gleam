@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AirController, type Instance, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AirController, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("BalanceMaxTorque")
 pub fn get_balance_max_torque(instance: AirController) -> Float
@@ -100,7 +101,7 @@ pub fn get_sandboxed(instance: AirController) -> Bool
 pub fn set_sandboxed(instance: AirController, value: Bool) -> AirController
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AirController) -> Int
+pub fn get_source_asset_id(instance: AirController) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AirController) -> UniqueId
@@ -145,7 +146,7 @@ pub fn get_actor(instance: AirController) -> Actor
 pub fn get_attribute(instance: AirController, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AirController, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AirController, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AirController) -> Dynamic
@@ -163,7 +164,7 @@ pub fn get_full_name(instance: AirController) -> String
 pub fn get_styled(instance: AirController, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AirController, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AirController, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AirController) -> List(Dynamic)
@@ -193,7 +194,7 @@ pub fn reset_property_to_default(instance: AirController, property: String) -> N
 pub fn set_attribute(instance: AirController, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AirController, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AirController, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AirController) -> RBXScriptSignal(Dynamic)
@@ -223,7 +224,7 @@ pub fn styled_properties_changed(instance: AirController) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: AirController) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AirController, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AirController, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AirController, class_name: String) -> Bool

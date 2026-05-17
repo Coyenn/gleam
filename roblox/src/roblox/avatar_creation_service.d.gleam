@@ -1,13 +1,14 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type AccessoryType, type Actor, type AvatarAssetType, type AvatarCreationService, type BodyPart, type EditableImage, type Function?, type HumanoidDescription, type Instance, type Model, type Player, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type AccessoryType, type Actor, type AvatarAssetType, type AvatarCreationService, type BodyPart, type EditableImage, type HumanoidDescription, type Instance, type Model, type OptionDouble, type OptionFunction, type OptionInt64, type Player, type SecurityCapabilities, type UniqueId}
 
 @luau.method("GetValidationRules")
 pub fn get_validation_rules(instance: AvatarCreationService) -> Dynamic
 
 @luau.method("AutoSetupAvatarAsync")
-pub fn auto_setup_avatar_async(instance: AvatarCreationService, player: Player, auto_setup_params: Dynamic, progress_callback: Function?) -> String
+pub fn auto_setup_avatar_async(instance: AvatarCreationService, player: Player, auto_setup_params: Dynamic, progress_callback: OptionFunction) -> String
 
 @luau.method("GenerateAvatar2DPreviewAsync")
 pub fn generate_avatar2_d_preview_async(instance: AvatarCreationService, avatar_generation2d_preview_params: Dynamic) -> String
@@ -43,7 +44,7 @@ pub fn request_avatar_generation_session_async(instance: AvatarCreationService, 
 pub fn validate_ugc_accessory_async(instance: AvatarCreationService, player: Player, accessory: Instance, accessory_type: AccessoryType) -> Dynamic
 
 @luau.method("ValidateUGCBodyPartAsync")
-pub fn validate_ugc_body_part_async(instance: AvatarCreationService, player: Player, instance: Instance, body_part: BodyPart) -> Dynamic
+pub fn validate_ugc_body_part_async(instance: AvatarCreationService, player: Player, instance_: Instance, body_part: BodyPart) -> Dynamic
 
 @luau.method("ValidateUGCFullBodyAsync")
 pub fn validate_ugc_full_body_async(instance: AvatarCreationService, player: Player, humanoid_description: HumanoidDescription) -> Dynamic
@@ -88,7 +89,7 @@ pub fn get_sandboxed(instance: AvatarCreationService) -> Bool
 pub fn set_sandboxed(instance: AvatarCreationService, value: Bool) -> AvatarCreationService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AvatarCreationService) -> Int
+pub fn get_source_asset_id(instance: AvatarCreationService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AvatarCreationService) -> UniqueId
@@ -133,7 +134,7 @@ pub fn get_actor(instance: AvatarCreationService) -> Actor
 pub fn get_attribute(instance: AvatarCreationService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AvatarCreationService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AvatarCreationService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AvatarCreationService) -> Dynamic
@@ -151,7 +152,7 @@ pub fn get_full_name(instance: AvatarCreationService) -> String
 pub fn get_styled(instance: AvatarCreationService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AvatarCreationService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AvatarCreationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AvatarCreationService) -> List(Dynamic)
@@ -181,7 +182,7 @@ pub fn reset_property_to_default(instance: AvatarCreationService, property: Stri
 pub fn set_attribute(instance: AvatarCreationService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AvatarCreationService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AvatarCreationService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AvatarCreationService) -> RBXScriptSignal(Dynamic)
@@ -211,7 +212,7 @@ pub fn styled_properties_changed(instance: AvatarCreationService) -> RBXScriptSi
 pub fn get_class_name(instance: AvatarCreationService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AvatarCreationService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AvatarCreationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AvatarCreationService, class_name: String) -> Bool

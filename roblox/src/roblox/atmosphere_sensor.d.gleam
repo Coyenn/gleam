@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AtmosphereSensor, type Instance, type SecurityCapabilities, type SensorUpdateType, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AtmosphereSensor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type SensorUpdateType, type UniqueId, type Vector3}
 
 @luau.property("AirDensity")
 pub fn get_air_density(instance: AtmosphereSensor) -> Float
@@ -52,7 +53,7 @@ pub fn get_sandboxed(instance: AtmosphereSensor) -> Bool
 pub fn set_sandboxed(instance: AtmosphereSensor, value: Bool) -> AtmosphereSensor
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AtmosphereSensor) -> Int
+pub fn get_source_asset_id(instance: AtmosphereSensor) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AtmosphereSensor) -> UniqueId
@@ -97,7 +98,7 @@ pub fn get_actor(instance: AtmosphereSensor) -> Actor
 pub fn get_attribute(instance: AtmosphereSensor, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AtmosphereSensor, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AtmosphereSensor, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AtmosphereSensor) -> Dynamic
@@ -115,7 +116,7 @@ pub fn get_full_name(instance: AtmosphereSensor) -> String
 pub fn get_styled(instance: AtmosphereSensor, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AtmosphereSensor, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AtmosphereSensor, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AtmosphereSensor) -> List(Dynamic)
@@ -145,7 +146,7 @@ pub fn reset_property_to_default(instance: AtmosphereSensor, property: String) -
 pub fn set_attribute(instance: AtmosphereSensor, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AtmosphereSensor, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AtmosphereSensor, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AtmosphereSensor) -> RBXScriptSignal(Dynamic)
@@ -175,7 +176,7 @@ pub fn styled_properties_changed(instance: AtmosphereSensor) -> RBXScriptSignal(
 pub fn get_class_name(instance: AtmosphereSensor) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AtmosphereSensor, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AtmosphereSensor, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AtmosphereSensor, class_name: String) -> Bool

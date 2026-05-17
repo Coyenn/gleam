@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type IncrementalPatchBuilder, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type IncrementalPatchBuilder, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("AddPathsToBundle")
 pub fn get_add_paths_to_bundle(instance: IncrementalPatchBuilder) -> Bool
@@ -10,10 +11,10 @@ pub fn get_add_paths_to_bundle(instance: IncrementalPatchBuilder) -> Bool
 pub fn set_add_paths_to_bundle(instance: IncrementalPatchBuilder, value: Bool) -> IncrementalPatchBuilder
 
 @luau.property("BuildDebouncePeriod")
-pub fn get_build_debounce_period(instance: IncrementalPatchBuilder) -> Float
+pub fn get_build_debounce_period(instance: IncrementalPatchBuilder) -> OptionDouble
 
 @luau.set_property("BuildDebouncePeriod")
-pub fn set_build_debounce_period(instance: IncrementalPatchBuilder, value: Float) -> IncrementalPatchBuilder
+pub fn set_build_debounce_period(instance: IncrementalPatchBuilder, value: OptionDouble) -> IncrementalPatchBuilder
 
 @luau.property("HighCompression")
 pub fn get_high_compression(instance: IncrementalPatchBuilder) -> Bool
@@ -73,7 +74,7 @@ pub fn get_sandboxed(instance: IncrementalPatchBuilder) -> Bool
 pub fn set_sandboxed(instance: IncrementalPatchBuilder, value: Bool) -> IncrementalPatchBuilder
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: IncrementalPatchBuilder) -> Int
+pub fn get_source_asset_id(instance: IncrementalPatchBuilder) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: IncrementalPatchBuilder) -> UniqueId
@@ -118,7 +119,7 @@ pub fn get_actor(instance: IncrementalPatchBuilder) -> Actor
 pub fn get_attribute(instance: IncrementalPatchBuilder, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: IncrementalPatchBuilder, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: IncrementalPatchBuilder, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: IncrementalPatchBuilder) -> Dynamic
@@ -136,7 +137,7 @@ pub fn get_full_name(instance: IncrementalPatchBuilder) -> String
 pub fn get_styled(instance: IncrementalPatchBuilder, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: IncrementalPatchBuilder, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: IncrementalPatchBuilder, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: IncrementalPatchBuilder) -> List(Dynamic)
@@ -166,7 +167,7 @@ pub fn reset_property_to_default(instance: IncrementalPatchBuilder, property: St
 pub fn set_attribute(instance: IncrementalPatchBuilder, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: IncrementalPatchBuilder, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: IncrementalPatchBuilder, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: IncrementalPatchBuilder) -> RBXScriptSignal(Dynamic)
@@ -196,7 +197,7 @@ pub fn styled_properties_changed(instance: IncrementalPatchBuilder) -> RBXScript
 pub fn get_class_name(instance: IncrementalPatchBuilder) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: IncrementalPatchBuilder, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: IncrementalPatchBuilder, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: IncrementalPatchBuilder, class_name: String) -> Bool

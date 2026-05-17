@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SafetyService, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SafetyService, type SecurityCapabilities, type UniqueId}
 
 @luau.property("IsCaptureModeForReport")
 pub fn get_is_capture_mode_for_report(instance: SafetyService) -> Bool
@@ -40,7 +41,7 @@ pub fn get_sandboxed(instance: SafetyService) -> Bool
 pub fn set_sandboxed(instance: SafetyService, value: Bool) -> SafetyService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: SafetyService) -> Int
+pub fn get_source_asset_id(instance: SafetyService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: SafetyService) -> UniqueId
@@ -85,7 +86,7 @@ pub fn get_actor(instance: SafetyService) -> Actor
 pub fn get_attribute(instance: SafetyService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: SafetyService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: SafetyService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: SafetyService) -> Dynamic
@@ -103,7 +104,7 @@ pub fn get_full_name(instance: SafetyService) -> String
 pub fn get_styled(instance: SafetyService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: SafetyService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: SafetyService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: SafetyService) -> List(Dynamic)
@@ -133,7 +134,7 @@ pub fn reset_property_to_default(instance: SafetyService, property: String) -> N
 pub fn set_attribute(instance: SafetyService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: SafetyService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: SafetyService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: SafetyService) -> RBXScriptSignal(Dynamic)
@@ -163,7 +164,7 @@ pub fn styled_properties_changed(instance: SafetyService) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: SafetyService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: SafetyService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: SafetyService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: SafetyService, class_name: String) -> Bool

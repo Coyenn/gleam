@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AssetFetchStatus, type ContentId, type ContentProvider, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AssetFetchStatus, type ContentId, type ContentProvider, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("BaseUrl")
 pub fn get_base_url(instance: ContentProvider) -> String
@@ -13,7 +14,7 @@ pub fn get_request_queue_size(instance: ContentProvider) -> Int
 pub fn get_asset_fetch_status(instance: ContentProvider, content_id: ContentId) -> AssetFetchStatus
 
 @luau.method("GetAssetFetchStatusChangedSignal")
-pub fn get_asset_fetch_status_changed_signal(instance: ContentProvider, content_id: ContentId) -> RBXScriptSignal
+pub fn get_asset_fetch_status_changed_signal(instance: ContentProvider, content_id: ContentId) -> RBXScriptSignal(Dynamic)
 
 @luau.method("ListEncryptedAssets")
 pub fn list_encrypted_assets(instance: ContentProvider) -> List(Dynamic)
@@ -76,7 +77,7 @@ pub fn get_sandboxed(instance: ContentProvider) -> Bool
 pub fn set_sandboxed(instance: ContentProvider, value: Bool) -> ContentProvider
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ContentProvider) -> Int
+pub fn get_source_asset_id(instance: ContentProvider) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ContentProvider) -> UniqueId
@@ -121,7 +122,7 @@ pub fn get_actor(instance: ContentProvider) -> Actor
 pub fn get_attribute(instance: ContentProvider, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ContentProvider, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ContentProvider, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ContentProvider) -> Dynamic
@@ -139,7 +140,7 @@ pub fn get_full_name(instance: ContentProvider) -> String
 pub fn get_styled(instance: ContentProvider, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ContentProvider, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ContentProvider, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ContentProvider) -> List(Dynamic)
@@ -169,7 +170,7 @@ pub fn reset_property_to_default(instance: ContentProvider, property: String) ->
 pub fn set_attribute(instance: ContentProvider, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ContentProvider, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ContentProvider, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ContentProvider) -> RBXScriptSignal(Dynamic)
@@ -199,7 +200,7 @@ pub fn styled_properties_changed(instance: ContentProvider) -> RBXScriptSignal(D
 pub fn get_class_name(instance: ContentProvider) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ContentProvider, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ContentProvider, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ContentProvider, class_name: String) -> Bool

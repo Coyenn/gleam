@@ -1,13 +1,14 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type LiveSyncService, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type LiveSyncService, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("HasSyncedInstances")
 pub fn get_has_synced_instances(instance: LiveSyncService) -> Bool
 
 @luau.method("GetSyncState")
-pub fn get_sync_state(instance: LiveSyncService, instance: Instance) -> Dynamic
+pub fn get_sync_state(instance: LiveSyncService, instance_: Instance) -> Dynamic
 
 @luau.event("SyncStatusChanged")
 pub fn sync_status_changed(instance: LiveSyncService) -> RBXScriptSignal(Dynamic)
@@ -46,7 +47,7 @@ pub fn get_sandboxed(instance: LiveSyncService) -> Bool
 pub fn set_sandboxed(instance: LiveSyncService, value: Bool) -> LiveSyncService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: LiveSyncService) -> Int
+pub fn get_source_asset_id(instance: LiveSyncService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: LiveSyncService) -> UniqueId
@@ -91,7 +92,7 @@ pub fn get_actor(instance: LiveSyncService) -> Actor
 pub fn get_attribute(instance: LiveSyncService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: LiveSyncService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: LiveSyncService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: LiveSyncService) -> Dynamic
@@ -109,7 +110,7 @@ pub fn get_full_name(instance: LiveSyncService) -> String
 pub fn get_styled(instance: LiveSyncService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: LiveSyncService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: LiveSyncService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: LiveSyncService) -> List(Dynamic)
@@ -139,7 +140,7 @@ pub fn reset_property_to_default(instance: LiveSyncService, property: String) ->
 pub fn set_attribute(instance: LiveSyncService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: LiveSyncService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: LiveSyncService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: LiveSyncService) -> RBXScriptSignal(Dynamic)
@@ -169,7 +170,7 @@ pub fn styled_properties_changed(instance: LiveSyncService) -> RBXScriptSignal(D
 pub fn get_class_name(instance: LiveSyncService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: LiveSyncService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: LiveSyncService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: LiveSyncService, class_name: String) -> Bool

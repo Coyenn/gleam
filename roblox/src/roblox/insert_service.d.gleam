@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CollisionFidelity, type ContentId, type InsertService, type Instance, type MeshPart, type RenderFidelity, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type CollisionFidelity, type ContentId, type InsertService, type Instance, type MeshPart, type OptionDouble, type OptionInt64, type RenderFidelity, type SecurityCapabilities, type UniqueId}
 
 @luau.method("CreateMeshPartAsync")
 pub fn create_mesh_part_async(instance: InsertService, mesh_id: ContentId, collision_fidelity: CollisionFidelity, render_fidelity: RenderFidelity) -> MeshPart
@@ -13,13 +14,13 @@ pub fn get_free_decals_async(instance: InsertService, search_text: String, page_
 pub fn get_free_models_async(instance: InsertService, search_text: String, page_num: Int) -> List(Dynamic)
 
 @luau.method("GetLatestAssetVersionAsync")
-pub fn get_latest_asset_version_async(instance: InsertService, asset_id: Int) -> Int
+pub fn get_latest_asset_version_async(instance: InsertService, asset_id: OptionInt64) -> OptionInt64
 
 @luau.method("LoadAsset")
-pub fn load_asset(instance: InsertService, asset_id: Int) -> Instance
+pub fn load_asset(instance: InsertService, asset_id: OptionInt64) -> Instance
 
 @luau.method("LoadAssetVersion")
-pub fn load_asset_version(instance: InsertService, asset_version_id: Int) -> Instance
+pub fn load_asset_version(instance: InsertService, asset_version_id: OptionInt64) -> Instance
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: InsertService) -> Bool
@@ -55,7 +56,7 @@ pub fn get_sandboxed(instance: InsertService) -> Bool
 pub fn set_sandboxed(instance: InsertService, value: Bool) -> InsertService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: InsertService) -> Int
+pub fn get_source_asset_id(instance: InsertService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: InsertService) -> UniqueId
@@ -100,7 +101,7 @@ pub fn get_actor(instance: InsertService) -> Actor
 pub fn get_attribute(instance: InsertService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: InsertService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: InsertService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: InsertService) -> Dynamic
@@ -118,7 +119,7 @@ pub fn get_full_name(instance: InsertService) -> String
 pub fn get_styled(instance: InsertService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: InsertService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: InsertService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: InsertService) -> List(Dynamic)
@@ -148,7 +149,7 @@ pub fn reset_property_to_default(instance: InsertService, property: String) -> N
 pub fn set_attribute(instance: InsertService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: InsertService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: InsertService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: InsertService) -> RBXScriptSignal(Dynamic)
@@ -178,7 +179,7 @@ pub fn styled_properties_changed(instance: InsertService) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: InsertService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: InsertService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: InsertService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: InsertService, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BubbleChatMessageProperties, type ChatWindowMessageProperties, type DateTime, type Instance, type SecurityCapabilities, type TextChannel, type TextChatMessage, type TextChatMessageStatus, type TextSource, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BubbleChatMessageProperties, type ChatWindowMessageProperties, type DateTime, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TextChannel, type TextChatMessage, type TextChatMessageStatus, type TextSource, type UniqueId}
 
 @luau.property("BubbleChatMessageProperties")
 pub fn get_bubble_chat_message_properties(instance: TextChatMessage) -> BubbleChatMessageProperties
@@ -124,7 +125,7 @@ pub fn get_sandboxed(instance: TextChatMessage) -> Bool
 pub fn set_sandboxed(instance: TextChatMessage, value: Bool) -> TextChatMessage
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TextChatMessage) -> Int
+pub fn get_source_asset_id(instance: TextChatMessage) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TextChatMessage) -> UniqueId
@@ -169,7 +170,7 @@ pub fn get_actor(instance: TextChatMessage) -> Actor
 pub fn get_attribute(instance: TextChatMessage, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TextChatMessage, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TextChatMessage, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TextChatMessage) -> Dynamic
@@ -187,7 +188,7 @@ pub fn get_full_name(instance: TextChatMessage) -> String
 pub fn get_styled(instance: TextChatMessage, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TextChatMessage, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TextChatMessage, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TextChatMessage) -> List(Dynamic)
@@ -217,7 +218,7 @@ pub fn reset_property_to_default(instance: TextChatMessage, property: String) ->
 pub fn set_attribute(instance: TextChatMessage, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TextChatMessage, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TextChatMessage, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TextChatMessage) -> RBXScriptSignal(Dynamic)
@@ -247,7 +248,7 @@ pub fn styled_properties_changed(instance: TextChatMessage) -> RBXScriptSignal(D
 pub fn get_class_name(instance: TextChatMessage) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TextChatMessage, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TextChatMessage, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TextChatMessage, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type CFrame, type Instance, type ModelLevelOfDetail, type ModelStreamingMode, type Player, type RBXScriptConnection, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type CFrame, type Instance, type ModelLevelOfDetail, type ModelStreamingMode, type OptionDouble, type OptionInt64, type Player, type RBXScriptConnection, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.method("BindToMessage")
 pub fn bind_to_message(instance: Actor, topic: String, function: Dynamic) -> RBXScriptConnection
@@ -100,7 +101,7 @@ pub fn get_sandboxed(instance: Actor) -> Bool
 pub fn set_sandboxed(instance: Actor, value: Bool) -> Actor
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Actor) -> Int
+pub fn get_source_asset_id(instance: Actor) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Actor) -> UniqueId
@@ -145,7 +146,7 @@ pub fn get_actor(instance: Actor) -> Actor
 pub fn get_attribute(instance: Actor, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Actor, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Actor, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Actor) -> Dynamic
@@ -163,7 +164,7 @@ pub fn get_full_name(instance: Actor) -> String
 pub fn get_styled(instance: Actor, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Actor, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Actor, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Actor) -> List(Dynamic)
@@ -193,7 +194,7 @@ pub fn reset_property_to_default(instance: Actor, property: String) -> Nil
 pub fn set_attribute(instance: Actor, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Actor, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Actor, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Actor) -> RBXScriptSignal(Dynamic)
@@ -223,7 +224,7 @@ pub fn styled_properties_changed(instance: Actor) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Actor) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Actor, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Actor, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Actor, class_name: String) -> Bool

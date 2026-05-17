@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Capture, type CaptureGalleryPermission, type CaptureService, type Content, type Instance, type SecurityCapabilities, type UniqueId, type VideoCaptureStartedResult}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Capture, type CaptureGalleryPermission, type CaptureService, type Content, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type VideoCaptureStartedResult}
 
 @luau.method("CaptureScreenshot")
 pub fn capture_screenshot(instance: CaptureService, on_capture_ready: Dynamic) -> Nil
@@ -25,10 +26,10 @@ pub fn take_screenshot_capture_async(instance: CaptureService, on_capture_ready:
 pub fn check_upload_capture_status_async(instance: CaptureService, token: String) -> Dynamic
 
 @luau.method("InternalCheckPlayabilityAsync")
-pub fn internal_check_playability_async(instance: CaptureService, universe_id: Int) -> Bool
+pub fn internal_check_playability_async(instance: CaptureService, universe_id: OptionInt64) -> Bool
 
 @luau.method("InternalGetStartPlaceIdAsync")
-pub fn internal_get_start_place_id_async(instance: CaptureService, universe_id: Int) -> Int
+pub fn internal_get_start_place_id_async(instance: CaptureService, universe_id: OptionInt64) -> OptionInt64
 
 @luau.method("PromptCaptureGalleryPermissionAsync")
 pub fn prompt_capture_gallery_permission_async(instance: CaptureService, capture_gallery_permission: CaptureGalleryPermission) -> Bool
@@ -88,7 +89,7 @@ pub fn get_sandboxed(instance: CaptureService) -> Bool
 pub fn set_sandboxed(instance: CaptureService, value: Bool) -> CaptureService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: CaptureService) -> Int
+pub fn get_source_asset_id(instance: CaptureService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: CaptureService) -> UniqueId
@@ -133,7 +134,7 @@ pub fn get_actor(instance: CaptureService) -> Actor
 pub fn get_attribute(instance: CaptureService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: CaptureService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: CaptureService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: CaptureService) -> Dynamic
@@ -151,7 +152,7 @@ pub fn get_full_name(instance: CaptureService) -> String
 pub fn get_styled(instance: CaptureService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: CaptureService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: CaptureService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: CaptureService) -> List(Dynamic)
@@ -181,7 +182,7 @@ pub fn reset_property_to_default(instance: CaptureService, property: String) -> 
 pub fn set_attribute(instance: CaptureService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: CaptureService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: CaptureService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: CaptureService) -> RBXScriptSignal(Dynamic)
@@ -211,7 +212,7 @@ pub fn styled_properties_changed(instance: CaptureService) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: CaptureService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: CaptureService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: CaptureService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: CaptureService, class_name: String) -> Bool

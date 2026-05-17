@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type CFrame, type Instance, type RotateP, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type CFrame, type Instance, type OptionDouble, type OptionInt64, type RotateP, type SecurityCapabilities, type UniqueId}
 
 @luau.property("BaseAngle")
 pub fn get_base_angle(instance: RotateP) -> Float
@@ -76,7 +77,7 @@ pub fn get_sandboxed(instance: RotateP) -> Bool
 pub fn set_sandboxed(instance: RotateP, value: Bool) -> RotateP
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: RotateP) -> Int
+pub fn get_source_asset_id(instance: RotateP) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: RotateP) -> UniqueId
@@ -121,7 +122,7 @@ pub fn get_actor(instance: RotateP) -> Actor
 pub fn get_attribute(instance: RotateP, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: RotateP, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: RotateP, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: RotateP) -> Dynamic
@@ -139,7 +140,7 @@ pub fn get_full_name(instance: RotateP) -> String
 pub fn get_styled(instance: RotateP, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: RotateP, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: RotateP, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: RotateP) -> List(Dynamic)
@@ -169,7 +170,7 @@ pub fn reset_property_to_default(instance: RotateP, property: String) -> Nil
 pub fn set_attribute(instance: RotateP, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: RotateP, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: RotateP, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: RotateP) -> RBXScriptSignal(Dynamic)
@@ -199,7 +200,7 @@ pub fn styled_properties_changed(instance: RotateP) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: RotateP) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: RotateP, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: RotateP, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: RotateP, class_name: String) -> Bool

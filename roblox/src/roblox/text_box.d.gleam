@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AutomaticSize, type BorderMode, type Color3, type EasingDirection, type EasingStyle, type Font, type GuiObject, type GuiState, type InputSink, type Instance, type LocalizationTable, type Rect, type ReturnKeyType, type SecurityCapabilities, type SelectionBehavior, type SizeConstraint, type TextBox, type TextDirection, type TextInputType, type TextTruncate, type TextXAlignment, type TextYAlignment, type UDim2, type UniqueId, type Vector2}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AutomaticSize, type BorderMode, type Color3, type EasingDirection, type EasingStyle, type Font, type GuiObject, type GuiState, type InputSink, type Instance, type LocalizationTable, type OptionDouble, type OptionInt64, type Rect, type ReturnKeyType, type SecurityCapabilities, type SelectionBehavior, type SizeConstraint, type TextBox, type TextDirection, type TextInputType, type TextTruncate, type TextXAlignment, type TextYAlignment, type UDim2, type UniqueId, type Vector2}
 
 @luau.property("ClearTextOnFocus")
 pub fn get_clear_text_on_focus(instance: TextBox) -> Bool
@@ -535,7 +536,7 @@ pub fn get_sandboxed(instance: TextBox) -> Bool
 pub fn set_sandboxed(instance: TextBox, value: Bool) -> TextBox
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TextBox) -> Int
+pub fn get_source_asset_id(instance: TextBox) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TextBox) -> UniqueId
@@ -580,7 +581,7 @@ pub fn get_actor(instance: TextBox) -> Actor
 pub fn get_attribute(instance: TextBox, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TextBox, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TextBox, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TextBox) -> Dynamic
@@ -598,7 +599,7 @@ pub fn get_full_name(instance: TextBox) -> String
 pub fn get_styled(instance: TextBox, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TextBox, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TextBox, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TextBox) -> List(Dynamic)
@@ -628,7 +629,7 @@ pub fn reset_property_to_default(instance: TextBox, property: String) -> Nil
 pub fn set_attribute(instance: TextBox, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TextBox, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TextBox, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TextBox) -> RBXScriptSignal(Dynamic)
@@ -658,7 +659,7 @@ pub fn styled_properties_changed(instance: TextBox) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: TextBox) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TextBox, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TextBox, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TextBox, class_name: String) -> Bool

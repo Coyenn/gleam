@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AdornCullingMode, type CFrame, type Color3, type Instance, type PVInstance, type SecurityCapabilities, type UniqueId, type Vector3, type WireframeHandleAdornment}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AdornCullingMode, type CFrame, type Color3, type Instance, type OptionDouble, type OptionInt64, type PVInstance, type SecurityCapabilities, type UniqueId, type Vector3, type WireframeHandleAdornment}
 
 @luau.property("Scale")
 pub fn get_scale(instance: WireframeHandleAdornment) -> Vector3
@@ -133,7 +134,7 @@ pub fn get_sandboxed(instance: WireframeHandleAdornment) -> Bool
 pub fn set_sandboxed(instance: WireframeHandleAdornment, value: Bool) -> WireframeHandleAdornment
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: WireframeHandleAdornment) -> Int
+pub fn get_source_asset_id(instance: WireframeHandleAdornment) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: WireframeHandleAdornment) -> UniqueId
@@ -178,7 +179,7 @@ pub fn get_actor(instance: WireframeHandleAdornment) -> Actor
 pub fn get_attribute(instance: WireframeHandleAdornment, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: WireframeHandleAdornment, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: WireframeHandleAdornment, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: WireframeHandleAdornment) -> Dynamic
@@ -196,7 +197,7 @@ pub fn get_full_name(instance: WireframeHandleAdornment) -> String
 pub fn get_styled(instance: WireframeHandleAdornment, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: WireframeHandleAdornment, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: WireframeHandleAdornment, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: WireframeHandleAdornment) -> List(Dynamic)
@@ -226,7 +227,7 @@ pub fn reset_property_to_default(instance: WireframeHandleAdornment, property: S
 pub fn set_attribute(instance: WireframeHandleAdornment, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: WireframeHandleAdornment, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: WireframeHandleAdornment, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: WireframeHandleAdornment) -> RBXScriptSignal(Dynamic)
@@ -256,7 +257,7 @@ pub fn styled_properties_changed(instance: WireframeHandleAdornment) -> RBXScrip
 pub fn get_class_name(instance: WireframeHandleAdornment) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: WireframeHandleAdornment, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: WireframeHandleAdornment, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: WireframeHandleAdornment, class_name: String) -> Bool

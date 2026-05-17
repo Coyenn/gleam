@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type ReflectionMetadataEnum, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type ReflectionMetadataEnum, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Browsable")
 pub fn get_browsable(instance: ReflectionMetadataEnum) -> Bool
@@ -82,22 +83,22 @@ pub fn get_slider_scaling(instance: ReflectionMetadataEnum) -> String
 pub fn set_slider_scaling(instance: ReflectionMetadataEnum, value: String) -> ReflectionMetadataEnum
 
 @luau.property("UIMaximum")
-pub fn get_ui_maximum(instance: ReflectionMetadataEnum) -> Float
+pub fn get_ui_maximum(instance: ReflectionMetadataEnum) -> OptionDouble
 
 @luau.set_property("UIMaximum")
-pub fn set_ui_maximum(instance: ReflectionMetadataEnum, value: Float) -> ReflectionMetadataEnum
+pub fn set_ui_maximum(instance: ReflectionMetadataEnum, value: OptionDouble) -> ReflectionMetadataEnum
 
 @luau.property("UIMinimum")
-pub fn get_ui_minimum(instance: ReflectionMetadataEnum) -> Float
+pub fn get_ui_minimum(instance: ReflectionMetadataEnum) -> OptionDouble
 
 @luau.set_property("UIMinimum")
-pub fn set_ui_minimum(instance: ReflectionMetadataEnum, value: Float) -> ReflectionMetadataEnum
+pub fn set_ui_minimum(instance: ReflectionMetadataEnum, value: OptionDouble) -> ReflectionMetadataEnum
 
 @luau.property("UINumTicks")
-pub fn get_ui_num_ticks(instance: ReflectionMetadataEnum) -> Float
+pub fn get_ui_num_ticks(instance: ReflectionMetadataEnum) -> OptionDouble
 
 @luau.set_property("UINumTicks")
-pub fn set_ui_num_ticks(instance: ReflectionMetadataEnum, value: Float) -> ReflectionMetadataEnum
+pub fn set_ui_num_ticks(instance: ReflectionMetadataEnum, value: OptionDouble) -> ReflectionMetadataEnum
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: ReflectionMetadataEnum) -> Bool
@@ -133,7 +134,7 @@ pub fn get_sandboxed(instance: ReflectionMetadataEnum) -> Bool
 pub fn set_sandboxed(instance: ReflectionMetadataEnum, value: Bool) -> ReflectionMetadataEnum
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ReflectionMetadataEnum) -> Int
+pub fn get_source_asset_id(instance: ReflectionMetadataEnum) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ReflectionMetadataEnum) -> UniqueId
@@ -178,7 +179,7 @@ pub fn get_actor(instance: ReflectionMetadataEnum) -> Actor
 pub fn get_attribute(instance: ReflectionMetadataEnum, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ReflectionMetadataEnum, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ReflectionMetadataEnum, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ReflectionMetadataEnum) -> Dynamic
@@ -196,7 +197,7 @@ pub fn get_full_name(instance: ReflectionMetadataEnum) -> String
 pub fn get_styled(instance: ReflectionMetadataEnum, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ReflectionMetadataEnum, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ReflectionMetadataEnum, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ReflectionMetadataEnum) -> List(Dynamic)
@@ -226,7 +227,7 @@ pub fn reset_property_to_default(instance: ReflectionMetadataEnum, property: Str
 pub fn set_attribute(instance: ReflectionMetadataEnum, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ReflectionMetadataEnum, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ReflectionMetadataEnum, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ReflectionMetadataEnum) -> RBXScriptSignal(Dynamic)
@@ -256,7 +257,7 @@ pub fn styled_properties_changed(instance: ReflectionMetadataEnum) -> RBXScriptS
 pub fn get_class_name(instance: ReflectionMetadataEnum) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ReflectionMetadataEnum, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ReflectionMetadataEnum, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ReflectionMetadataEnum, class_name: String) -> Bool

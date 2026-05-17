@@ -1,28 +1,29 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CompressionAlgorithm, type EncodingService, type HashAlgorithm, type Instance, type SecurityCapabilities, type UniqueId, type buffer, type int?}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Buffer, type CompressionAlgorithm, type EncodingService, type HashAlgorithm, type Instance, type OptionDouble, type OptionInt, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.method("Base64Decode")
-pub fn base64_decode(instance: EncodingService, input: buffer) -> buffer
+pub fn base64_decode(instance: EncodingService, input: Buffer) -> Buffer
 
 @luau.method("Base64Encode")
-pub fn base64_encode(instance: EncodingService, input: buffer) -> buffer
+pub fn base64_encode(instance: EncodingService, input: Buffer) -> Buffer
 
 @luau.method("CompressBuffer")
-pub fn compress_buffer(instance: EncodingService, input: buffer, algorithm: CompressionAlgorithm, compression_level: Int) -> buffer
+pub fn compress_buffer(instance: EncodingService, input: Buffer, algorithm: CompressionAlgorithm, compression_level: Int) -> Buffer
 
 @luau.method("ComputeBufferHash")
-pub fn compute_buffer_hash(instance: EncodingService, input: buffer, algorithm: HashAlgorithm) -> buffer
+pub fn compute_buffer_hash(instance: EncodingService, input: Buffer, algorithm: HashAlgorithm) -> Buffer
 
 @luau.method("ComputeStringHash")
 pub fn compute_string_hash(instance: EncodingService, input: String, algorithm: HashAlgorithm) -> String
 
 @luau.method("DecompressBuffer")
-pub fn decompress_buffer(instance: EncodingService, input: buffer, algorithm: CompressionAlgorithm) -> buffer
+pub fn decompress_buffer(instance: EncodingService, input: Buffer, algorithm: CompressionAlgorithm) -> Buffer
 
 @luau.method("GetDecompressedBufferSize")
-pub fn get_decompressed_buffer_size(instance: EncodingService, input: buffer, algorithm: CompressionAlgorithm) -> int?
+pub fn get_decompressed_buffer_size(instance: EncodingService, input: Buffer, algorithm: CompressionAlgorithm) -> OptionInt
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: EncodingService) -> Bool
@@ -58,7 +59,7 @@ pub fn get_sandboxed(instance: EncodingService) -> Bool
 pub fn set_sandboxed(instance: EncodingService, value: Bool) -> EncodingService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: EncodingService) -> Int
+pub fn get_source_asset_id(instance: EncodingService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: EncodingService) -> UniqueId
@@ -103,7 +104,7 @@ pub fn get_actor(instance: EncodingService) -> Actor
 pub fn get_attribute(instance: EncodingService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: EncodingService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: EncodingService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: EncodingService) -> Dynamic
@@ -121,7 +122,7 @@ pub fn get_full_name(instance: EncodingService) -> String
 pub fn get_styled(instance: EncodingService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: EncodingService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: EncodingService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: EncodingService) -> List(Dynamic)
@@ -151,7 +152,7 @@ pub fn reset_property_to_default(instance: EncodingService, property: String) ->
 pub fn set_attribute(instance: EncodingService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: EncodingService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: EncodingService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: EncodingService) -> RBXScriptSignal(Dynamic)
@@ -181,7 +182,7 @@ pub fn styled_properties_changed(instance: EncodingService) -> RBXScriptSignal(D
 pub fn get_class_name(instance: EncodingService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: EncodingService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: EncodingService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: EncodingService, class_name: String) -> Bool

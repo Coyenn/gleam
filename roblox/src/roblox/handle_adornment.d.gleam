@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AdornCullingMode, type CFrame, type Color3, type HandleAdornment, type Instance, type PVInstance, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AdornCullingMode, type CFrame, type Color3, type HandleAdornment, type Instance, type OptionDouble, type OptionInt64, type PVInstance, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("AdornCullingMode")
 pub fn get_adorn_culling_mode(instance: HandleAdornment) -> AdornCullingMode
@@ -106,7 +107,7 @@ pub fn get_sandboxed(instance: HandleAdornment) -> Bool
 pub fn set_sandboxed(instance: HandleAdornment, value: Bool) -> HandleAdornment
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: HandleAdornment) -> Int
+pub fn get_source_asset_id(instance: HandleAdornment) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: HandleAdornment) -> UniqueId
@@ -151,7 +152,7 @@ pub fn get_actor(instance: HandleAdornment) -> Actor
 pub fn get_attribute(instance: HandleAdornment, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: HandleAdornment, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: HandleAdornment, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: HandleAdornment) -> Dynamic
@@ -169,7 +170,7 @@ pub fn get_full_name(instance: HandleAdornment) -> String
 pub fn get_styled(instance: HandleAdornment, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: HandleAdornment, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: HandleAdornment, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: HandleAdornment) -> List(Dynamic)
@@ -199,7 +200,7 @@ pub fn reset_property_to_default(instance: HandleAdornment, property: String) ->
 pub fn set_attribute(instance: HandleAdornment, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: HandleAdornment, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: HandleAdornment, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: HandleAdornment) -> RBXScriptSignal(Dynamic)
@@ -229,7 +230,7 @@ pub fn styled_properties_changed(instance: HandleAdornment) -> RBXScriptSignal(D
 pub fn get_class_name(instance: HandleAdornment) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: HandleAdornment, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: HandleAdornment, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: HandleAdornment, class_name: String) -> Bool

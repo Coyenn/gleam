@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type HeapProfilerService, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type HeapProfilerService, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: HeapProfilerService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: HeapProfilerService) -> Bool
 pub fn set_sandboxed(instance: HeapProfilerService, value: Bool) -> HeapProfilerService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: HeapProfilerService) -> Int
+pub fn get_source_asset_id(instance: HeapProfilerService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: HeapProfilerService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: HeapProfilerService) -> Actor
 pub fn get_attribute(instance: HeapProfilerService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: HeapProfilerService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: HeapProfilerService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: HeapProfilerService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: HeapProfilerService) -> String
 pub fn get_styled(instance: HeapProfilerService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: HeapProfilerService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: HeapProfilerService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: HeapProfilerService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: HeapProfilerService, property: String
 pub fn set_attribute(instance: HeapProfilerService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: HeapProfilerService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: HeapProfilerService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: HeapProfilerService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: HeapProfilerService) -> RBXScriptSign
 pub fn get_class_name(instance: HeapProfilerService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: HeapProfilerService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: HeapProfilerService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: HeapProfilerService, class_name: String) -> Bool

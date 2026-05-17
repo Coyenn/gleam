@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BrowserService, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BrowserService, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: BrowserService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: BrowserService) -> Bool
 pub fn set_sandboxed(instance: BrowserService, value: Bool) -> BrowserService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: BrowserService) -> Int
+pub fn get_source_asset_id(instance: BrowserService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: BrowserService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: BrowserService) -> Actor
 pub fn get_attribute(instance: BrowserService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: BrowserService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: BrowserService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: BrowserService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: BrowserService) -> String
 pub fn get_styled(instance: BrowserService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: BrowserService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: BrowserService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: BrowserService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: BrowserService, property: String) -> 
 pub fn set_attribute(instance: BrowserService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: BrowserService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: BrowserService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: BrowserService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: BrowserService) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: BrowserService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: BrowserService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: BrowserService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: BrowserService, class_name: String) -> Bool

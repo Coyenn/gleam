@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type LogService, type MessageType, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type LogService, type MessageType, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.method("ClearOutput")
 pub fn clear_output(instance: LogService) -> Nil
@@ -61,7 +62,7 @@ pub fn get_sandboxed(instance: LogService) -> Bool
 pub fn set_sandboxed(instance: LogService, value: Bool) -> LogService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: LogService) -> Int
+pub fn get_source_asset_id(instance: LogService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: LogService) -> UniqueId
@@ -106,7 +107,7 @@ pub fn get_actor(instance: LogService) -> Actor
 pub fn get_attribute(instance: LogService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: LogService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: LogService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: LogService) -> Dynamic
@@ -124,7 +125,7 @@ pub fn get_full_name(instance: LogService) -> String
 pub fn get_styled(instance: LogService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: LogService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: LogService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: LogService) -> List(Dynamic)
@@ -154,7 +155,7 @@ pub fn reset_property_to_default(instance: LogService, property: String) -> Nil
 pub fn set_attribute(instance: LogService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: LogService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: LogService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: LogService) -> RBXScriptSignal(Dynamic)
@@ -184,7 +185,7 @@ pub fn styled_properties_changed(instance: LogService) -> RBXScriptSignal(Dynami
 pub fn get_class_name(instance: LogService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: LogService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: LogService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: LogService, class_name: String) -> Bool

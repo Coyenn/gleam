@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type StudioWidget, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type StudioWidget, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: StudioWidget) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: StudioWidget) -> Bool
 pub fn set_sandboxed(instance: StudioWidget, value: Bool) -> StudioWidget
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: StudioWidget) -> Int
+pub fn get_source_asset_id(instance: StudioWidget) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: StudioWidget) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: StudioWidget) -> Actor
 pub fn get_attribute(instance: StudioWidget, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: StudioWidget, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: StudioWidget, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: StudioWidget) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: StudioWidget) -> String
 pub fn get_styled(instance: StudioWidget, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: StudioWidget, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: StudioWidget, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: StudioWidget) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: StudioWidget, property: String) -> Ni
 pub fn set_attribute(instance: StudioWidget, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: StudioWidget, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: StudioWidget, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: StudioWidget) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: StudioWidget) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: StudioWidget) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: StudioWidget, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: StudioWidget, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: StudioWidget, class_name: String) -> Bool

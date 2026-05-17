@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type ServiceProvider, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type ServiceProvider, type UniqueId}
 
 @luau.method("FindService")
 pub fn find_service(instance: ServiceProvider, class_name: String) -> Instance
@@ -52,7 +53,7 @@ pub fn get_sandboxed(instance: ServiceProvider) -> Bool
 pub fn set_sandboxed(instance: ServiceProvider, value: Bool) -> ServiceProvider
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ServiceProvider) -> Int
+pub fn get_source_asset_id(instance: ServiceProvider) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ServiceProvider) -> UniqueId
@@ -97,7 +98,7 @@ pub fn get_actor(instance: ServiceProvider) -> Actor
 pub fn get_attribute(instance: ServiceProvider, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ServiceProvider, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ServiceProvider, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ServiceProvider) -> Dynamic
@@ -115,7 +116,7 @@ pub fn get_full_name(instance: ServiceProvider) -> String
 pub fn get_styled(instance: ServiceProvider, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ServiceProvider, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ServiceProvider, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ServiceProvider) -> List(Dynamic)
@@ -145,7 +146,7 @@ pub fn reset_property_to_default(instance: ServiceProvider, property: String) ->
 pub fn set_attribute(instance: ServiceProvider, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ServiceProvider, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ServiceProvider, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ServiceProvider) -> RBXScriptSignal(Dynamic)
@@ -175,7 +176,7 @@ pub fn styled_properties_changed(instance: ServiceProvider) -> RBXScriptSignal(D
 pub fn get_class_name(instance: ServiceProvider) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ServiceProvider, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ServiceProvider, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ServiceProvider, class_name: String) -> Bool

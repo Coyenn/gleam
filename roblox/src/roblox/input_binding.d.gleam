@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type GuiButton, type InputBinding, type Instance, type KeyCode, type SecurityCapabilities, type UniqueId, type Vector2, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type GuiButton, type InputBinding, type Instance, type KeyCode, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector2, type Vector3}
 
 @luau.property("Backward")
 pub fn get_backward(instance: InputBinding) -> KeyCode
@@ -145,7 +146,7 @@ pub fn get_sandboxed(instance: InputBinding) -> Bool
 pub fn set_sandboxed(instance: InputBinding, value: Bool) -> InputBinding
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: InputBinding) -> Int
+pub fn get_source_asset_id(instance: InputBinding) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: InputBinding) -> UniqueId
@@ -190,7 +191,7 @@ pub fn get_actor(instance: InputBinding) -> Actor
 pub fn get_attribute(instance: InputBinding, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: InputBinding, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: InputBinding, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: InputBinding) -> Dynamic
@@ -208,7 +209,7 @@ pub fn get_full_name(instance: InputBinding) -> String
 pub fn get_styled(instance: InputBinding, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: InputBinding, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: InputBinding, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: InputBinding) -> List(Dynamic)
@@ -238,7 +239,7 @@ pub fn reset_property_to_default(instance: InputBinding, property: String) -> Ni
 pub fn set_attribute(instance: InputBinding, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: InputBinding, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: InputBinding, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: InputBinding) -> RBXScriptSignal(Dynamic)
@@ -268,7 +269,7 @@ pub fn styled_properties_changed(instance: InputBinding) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: InputBinding) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: InputBinding, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: InputBinding, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: InputBinding, class_name: String) -> Bool

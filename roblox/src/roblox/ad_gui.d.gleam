@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AdGui, type AdShape, type AdUnitStatus, type ContentId, type Instance, type LocalizationTable, type NormalId, type Rect, type SecurityCapabilities, type SelectionBehavior, type UniqueId, type Vector2, type ZIndexBehavior}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AdGui, type AdShape, type AdUnitStatus, type ContentId, type Instance, type LocalizationTable, type NormalId, type OptionDouble, type OptionInt64, type Rect, type SecurityCapabilities, type SelectionBehavior, type UniqueId, type Vector2, type ZIndexBehavior}
 
 @luau.property("AdShape")
 pub fn get_ad_shape(instance: AdGui) -> AdShape
@@ -163,7 +164,7 @@ pub fn get_sandboxed(instance: AdGui) -> Bool
 pub fn set_sandboxed(instance: AdGui, value: Bool) -> AdGui
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AdGui) -> Int
+pub fn get_source_asset_id(instance: AdGui) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AdGui) -> UniqueId
@@ -208,7 +209,7 @@ pub fn get_actor(instance: AdGui) -> Actor
 pub fn get_attribute(instance: AdGui, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AdGui, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AdGui, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AdGui) -> Dynamic
@@ -226,7 +227,7 @@ pub fn get_full_name(instance: AdGui) -> String
 pub fn get_styled(instance: AdGui, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AdGui, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AdGui, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AdGui) -> List(Dynamic)
@@ -256,7 +257,7 @@ pub fn reset_property_to_default(instance: AdGui, property: String) -> Nil
 pub fn set_attribute(instance: AdGui, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AdGui, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AdGui, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AdGui) -> RBXScriptSignal(Dynamic)
@@ -286,7 +287,7 @@ pub fn styled_properties_changed(instance: AdGui) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: AdGui) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AdGui, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AdGui, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AdGui, class_name: String) -> Bool

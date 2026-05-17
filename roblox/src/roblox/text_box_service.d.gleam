@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type TextBoxService, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TextBoxService, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: TextBoxService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: TextBoxService) -> Bool
 pub fn set_sandboxed(instance: TextBoxService, value: Bool) -> TextBoxService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TextBoxService) -> Int
+pub fn get_source_asset_id(instance: TextBoxService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TextBoxService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: TextBoxService) -> Actor
 pub fn get_attribute(instance: TextBoxService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TextBoxService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TextBoxService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TextBoxService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: TextBoxService) -> String
 pub fn get_styled(instance: TextBoxService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TextBoxService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TextBoxService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TextBoxService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: TextBoxService, property: String) -> 
 pub fn set_attribute(instance: TextBoxService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TextBoxService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TextBoxService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TextBoxService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: TextBoxService) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: TextBoxService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TextBoxService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TextBoxService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TextBoxService, class_name: String) -> Bool

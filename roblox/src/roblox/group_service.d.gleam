@@ -1,22 +1,23 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type GroupMembershipStatus, type GroupService, type Instance, type SecurityCapabilities, type StandardPages, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type GroupMembershipStatus, type GroupService, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type StandardPages, type UniqueId}
 
 @luau.method("GetAlliesAsync")
-pub fn get_allies_async(instance: GroupService, group_id: Int) -> StandardPages
+pub fn get_allies_async(instance: GroupService, group_id: OptionInt64) -> StandardPages
 
 @luau.method("GetEnemiesAsync")
-pub fn get_enemies_async(instance: GroupService, group_id: Int) -> StandardPages
+pub fn get_enemies_async(instance: GroupService, group_id: OptionInt64) -> StandardPages
 
 @luau.method("GetGroupInfoAsync")
-pub fn get_group_info_async(instance: GroupService, group_id: Int) -> Dynamic
+pub fn get_group_info_async(instance: GroupService, group_id: OptionInt64) -> Dynamic
 
 @luau.method("GetGroupsAsync")
-pub fn get_groups_async(instance: GroupService, user_id: Int) -> List(Dynamic)
+pub fn get_groups_async(instance: GroupService, user_id: OptionInt64) -> List(Dynamic)
 
 @luau.method("PromptJoinAsync")
-pub fn prompt_join_async(instance: GroupService, group_id: Int) -> GroupMembershipStatus
+pub fn prompt_join_async(instance: GroupService, group_id: OptionInt64) -> GroupMembershipStatus
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: GroupService) -> Bool
@@ -52,7 +53,7 @@ pub fn get_sandboxed(instance: GroupService) -> Bool
 pub fn set_sandboxed(instance: GroupService, value: Bool) -> GroupService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: GroupService) -> Int
+pub fn get_source_asset_id(instance: GroupService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: GroupService) -> UniqueId
@@ -97,7 +98,7 @@ pub fn get_actor(instance: GroupService) -> Actor
 pub fn get_attribute(instance: GroupService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: GroupService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: GroupService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: GroupService) -> Dynamic
@@ -115,7 +116,7 @@ pub fn get_full_name(instance: GroupService) -> String
 pub fn get_styled(instance: GroupService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: GroupService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: GroupService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: GroupService) -> List(Dynamic)
@@ -145,7 +146,7 @@ pub fn reset_property_to_default(instance: GroupService, property: String) -> Ni
 pub fn set_attribute(instance: GroupService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: GroupService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: GroupService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: GroupService) -> RBXScriptSignal(Dynamic)
@@ -175,7 +176,7 @@ pub fn styled_properties_changed(instance: GroupService) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: GroupService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: GroupService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: GroupService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: GroupService, class_name: String) -> Bool

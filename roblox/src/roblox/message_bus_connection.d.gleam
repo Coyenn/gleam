@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type MessageBusConnection, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type MessageBusConnection, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: MessageBusConnection) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: MessageBusConnection) -> Bool
 pub fn set_sandboxed(instance: MessageBusConnection, value: Bool) -> MessageBusConnection
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: MessageBusConnection) -> Int
+pub fn get_source_asset_id(instance: MessageBusConnection) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: MessageBusConnection) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: MessageBusConnection) -> Actor
 pub fn get_attribute(instance: MessageBusConnection, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: MessageBusConnection, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: MessageBusConnection, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: MessageBusConnection) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: MessageBusConnection) -> String
 pub fn get_styled(instance: MessageBusConnection, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: MessageBusConnection, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: MessageBusConnection, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: MessageBusConnection) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: MessageBusConnection, property: Strin
 pub fn set_attribute(instance: MessageBusConnection, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: MessageBusConnection, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: MessageBusConnection, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: MessageBusConnection) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: MessageBusConnection) -> RBXScriptSig
 pub fn get_class_name(instance: MessageBusConnection) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: MessageBusConnection, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: MessageBusConnection, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: MessageBusConnection, class_name: String) -> Bool

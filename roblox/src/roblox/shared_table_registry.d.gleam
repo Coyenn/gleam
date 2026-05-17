@@ -1,13 +1,14 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type SharedTable, type SharedTable?, type SharedTableRegistry, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type OptionSharedTable, type SecurityCapabilities, type SharedTable, type SharedTableRegistry, type UniqueId}
 
 @luau.method("GetSharedTable")
 pub fn get_shared_table(instance: SharedTableRegistry, name: String) -> SharedTable
 
 @luau.method("SetSharedTable")
-pub fn set_shared_table(instance: SharedTableRegistry, name: String, st: SharedTable?) -> Nil
+pub fn set_shared_table(instance: SharedTableRegistry, name: String, st: OptionSharedTable) -> Nil
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: SharedTableRegistry) -> Bool
@@ -43,7 +44,7 @@ pub fn get_sandboxed(instance: SharedTableRegistry) -> Bool
 pub fn set_sandboxed(instance: SharedTableRegistry, value: Bool) -> SharedTableRegistry
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: SharedTableRegistry) -> Int
+pub fn get_source_asset_id(instance: SharedTableRegistry) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: SharedTableRegistry) -> UniqueId
@@ -88,7 +89,7 @@ pub fn get_actor(instance: SharedTableRegistry) -> Actor
 pub fn get_attribute(instance: SharedTableRegistry, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: SharedTableRegistry, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: SharedTableRegistry, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: SharedTableRegistry) -> Dynamic
@@ -106,7 +107,7 @@ pub fn get_full_name(instance: SharedTableRegistry) -> String
 pub fn get_styled(instance: SharedTableRegistry, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: SharedTableRegistry, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: SharedTableRegistry, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: SharedTableRegistry) -> List(Dynamic)
@@ -136,7 +137,7 @@ pub fn reset_property_to_default(instance: SharedTableRegistry, property: String
 pub fn set_attribute(instance: SharedTableRegistry, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: SharedTableRegistry, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: SharedTableRegistry, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: SharedTableRegistry) -> RBXScriptSignal(Dynamic)
@@ -166,7 +167,7 @@ pub fn styled_properties_changed(instance: SharedTableRegistry) -> RBXScriptSign
 pub fn get_class_name(instance: SharedTableRegistry) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: SharedTableRegistry, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: SharedTableRegistry, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: SharedTableRegistry, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ChatWindowConfiguration, type ChatWindowMessageProperties, type Color3, type Font, type HorizontalAlignment, type Instance, type SecurityCapabilities, type UniqueId, type Vector2, type VerticalAlignment}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ChatWindowConfiguration, type ChatWindowMessageProperties, type Color3, type Font, type HorizontalAlignment, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector2, type VerticalAlignment}
 
 @luau.property("AbsolutePosition")
 pub fn get_absolute_position(instance: ChatWindowConfiguration) -> Vector2
@@ -22,10 +23,10 @@ pub fn get_background_color3(instance: ChatWindowConfiguration) -> Color3
 pub fn set_background_color3(instance: ChatWindowConfiguration, value: Color3) -> ChatWindowConfiguration
 
 @luau.property("BackgroundTransparency")
-pub fn get_background_transparency(instance: ChatWindowConfiguration) -> Float
+pub fn get_background_transparency(instance: ChatWindowConfiguration) -> OptionDouble
 
 @luau.set_property("BackgroundTransparency")
-pub fn set_background_transparency(instance: ChatWindowConfiguration, value: Float) -> ChatWindowConfiguration
+pub fn set_background_transparency(instance: ChatWindowConfiguration, value: OptionDouble) -> ChatWindowConfiguration
 
 @luau.property("Enabled")
 pub fn get_enabled(instance: ChatWindowConfiguration) -> Bool
@@ -58,10 +59,10 @@ pub fn get_text_color3(instance: ChatWindowConfiguration) -> Color3
 pub fn set_text_color3(instance: ChatWindowConfiguration, value: Color3) -> ChatWindowConfiguration
 
 @luau.property("TextSize")
-pub fn get_text_size(instance: ChatWindowConfiguration) -> Int
+pub fn get_text_size(instance: ChatWindowConfiguration) -> OptionInt64
 
 @luau.set_property("TextSize")
-pub fn set_text_size(instance: ChatWindowConfiguration, value: Int) -> ChatWindowConfiguration
+pub fn set_text_size(instance: ChatWindowConfiguration, value: OptionInt64) -> ChatWindowConfiguration
 
 @luau.property("TextStrokeColor3")
 pub fn get_text_stroke_color3(instance: ChatWindowConfiguration) -> Color3
@@ -70,10 +71,10 @@ pub fn get_text_stroke_color3(instance: ChatWindowConfiguration) -> Color3
 pub fn set_text_stroke_color3(instance: ChatWindowConfiguration, value: Color3) -> ChatWindowConfiguration
 
 @luau.property("TextStrokeTransparency")
-pub fn get_text_stroke_transparency(instance: ChatWindowConfiguration) -> Float
+pub fn get_text_stroke_transparency(instance: ChatWindowConfiguration) -> OptionDouble
 
 @luau.set_property("TextStrokeTransparency")
-pub fn set_text_stroke_transparency(instance: ChatWindowConfiguration, value: Float) -> ChatWindowConfiguration
+pub fn set_text_stroke_transparency(instance: ChatWindowConfiguration, value: OptionDouble) -> ChatWindowConfiguration
 
 @luau.property("VerticalAlignment")
 pub fn get_vertical_alignment(instance: ChatWindowConfiguration) -> VerticalAlignment
@@ -124,7 +125,7 @@ pub fn get_sandboxed(instance: ChatWindowConfiguration) -> Bool
 pub fn set_sandboxed(instance: ChatWindowConfiguration, value: Bool) -> ChatWindowConfiguration
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ChatWindowConfiguration) -> Int
+pub fn get_source_asset_id(instance: ChatWindowConfiguration) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ChatWindowConfiguration) -> UniqueId
@@ -169,7 +170,7 @@ pub fn get_actor(instance: ChatWindowConfiguration) -> Actor
 pub fn get_attribute(instance: ChatWindowConfiguration, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ChatWindowConfiguration, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ChatWindowConfiguration, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ChatWindowConfiguration) -> Dynamic
@@ -187,7 +188,7 @@ pub fn get_full_name(instance: ChatWindowConfiguration) -> String
 pub fn get_styled(instance: ChatWindowConfiguration, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ChatWindowConfiguration, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ChatWindowConfiguration, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ChatWindowConfiguration) -> List(Dynamic)
@@ -217,7 +218,7 @@ pub fn reset_property_to_default(instance: ChatWindowConfiguration, property: St
 pub fn set_attribute(instance: ChatWindowConfiguration, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ChatWindowConfiguration, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ChatWindowConfiguration, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ChatWindowConfiguration) -> RBXScriptSignal(Dynamic)
@@ -247,7 +248,7 @@ pub fn styled_properties_changed(instance: ChatWindowConfiguration) -> RBXScript
 pub fn get_class_name(instance: ChatWindowConfiguration) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ChatWindowConfiguration, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ChatWindowConfiguration, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ChatWindowConfiguration, class_name: String) -> Bool

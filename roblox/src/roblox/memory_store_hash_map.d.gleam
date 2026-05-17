@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type MemoryStoreHashMap, type MemoryStoreHashMapPages, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type MemoryStoreHashMap, type MemoryStoreHashMapPages, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.method("GetAsync")
 pub fn get_async(instance: MemoryStoreHashMap, key: String) -> Dynamic
@@ -13,10 +14,10 @@ pub fn list_items_async(instance: MemoryStoreHashMap, count: Int) -> MemoryStore
 pub fn remove_async(instance: MemoryStoreHashMap, key: String) -> Nil
 
 @luau.method("SetAsync")
-pub fn set_async(instance: MemoryStoreHashMap, key: String, value: Dynamic, expiration: Int) -> Bool
+pub fn set_async(instance: MemoryStoreHashMap, key: String, value: Dynamic, expiration: OptionInt64) -> Bool
 
 @luau.method("UpdateAsync")
-pub fn update_async(instance: MemoryStoreHashMap, key: String, transform_function: Dynamic, expiration: Int) -> Dynamic
+pub fn update_async(instance: MemoryStoreHashMap, key: String, transform_function: Dynamic, expiration: OptionInt64) -> Dynamic
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: MemoryStoreHashMap) -> Bool
@@ -52,7 +53,7 @@ pub fn get_sandboxed(instance: MemoryStoreHashMap) -> Bool
 pub fn set_sandboxed(instance: MemoryStoreHashMap, value: Bool) -> MemoryStoreHashMap
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: MemoryStoreHashMap) -> Int
+pub fn get_source_asset_id(instance: MemoryStoreHashMap) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: MemoryStoreHashMap) -> UniqueId
@@ -97,7 +98,7 @@ pub fn get_actor(instance: MemoryStoreHashMap) -> Actor
 pub fn get_attribute(instance: MemoryStoreHashMap, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: MemoryStoreHashMap, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: MemoryStoreHashMap, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: MemoryStoreHashMap) -> Dynamic
@@ -115,7 +116,7 @@ pub fn get_full_name(instance: MemoryStoreHashMap) -> String
 pub fn get_styled(instance: MemoryStoreHashMap, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: MemoryStoreHashMap, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: MemoryStoreHashMap, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: MemoryStoreHashMap) -> List(Dynamic)
@@ -145,7 +146,7 @@ pub fn reset_property_to_default(instance: MemoryStoreHashMap, property: String)
 pub fn set_attribute(instance: MemoryStoreHashMap, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: MemoryStoreHashMap, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: MemoryStoreHashMap, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: MemoryStoreHashMap) -> RBXScriptSignal(Dynamic)
@@ -175,7 +176,7 @@ pub fn styled_properties_changed(instance: MemoryStoreHashMap) -> RBXScriptSigna
 pub fn get_class_name(instance: MemoryStoreHashMap) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: MemoryStoreHashMap, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: MemoryStoreHashMap, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: MemoryStoreHashMap, class_name: String) -> Bool

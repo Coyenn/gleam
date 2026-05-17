@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ExperienceNotificationService, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ExperienceNotificationService, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.method("PromptOptIn")
 pub fn prompt_opt_in(instance: ExperienceNotificationService) -> Nil
@@ -46,7 +47,7 @@ pub fn get_sandboxed(instance: ExperienceNotificationService) -> Bool
 pub fn set_sandboxed(instance: ExperienceNotificationService, value: Bool) -> ExperienceNotificationService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ExperienceNotificationService) -> Int
+pub fn get_source_asset_id(instance: ExperienceNotificationService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ExperienceNotificationService) -> UniqueId
@@ -91,7 +92,7 @@ pub fn get_actor(instance: ExperienceNotificationService) -> Actor
 pub fn get_attribute(instance: ExperienceNotificationService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ExperienceNotificationService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ExperienceNotificationService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ExperienceNotificationService) -> Dynamic
@@ -109,7 +110,7 @@ pub fn get_full_name(instance: ExperienceNotificationService) -> String
 pub fn get_styled(instance: ExperienceNotificationService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ExperienceNotificationService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ExperienceNotificationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ExperienceNotificationService) -> List(Dynamic)
@@ -139,7 +140,7 @@ pub fn reset_property_to_default(instance: ExperienceNotificationService, proper
 pub fn set_attribute(instance: ExperienceNotificationService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ExperienceNotificationService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ExperienceNotificationService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ExperienceNotificationService) -> RBXScriptSignal(Dynamic)
@@ -169,7 +170,7 @@ pub fn styled_properties_changed(instance: ExperienceNotificationService) -> RBX
 pub fn get_class_name(instance: ExperienceNotificationService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ExperienceNotificationService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ExperienceNotificationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ExperienceNotificationService, class_name: String) -> Bool

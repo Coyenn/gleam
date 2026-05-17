@@ -1,19 +1,20 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type DataStore, type DataStoreGetOptions, type DataStoreIncrementOptions, type DataStoreKeyPages, type DataStoreSetOptions, type DataStoreVersionPages, type Instance, type SecurityCapabilities, type SortDirection, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type DataStore, type DataStoreGetOptions, type DataStoreIncrementOptions, type DataStoreKeyPages, type DataStoreSetOptions, type DataStoreVersionPages, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type SortDirection, type UniqueId}
 
 @luau.method("GetVersionAsync")
 pub fn get_version_async(instance: DataStore, key: String, version: String) -> Dynamic
 
 @luau.method("GetVersionAtTimeAsync")
-pub fn get_version_at_time_async(instance: DataStore, key: String, timestamp: Int) -> Dynamic
+pub fn get_version_at_time_async(instance: DataStore, key: String, timestamp: OptionInt64) -> Dynamic
 
 @luau.method("ListKeysAsync")
 pub fn list_keys_async(instance: DataStore, prefix: String, page_size: Int, cursor: String, exclude_deleted: Bool) -> DataStoreKeyPages
 
 @luau.method("ListVersionsAsync")
-pub fn list_versions_async(instance: DataStore, key: String, sort_direction: SortDirection, min_date: Int, max_date: Int, page_size: Int) -> DataStoreVersionPages
+pub fn list_versions_async(instance: DataStore, key: String, sort_direction: SortDirection, min_date: OptionInt64, max_date: OptionInt64, page_size: Int) -> DataStoreVersionPages
 
 @luau.method("GetAsync")
 pub fn get_async(instance: DataStore, key: String, options: DataStoreGetOptions) -> Dynamic
@@ -64,7 +65,7 @@ pub fn get_sandboxed(instance: DataStore) -> Bool
 pub fn set_sandboxed(instance: DataStore, value: Bool) -> DataStore
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: DataStore) -> Int
+pub fn get_source_asset_id(instance: DataStore) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: DataStore) -> UniqueId
@@ -109,7 +110,7 @@ pub fn get_actor(instance: DataStore) -> Actor
 pub fn get_attribute(instance: DataStore, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: DataStore, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: DataStore, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: DataStore) -> Dynamic
@@ -127,7 +128,7 @@ pub fn get_full_name(instance: DataStore) -> String
 pub fn get_styled(instance: DataStore, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: DataStore, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: DataStore, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: DataStore) -> List(Dynamic)
@@ -157,7 +158,7 @@ pub fn reset_property_to_default(instance: DataStore, property: String) -> Nil
 pub fn set_attribute(instance: DataStore, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: DataStore, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: DataStore, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: DataStore) -> RBXScriptSignal(Dynamic)
@@ -187,7 +188,7 @@ pub fn styled_properties_changed(instance: DataStore) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: DataStore) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: DataStore, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: DataStore, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: DataStore, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ChannelTabsConfiguration, type Color3, type Font, type Instance, type SecurityCapabilities, type UniqueId, type Vector2}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ChannelTabsConfiguration, type Color3, type Font, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector2}
 
 @luau.property("AbsolutePosition")
 pub fn get_absolute_position(instance: ChannelTabsConfiguration) -> Vector2
@@ -16,10 +17,10 @@ pub fn get_background_color3(instance: ChannelTabsConfiguration) -> Color3
 pub fn set_background_color3(instance: ChannelTabsConfiguration, value: Color3) -> ChannelTabsConfiguration
 
 @luau.property("BackgroundTransparency")
-pub fn get_background_transparency(instance: ChannelTabsConfiguration) -> Float
+pub fn get_background_transparency(instance: ChannelTabsConfiguration) -> OptionDouble
 
 @luau.set_property("BackgroundTransparency")
-pub fn set_background_transparency(instance: ChannelTabsConfiguration, value: Float) -> ChannelTabsConfiguration
+pub fn set_background_transparency(instance: ChannelTabsConfiguration, value: OptionDouble) -> ChannelTabsConfiguration
 
 @luau.property("Enabled")
 pub fn get_enabled(instance: ChannelTabsConfiguration) -> Bool
@@ -52,10 +53,10 @@ pub fn get_text_color3(instance: ChannelTabsConfiguration) -> Color3
 pub fn set_text_color3(instance: ChannelTabsConfiguration, value: Color3) -> ChannelTabsConfiguration
 
 @luau.property("TextSize")
-pub fn get_text_size(instance: ChannelTabsConfiguration) -> Int
+pub fn get_text_size(instance: ChannelTabsConfiguration) -> OptionInt64
 
 @luau.set_property("TextSize")
-pub fn set_text_size(instance: ChannelTabsConfiguration, value: Int) -> ChannelTabsConfiguration
+pub fn set_text_size(instance: ChannelTabsConfiguration, value: OptionInt64) -> ChannelTabsConfiguration
 
 @luau.property("TextStrokeColor3")
 pub fn get_text_stroke_color3(instance: ChannelTabsConfiguration) -> Color3
@@ -64,10 +65,10 @@ pub fn get_text_stroke_color3(instance: ChannelTabsConfiguration) -> Color3
 pub fn set_text_stroke_color3(instance: ChannelTabsConfiguration, value: Color3) -> ChannelTabsConfiguration
 
 @luau.property("TextStrokeTransparency")
-pub fn get_text_stroke_transparency(instance: ChannelTabsConfiguration) -> Float
+pub fn get_text_stroke_transparency(instance: ChannelTabsConfiguration) -> OptionDouble
 
 @luau.set_property("TextStrokeTransparency")
-pub fn set_text_stroke_transparency(instance: ChannelTabsConfiguration, value: Float) -> ChannelTabsConfiguration
+pub fn set_text_stroke_transparency(instance: ChannelTabsConfiguration, value: OptionDouble) -> ChannelTabsConfiguration
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: ChannelTabsConfiguration) -> Bool
@@ -103,7 +104,7 @@ pub fn get_sandboxed(instance: ChannelTabsConfiguration) -> Bool
 pub fn set_sandboxed(instance: ChannelTabsConfiguration, value: Bool) -> ChannelTabsConfiguration
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ChannelTabsConfiguration) -> Int
+pub fn get_source_asset_id(instance: ChannelTabsConfiguration) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ChannelTabsConfiguration) -> UniqueId
@@ -148,7 +149,7 @@ pub fn get_actor(instance: ChannelTabsConfiguration) -> Actor
 pub fn get_attribute(instance: ChannelTabsConfiguration, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ChannelTabsConfiguration, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ChannelTabsConfiguration, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ChannelTabsConfiguration) -> Dynamic
@@ -166,7 +167,7 @@ pub fn get_full_name(instance: ChannelTabsConfiguration) -> String
 pub fn get_styled(instance: ChannelTabsConfiguration, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ChannelTabsConfiguration, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ChannelTabsConfiguration, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ChannelTabsConfiguration) -> List(Dynamic)
@@ -196,7 +197,7 @@ pub fn reset_property_to_default(instance: ChannelTabsConfiguration, property: S
 pub fn set_attribute(instance: ChannelTabsConfiguration, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ChannelTabsConfiguration, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ChannelTabsConfiguration, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ChannelTabsConfiguration) -> RBXScriptSignal(Dynamic)
@@ -226,7 +227,7 @@ pub fn styled_properties_changed(instance: ChannelTabsConfiguration) -> RBXScrip
 pub fn get_class_name(instance: ChannelTabsConfiguration) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ChannelTabsConfiguration, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ChannelTabsConfiguration, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ChannelTabsConfiguration, class_name: String) -> Bool

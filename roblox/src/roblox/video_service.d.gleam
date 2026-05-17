@@ -1,10 +1,11 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Content, type Dictionary?, type Instance, type SecurityCapabilities, type UniqueId, type VideoSampler, type VideoService}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Content, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type VideoSampler, type VideoService}
 
 @luau.method("CreateVideoSamplerAsync")
-pub fn create_video_sampler_async(instance: VideoService, content: Content, options: Dictionary?) -> VideoSampler
+pub fn create_video_sampler_async(instance: VideoService, content: Content, options: Dynamic) -> VideoSampler
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: VideoService) -> Bool
@@ -40,7 +41,7 @@ pub fn get_sandboxed(instance: VideoService) -> Bool
 pub fn set_sandboxed(instance: VideoService, value: Bool) -> VideoService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: VideoService) -> Int
+pub fn get_source_asset_id(instance: VideoService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: VideoService) -> UniqueId
@@ -85,7 +86,7 @@ pub fn get_actor(instance: VideoService) -> Actor
 pub fn get_attribute(instance: VideoService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: VideoService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: VideoService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: VideoService) -> Dynamic
@@ -103,7 +104,7 @@ pub fn get_full_name(instance: VideoService) -> String
 pub fn get_styled(instance: VideoService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: VideoService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: VideoService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: VideoService) -> List(Dynamic)
@@ -133,7 +134,7 @@ pub fn reset_property_to_default(instance: VideoService, property: String) -> Ni
 pub fn set_attribute(instance: VideoService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: VideoService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: VideoService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: VideoService) -> RBXScriptSignal(Dynamic)
@@ -163,7 +164,7 @@ pub fn styled_properties_changed(instance: VideoService) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: VideoService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: VideoService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: VideoService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: VideoService, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AssetFetchStatus, type Content, type Instance, type SecurityCapabilities, type UniqueId, type Vector2, type VideoPlayer, type VideoSampleSize}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AssetFetchStatus, type Content, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector2, type VideoPlayer, type VideoSampleSize}
 
 @luau.property("IsLoaded")
 pub fn get_is_loaded(instance: VideoPlayer) -> Bool
@@ -31,13 +32,13 @@ pub fn set_playback_speed(instance: VideoPlayer, value: Float) -> VideoPlayer
 pub fn get_resolution(instance: VideoPlayer) -> Vector2
 
 @luau.property("TimeLength")
-pub fn get_time_length(instance: VideoPlayer) -> Float
+pub fn get_time_length(instance: VideoPlayer) -> OptionDouble
 
 @luau.property("TimePosition")
-pub fn get_time_position(instance: VideoPlayer) -> Float
+pub fn get_time_position(instance: VideoPlayer) -> OptionDouble
 
 @luau.set_property("TimePosition")
-pub fn set_time_position(instance: VideoPlayer, value: Float) -> VideoPlayer
+pub fn set_time_position(instance: VideoPlayer, value: OptionDouble) -> VideoPlayer
 
 @luau.property("VideoContent")
 pub fn get_video_content(instance: VideoPlayer) -> Content
@@ -118,7 +119,7 @@ pub fn get_sandboxed(instance: VideoPlayer) -> Bool
 pub fn set_sandboxed(instance: VideoPlayer, value: Bool) -> VideoPlayer
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: VideoPlayer) -> Int
+pub fn get_source_asset_id(instance: VideoPlayer) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: VideoPlayer) -> UniqueId
@@ -163,7 +164,7 @@ pub fn get_actor(instance: VideoPlayer) -> Actor
 pub fn get_attribute(instance: VideoPlayer, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: VideoPlayer, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: VideoPlayer, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: VideoPlayer) -> Dynamic
@@ -181,7 +182,7 @@ pub fn get_full_name(instance: VideoPlayer) -> String
 pub fn get_styled(instance: VideoPlayer, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: VideoPlayer, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: VideoPlayer, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: VideoPlayer) -> List(Dynamic)
@@ -211,7 +212,7 @@ pub fn reset_property_to_default(instance: VideoPlayer, property: String) -> Nil
 pub fn set_attribute(instance: VideoPlayer, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: VideoPlayer, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: VideoPlayer, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: VideoPlayer) -> RBXScriptSignal(Dynamic)
@@ -241,7 +242,7 @@ pub fn styled_properties_changed(instance: VideoPlayer) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: VideoPlayer) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: VideoPlayer, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: VideoPlayer, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: VideoPlayer, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type TeleportAsyncResult, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TeleportAsyncResult, type UniqueId}
 
 @luau.property("PrivateServerId")
 pub fn get_private_server_id(instance: TeleportAsyncResult) -> String
@@ -43,7 +44,7 @@ pub fn get_sandboxed(instance: TeleportAsyncResult) -> Bool
 pub fn set_sandboxed(instance: TeleportAsyncResult, value: Bool) -> TeleportAsyncResult
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TeleportAsyncResult) -> Int
+pub fn get_source_asset_id(instance: TeleportAsyncResult) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TeleportAsyncResult) -> UniqueId
@@ -88,7 +89,7 @@ pub fn get_actor(instance: TeleportAsyncResult) -> Actor
 pub fn get_attribute(instance: TeleportAsyncResult, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TeleportAsyncResult, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TeleportAsyncResult, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TeleportAsyncResult) -> Dynamic
@@ -106,7 +107,7 @@ pub fn get_full_name(instance: TeleportAsyncResult) -> String
 pub fn get_styled(instance: TeleportAsyncResult, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TeleportAsyncResult, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TeleportAsyncResult, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TeleportAsyncResult) -> List(Dynamic)
@@ -136,7 +137,7 @@ pub fn reset_property_to_default(instance: TeleportAsyncResult, property: String
 pub fn set_attribute(instance: TeleportAsyncResult, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TeleportAsyncResult, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TeleportAsyncResult, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TeleportAsyncResult) -> RBXScriptSignal(Dynamic)
@@ -166,7 +167,7 @@ pub fn styled_properties_changed(instance: TeleportAsyncResult) -> RBXScriptSign
 pub fn get_class_name(instance: TeleportAsyncResult) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TeleportAsyncResult, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TeleportAsyncResult, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TeleportAsyncResult, class_name: String) -> Bool

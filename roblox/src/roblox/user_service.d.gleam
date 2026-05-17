@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type UniqueId, type UserService}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type UserService}
 
 @luau.method("GetUserInfosByUserIdsAsync")
 pub fn get_user_infos_by_user_ids_async(instance: UserService, user_ids: List(Dynamic)) -> List(Dynamic)
@@ -40,7 +41,7 @@ pub fn get_sandboxed(instance: UserService) -> Bool
 pub fn set_sandboxed(instance: UserService, value: Bool) -> UserService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: UserService) -> Int
+pub fn get_source_asset_id(instance: UserService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: UserService) -> UniqueId
@@ -85,7 +86,7 @@ pub fn get_actor(instance: UserService) -> Actor
 pub fn get_attribute(instance: UserService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: UserService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: UserService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: UserService) -> Dynamic
@@ -103,7 +104,7 @@ pub fn get_full_name(instance: UserService) -> String
 pub fn get_styled(instance: UserService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: UserService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: UserService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: UserService) -> List(Dynamic)
@@ -133,7 +134,7 @@ pub fn reset_property_to_default(instance: UserService, property: String) -> Nil
 pub fn set_attribute(instance: UserService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: UserService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: UserService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: UserService) -> RBXScriptSignal(Dynamic)
@@ -163,7 +164,7 @@ pub fn styled_properties_changed(instance: UserService) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: UserService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: UserService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: UserService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: UserService, class_name: String) -> Bool

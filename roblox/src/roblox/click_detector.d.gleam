@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ClickDetector, type Content, type ContentId, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ClickDetector, type Content, type ContentId, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("CursorIcon")
 pub fn get_cursor_icon(instance: ClickDetector) -> ContentId
@@ -67,7 +68,7 @@ pub fn get_sandboxed(instance: ClickDetector) -> Bool
 pub fn set_sandboxed(instance: ClickDetector, value: Bool) -> ClickDetector
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ClickDetector) -> Int
+pub fn get_source_asset_id(instance: ClickDetector) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ClickDetector) -> UniqueId
@@ -112,7 +113,7 @@ pub fn get_actor(instance: ClickDetector) -> Actor
 pub fn get_attribute(instance: ClickDetector, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ClickDetector, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ClickDetector, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ClickDetector) -> Dynamic
@@ -130,7 +131,7 @@ pub fn get_full_name(instance: ClickDetector) -> String
 pub fn get_styled(instance: ClickDetector, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ClickDetector, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ClickDetector, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ClickDetector) -> List(Dynamic)
@@ -160,7 +161,7 @@ pub fn reset_property_to_default(instance: ClickDetector, property: String) -> N
 pub fn set_attribute(instance: ClickDetector, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ClickDetector, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ClickDetector, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ClickDetector) -> RBXScriptSignal(Dynamic)
@@ -190,7 +191,7 @@ pub fn styled_properties_changed(instance: ClickDetector) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: ClickDetector) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ClickDetector, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ClickDetector, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ClickDetector, class_name: String) -> Bool

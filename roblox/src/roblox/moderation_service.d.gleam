@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Content, type Instance, type ModerationService, type RBXScriptConnection, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Content, type Instance, type ModerationService, type OptionDouble, type OptionInt64, type RBXScriptConnection, type SecurityCapabilities, type UniqueId}
 
 @luau.method("BindReviewableContentEventProcessor")
 pub fn bind_reviewable_content_event_processor(instance: ModerationService, priority: Int, callback: Dynamic) -> RBXScriptConnection
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: ModerationService) -> Bool
 pub fn set_sandboxed(instance: ModerationService, value: Bool) -> ModerationService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ModerationService) -> Int
+pub fn get_source_asset_id(instance: ModerationService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ModerationService) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: ModerationService) -> Actor
 pub fn get_attribute(instance: ModerationService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ModerationService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ModerationService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ModerationService) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: ModerationService) -> String
 pub fn get_styled(instance: ModerationService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ModerationService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ModerationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ModerationService) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: ModerationService, property: String) 
 pub fn set_attribute(instance: ModerationService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ModerationService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ModerationService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ModerationService) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: ModerationService) -> RBXScriptSignal
 pub fn get_class_name(instance: ModerationService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ModerationService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ModerationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ModerationService, class_name: String) -> Bool

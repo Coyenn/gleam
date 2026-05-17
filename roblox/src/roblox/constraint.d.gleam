@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Attachment, type BrickColor, type Constraint, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Attachment, type BrickColor, type Constraint, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Active")
 pub fn get_active(instance: Constraint) -> Bool
@@ -70,7 +71,7 @@ pub fn get_sandboxed(instance: Constraint) -> Bool
 pub fn set_sandboxed(instance: Constraint, value: Bool) -> Constraint
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Constraint) -> Int
+pub fn get_source_asset_id(instance: Constraint) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Constraint) -> UniqueId
@@ -115,7 +116,7 @@ pub fn get_actor(instance: Constraint) -> Actor
 pub fn get_attribute(instance: Constraint, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Constraint, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Constraint, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Constraint) -> Dynamic
@@ -133,7 +134,7 @@ pub fn get_full_name(instance: Constraint) -> String
 pub fn get_styled(instance: Constraint, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Constraint, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Constraint, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Constraint) -> List(Dynamic)
@@ -163,7 +164,7 @@ pub fn reset_property_to_default(instance: Constraint, property: String) -> Nil
 pub fn set_attribute(instance: Constraint, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Constraint, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Constraint, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Constraint) -> RBXScriptSignal(Dynamic)
@@ -193,7 +194,7 @@ pub fn styled_properties_changed(instance: Constraint) -> RBXScriptSignal(Dynami
 pub fn get_class_name(instance: Constraint) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Constraint, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Constraint, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Constraint, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ExperienceInviteOptions, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ExperienceInviteOptions, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("InviteMessageId")
 pub fn get_invite_message_id(instance: ExperienceInviteOptions) -> String
@@ -10,10 +11,10 @@ pub fn get_invite_message_id(instance: ExperienceInviteOptions) -> String
 pub fn set_invite_message_id(instance: ExperienceInviteOptions, value: String) -> ExperienceInviteOptions
 
 @luau.property("InviteUser")
-pub fn get_invite_user(instance: ExperienceInviteOptions) -> Int
+pub fn get_invite_user(instance: ExperienceInviteOptions) -> OptionInt64
 
 @luau.set_property("InviteUser")
-pub fn set_invite_user(instance: ExperienceInviteOptions, value: Int) -> ExperienceInviteOptions
+pub fn set_invite_user(instance: ExperienceInviteOptions, value: OptionInt64) -> ExperienceInviteOptions
 
 @luau.property("LaunchData")
 pub fn get_launch_data(instance: ExperienceInviteOptions) -> String
@@ -61,7 +62,7 @@ pub fn get_sandboxed(instance: ExperienceInviteOptions) -> Bool
 pub fn set_sandboxed(instance: ExperienceInviteOptions, value: Bool) -> ExperienceInviteOptions
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ExperienceInviteOptions) -> Int
+pub fn get_source_asset_id(instance: ExperienceInviteOptions) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ExperienceInviteOptions) -> UniqueId
@@ -106,7 +107,7 @@ pub fn get_actor(instance: ExperienceInviteOptions) -> Actor
 pub fn get_attribute(instance: ExperienceInviteOptions, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ExperienceInviteOptions, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ExperienceInviteOptions, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ExperienceInviteOptions) -> Dynamic
@@ -124,7 +125,7 @@ pub fn get_full_name(instance: ExperienceInviteOptions) -> String
 pub fn get_styled(instance: ExperienceInviteOptions, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ExperienceInviteOptions, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ExperienceInviteOptions, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ExperienceInviteOptions) -> List(Dynamic)
@@ -154,7 +155,7 @@ pub fn reset_property_to_default(instance: ExperienceInviteOptions, property: St
 pub fn set_attribute(instance: ExperienceInviteOptions, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ExperienceInviteOptions, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ExperienceInviteOptions, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ExperienceInviteOptions) -> RBXScriptSignal(Dynamic)
@@ -184,7 +185,7 @@ pub fn styled_properties_changed(instance: ExperienceInviteOptions) -> RBXScript
 pub fn get_class_name(instance: ExperienceInviteOptions) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ExperienceInviteOptions, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ExperienceInviteOptions, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ExperienceInviteOptions, class_name: String) -> Bool

@@ -1,16 +1,17 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ContentId, type Font, type GetTextBoundsParams, type Instance, type SecurityCapabilities, type TextFilterContext, type TextFilterResult, type TextFilterTranslatedResult, type TextService, type UniqueId, type Vector2}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ContentId, type Font, type GetTextBoundsParams, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TextFilterContext, type TextFilterResult, type TextFilterTranslatedResult, type TextService, type UniqueId, type Vector2}
 
 @luau.method("GetTextSize")
 pub fn get_text_size(instance: TextService, string: String, font_size: Int, font: Font, frame_size: Vector2) -> Vector2
 
 @luau.method("FilterAndTranslateStringAsync")
-pub fn filter_and_translate_string_async(instance: TextService, string_to_filter: String, from_user_id: Int, target_locales: List(Dynamic), text_context: TextFilterContext) -> TextFilterTranslatedResult
+pub fn filter_and_translate_string_async(instance: TextService, string_to_filter: String, from_user_id: OptionInt64, target_locales: List(Dynamic), text_context: TextFilterContext) -> TextFilterTranslatedResult
 
 @luau.method("FilterStringAsync")
-pub fn filter_string_async(instance: TextService, string_to_filter: String, from_user_id: Int, text_context: TextFilterContext) -> TextFilterResult
+pub fn filter_string_async(instance: TextService, string_to_filter: String, from_user_id: OptionInt64, text_context: TextFilterContext) -> TextFilterResult
 
 @luau.method("GetFamilyInfoAsync")
 pub fn get_family_info_async(instance: TextService, asset_id: ContentId) -> Dynamic
@@ -55,7 +56,7 @@ pub fn get_sandboxed(instance: TextService) -> Bool
 pub fn set_sandboxed(instance: TextService, value: Bool) -> TextService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TextService) -> Int
+pub fn get_source_asset_id(instance: TextService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TextService) -> UniqueId
@@ -100,7 +101,7 @@ pub fn get_actor(instance: TextService) -> Actor
 pub fn get_attribute(instance: TextService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TextService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TextService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TextService) -> Dynamic
@@ -118,7 +119,7 @@ pub fn get_full_name(instance: TextService) -> String
 pub fn get_styled(instance: TextService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TextService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TextService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TextService) -> List(Dynamic)
@@ -148,7 +149,7 @@ pub fn reset_property_to_default(instance: TextService, property: String) -> Nil
 pub fn set_attribute(instance: TextService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TextService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TextService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TextService) -> RBXScriptSignal(Dynamic)
@@ -178,7 +179,7 @@ pub fn styled_properties_changed(instance: TextService) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: TextService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TextService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TextService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TextService, class_name: String) -> Bool

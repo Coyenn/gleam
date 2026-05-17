@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type RunningAverageItemInt, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type RunningAverageItemInt, type SecurityCapabilities, type UniqueId}
 
 @luau.property("DisplayName")
 pub fn get_display_name(instance: RunningAverageItemInt) -> String
@@ -40,7 +41,7 @@ pub fn get_sandboxed(instance: RunningAverageItemInt) -> Bool
 pub fn set_sandboxed(instance: RunningAverageItemInt, value: Bool) -> RunningAverageItemInt
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: RunningAverageItemInt) -> Int
+pub fn get_source_asset_id(instance: RunningAverageItemInt) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: RunningAverageItemInt) -> UniqueId
@@ -85,7 +86,7 @@ pub fn get_actor(instance: RunningAverageItemInt) -> Actor
 pub fn get_attribute(instance: RunningAverageItemInt, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: RunningAverageItemInt, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: RunningAverageItemInt, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: RunningAverageItemInt) -> Dynamic
@@ -103,7 +104,7 @@ pub fn get_full_name(instance: RunningAverageItemInt) -> String
 pub fn get_styled(instance: RunningAverageItemInt, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: RunningAverageItemInt, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: RunningAverageItemInt, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: RunningAverageItemInt) -> List(Dynamic)
@@ -133,7 +134,7 @@ pub fn reset_property_to_default(instance: RunningAverageItemInt, property: Stri
 pub fn set_attribute(instance: RunningAverageItemInt, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: RunningAverageItemInt, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: RunningAverageItemInt, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: RunningAverageItemInt) -> RBXScriptSignal(Dynamic)
@@ -163,7 +164,7 @@ pub fn styled_properties_changed(instance: RunningAverageItemInt) -> RBXScriptSi
 pub fn get_class_name(instance: RunningAverageItemInt) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: RunningAverageItemInt, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: RunningAverageItemInt, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: RunningAverageItemInt, class_name: String) -> Bool

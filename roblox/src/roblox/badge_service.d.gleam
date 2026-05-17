@@ -1,19 +1,20 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BadgeService, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BadgeService, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.method("AwardBadgeAsync")
-pub fn award_badge_async(instance: BadgeService, user_id: Int, badge_id: Int) -> Bool
+pub fn award_badge_async(instance: BadgeService, user_id: OptionInt64, badge_id: OptionInt64) -> Bool
 
 @luau.method("CheckUserBadgesAsync")
-pub fn check_user_badges_async(instance: BadgeService, user_id: Int, badge_ids: List(Dynamic)) -> List(Dynamic)
+pub fn check_user_badges_async(instance: BadgeService, user_id: OptionInt64, badge_ids: List(Dynamic)) -> List(Dynamic)
 
 @luau.method("GetBadgeInfoAsync")
-pub fn get_badge_info_async(instance: BadgeService, badge_id: Int) -> Dynamic
+pub fn get_badge_info_async(instance: BadgeService, badge_id: OptionInt64) -> Dynamic
 
 @luau.method("UserHasBadgeAsync")
-pub fn user_has_badge_async(instance: BadgeService, user_id: Int, badge_id: Int) -> Bool
+pub fn user_has_badge_async(instance: BadgeService, user_id: OptionInt64, badge_id: OptionInt64) -> Bool
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: BadgeService) -> Bool
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: BadgeService) -> Bool
 pub fn set_sandboxed(instance: BadgeService, value: Bool) -> BadgeService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: BadgeService) -> Int
+pub fn get_source_asset_id(instance: BadgeService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: BadgeService) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: BadgeService) -> Actor
 pub fn get_attribute(instance: BadgeService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: BadgeService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: BadgeService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: BadgeService) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: BadgeService) -> String
 pub fn get_styled(instance: BadgeService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: BadgeService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: BadgeService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: BadgeService) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: BadgeService, property: String) -> Ni
 pub fn set_attribute(instance: BadgeService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: BadgeService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: BadgeService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: BadgeService) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: BadgeService) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: BadgeService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: BadgeService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: BadgeService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: BadgeService, class_name: String) -> Bool

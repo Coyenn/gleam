@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Animation, type AnimationPriority, type AnimationTrack, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Animation, type AnimationPriority, type AnimationTrack, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Animation")
 pub fn get_animation(instance: AnimationTrack) -> Animation
@@ -46,7 +47,7 @@ pub fn adjust_speed(instance: AnimationTrack, speed: Float) -> Nil
 pub fn adjust_weight(instance: AnimationTrack, weight: Float, fade_time: Float) -> Nil
 
 @luau.method("GetMarkerReachedSignal")
-pub fn get_marker_reached_signal(instance: AnimationTrack, name: String) -> RBXScriptSignal
+pub fn get_marker_reached_signal(instance: AnimationTrack, name: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetParameter")
 pub fn get_parameter(instance: AnimationTrack, key: String) -> Dynamic
@@ -61,7 +62,7 @@ pub fn get_target_instance(instance: AnimationTrack, name: String) -> Instance
 pub fn get_target_names(instance: AnimationTrack) -> List(Dynamic)
 
 @luau.method("GetTimeOfKeyframe")
-pub fn get_time_of_keyframe(instance: AnimationTrack, keyframe_name: String) -> Float
+pub fn get_time_of_keyframe(instance: AnimationTrack, keyframe_name: String) -> OptionDouble
 
 @luau.method("Play")
 pub fn play(instance: AnimationTrack, fade_time: Float, weight: Float, speed: Float) -> Nil
@@ -121,7 +122,7 @@ pub fn get_sandboxed(instance: AnimationTrack) -> Bool
 pub fn set_sandboxed(instance: AnimationTrack, value: Bool) -> AnimationTrack
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AnimationTrack) -> Int
+pub fn get_source_asset_id(instance: AnimationTrack) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AnimationTrack) -> UniqueId
@@ -166,7 +167,7 @@ pub fn get_actor(instance: AnimationTrack) -> Actor
 pub fn get_attribute(instance: AnimationTrack, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AnimationTrack, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AnimationTrack, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AnimationTrack) -> Dynamic
@@ -184,7 +185,7 @@ pub fn get_full_name(instance: AnimationTrack) -> String
 pub fn get_styled(instance: AnimationTrack, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AnimationTrack, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AnimationTrack, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AnimationTrack) -> List(Dynamic)
@@ -214,7 +215,7 @@ pub fn reset_property_to_default(instance: AnimationTrack, property: String) -> 
 pub fn set_attribute(instance: AnimationTrack, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AnimationTrack, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AnimationTrack, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AnimationTrack) -> RBXScriptSignal(Dynamic)
@@ -244,7 +245,7 @@ pub fn styled_properties_changed(instance: AnimationTrack) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: AnimationTrack) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AnimationTrack, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AnimationTrack, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AnimationTrack, class_name: String) -> Bool

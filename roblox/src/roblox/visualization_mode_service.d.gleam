@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type UniqueId, type VisualizationModeService}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type VisualizationModeService}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: VisualizationModeService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: VisualizationModeService) -> Bool
 pub fn set_sandboxed(instance: VisualizationModeService, value: Bool) -> VisualizationModeService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: VisualizationModeService) -> Int
+pub fn get_source_asset_id(instance: VisualizationModeService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: VisualizationModeService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: VisualizationModeService) -> Actor
 pub fn get_attribute(instance: VisualizationModeService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: VisualizationModeService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: VisualizationModeService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: VisualizationModeService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: VisualizationModeService) -> String
 pub fn get_styled(instance: VisualizationModeService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: VisualizationModeService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: VisualizationModeService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: VisualizationModeService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: VisualizationModeService, property: S
 pub fn set_attribute(instance: VisualizationModeService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: VisualizationModeService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: VisualizationModeService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: VisualizationModeService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: VisualizationModeService) -> RBXScrip
 pub fn get_class_name(instance: VisualizationModeService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: VisualizationModeService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: VisualizationModeService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: VisualizationModeService, class_name: String) -> Bool

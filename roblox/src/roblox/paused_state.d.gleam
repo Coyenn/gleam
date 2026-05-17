@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type DebuggerPauseReason, type Instance, type PausedState, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type DebuggerPauseReason, type Instance, type OptionDouble, type OptionInt64, type PausedState, type SecurityCapabilities, type UniqueId}
 
 @luau.property("AllThreadsPaused")
 pub fn get_all_threads_paused(instance: PausedState) -> Bool
@@ -46,7 +47,7 @@ pub fn get_sandboxed(instance: PausedState) -> Bool
 pub fn set_sandboxed(instance: PausedState, value: Bool) -> PausedState
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: PausedState) -> Int
+pub fn get_source_asset_id(instance: PausedState) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: PausedState) -> UniqueId
@@ -91,7 +92,7 @@ pub fn get_actor(instance: PausedState) -> Actor
 pub fn get_attribute(instance: PausedState, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: PausedState, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: PausedState, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: PausedState) -> Dynamic
@@ -109,7 +110,7 @@ pub fn get_full_name(instance: PausedState) -> String
 pub fn get_styled(instance: PausedState, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: PausedState, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: PausedState, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: PausedState) -> List(Dynamic)
@@ -139,7 +140,7 @@ pub fn reset_property_to_default(instance: PausedState, property: String) -> Nil
 pub fn set_attribute(instance: PausedState, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: PausedState, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: PausedState, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: PausedState) -> RBXScriptSignal(Dynamic)
@@ -169,7 +170,7 @@ pub fn styled_properties_changed(instance: PausedState) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: PausedState) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: PausedState, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: PausedState, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: PausedState, class_name: String) -> Bool

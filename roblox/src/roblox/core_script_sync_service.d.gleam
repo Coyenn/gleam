@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CoreScriptSyncService, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type CoreScriptSyncService, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: CoreScriptSyncService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: CoreScriptSyncService) -> Bool
 pub fn set_sandboxed(instance: CoreScriptSyncService, value: Bool) -> CoreScriptSyncService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: CoreScriptSyncService) -> Int
+pub fn get_source_asset_id(instance: CoreScriptSyncService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: CoreScriptSyncService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: CoreScriptSyncService) -> Actor
 pub fn get_attribute(instance: CoreScriptSyncService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: CoreScriptSyncService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: CoreScriptSyncService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: CoreScriptSyncService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: CoreScriptSyncService) -> String
 pub fn get_styled(instance: CoreScriptSyncService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: CoreScriptSyncService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: CoreScriptSyncService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: CoreScriptSyncService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: CoreScriptSyncService, property: Stri
 pub fn set_attribute(instance: CoreScriptSyncService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: CoreScriptSyncService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: CoreScriptSyncService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: CoreScriptSyncService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: CoreScriptSyncService) -> RBXScriptSi
 pub fn get_class_name(instance: CoreScriptSyncService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: CoreScriptSyncService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: CoreScriptSyncService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: CoreScriptSyncService, class_name: String) -> Bool

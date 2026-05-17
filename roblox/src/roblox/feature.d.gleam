@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Feature, type InOut, type Instance, type LeftRight, type NormalId, type SecurityCapabilities, type TopBottom, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Feature, type InOut, type Instance, type LeftRight, type NormalId, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TopBottom, type UniqueId}
 
 @luau.property("FaceId")
 pub fn get_face_id(instance: Feature) -> NormalId
@@ -61,7 +62,7 @@ pub fn get_sandboxed(instance: Feature) -> Bool
 pub fn set_sandboxed(instance: Feature, value: Bool) -> Feature
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Feature) -> Int
+pub fn get_source_asset_id(instance: Feature) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Feature) -> UniqueId
@@ -106,7 +107,7 @@ pub fn get_actor(instance: Feature) -> Actor
 pub fn get_attribute(instance: Feature, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Feature, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Feature, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Feature) -> Dynamic
@@ -124,7 +125,7 @@ pub fn get_full_name(instance: Feature) -> String
 pub fn get_styled(instance: Feature, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Feature, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Feature, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Feature) -> List(Dynamic)
@@ -154,7 +155,7 @@ pub fn reset_property_to_default(instance: Feature, property: String) -> Nil
 pub fn set_attribute(instance: Feature, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Feature, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Feature, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Feature) -> RBXScriptSignal(Dynamic)
@@ -184,7 +185,7 @@ pub fn styled_properties_changed(instance: Feature) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Feature) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Feature, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Feature, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Feature, class_name: String) -> Bool

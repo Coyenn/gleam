@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type MemoryStoreSortedMap, type SecurityCapabilities, type SortDirection, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type MemoryStoreSortedMap, type OptionDouble, type OptionInt64, type SecurityCapabilities, type SortDirection, type UniqueId}
 
 @luau.method("GetAsync")
 pub fn get_async(instance: MemoryStoreSortedMap, key: String) -> Dynamic
@@ -16,10 +17,10 @@ pub fn get_size_async(instance: MemoryStoreSortedMap) -> Int
 pub fn remove_async(instance: MemoryStoreSortedMap, key: String) -> Nil
 
 @luau.method("SetAsync")
-pub fn set_async(instance: MemoryStoreSortedMap, key: String, value: Dynamic, expiration: Int, sort_key: Dynamic) -> Bool
+pub fn set_async(instance: MemoryStoreSortedMap, key: String, value: Dynamic, expiration: OptionInt64, sort_key: Dynamic) -> Bool
 
 @luau.method("UpdateAsync")
-pub fn update_async(instance: MemoryStoreSortedMap, key: String, transform_function: Dynamic, expiration: Int) -> Dynamic
+pub fn update_async(instance: MemoryStoreSortedMap, key: String, transform_function: Dynamic, expiration: OptionInt64) -> Dynamic
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: MemoryStoreSortedMap) -> Bool
@@ -55,7 +56,7 @@ pub fn get_sandboxed(instance: MemoryStoreSortedMap) -> Bool
 pub fn set_sandboxed(instance: MemoryStoreSortedMap, value: Bool) -> MemoryStoreSortedMap
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: MemoryStoreSortedMap) -> Int
+pub fn get_source_asset_id(instance: MemoryStoreSortedMap) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: MemoryStoreSortedMap) -> UniqueId
@@ -100,7 +101,7 @@ pub fn get_actor(instance: MemoryStoreSortedMap) -> Actor
 pub fn get_attribute(instance: MemoryStoreSortedMap, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: MemoryStoreSortedMap, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: MemoryStoreSortedMap, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: MemoryStoreSortedMap) -> Dynamic
@@ -118,7 +119,7 @@ pub fn get_full_name(instance: MemoryStoreSortedMap) -> String
 pub fn get_styled(instance: MemoryStoreSortedMap, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: MemoryStoreSortedMap, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: MemoryStoreSortedMap, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: MemoryStoreSortedMap) -> List(Dynamic)
@@ -148,7 +149,7 @@ pub fn reset_property_to_default(instance: MemoryStoreSortedMap, property: Strin
 pub fn set_attribute(instance: MemoryStoreSortedMap, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: MemoryStoreSortedMap, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: MemoryStoreSortedMap, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: MemoryStoreSortedMap) -> RBXScriptSignal(Dynamic)
@@ -178,7 +179,7 @@ pub fn styled_properties_changed(instance: MemoryStoreSortedMap) -> RBXScriptSig
 pub fn get_class_name(instance: MemoryStoreSortedMap) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: MemoryStoreSortedMap, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: MemoryStoreSortedMap, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: MemoryStoreSortedMap, class_name: String) -> Bool

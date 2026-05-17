@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type UniqueId, type VersionControlService}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type VersionControlService}
 
 @luau.property("ScriptCollabEnabled")
 pub fn get_script_collab_enabled(instance: VersionControlService) -> Bool
@@ -40,7 +41,7 @@ pub fn get_sandboxed(instance: VersionControlService) -> Bool
 pub fn set_sandboxed(instance: VersionControlService, value: Bool) -> VersionControlService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: VersionControlService) -> Int
+pub fn get_source_asset_id(instance: VersionControlService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: VersionControlService) -> UniqueId
@@ -85,7 +86,7 @@ pub fn get_actor(instance: VersionControlService) -> Actor
 pub fn get_attribute(instance: VersionControlService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: VersionControlService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: VersionControlService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: VersionControlService) -> Dynamic
@@ -103,7 +104,7 @@ pub fn get_full_name(instance: VersionControlService) -> String
 pub fn get_styled(instance: VersionControlService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: VersionControlService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: VersionControlService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: VersionControlService) -> List(Dynamic)
@@ -133,7 +134,7 @@ pub fn reset_property_to_default(instance: VersionControlService, property: Stri
 pub fn set_attribute(instance: VersionControlService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: VersionControlService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: VersionControlService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: VersionControlService) -> RBXScriptSignal(Dynamic)
@@ -163,7 +164,7 @@ pub fn styled_properties_changed(instance: VersionControlService) -> RBXScriptSi
 pub fn get_class_name(instance: VersionControlService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: VersionControlService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: VersionControlService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: VersionControlService, class_name: String) -> Bool

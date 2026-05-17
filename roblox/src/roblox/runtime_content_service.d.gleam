@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type RuntimeContentService, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type RuntimeContentService, type SecurityCapabilities, type UniqueId}
 
 @luau.event("RuntimeContentFail")
 pub fn runtime_content_fail(instance: RuntimeContentService) -> RBXScriptSignal(Dynamic)
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: RuntimeContentService) -> Bool
 pub fn set_sandboxed(instance: RuntimeContentService, value: Bool) -> RuntimeContentService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: RuntimeContentService) -> Int
+pub fn get_source_asset_id(instance: RuntimeContentService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: RuntimeContentService) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: RuntimeContentService) -> Actor
 pub fn get_attribute(instance: RuntimeContentService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: RuntimeContentService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: RuntimeContentService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: RuntimeContentService) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: RuntimeContentService) -> String
 pub fn get_styled(instance: RuntimeContentService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: RuntimeContentService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: RuntimeContentService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: RuntimeContentService) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: RuntimeContentService, property: Stri
 pub fn set_attribute(instance: RuntimeContentService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: RuntimeContentService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: RuntimeContentService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: RuntimeContentService) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: RuntimeContentService) -> RBXScriptSi
 pub fn get_class_name(instance: RuntimeContentService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: RuntimeContentService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: RuntimeContentService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: RuntimeContentService, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AvatarBodyRules, type AvatarSettingsAppearanceMode, type AvatarSettingsBuildMode, type AvatarSettingsCustomBodyType, type AvatarSettingsScaleMode, type Instance, type NumberRange, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AvatarBodyRules, type AvatarSettingsAppearanceMode, type AvatarSettingsBuildMode, type AvatarSettingsCustomBodyType, type AvatarSettingsScaleMode, type Instance, type NumberRange, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("AppearanceMode")
 pub fn get_appearance_mode(instance: AvatarBodyRules) -> AvatarSettingsAppearanceMode
@@ -10,7 +11,7 @@ pub fn get_appearance_mode(instance: AvatarBodyRules) -> AvatarSettingsAppearanc
 pub fn get_build_mode(instance: AvatarBodyRules) -> AvatarSettingsBuildMode
 
 @luau.property("CustomBodyBundleId")
-pub fn get_custom_body_bundle_id(instance: AvatarBodyRules) -> Int
+pub fn get_custom_body_bundle_id(instance: AvatarBodyRules) -> OptionInt64
 
 @luau.property("CustomBodyType")
 pub fn get_custom_body_type(instance: AvatarBodyRules) -> AvatarSettingsCustomBodyType
@@ -22,25 +23,25 @@ pub fn get_custom_body_type_scale(instance: AvatarBodyRules) -> NumberRange
 pub fn get_custom_eyebrow_enabled(instance: AvatarBodyRules) -> Bool
 
 @luau.property("CustomEyebrowId")
-pub fn get_custom_eyebrow_id(instance: AvatarBodyRules) -> Int
+pub fn get_custom_eyebrow_id(instance: AvatarBodyRules) -> OptionInt64
 
 @luau.property("CustomEyelashEnabled")
 pub fn get_custom_eyelash_enabled(instance: AvatarBodyRules) -> Bool
 
 @luau.property("CustomEyelashId")
-pub fn get_custom_eyelash_id(instance: AvatarBodyRules) -> Int
+pub fn get_custom_eyelash_id(instance: AvatarBodyRules) -> OptionInt64
 
 @luau.property("CustomFaceEnabled")
 pub fn get_custom_face_enabled(instance: AvatarBodyRules) -> Bool
 
 @luau.property("CustomFaceId")
-pub fn get_custom_face_id(instance: AvatarBodyRules) -> Int
+pub fn get_custom_face_id(instance: AvatarBodyRules) -> OptionInt64
 
 @luau.property("CustomHeadEnabled")
 pub fn get_custom_head_enabled(instance: AvatarBodyRules) -> Bool
 
 @luau.property("CustomHeadId")
-pub fn get_custom_head_id(instance: AvatarBodyRules) -> Int
+pub fn get_custom_head_id(instance: AvatarBodyRules) -> OptionInt64
 
 @luau.property("CustomHeadScale")
 pub fn get_custom_head_scale(instance: AvatarBodyRules) -> NumberRange
@@ -55,19 +56,19 @@ pub fn get_custom_height_scale(instance: AvatarBodyRules) -> NumberRange
 pub fn get_custom_left_arm_enabled(instance: AvatarBodyRules) -> Bool
 
 @luau.property("CustomLeftArmId")
-pub fn get_custom_left_arm_id(instance: AvatarBodyRules) -> Int
+pub fn get_custom_left_arm_id(instance: AvatarBodyRules) -> OptionInt64
 
 @luau.property("CustomLeftLegEnabled")
 pub fn get_custom_left_leg_enabled(instance: AvatarBodyRules) -> Bool
 
 @luau.property("CustomLeftLegId")
-pub fn get_custom_left_leg_id(instance: AvatarBodyRules) -> Int
+pub fn get_custom_left_leg_id(instance: AvatarBodyRules) -> OptionInt64
 
 @luau.property("CustomMoodEnabled")
 pub fn get_custom_mood_enabled(instance: AvatarBodyRules) -> Bool
 
 @luau.property("CustomMoodId")
-pub fn get_custom_mood_id(instance: AvatarBodyRules) -> Int
+pub fn get_custom_mood_id(instance: AvatarBodyRules) -> OptionInt64
 
 @luau.property("CustomProportionsScale")
 pub fn get_custom_proportions_scale(instance: AvatarBodyRules) -> NumberRange
@@ -76,19 +77,19 @@ pub fn get_custom_proportions_scale(instance: AvatarBodyRules) -> NumberRange
 pub fn get_custom_right_arm_enabled(instance: AvatarBodyRules) -> Bool
 
 @luau.property("CustomRightArmId")
-pub fn get_custom_right_arm_id(instance: AvatarBodyRules) -> Int
+pub fn get_custom_right_arm_id(instance: AvatarBodyRules) -> OptionInt64
 
 @luau.property("CustomRightLegEnabled")
 pub fn get_custom_right_leg_enabled(instance: AvatarBodyRules) -> Bool
 
 @luau.property("CustomRightLegId")
-pub fn get_custom_right_leg_id(instance: AvatarBodyRules) -> Int
+pub fn get_custom_right_leg_id(instance: AvatarBodyRules) -> OptionInt64
 
 @luau.property("CustomTorsoEnabled")
 pub fn get_custom_torso_enabled(instance: AvatarBodyRules) -> Bool
 
 @luau.property("CustomTorsoId")
-pub fn get_custom_torso_id(instance: AvatarBodyRules) -> Int
+pub fn get_custom_torso_id(instance: AvatarBodyRules) -> OptionInt64
 
 @luau.property("CustomWidthScale")
 pub fn get_custom_width_scale(instance: AvatarBodyRules) -> NumberRange
@@ -133,7 +134,7 @@ pub fn get_sandboxed(instance: AvatarBodyRules) -> Bool
 pub fn set_sandboxed(instance: AvatarBodyRules, value: Bool) -> AvatarBodyRules
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AvatarBodyRules) -> Int
+pub fn get_source_asset_id(instance: AvatarBodyRules) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AvatarBodyRules) -> UniqueId
@@ -178,7 +179,7 @@ pub fn get_actor(instance: AvatarBodyRules) -> Actor
 pub fn get_attribute(instance: AvatarBodyRules, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AvatarBodyRules, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AvatarBodyRules, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AvatarBodyRules) -> Dynamic
@@ -196,7 +197,7 @@ pub fn get_full_name(instance: AvatarBodyRules) -> String
 pub fn get_styled(instance: AvatarBodyRules, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AvatarBodyRules, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AvatarBodyRules, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AvatarBodyRules) -> List(Dynamic)
@@ -226,7 +227,7 @@ pub fn reset_property_to_default(instance: AvatarBodyRules, property: String) ->
 pub fn set_attribute(instance: AvatarBodyRules, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AvatarBodyRules, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AvatarBodyRules, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AvatarBodyRules) -> RBXScriptSignal(Dynamic)
@@ -256,7 +257,7 @@ pub fn styled_properties_changed(instance: AvatarBodyRules) -> RBXScriptSignal(D
 pub fn get_class_name(instance: AvatarBodyRules) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AvatarBodyRules, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AvatarBodyRules, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AvatarBodyRules, class_name: String) -> Bool

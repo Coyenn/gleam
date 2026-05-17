@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Color3, type Instance, type SecurityCapabilities, type Smoke, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Color3, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type Smoke, type UniqueId}
 
 @luau.property("Color")
 pub fn get_color(instance: Smoke) -> Color3
@@ -79,7 +80,7 @@ pub fn get_sandboxed(instance: Smoke) -> Bool
 pub fn set_sandboxed(instance: Smoke, value: Bool) -> Smoke
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Smoke) -> Int
+pub fn get_source_asset_id(instance: Smoke) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Smoke) -> UniqueId
@@ -124,7 +125,7 @@ pub fn get_actor(instance: Smoke) -> Actor
 pub fn get_attribute(instance: Smoke, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Smoke, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Smoke, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Smoke) -> Dynamic
@@ -142,7 +143,7 @@ pub fn get_full_name(instance: Smoke) -> String
 pub fn get_styled(instance: Smoke, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Smoke, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Smoke, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Smoke) -> List(Dynamic)
@@ -172,7 +173,7 @@ pub fn reset_property_to_default(instance: Smoke, property: String) -> Nil
 pub fn set_attribute(instance: Smoke, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Smoke, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Smoke, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Smoke) -> RBXScriptSignal(Dynamic)
@@ -202,7 +203,7 @@ pub fn styled_properties_changed(instance: Smoke) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Smoke) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Smoke, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Smoke, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Smoke, class_name: String) -> Bool

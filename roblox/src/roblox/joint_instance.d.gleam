@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type CFrame, type Instance, type JointInstance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type CFrame, type Instance, type JointInstance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Active")
 pub fn get_active(instance: JointInstance) -> Bool
@@ -70,7 +71,7 @@ pub fn get_sandboxed(instance: JointInstance) -> Bool
 pub fn set_sandboxed(instance: JointInstance, value: Bool) -> JointInstance
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: JointInstance) -> Int
+pub fn get_source_asset_id(instance: JointInstance) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: JointInstance) -> UniqueId
@@ -115,7 +116,7 @@ pub fn get_actor(instance: JointInstance) -> Actor
 pub fn get_attribute(instance: JointInstance, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: JointInstance, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: JointInstance, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: JointInstance) -> Dynamic
@@ -133,7 +134,7 @@ pub fn get_full_name(instance: JointInstance) -> String
 pub fn get_styled(instance: JointInstance, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: JointInstance, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: JointInstance, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: JointInstance) -> List(Dynamic)
@@ -163,7 +164,7 @@ pub fn reset_property_to_default(instance: JointInstance, property: String) -> N
 pub fn set_attribute(instance: JointInstance, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: JointInstance, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: JointInstance, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: JointInstance) -> RBXScriptSignal(Dynamic)
@@ -193,7 +194,7 @@ pub fn styled_properties_changed(instance: JointInstance) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: JointInstance) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: JointInstance, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: JointInstance, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: JointInstance, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type InOut, type Instance, type LeftRight, type MotorFeature, type NormalId, type SecurityCapabilities, type TopBottom, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type InOut, type Instance, type LeftRight, type MotorFeature, type NormalId, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TopBottom, type UniqueId}
 
 @luau.property("FaceId")
 pub fn get_face_id(instance: MotorFeature) -> NormalId
@@ -61,7 +62,7 @@ pub fn get_sandboxed(instance: MotorFeature) -> Bool
 pub fn set_sandboxed(instance: MotorFeature, value: Bool) -> MotorFeature
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: MotorFeature) -> Int
+pub fn get_source_asset_id(instance: MotorFeature) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: MotorFeature) -> UniqueId
@@ -106,7 +107,7 @@ pub fn get_actor(instance: MotorFeature) -> Actor
 pub fn get_attribute(instance: MotorFeature, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: MotorFeature, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: MotorFeature, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: MotorFeature) -> Dynamic
@@ -124,7 +125,7 @@ pub fn get_full_name(instance: MotorFeature) -> String
 pub fn get_styled(instance: MotorFeature, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: MotorFeature, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: MotorFeature, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: MotorFeature) -> List(Dynamic)
@@ -154,7 +155,7 @@ pub fn reset_property_to_default(instance: MotorFeature, property: String) -> Ni
 pub fn set_attribute(instance: MotorFeature, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: MotorFeature, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: MotorFeature, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: MotorFeature) -> RBXScriptSignal(Dynamic)
@@ -184,7 +185,7 @@ pub fn styled_properties_changed(instance: MotorFeature) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: MotorFeature) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: MotorFeature, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: MotorFeature, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: MotorFeature, class_name: String) -> Bool

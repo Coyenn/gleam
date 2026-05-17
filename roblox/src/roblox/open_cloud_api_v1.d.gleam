@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type OpenCloudApiV1, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OpenCloudApiV1, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: OpenCloudApiV1) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: OpenCloudApiV1) -> Bool
 pub fn set_sandboxed(instance: OpenCloudApiV1, value: Bool) -> OpenCloudApiV1
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: OpenCloudApiV1) -> Int
+pub fn get_source_asset_id(instance: OpenCloudApiV1) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: OpenCloudApiV1) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: OpenCloudApiV1) -> Actor
 pub fn get_attribute(instance: OpenCloudApiV1, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: OpenCloudApiV1, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: OpenCloudApiV1, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: OpenCloudApiV1) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: OpenCloudApiV1) -> String
 pub fn get_styled(instance: OpenCloudApiV1, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: OpenCloudApiV1, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: OpenCloudApiV1, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: OpenCloudApiV1) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: OpenCloudApiV1, property: String) -> 
 pub fn set_attribute(instance: OpenCloudApiV1, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: OpenCloudApiV1, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: OpenCloudApiV1, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: OpenCloudApiV1) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: OpenCloudApiV1) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: OpenCloudApiV1) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: OpenCloudApiV1, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: OpenCloudApiV1, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: OpenCloudApiV1, class_name: String) -> Bool

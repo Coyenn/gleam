@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type MarkerCurve, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type MarkerCurve, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Length")
 pub fn get_length(instance: MarkerCurve) -> Int
@@ -52,7 +53,7 @@ pub fn get_sandboxed(instance: MarkerCurve) -> Bool
 pub fn set_sandboxed(instance: MarkerCurve, value: Bool) -> MarkerCurve
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: MarkerCurve) -> Int
+pub fn get_source_asset_id(instance: MarkerCurve) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: MarkerCurve) -> UniqueId
@@ -97,7 +98,7 @@ pub fn get_actor(instance: MarkerCurve) -> Actor
 pub fn get_attribute(instance: MarkerCurve, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: MarkerCurve, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: MarkerCurve, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: MarkerCurve) -> Dynamic
@@ -115,7 +116,7 @@ pub fn get_full_name(instance: MarkerCurve) -> String
 pub fn get_styled(instance: MarkerCurve, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: MarkerCurve, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: MarkerCurve, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: MarkerCurve) -> List(Dynamic)
@@ -145,7 +146,7 @@ pub fn reset_property_to_default(instance: MarkerCurve, property: String) -> Nil
 pub fn set_attribute(instance: MarkerCurve, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: MarkerCurve, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: MarkerCurve, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: MarkerCurve) -> RBXScriptSignal(Dynamic)
@@ -175,7 +176,7 @@ pub fn styled_properties_changed(instance: MarkerCurve) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: MarkerCurve) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: MarkerCurve, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: MarkerCurve, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: MarkerCurve, class_name: String) -> Bool

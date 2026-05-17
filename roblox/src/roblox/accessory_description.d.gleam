@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type AccessoryDescription, type AccessoryType, type Actor, type Instance, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type AccessoryDescription, type AccessoryType, type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("AccessoryType")
 pub fn get_accessory_type(instance: AccessoryDescription) -> AccessoryType
@@ -10,10 +11,10 @@ pub fn get_accessory_type(instance: AccessoryDescription) -> AccessoryType
 pub fn set_accessory_type(instance: AccessoryDescription, value: AccessoryType) -> AccessoryDescription
 
 @luau.property("AssetId")
-pub fn get_asset_id(instance: AccessoryDescription) -> Int
+pub fn get_asset_id(instance: AccessoryDescription) -> OptionInt64
 
 @luau.set_property("AssetId")
-pub fn set_asset_id(instance: AccessoryDescription, value: Int) -> AccessoryDescription
+pub fn set_asset_id(instance: AccessoryDescription, value: OptionInt64) -> AccessoryDescription
 
 @luau.property("Instance")
 pub fn get_instance(instance: AccessoryDescription) -> Instance
@@ -94,7 +95,7 @@ pub fn get_sandboxed(instance: AccessoryDescription) -> Bool
 pub fn set_sandboxed(instance: AccessoryDescription, value: Bool) -> AccessoryDescription
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AccessoryDescription) -> Int
+pub fn get_source_asset_id(instance: AccessoryDescription) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AccessoryDescription) -> UniqueId
@@ -139,7 +140,7 @@ pub fn get_actor(instance: AccessoryDescription) -> Actor
 pub fn get_attribute(instance: AccessoryDescription, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AccessoryDescription, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AccessoryDescription, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AccessoryDescription) -> Dynamic
@@ -157,7 +158,7 @@ pub fn get_full_name(instance: AccessoryDescription) -> String
 pub fn get_styled(instance: AccessoryDescription, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AccessoryDescription, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AccessoryDescription, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AccessoryDescription) -> List(Dynamic)
@@ -187,7 +188,7 @@ pub fn reset_property_to_default(instance: AccessoryDescription, property: Strin
 pub fn set_attribute(instance: AccessoryDescription, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AccessoryDescription, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AccessoryDescription, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AccessoryDescription) -> RBXScriptSignal(Dynamic)
@@ -217,7 +218,7 @@ pub fn styled_properties_changed(instance: AccessoryDescription) -> RBXScriptSig
 pub fn get_class_name(instance: AccessoryDescription) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AccessoryDescription, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AccessoryDescription, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AccessoryDescription, class_name: String) -> Bool

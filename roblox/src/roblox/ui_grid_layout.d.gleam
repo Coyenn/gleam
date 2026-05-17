@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type FillDirection, type HorizontalAlignment, type Instance, type SecurityCapabilities, type SortOrder, type StartCorner, type UDim2, type UIGridLayout, type UniqueId, type Vector2, type VerticalAlignment}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type FillDirection, type HorizontalAlignment, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type SortOrder, type StartCorner, type UDim2, type UIGridLayout, type UniqueId, type Vector2, type VerticalAlignment}
 
 @luau.property("AbsoluteCellCount")
 pub fn get_absolute_cell_count(instance: UIGridLayout) -> Vector2
@@ -94,7 +95,7 @@ pub fn get_sandboxed(instance: UIGridLayout) -> Bool
 pub fn set_sandboxed(instance: UIGridLayout, value: Bool) -> UIGridLayout
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: UIGridLayout) -> Int
+pub fn get_source_asset_id(instance: UIGridLayout) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: UIGridLayout) -> UniqueId
@@ -139,7 +140,7 @@ pub fn get_actor(instance: UIGridLayout) -> Actor
 pub fn get_attribute(instance: UIGridLayout, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: UIGridLayout, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: UIGridLayout, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: UIGridLayout) -> Dynamic
@@ -157,7 +158,7 @@ pub fn get_full_name(instance: UIGridLayout) -> String
 pub fn get_styled(instance: UIGridLayout, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: UIGridLayout, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: UIGridLayout, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: UIGridLayout) -> List(Dynamic)
@@ -187,7 +188,7 @@ pub fn reset_property_to_default(instance: UIGridLayout, property: String) -> Ni
 pub fn set_attribute(instance: UIGridLayout, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: UIGridLayout, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: UIGridLayout, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: UIGridLayout) -> RBXScriptSignal(Dynamic)
@@ -217,7 +218,7 @@ pub fn styled_properties_changed(instance: UIGridLayout) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: UIGridLayout) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: UIGridLayout, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: UIGridLayout, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: UIGridLayout, class_name: String) -> Bool

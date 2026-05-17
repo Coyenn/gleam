@@ -1,13 +1,14 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type PredictionMode, type PredictionStatus, type RBXScriptConnection, type RunService, type RunState, type SecurityCapabilities, type StepFrequency, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type PredictionMode, type PredictionStatus, type RBXScriptConnection, type RunService, type RunState, type SecurityCapabilities, type StepFrequency, type UniqueId}
 
 @luau.property("ClientGitHash")
 pub fn get_client_git_hash(instance: RunService) -> String
 
 @luau.property("FrameNumber")
-pub fn get_frame_number(instance: RunService) -> Int
+pub fn get_frame_number(instance: RunService) -> OptionInt64
 
 @luau.property("RunState")
 pub fn get_run_state(instance: RunService) -> RunState
@@ -103,7 +104,7 @@ pub fn get_sandboxed(instance: RunService) -> Bool
 pub fn set_sandboxed(instance: RunService, value: Bool) -> RunService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: RunService) -> Int
+pub fn get_source_asset_id(instance: RunService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: RunService) -> UniqueId
@@ -148,7 +149,7 @@ pub fn get_actor(instance: RunService) -> Actor
 pub fn get_attribute(instance: RunService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: RunService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: RunService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: RunService) -> Dynamic
@@ -166,7 +167,7 @@ pub fn get_full_name(instance: RunService) -> String
 pub fn get_styled(instance: RunService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: RunService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: RunService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: RunService) -> List(Dynamic)
@@ -196,7 +197,7 @@ pub fn reset_property_to_default(instance: RunService, property: String) -> Nil
 pub fn set_attribute(instance: RunService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: RunService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: RunService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: RunService) -> RBXScriptSignal(Dynamic)
@@ -226,7 +227,7 @@ pub fn styled_properties_changed(instance: RunService) -> RBXScriptSignal(Dynami
 pub fn get_class_name(instance: RunService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: RunService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: RunService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: RunService, class_name: String) -> Bool

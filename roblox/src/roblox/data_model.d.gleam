@@ -1,10 +1,11 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CreatorType, type DataModel, type Genre, type Instance, type MatchmakingType, type RunService, type SecurityCapabilities, type UniqueId, type Workspace}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type CreatorType, type DataModel, type Genre, type Instance, type MatchmakingType, type OptionDouble, type OptionInt64, type RunService, type SecurityCapabilities, type UniqueId, type Workspace}
 
 @luau.property("CreatorId")
-pub fn get_creator_id(instance: DataModel) -> Int
+pub fn get_creator_id(instance: DataModel) -> OptionInt64
 
 @luau.property("CreatorType")
 pub fn get_creator_type(instance: DataModel) -> CreatorType
@@ -13,7 +14,7 @@ pub fn get_creator_type(instance: DataModel) -> CreatorType
 pub fn get_environment(instance: DataModel) -> String
 
 @luau.property("GameId")
-pub fn get_game_id(instance: DataModel) -> Int
+pub fn get_game_id(instance: DataModel) -> OptionInt64
 
 @luau.property("Genre")
 pub fn get_genre(instance: DataModel) -> Genre
@@ -28,7 +29,7 @@ pub fn get_job_id(instance: DataModel) -> String
 pub fn get_matchmaking_type(instance: DataModel) -> MatchmakingType
 
 @luau.property("PlaceId")
-pub fn get_place_id(instance: DataModel) -> Int
+pub fn get_place_id(instance: DataModel) -> OptionInt64
 
 @luau.property("PlaceVersion")
 pub fn get_place_version(instance: DataModel) -> Int
@@ -37,7 +38,7 @@ pub fn get_place_version(instance: DataModel) -> Int
 pub fn get_private_server_id(instance: DataModel) -> String
 
 @luau.property("PrivateServerOwnerId")
-pub fn get_private_server_owner_id(instance: DataModel) -> Int
+pub fn get_private_server_owner_id(instance: DataModel) -> OptionInt64
 
 @luau.property("RunService")
 pub fn get_run_service(instance: DataModel) -> RunService
@@ -109,7 +110,7 @@ pub fn get_sandboxed(instance: DataModel) -> Bool
 pub fn set_sandboxed(instance: DataModel, value: Bool) -> DataModel
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: DataModel) -> Int
+pub fn get_source_asset_id(instance: DataModel) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: DataModel) -> UniqueId
@@ -154,7 +155,7 @@ pub fn get_actor(instance: DataModel) -> Actor
 pub fn get_attribute(instance: DataModel, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: DataModel, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: DataModel, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: DataModel) -> Dynamic
@@ -172,7 +173,7 @@ pub fn get_full_name(instance: DataModel) -> String
 pub fn get_styled(instance: DataModel, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: DataModel, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: DataModel, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: DataModel) -> List(Dynamic)
@@ -202,7 +203,7 @@ pub fn reset_property_to_default(instance: DataModel, property: String) -> Nil
 pub fn set_attribute(instance: DataModel, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: DataModel, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: DataModel, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: DataModel) -> RBXScriptSignal(Dynamic)
@@ -232,7 +233,7 @@ pub fn styled_properties_changed(instance: DataModel) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: DataModel) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: DataModel, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: DataModel, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: DataModel, class_name: String) -> Bool

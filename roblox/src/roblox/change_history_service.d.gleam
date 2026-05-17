@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ChangeHistoryService, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ChangeHistoryService, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: ChangeHistoryService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: ChangeHistoryService) -> Bool
 pub fn set_sandboxed(instance: ChangeHistoryService, value: Bool) -> ChangeHistoryService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ChangeHistoryService) -> Int
+pub fn get_source_asset_id(instance: ChangeHistoryService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ChangeHistoryService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: ChangeHistoryService) -> Actor
 pub fn get_attribute(instance: ChangeHistoryService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ChangeHistoryService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ChangeHistoryService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ChangeHistoryService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: ChangeHistoryService) -> String
 pub fn get_styled(instance: ChangeHistoryService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ChangeHistoryService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ChangeHistoryService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ChangeHistoryService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: ChangeHistoryService, property: Strin
 pub fn set_attribute(instance: ChangeHistoryService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ChangeHistoryService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ChangeHistoryService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ChangeHistoryService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: ChangeHistoryService) -> RBXScriptSig
 pub fn get_class_name(instance: ChangeHistoryService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ChangeHistoryService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ChangeHistoryService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ChangeHistoryService, class_name: String) -> Bool

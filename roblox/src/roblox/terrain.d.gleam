@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type Instance, type Material, type NormalId, type PhysicalProperties, type Player, type Region3, type Region3int16, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type Terrain, type TerrainAcquisitionMethod, type TerrainIterateOperation, type TerrainModifyOperation, type TerrainReadOperation, type TerrainRegion, type TerrainWriteOperation, type UniqueId, type Vector3, type Vector3int16, type int?}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type Instance, type Material, type NormalId, type OptionDouble, type OptionInt, type OptionInt64, type PhysicalProperties, type Player, type Region3, type Region3int16, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type Terrain, type TerrainAcquisitionMethod, type TerrainIterateOperation, type TerrainModifyOperation, type TerrainReadOperation, type TerrainRegion, type TerrainWriteOperation, type UniqueId, type Vector3, type Vector3int16}
 
 @luau.property("LastUsedModificationMethod")
 pub fn get_last_used_modification_method(instance: Terrain) -> TerrainAcquisitionMethod
@@ -76,7 +77,7 @@ pub fn fill_region(instance: Terrain, region: Region3, resolution: Float, materi
 pub fn fill_wedge(instance: Terrain, cframe: CFrame, size: Vector3, material: Material) -> Nil
 
 @luau.method("GetBaseMaterialSlotIndex")
-pub fn get_base_material_slot_index(instance: Terrain, base_material: Material) -> int?
+pub fn get_base_material_slot_index(instance: Terrain, base_material: Material) -> OptionInt
 
 @luau.method("GetFirstCustomMaterialSlotIndex")
 pub fn get_first_custom_material_slot_index(instance: Terrain) -> Int
@@ -393,9 +394,6 @@ pub fn get_connected_parts(instance: Terrain, recursive: Bool) -> List(Instance)
 @luau.method("GetJoints")
 pub fn get_joints(instance: Terrain) -> List(Instance)
 
-@luau.method("GetMass")
-pub fn get_mass(instance: Terrain) -> Float
-
 @luau.method("GetNetworkOwner")
 pub fn get_network_owner(instance: Terrain) -> Instance
 
@@ -481,7 +479,7 @@ pub fn get_sandboxed(instance: Terrain) -> Bool
 pub fn set_sandboxed(instance: Terrain, value: Bool) -> Terrain
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Terrain) -> Int
+pub fn get_source_asset_id(instance: Terrain) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Terrain) -> UniqueId
@@ -526,7 +524,7 @@ pub fn get_actor(instance: Terrain) -> Actor
 pub fn get_attribute(instance: Terrain, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Terrain, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Terrain, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Terrain) -> Dynamic
@@ -544,7 +542,7 @@ pub fn get_full_name(instance: Terrain) -> String
 pub fn get_styled(instance: Terrain, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Terrain, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Terrain, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Terrain) -> List(Dynamic)
@@ -574,7 +572,7 @@ pub fn reset_property_to_default(instance: Terrain, property: String) -> Nil
 pub fn set_attribute(instance: Terrain, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Terrain, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Terrain, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Terrain) -> RBXScriptSignal(Dynamic)
@@ -604,7 +602,7 @@ pub fn styled_properties_changed(instance: Terrain) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Terrain) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Terrain, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Terrain, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Terrain, class_name: String) -> Bool

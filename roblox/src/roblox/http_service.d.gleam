@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type HttpContentType, type HttpService, type Instance, type Secret, type SecurityCapabilities, type UniqueId, type WebStreamClient, type WebStreamClientType}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type HttpContentType, type HttpService, type Instance, type OptionDouble, type OptionInt64, type Secret, type SecurityCapabilities, type UniqueId, type WebStreamClient, type WebStreamClientType}
 
 @luau.property("HttpEnabled")
 pub fn get_http_enabled(instance: HttpService) -> Bool
@@ -67,7 +68,7 @@ pub fn get_sandboxed(instance: HttpService) -> Bool
 pub fn set_sandboxed(instance: HttpService, value: Bool) -> HttpService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: HttpService) -> Int
+pub fn get_source_asset_id(instance: HttpService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: HttpService) -> UniqueId
@@ -112,7 +113,7 @@ pub fn get_actor(instance: HttpService) -> Actor
 pub fn get_attribute(instance: HttpService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: HttpService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: HttpService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: HttpService) -> Dynamic
@@ -130,7 +131,7 @@ pub fn get_full_name(instance: HttpService) -> String
 pub fn get_styled(instance: HttpService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: HttpService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: HttpService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: HttpService) -> List(Dynamic)
@@ -160,7 +161,7 @@ pub fn reset_property_to_default(instance: HttpService, property: String) -> Nil
 pub fn set_attribute(instance: HttpService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: HttpService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: HttpService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: HttpService) -> RBXScriptSignal(Dynamic)
@@ -190,7 +191,7 @@ pub fn styled_properties_changed(instance: HttpService) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: HttpService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: HttpService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: HttpService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: HttpService, class_name: String) -> Bool

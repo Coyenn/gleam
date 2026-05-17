@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CFrame, type Hat, type Instance, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type CFrame, type Hat, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("AttachmentForward")
 pub fn get_attachment_forward(instance: Hat) -> Vector3
@@ -67,7 +68,7 @@ pub fn get_sandboxed(instance: Hat) -> Bool
 pub fn set_sandboxed(instance: Hat, value: Bool) -> Hat
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Hat) -> Int
+pub fn get_source_asset_id(instance: Hat) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Hat) -> UniqueId
@@ -112,7 +113,7 @@ pub fn get_actor(instance: Hat) -> Actor
 pub fn get_attribute(instance: Hat, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Hat, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Hat, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Hat) -> Dynamic
@@ -130,7 +131,7 @@ pub fn get_full_name(instance: Hat) -> String
 pub fn get_styled(instance: Hat, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Hat, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Hat, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Hat) -> List(Dynamic)
@@ -160,7 +161,7 @@ pub fn reset_property_to_default(instance: Hat, property: String) -> Nil
 pub fn set_attribute(instance: Hat, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Hat, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Hat, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Hat) -> RBXScriptSignal(Dynamic)
@@ -190,7 +191,7 @@ pub fn styled_properties_changed(instance: Hat) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Hat) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Hat, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Hat, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Hat, class_name: String) -> Bool

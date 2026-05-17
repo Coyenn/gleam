@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AlphaMode, type Color3, type Content, type ContentId, type Instance, type ResamplerMode, type SecurityCapabilities, type SurfaceAppearance, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AlphaMode, type Color3, type Content, type ContentId, type Instance, type OptionDouble, type OptionInt64, type ResamplerMode, type SecurityCapabilities, type SurfaceAppearance, type UniqueId}
 
 @luau.property("AlphaMode")
 pub fn get_alpha_mode(instance: SurfaceAppearance) -> AlphaMode
@@ -97,7 +98,7 @@ pub fn get_sandboxed(instance: SurfaceAppearance) -> Bool
 pub fn set_sandboxed(instance: SurfaceAppearance, value: Bool) -> SurfaceAppearance
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: SurfaceAppearance) -> Int
+pub fn get_source_asset_id(instance: SurfaceAppearance) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: SurfaceAppearance) -> UniqueId
@@ -142,7 +143,7 @@ pub fn get_actor(instance: SurfaceAppearance) -> Actor
 pub fn get_attribute(instance: SurfaceAppearance, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: SurfaceAppearance, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: SurfaceAppearance, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: SurfaceAppearance) -> Dynamic
@@ -160,7 +161,7 @@ pub fn get_full_name(instance: SurfaceAppearance) -> String
 pub fn get_styled(instance: SurfaceAppearance, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: SurfaceAppearance, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: SurfaceAppearance, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: SurfaceAppearance) -> List(Dynamic)
@@ -190,7 +191,7 @@ pub fn reset_property_to_default(instance: SurfaceAppearance, property: String) 
 pub fn set_attribute(instance: SurfaceAppearance, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: SurfaceAppearance, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: SurfaceAppearance, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: SurfaceAppearance) -> RBXScriptSignal(Dynamic)
@@ -220,7 +221,7 @@ pub fn styled_properties_changed(instance: SurfaceAppearance) -> RBXScriptSignal
 pub fn get_class_name(instance: SurfaceAppearance) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: SurfaceAppearance, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: SurfaceAppearance, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: SurfaceAppearance, class_name: String) -> Bool

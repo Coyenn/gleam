@@ -16,7 +16,13 @@ def to_snake_case(name):
     name = re.sub(r'Vector3', 'Vector3', name)
     
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
-    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+    s2 = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+    return s2.replace(' _', '_').replace(' ', '_').replace('-', '_').replace('(', '_').replace(')', '_').replace('/', '_').replace('"', '').replace('__', '_').strip('_')
+
+def to_type_name(name):
+    if name == 'buffer':
+        return 'Buffer'
+    return name[:1].upper() + name[1:]
 
 def map_type(val_type):
     if isinstance(val_type, list):
@@ -26,24 +32,35 @@ def map_type(val_type):
     
     if name == 'bool': return 'Bool', ['Bool']
     if name == 'int': return 'Int', ['Int']
-    if name == 'int64': return 'Int', ['Int']
+    if name == 'int64': return 'OptionInt64', ['OptionInt64']
+    if name == 'int64?': return 'OptionInt64', ['OptionInt64']
     if name == 'float': return 'Float', ['Float']
-    if name == 'double': return 'Float', ['Float']
+    if name == 'double': return 'OptionDouble', ['OptionDouble']
+    if name == 'double?': return 'OptionDouble', ['OptionDouble']
     if name == 'string': return 'String', ['String']
     if name == 'string?': return 'Option(String)', ['Option', 'String']
     if name == 'void': return 'Nil', ['Nil']
     if name == 'null': return 'Nil', ['Nil']
     if name == 'Variant': return 'Dynamic', ['Dynamic']
+    if name == 'Variant?': return 'Dynamic', ['Dynamic']
     if name == 'Tuple': return 'Dynamic', ['Dynamic']
+    if name == 'Tuple?': return 'Dynamic', ['Dynamic']
     if name == 'Function': return 'Dynamic', ['Dynamic']
     if name == 'Array': return 'List(Dynamic)', ['List', 'Dynamic']
+    if name == 'Array?': return 'List(Dynamic)', ['List', 'Dynamic']
     if name == 'Dictionary': return 'Dynamic', ['Dynamic']
+    if name == 'Dictionary?': return 'Dynamic', ['Dynamic']
     if name == 'Map': return 'Dynamic', ['Dynamic']
     if name == 'Objects': return 'List(Instance)', ['List', 'Instance']
     if name == 'Instances': return 'List(Instance)', ['List', 'Instance']
+    if name == 'buffer': return 'Buffer', ['Buffer']
+    if name.endswith('?'):
+        base_name = name[:-1]
+        option_name = f'Option{to_type_name(base_name)}'
+        return option_name, [option_name]
     
     # It's a class, enum, or datatype
-    return name, [name]
+    return to_type_name(name), [to_type_name(name)]
 
 def generate():
     print(f"Downloading Roblox API dump from {API_DUMP_URL}...")
@@ -89,11 +106,13 @@ def generate():
     types_lines.append('// Generated types for Roblox API')
     types_lines.append('')
     for t in custom_types:
-        types_lines.append(f'pub opaque type {t}')
+        types_lines.append(f'pub type {t}')
         
     with open(os.path.join(os.path.dirname(__file__), '..', 'src', 'roblox', 'types.gleam'), 'w') as f:
         f.write('\n'.join(types_lines))
         
+    generated_header = '// Generated class bindings for Roblox API'
+
     # Generate classes
     for cls in classes:
         name = cls['Name']
@@ -118,13 +137,14 @@ def generate():
                 break
             current_cls = class_map.get(super_name)
             
-        lines = []
+        lines = [generated_header]
         
         used_custom_types = set()
         needs_option = False
         needs_dynamic = False
         needs_signal = False
         
+        generated_funcs = set()
         body_lines = []
         
         for member in members:
@@ -146,29 +166,47 @@ def generate():
             if m_snake in ['type', 'fn', 'let', 'case', 'import', 'pub', 'opaque', 'const', 'panic', 'todo', 'as', 'try', 'assert']:
                 m_snake = m_snake + '_'
                 
+            # Use lowercased name for deduplication
+            m_snake_lower = m_snake.lower()
+            
             if member['MemberType'] == 'Property':
                 val_type, base_types = map_type(member['ValueType'])
                 used_custom_types.update(set(base_types) - builtins)
                 if 'Option' in base_types: needs_option = True
                 if 'Dynamic' in base_types: needs_dynamic = True
                 
-                body_lines.append(f'@luau.property("{m_name}")')
-                body_lines.append(f'pub fn get_{m_snake}(instance: {name}) -> {val_type}')
-                body_lines.append('')
+                getter_name = f'get_{m_snake_lower}'
+                if getter_name not in generated_funcs:
+                    generated_funcs.add(getter_name)
+                    m_name_escaped = m_name.replace('"', '\\"')
+                    body_lines.append(f'@luau.property("{m_name_escaped}")')
+                    body_lines.append(f'pub fn get_{m_snake}(instance: {name}) -> {val_type}')
+                    body_lines.append('')
                 
                 if member.get('Security', {}).get('Write') == 'None' and 'ReadOnly' not in member.get('Tags', []):
-                    body_lines.append(f'@luau.set_property("{m_name}")')
-                    body_lines.append(f'pub fn set_{m_snake}(instance: {name}, value: {val_type}) -> {name}')
-                    body_lines.append('')
+                    setter_name = f'set_{m_snake_lower}'
+                    if setter_name not in generated_funcs:
+                        generated_funcs.add(setter_name)
+                        body_lines.append(f'@luau.set_property("{m_name_escaped}")')
+                        body_lines.append(f'pub fn set_{m_snake}(instance: {name}, value: {val_type}) -> {name}')
+                        body_lines.append('')
                     
             elif member['MemberType'] == 'Function':
                 if member.get('Security') != 'None':
                     continue
                     
+                if m_snake_lower in generated_funcs:
+                    continue
+                generated_funcs.add(m_snake_lower)
+                
                 ret_type, base_types = map_type(member['ReturnType'])
                 if m_name.startswith('FindFirst'):
                     ret_type = f'Option({ret_type})'
                     needs_option = True
+                
+                if ret_type == 'RBXScriptSignal':
+                    ret_type = 'RBXScriptSignal(Dynamic)'
+                    needs_dynamic = True
                 
                 if 'Option' in base_types: needs_option = True
                 if 'Dynamic' in base_types: needs_dynamic = True
@@ -177,8 +215,22 @@ def generate():
                 args = []
                 for p in member.get('Parameters', []):
                     p_name = to_snake_case(p['Name'])
+                    if not p_name:
+                        p_name = 'arg'
+                    
                     if p_name in ['type', 'fn', 'let', 'case', 'import', 'pub', 'opaque', 'const', 'panic', 'todo', 'as', 'try', 'assert']:
                         p_name = p_name + '_'
+                    
+                    if p_name == 'instance':
+                        p_name = 'instance_'
+                    
+                    # Ensure parameter names are unique
+                    original_p_name = p_name
+                    counter = 1
+                    while p_name in [a.split(':')[0].strip() for a in args]:
+                        p_name = f"{original_p_name}_{counter}"
+                        counter += 1
+                        
                     p_type, p_base_types = map_type(p['Type'])
                     if 'Option' in p_base_types: needs_option = True
                     if 'Dynamic' in p_base_types: needs_dynamic = True
@@ -187,7 +239,8 @@ def generate():
                     
                 args_str = ', '.join([f'instance: {name}'] + args)
                 
-                body_lines.append(f'@luau.method("{m_name}")')
+                m_name_escaped = m_name.replace('"', '\\"')
+                body_lines.append(f'@luau.method("{m_name_escaped}")')
                 body_lines.append(f'pub fn {m_snake}({args_str}) -> {ret_type}')
                 body_lines.append('')
                 
@@ -195,9 +248,14 @@ def generate():
                 if member.get('Security') != 'None':
                     continue
                     
+                if m_snake_lower in generated_funcs:
+                    continue
+                generated_funcs.add(m_snake_lower)
+                
                 needs_signal = True
                 needs_dynamic = True
-                body_lines.append(f'@luau.event("{m_name}")')
+                m_name_escaped = m_name.replace('"', '\\"')
+                body_lines.append(f'@luau.event("{m_name_escaped}")')
                 body_lines.append(f'pub fn {m_snake}(instance: {name}) -> RBXScriptSignal(Dynamic)')
                 body_lines.append('')
                 
@@ -208,7 +266,7 @@ def generate():
             lines.append('import roblox/signal.{type RBXScriptSignal}')
             used_custom_types.discard('RBXScriptSignal') # We import it from signal
         if needs_dynamic:
-            lines.append('import gleam/dynamic.{type Dynamic}')
+            lines.append('import roblox/dynamic.{type Dynamic}')
             
         used_custom_types.add(name) # Always need our own type
         

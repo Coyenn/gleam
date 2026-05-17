@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type FluidFidelity, type Instance, type Material, type NormalId, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type UnionOperation, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type FluidFidelity, type Instance, type Material, type NormalId, type OptionDouble, type OptionInt64, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type UnionOperation, type UniqueId, type Vector3}
 
 @luau.property("RenderFidelity")
 pub fn get_render_fidelity(instance: UnionOperation) -> RenderFidelity
@@ -300,9 +301,6 @@ pub fn get_connected_parts(instance: UnionOperation, recursive: Bool) -> List(In
 @luau.method("GetJoints")
 pub fn get_joints(instance: UnionOperation) -> List(Instance)
 
-@luau.method("GetMass")
-pub fn get_mass(instance: UnionOperation) -> Float
-
 @luau.method("GetNetworkOwner")
 pub fn get_network_owner(instance: UnionOperation) -> Instance
 
@@ -388,7 +386,7 @@ pub fn get_sandboxed(instance: UnionOperation) -> Bool
 pub fn set_sandboxed(instance: UnionOperation, value: Bool) -> UnionOperation
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: UnionOperation) -> Int
+pub fn get_source_asset_id(instance: UnionOperation) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: UnionOperation) -> UniqueId
@@ -433,7 +431,7 @@ pub fn get_actor(instance: UnionOperation) -> Actor
 pub fn get_attribute(instance: UnionOperation, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: UnionOperation, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: UnionOperation, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: UnionOperation) -> Dynamic
@@ -451,7 +449,7 @@ pub fn get_full_name(instance: UnionOperation) -> String
 pub fn get_styled(instance: UnionOperation, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: UnionOperation, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: UnionOperation, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: UnionOperation) -> List(Dynamic)
@@ -481,7 +479,7 @@ pub fn reset_property_to_default(instance: UnionOperation, property: String) -> 
 pub fn set_attribute(instance: UnionOperation, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: UnionOperation, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: UnionOperation, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: UnionOperation) -> RBXScriptSignal(Dynamic)
@@ -511,7 +509,7 @@ pub fn styled_properties_changed(instance: UnionOperation) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: UnionOperation) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: UnionOperation, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: UnionOperation, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: UnionOperation, class_name: String) -> Bool

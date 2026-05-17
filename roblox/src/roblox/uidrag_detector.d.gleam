@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Content, type ContentId, type GuiBase2d, type GuiObject, type Instance, type RBXScriptConnection, type SecurityCapabilities, type UDim2, type UIDragDetector, type UIDragDetectorBoundingBehavior, type UIDragDetectorDragRelativity, type UIDragDetectorDragSpace, type UIDragDetectorDragStyle, type UIDragDetectorResponseStyle, type UIDragSpeedAxisMapping, type UniqueId, type Vector2}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Content, type ContentId, type GuiBase2d, type GuiObject, type Instance, type OptionDouble, type OptionInt64, type RBXScriptConnection, type SecurityCapabilities, type UDim2, type UIDragDetector, type UIDragDetectorBoundingBehavior, type UIDragDetectorDragRelativity, type UIDragDetectorDragSpace, type UIDragDetectorDragStyle, type UIDragDetectorResponseStyle, type UIDragSpeedAxisMapping, type UniqueId, type Vector2}
 
 @luau.property("ActivatedCursorIcon")
 pub fn get_activated_cursor_icon(instance: UIDragDetector) -> ContentId
@@ -190,7 +191,7 @@ pub fn get_sandboxed(instance: UIDragDetector) -> Bool
 pub fn set_sandboxed(instance: UIDragDetector, value: Bool) -> UIDragDetector
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: UIDragDetector) -> Int
+pub fn get_source_asset_id(instance: UIDragDetector) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: UIDragDetector) -> UniqueId
@@ -235,7 +236,7 @@ pub fn get_actor(instance: UIDragDetector) -> Actor
 pub fn get_attribute(instance: UIDragDetector, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: UIDragDetector, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: UIDragDetector, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: UIDragDetector) -> Dynamic
@@ -253,7 +254,7 @@ pub fn get_full_name(instance: UIDragDetector) -> String
 pub fn get_styled(instance: UIDragDetector, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: UIDragDetector, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: UIDragDetector, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: UIDragDetector) -> List(Dynamic)
@@ -283,7 +284,7 @@ pub fn reset_property_to_default(instance: UIDragDetector, property: String) -> 
 pub fn set_attribute(instance: UIDragDetector, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: UIDragDetector, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: UIDragDetector, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: UIDragDetector) -> RBXScriptSignal(Dynamic)
@@ -313,7 +314,7 @@ pub fn styled_properties_changed(instance: UIDragDetector) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: UIDragDetector) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: UIDragDetector, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: UIDragDetector, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: UIDragDetector, class_name: String) -> Bool

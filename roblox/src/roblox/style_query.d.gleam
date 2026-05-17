@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type StyleQuery, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type StyleQuery, type UniqueId}
 
 @luau.property("IsActive")
 pub fn get_is_active(instance: StyleQuery) -> Bool
@@ -52,7 +53,7 @@ pub fn get_sandboxed(instance: StyleQuery) -> Bool
 pub fn set_sandboxed(instance: StyleQuery, value: Bool) -> StyleQuery
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: StyleQuery) -> Int
+pub fn get_source_asset_id(instance: StyleQuery) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: StyleQuery) -> UniqueId
@@ -97,7 +98,7 @@ pub fn get_actor(instance: StyleQuery) -> Actor
 pub fn get_attribute(instance: StyleQuery, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: StyleQuery, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: StyleQuery, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: StyleQuery) -> Dynamic
@@ -115,7 +116,7 @@ pub fn get_full_name(instance: StyleQuery) -> String
 pub fn get_styled(instance: StyleQuery, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: StyleQuery, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: StyleQuery, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: StyleQuery) -> List(Dynamic)
@@ -145,7 +146,7 @@ pub fn reset_property_to_default(instance: StyleQuery, property: String) -> Nil
 pub fn set_attribute(instance: StyleQuery, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: StyleQuery, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: StyleQuery, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: StyleQuery) -> RBXScriptSignal(Dynamic)
@@ -175,7 +176,7 @@ pub fn styled_properties_changed(instance: StyleQuery) -> RBXScriptSignal(Dynami
 pub fn get_class_name(instance: StyleQuery) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: StyleQuery, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: StyleQuery, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: StyleQuery, class_name: String) -> Bool

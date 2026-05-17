@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type FillDirection, type HorizontalAlignment, type Instance, type SecurityCapabilities, type SortOrder, type TableMajorAxis, type UDim2, type UITableLayout, type UniqueId, type Vector2, type VerticalAlignment}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type FillDirection, type HorizontalAlignment, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type SortOrder, type TableMajorAxis, type UDim2, type UITableLayout, type UniqueId, type Vector2, type VerticalAlignment}
 
 @luau.property("FillEmptySpaceColumns")
 pub fn get_fill_empty_space_columns(instance: UITableLayout) -> Bool
@@ -88,7 +89,7 @@ pub fn get_sandboxed(instance: UITableLayout) -> Bool
 pub fn set_sandboxed(instance: UITableLayout, value: Bool) -> UITableLayout
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: UITableLayout) -> Int
+pub fn get_source_asset_id(instance: UITableLayout) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: UITableLayout) -> UniqueId
@@ -133,7 +134,7 @@ pub fn get_actor(instance: UITableLayout) -> Actor
 pub fn get_attribute(instance: UITableLayout, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: UITableLayout, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: UITableLayout, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: UITableLayout) -> Dynamic
@@ -151,7 +152,7 @@ pub fn get_full_name(instance: UITableLayout) -> String
 pub fn get_styled(instance: UITableLayout, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: UITableLayout, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: UITableLayout, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: UITableLayout) -> List(Dynamic)
@@ -181,7 +182,7 @@ pub fn reset_property_to_default(instance: UITableLayout, property: String) -> N
 pub fn set_attribute(instance: UITableLayout, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: UITableLayout, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: UITableLayout, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: UITableLayout) -> RBXScriptSignal(Dynamic)
@@ -211,7 +212,7 @@ pub fn styled_properties_changed(instance: UITableLayout) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: UITableLayout) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: UITableLayout, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: UITableLayout, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: UITableLayout, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ImportSession, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ImportSession, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.event("UploadComplete")
 pub fn upload_complete(instance: ImportSession) -> RBXScriptSignal(Dynamic)
@@ -43,7 +44,7 @@ pub fn get_sandboxed(instance: ImportSession) -> Bool
 pub fn set_sandboxed(instance: ImportSession, value: Bool) -> ImportSession
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ImportSession) -> Int
+pub fn get_source_asset_id(instance: ImportSession) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ImportSession) -> UniqueId
@@ -88,7 +89,7 @@ pub fn get_actor(instance: ImportSession) -> Actor
 pub fn get_attribute(instance: ImportSession, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ImportSession, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ImportSession, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ImportSession) -> Dynamic
@@ -106,7 +107,7 @@ pub fn get_full_name(instance: ImportSession) -> String
 pub fn get_styled(instance: ImportSession, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ImportSession, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ImportSession, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ImportSession) -> List(Dynamic)
@@ -136,7 +137,7 @@ pub fn reset_property_to_default(instance: ImportSession, property: String) -> N
 pub fn set_attribute(instance: ImportSession, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ImportSession, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ImportSession, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ImportSession) -> RBXScriptSignal(Dynamic)
@@ -166,7 +167,7 @@ pub fn styled_properties_changed(instance: ImportSession) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: ImportSession) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ImportSession, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ImportSession, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ImportSession, class_name: String) -> Bool

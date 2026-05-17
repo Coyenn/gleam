@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type RecommendationPages, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type RecommendationPages, type SecurityCapabilities, type UniqueId}
 
 @luau.property("IsFinished")
 pub fn get_is_finished(instance: RecommendationPages) -> Bool
@@ -46,7 +47,7 @@ pub fn get_sandboxed(instance: RecommendationPages) -> Bool
 pub fn set_sandboxed(instance: RecommendationPages, value: Bool) -> RecommendationPages
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: RecommendationPages) -> Int
+pub fn get_source_asset_id(instance: RecommendationPages) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: RecommendationPages) -> UniqueId
@@ -91,7 +92,7 @@ pub fn get_actor(instance: RecommendationPages) -> Actor
 pub fn get_attribute(instance: RecommendationPages, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: RecommendationPages, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: RecommendationPages, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: RecommendationPages) -> Dynamic
@@ -109,7 +110,7 @@ pub fn get_full_name(instance: RecommendationPages) -> String
 pub fn get_styled(instance: RecommendationPages, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: RecommendationPages, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: RecommendationPages, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: RecommendationPages) -> List(Dynamic)
@@ -139,7 +140,7 @@ pub fn reset_property_to_default(instance: RecommendationPages, property: String
 pub fn set_attribute(instance: RecommendationPages, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: RecommendationPages, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: RecommendationPages, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: RecommendationPages) -> RBXScriptSignal(Dynamic)
@@ -169,7 +170,7 @@ pub fn styled_properties_changed(instance: RecommendationPages) -> RBXScriptSign
 pub fn get_class_name(instance: RecommendationPages) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: RecommendationPages, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: RecommendationPages, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: RecommendationPages, class_name: String) -> Bool

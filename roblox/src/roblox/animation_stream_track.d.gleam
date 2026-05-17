@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AnimationPriority, type AnimationStreamTrack, type FACSDataLod, type Instance, type SecurityCapabilities, type TrackerStreamAnimation, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AnimationPriority, type AnimationStreamTrack, type FACSDataLod, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TrackerStreamAnimation, type UniqueId}
 
 @luau.property("Animation")
 pub fn get_animation(instance: AnimationStreamTrack) -> TrackerStreamAnimation
@@ -58,7 +59,7 @@ pub fn get_sandboxed(instance: AnimationStreamTrack) -> Bool
 pub fn set_sandboxed(instance: AnimationStreamTrack, value: Bool) -> AnimationStreamTrack
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AnimationStreamTrack) -> Int
+pub fn get_source_asset_id(instance: AnimationStreamTrack) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AnimationStreamTrack) -> UniqueId
@@ -103,7 +104,7 @@ pub fn get_actor(instance: AnimationStreamTrack) -> Actor
 pub fn get_attribute(instance: AnimationStreamTrack, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AnimationStreamTrack, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AnimationStreamTrack, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AnimationStreamTrack) -> Dynamic
@@ -121,7 +122,7 @@ pub fn get_full_name(instance: AnimationStreamTrack) -> String
 pub fn get_styled(instance: AnimationStreamTrack, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AnimationStreamTrack, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AnimationStreamTrack, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AnimationStreamTrack) -> List(Dynamic)
@@ -151,7 +152,7 @@ pub fn reset_property_to_default(instance: AnimationStreamTrack, property: Strin
 pub fn set_attribute(instance: AnimationStreamTrack, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AnimationStreamTrack, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AnimationStreamTrack, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AnimationStreamTrack) -> RBXScriptSignal(Dynamic)
@@ -181,7 +182,7 @@ pub fn styled_properties_changed(instance: AnimationStreamTrack) -> RBXScriptSig
 pub fn get_class_name(instance: AnimationStreamTrack) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AnimationStreamTrack, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AnimationStreamTrack, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AnimationStreamTrack, class_name: String) -> Bool

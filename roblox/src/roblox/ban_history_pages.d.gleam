@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BanHistoryPages, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BanHistoryPages, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("IsFinished")
 pub fn get_is_finished(instance: BanHistoryPages) -> Bool
@@ -46,7 +47,7 @@ pub fn get_sandboxed(instance: BanHistoryPages) -> Bool
 pub fn set_sandboxed(instance: BanHistoryPages, value: Bool) -> BanHistoryPages
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: BanHistoryPages) -> Int
+pub fn get_source_asset_id(instance: BanHistoryPages) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: BanHistoryPages) -> UniqueId
@@ -91,7 +92,7 @@ pub fn get_actor(instance: BanHistoryPages) -> Actor
 pub fn get_attribute(instance: BanHistoryPages, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: BanHistoryPages, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: BanHistoryPages, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: BanHistoryPages) -> Dynamic
@@ -109,7 +110,7 @@ pub fn get_full_name(instance: BanHistoryPages) -> String
 pub fn get_styled(instance: BanHistoryPages, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: BanHistoryPages, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: BanHistoryPages, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: BanHistoryPages) -> List(Dynamic)
@@ -139,7 +140,7 @@ pub fn reset_property_to_default(instance: BanHistoryPages, property: String) ->
 pub fn set_attribute(instance: BanHistoryPages, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: BanHistoryPages, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: BanHistoryPages, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: BanHistoryPages) -> RBXScriptSignal(Dynamic)
@@ -169,7 +170,7 @@ pub fn styled_properties_changed(instance: BanHistoryPages) -> RBXScriptSignal(D
 pub fn get_class_name(instance: BanHistoryPages) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: BanHistoryPages, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: BanHistoryPages, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: BanHistoryPages, class_name: String) -> Bool

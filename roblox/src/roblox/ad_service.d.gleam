@@ -1,16 +1,17 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AdFormat, type AdReward, type AdService, type GuiButton, type Instance, type Player, type SecurityCapabilities, type ShowAdResult, type UniqueId, type int64?}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AdFormat, type AdReward, type AdService, type GuiButton, type Instance, type OptionDouble, type OptionInt64, type Player, type SecurityCapabilities, type ShowAdResult, type UniqueId}
 
 @luau.method("CreateAdRewardFromDevProductId")
-pub fn create_ad_reward_from_dev_product_id(instance: AdService, dev_product_id: Int) -> AdReward
+pub fn create_ad_reward_from_dev_product_id(instance: AdService, dev_product_id: OptionInt64) -> AdReward
 
 @luau.method("RegisterDisclosureButton")
 pub fn register_disclosure_button(instance: AdService, disclosure_button: GuiButton, ad_integration_placement_id: String) -> Nil
 
 @luau.method("UnregisterAdOpportunity")
-pub fn unregister_ad_opportunity(instance: AdService, instance: Instance) -> Nil
+pub fn unregister_ad_opportunity(instance: AdService, instance_: Instance) -> Nil
 
 @luau.method("GetAdAvailabilityNowAsync")
 pub fn get_ad_availability_now_async(instance: AdService, ad_format: AdFormat) -> Dynamic
@@ -19,10 +20,10 @@ pub fn get_ad_availability_now_async(instance: AdService, ad_format: AdFormat) -
 pub fn get_campaign_eligibility_async(instance: AdService, campaign_id: String, player: Player) -> Dynamic
 
 @luau.method("RegisterAdOpportunityAsync")
-pub fn register_ad_opportunity_async(instance: AdService, instance: Instance, placement_id: int64?) -> Nil
+pub fn register_ad_opportunity_async(instance: AdService, instance_: Instance, placement_id: OptionInt64) -> Nil
 
 @luau.method("ShowRewardedVideoAdAsync")
-pub fn show_rewarded_video_ad_async(instance: AdService, player: Player, reward: AdReward, placement_id: int64?) -> ShowAdResult
+pub fn show_rewarded_video_ad_async(instance: AdService, player: Player, reward: AdReward, placement_id: OptionInt64) -> ShowAdResult
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: AdService) -> Bool
@@ -58,7 +59,7 @@ pub fn get_sandboxed(instance: AdService) -> Bool
 pub fn set_sandboxed(instance: AdService, value: Bool) -> AdService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AdService) -> Int
+pub fn get_source_asset_id(instance: AdService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AdService) -> UniqueId
@@ -103,7 +104,7 @@ pub fn get_actor(instance: AdService) -> Actor
 pub fn get_attribute(instance: AdService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AdService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AdService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AdService) -> Dynamic
@@ -121,7 +122,7 @@ pub fn get_full_name(instance: AdService) -> String
 pub fn get_styled(instance: AdService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AdService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AdService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AdService) -> List(Dynamic)
@@ -151,7 +152,7 @@ pub fn reset_property_to_default(instance: AdService, property: String) -> Nil
 pub fn set_attribute(instance: AdService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AdService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AdService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AdService) -> RBXScriptSignal(Dynamic)
@@ -181,7 +182,7 @@ pub fn styled_properties_changed(instance: AdService) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: AdService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AdService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AdService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AdService, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type DebuggerManager, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type DebuggerManager, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("DebuggingEnabled")
 pub fn get_debugging_enabled(instance: DebuggerManager) -> Bool
@@ -55,7 +56,7 @@ pub fn get_sandboxed(instance: DebuggerManager) -> Bool
 pub fn set_sandboxed(instance: DebuggerManager, value: Bool) -> DebuggerManager
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: DebuggerManager) -> Int
+pub fn get_source_asset_id(instance: DebuggerManager) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: DebuggerManager) -> UniqueId
@@ -100,7 +101,7 @@ pub fn get_actor(instance: DebuggerManager) -> Actor
 pub fn get_attribute(instance: DebuggerManager, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: DebuggerManager, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: DebuggerManager, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: DebuggerManager) -> Dynamic
@@ -118,7 +119,7 @@ pub fn get_full_name(instance: DebuggerManager) -> String
 pub fn get_styled(instance: DebuggerManager, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: DebuggerManager, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: DebuggerManager, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: DebuggerManager) -> List(Dynamic)
@@ -148,7 +149,7 @@ pub fn reset_property_to_default(instance: DebuggerManager, property: String) ->
 pub fn set_attribute(instance: DebuggerManager, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: DebuggerManager, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: DebuggerManager, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: DebuggerManager) -> RBXScriptSignal(Dynamic)
@@ -178,7 +179,7 @@ pub fn styled_properties_changed(instance: DebuggerManager) -> RBXScriptSignal(D
 pub fn get_class_name(instance: DebuggerManager) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: DebuggerManager, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: DebuggerManager, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: DebuggerManager, class_name: String) -> Bool

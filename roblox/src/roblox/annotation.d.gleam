@@ -1,13 +1,14 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Annotation, type Color3, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Annotation, type Color3, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("AuthorColor3")
 pub fn get_author_color3(instance: Annotation) -> Color3
 
 @luau.property("AuthorId")
-pub fn get_author_id(instance: Annotation) -> Int
+pub fn get_author_id(instance: Annotation) -> OptionInt64
 
 @luau.property("ChannelId")
 pub fn get_channel_id(instance: Annotation) -> String
@@ -16,16 +17,16 @@ pub fn get_channel_id(instance: Annotation) -> String
 pub fn get_contents(instance: Annotation) -> String
 
 @luau.property("CreationTimeUnix")
-pub fn get_creation_time_unix(instance: Annotation) -> Int
+pub fn get_creation_time_unix(instance: Annotation) -> OptionInt64
 
 @luau.property("LastModifiedTimeUnix")
-pub fn get_last_modified_time_unix(instance: Annotation) -> Int
+pub fn get_last_modified_time_unix(instance: Annotation) -> OptionInt64
 
 @luau.property("LoadingReplies")
 pub fn get_loading_replies(instance: Annotation) -> Bool
 
 @luau.property("ReplyCount")
-pub fn get_reply_count(instance: Annotation) -> Int
+pub fn get_reply_count(instance: Annotation) -> OptionInt64
 
 @luau.property("Resolved")
 pub fn get_resolved(instance: Annotation) -> Bool
@@ -67,7 +68,7 @@ pub fn get_sandboxed(instance: Annotation) -> Bool
 pub fn set_sandboxed(instance: Annotation, value: Bool) -> Annotation
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Annotation) -> Int
+pub fn get_source_asset_id(instance: Annotation) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Annotation) -> UniqueId
@@ -112,7 +113,7 @@ pub fn get_actor(instance: Annotation) -> Actor
 pub fn get_attribute(instance: Annotation, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Annotation, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Annotation, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Annotation) -> Dynamic
@@ -130,7 +131,7 @@ pub fn get_full_name(instance: Annotation) -> String
 pub fn get_styled(instance: Annotation, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Annotation, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Annotation, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Annotation) -> List(Dynamic)
@@ -160,7 +161,7 @@ pub fn reset_property_to_default(instance: Annotation, property: String) -> Nil
 pub fn set_attribute(instance: Annotation, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Annotation, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Annotation, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Annotation) -> RBXScriptSignal(Dynamic)
@@ -190,7 +191,7 @@ pub fn styled_properties_changed(instance: Annotation) -> RBXScriptSignal(Dynami
 pub fn get_class_name(instance: Annotation) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Annotation, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Annotation, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Annotation, class_name: String) -> Bool

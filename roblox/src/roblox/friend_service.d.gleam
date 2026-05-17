@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type FriendService, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type FriendService, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: FriendService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: FriendService) -> Bool
 pub fn set_sandboxed(instance: FriendService, value: Bool) -> FriendService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: FriendService) -> Int
+pub fn get_source_asset_id(instance: FriendService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: FriendService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: FriendService) -> Actor
 pub fn get_attribute(instance: FriendService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: FriendService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: FriendService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: FriendService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: FriendService) -> String
 pub fn get_styled(instance: FriendService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: FriendService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: FriendService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: FriendService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: FriendService, property: String) -> N
 pub fn set_attribute(instance: FriendService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: FriendService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: FriendService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: FriendService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: FriendService) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: FriendService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: FriendService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: FriendService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: FriendService, class_name: String) -> Bool

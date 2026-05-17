@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type FeatureRestrictionManager, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type FeatureRestrictionManager, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: FeatureRestrictionManager) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: FeatureRestrictionManager) -> Bool
 pub fn set_sandboxed(instance: FeatureRestrictionManager, value: Bool) -> FeatureRestrictionManager
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: FeatureRestrictionManager) -> Int
+pub fn get_source_asset_id(instance: FeatureRestrictionManager) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: FeatureRestrictionManager) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: FeatureRestrictionManager) -> Actor
 pub fn get_attribute(instance: FeatureRestrictionManager, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: FeatureRestrictionManager, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: FeatureRestrictionManager, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: FeatureRestrictionManager) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: FeatureRestrictionManager) -> String
 pub fn get_styled(instance: FeatureRestrictionManager, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: FeatureRestrictionManager, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: FeatureRestrictionManager, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: FeatureRestrictionManager) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: FeatureRestrictionManager, property: 
 pub fn set_attribute(instance: FeatureRestrictionManager, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: FeatureRestrictionManager, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: FeatureRestrictionManager, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: FeatureRestrictionManager) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: FeatureRestrictionManager) -> RBXScri
 pub fn get_class_name(instance: FeatureRestrictionManager) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: FeatureRestrictionManager, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: FeatureRestrictionManager, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: FeatureRestrictionManager, class_name: String) -> Bool

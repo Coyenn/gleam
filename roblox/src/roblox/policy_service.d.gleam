@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type Player, type PolicyService, type SecurityCapabilities, type TriStateBoolean, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type Player, type PolicyService, type SecurityCapabilities, type TriStateBoolean, type UniqueId}
 
 @luau.property("IsLuobuServer")
 pub fn get_is_luobu_server(instance: PolicyService) -> TriStateBoolean
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: PolicyService) -> Bool
 pub fn set_sandboxed(instance: PolicyService, value: Bool) -> PolicyService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: PolicyService) -> Int
+pub fn get_source_asset_id(instance: PolicyService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: PolicyService) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: PolicyService) -> Actor
 pub fn get_attribute(instance: PolicyService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: PolicyService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: PolicyService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: PolicyService) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: PolicyService) -> String
 pub fn get_styled(instance: PolicyService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: PolicyService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: PolicyService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: PolicyService) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: PolicyService, property: String) -> N
 pub fn set_attribute(instance: PolicyService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: PolicyService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: PolicyService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: PolicyService) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: PolicyService) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: PolicyService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: PolicyService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: PolicyService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: PolicyService, class_name: String) -> Bool

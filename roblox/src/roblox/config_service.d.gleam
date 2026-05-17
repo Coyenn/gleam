@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ConfigService, type ConfigSnapshot, type Instance, type Player, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ConfigService, type ConfigSnapshot, type Instance, type OptionDouble, type OptionInt64, type Player, type SecurityCapabilities, type UniqueId}
 
 @luau.method("ClearTestingValue")
 pub fn clear_testing_value(instance: ConfigService, key: String) -> Nil
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: ConfigService) -> Bool
 pub fn set_sandboxed(instance: ConfigService, value: Bool) -> ConfigService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ConfigService) -> Int
+pub fn get_source_asset_id(instance: ConfigService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ConfigService) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: ConfigService) -> Actor
 pub fn get_attribute(instance: ConfigService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ConfigService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ConfigService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ConfigService) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: ConfigService) -> String
 pub fn get_styled(instance: ConfigService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ConfigService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ConfigService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ConfigService) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: ConfigService, property: String) -> N
 pub fn set_attribute(instance: ConfigService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ConfigService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ConfigService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ConfigService) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: ConfigService) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: ConfigService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ConfigService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ConfigService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ConfigService, class_name: String) -> Bool

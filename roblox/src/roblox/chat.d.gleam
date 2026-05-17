@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Chat, type ChatCallbackType, type ChatColor, type Instance, type Player, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Chat, type ChatCallbackType, type ChatColor, type Instance, type OptionDouble, type OptionInt64, type Player, type SecurityCapabilities, type UniqueId}
 
 @luau.property("BubbleChatEnabled")
 pub fn get_bubble_chat_enabled(instance: Chat) -> Bool
@@ -31,10 +32,10 @@ pub fn register_chat_callback(instance: Chat, callback_type: ChatCallbackType, c
 pub fn set_bubble_chat_settings(instance: Chat, settings: Dynamic) -> Nil
 
 @luau.method("CanUserChatAsync")
-pub fn can_user_chat_async(instance: Chat, user_id: Int) -> Bool
+pub fn can_user_chat_async(instance: Chat, user_id: OptionInt64) -> Bool
 
 @luau.method("CanUsersChatAsync")
-pub fn can_users_chat_async(instance: Chat, user_id_from: Int, user_id_to: Int) -> Bool
+pub fn can_users_chat_async(instance: Chat, user_id_from: OptionInt64, user_id_to: OptionInt64) -> Bool
 
 @luau.method("FilterStringAsync")
 pub fn filter_string_async(instance: Chat, string_to_filter: String, player_from: Player, player_to: Player) -> String
@@ -79,7 +80,7 @@ pub fn get_sandboxed(instance: Chat) -> Bool
 pub fn set_sandboxed(instance: Chat, value: Bool) -> Chat
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Chat) -> Int
+pub fn get_source_asset_id(instance: Chat) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Chat) -> UniqueId
@@ -124,7 +125,7 @@ pub fn get_actor(instance: Chat) -> Actor
 pub fn get_attribute(instance: Chat, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Chat, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Chat, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Chat) -> Dynamic
@@ -142,7 +143,7 @@ pub fn get_full_name(instance: Chat) -> String
 pub fn get_styled(instance: Chat, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Chat, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Chat, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Chat) -> List(Dynamic)
@@ -172,7 +173,7 @@ pub fn reset_property_to_default(instance: Chat, property: String) -> Nil
 pub fn set_attribute(instance: Chat, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Chat, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Chat, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Chat) -> RBXScriptSignal(Dynamic)
@@ -202,7 +203,7 @@ pub fn styled_properties_changed(instance: Chat) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Chat) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Chat, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Chat, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Chat, class_name: String) -> Bool

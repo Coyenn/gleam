@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AvatarCollisionRules, type AvatarSettingsCollisionMode, type AvatarSettingsHitAndTouchDetectionMode, type AvatarSettingsLegacyCollisionMode, type Instance, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AvatarCollisionRules, type AvatarSettingsCollisionMode, type AvatarSettingsHitAndTouchDetectionMode, type AvatarSettingsLegacyCollisionMode, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("CollisionMode")
 pub fn get_collision_mode(instance: AvatarCollisionRules) -> AvatarSettingsCollisionMode
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: AvatarCollisionRules) -> Bool
 pub fn set_sandboxed(instance: AvatarCollisionRules, value: Bool) -> AvatarCollisionRules
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AvatarCollisionRules) -> Int
+pub fn get_source_asset_id(instance: AvatarCollisionRules) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AvatarCollisionRules) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: AvatarCollisionRules) -> Actor
 pub fn get_attribute(instance: AvatarCollisionRules, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AvatarCollisionRules, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AvatarCollisionRules, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AvatarCollisionRules) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: AvatarCollisionRules) -> String
 pub fn get_styled(instance: AvatarCollisionRules, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AvatarCollisionRules, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AvatarCollisionRules, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AvatarCollisionRules) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: AvatarCollisionRules, property: Strin
 pub fn set_attribute(instance: AvatarCollisionRules, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AvatarCollisionRules, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AvatarCollisionRules, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AvatarCollisionRules) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: AvatarCollisionRules) -> RBXScriptSig
 pub fn get_class_name(instance: AvatarCollisionRules) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AvatarCollisionRules, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AvatarCollisionRules, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AvatarCollisionRules, class_name: String) -> Bool

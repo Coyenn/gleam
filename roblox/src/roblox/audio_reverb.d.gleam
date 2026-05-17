@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AudioReverb, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AudioReverb, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Bypass")
 pub fn get_bypass(instance: AudioReverb) -> Bool
@@ -127,7 +128,7 @@ pub fn get_sandboxed(instance: AudioReverb) -> Bool
 pub fn set_sandboxed(instance: AudioReverb, value: Bool) -> AudioReverb
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AudioReverb) -> Int
+pub fn get_source_asset_id(instance: AudioReverb) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AudioReverb) -> UniqueId
@@ -172,7 +173,7 @@ pub fn get_actor(instance: AudioReverb) -> Actor
 pub fn get_attribute(instance: AudioReverb, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AudioReverb, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AudioReverb, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AudioReverb) -> Dynamic
@@ -190,7 +191,7 @@ pub fn get_full_name(instance: AudioReverb) -> String
 pub fn get_styled(instance: AudioReverb, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AudioReverb, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AudioReverb, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AudioReverb) -> List(Dynamic)
@@ -220,7 +221,7 @@ pub fn reset_property_to_default(instance: AudioReverb, property: String) -> Nil
 pub fn set_attribute(instance: AudioReverb, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AudioReverb, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AudioReverb, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AudioReverb) -> RBXScriptSignal(Dynamic)
@@ -250,7 +251,7 @@ pub fn styled_properties_changed(instance: AudioReverb) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: AudioReverb) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AudioReverb, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AudioReverb, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AudioReverb, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type Teams, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type Teams, type UniqueId}
 
 @luau.method("GetTeams")
 pub fn get_teams(instance: Teams) -> List(Instance)
@@ -40,7 +41,7 @@ pub fn get_sandboxed(instance: Teams) -> Bool
 pub fn set_sandboxed(instance: Teams, value: Bool) -> Teams
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Teams) -> Int
+pub fn get_source_asset_id(instance: Teams) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Teams) -> UniqueId
@@ -85,7 +86,7 @@ pub fn get_actor(instance: Teams) -> Actor
 pub fn get_attribute(instance: Teams, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Teams, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Teams, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Teams) -> Dynamic
@@ -103,7 +104,7 @@ pub fn get_full_name(instance: Teams) -> String
 pub fn get_styled(instance: Teams, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Teams, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Teams, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Teams) -> List(Dynamic)
@@ -133,7 +134,7 @@ pub fn reset_property_to_default(instance: Teams, property: String) -> Nil
 pub fn set_attribute(instance: Teams, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Teams, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Teams, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Teams) -> RBXScriptSignal(Dynamic)
@@ -163,7 +164,7 @@ pub fn styled_properties_changed(instance: Teams) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Teams) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Teams, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Teams, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Teams, class_name: String) -> Bool

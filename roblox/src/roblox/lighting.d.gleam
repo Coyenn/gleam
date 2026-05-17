@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Color3, type Instance, type Lighting, type LightingStyle, type SecurityCapabilities, type Technology, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Color3, type Instance, type Lighting, type LightingStyle, type OptionDouble, type OptionInt64, type SecurityCapabilities, type Technology, type UniqueId, type Vector3}
 
 @luau.property("Ambient")
 pub fn get_ambient(instance: Lighting) -> Color3
@@ -22,16 +23,16 @@ pub fn get_clock_time(instance: Lighting) -> Float
 pub fn set_clock_time(instance: Lighting, value: Float) -> Lighting
 
 @luau.property("ColorShift_Bottom")
-pub fn get_color_shift__bottom(instance: Lighting) -> Color3
+pub fn get_color_shift_bottom(instance: Lighting) -> Color3
 
 @luau.set_property("ColorShift_Bottom")
-pub fn set_color_shift__bottom(instance: Lighting, value: Color3) -> Lighting
+pub fn set_color_shift_bottom(instance: Lighting, value: Color3) -> Lighting
 
 @luau.property("ColorShift_Top")
-pub fn get_color_shift__top(instance: Lighting) -> Color3
+pub fn get_color_shift_top(instance: Lighting) -> Color3
 
 @luau.set_property("ColorShift_Top")
-pub fn set_color_shift__top(instance: Lighting, value: Color3) -> Lighting
+pub fn set_color_shift_top(instance: Lighting, value: Color3) -> Lighting
 
 @luau.property("EnvironmentDiffuseScale")
 pub fn get_environment_diffuse_scale(instance: Lighting) -> Float
@@ -109,7 +110,7 @@ pub fn get_time_of_day(instance: Lighting) -> String
 pub fn set_time_of_day(instance: Lighting, value: String) -> Lighting
 
 @luau.method("GetMinutesAfterMidnight")
-pub fn get_minutes_after_midnight(instance: Lighting) -> Float
+pub fn get_minutes_after_midnight(instance: Lighting) -> OptionDouble
 
 @luau.method("GetMoonDirection")
 pub fn get_moon_direction(instance: Lighting) -> Vector3
@@ -121,7 +122,7 @@ pub fn get_moon_phase(instance: Lighting) -> Float
 pub fn get_sun_direction(instance: Lighting) -> Vector3
 
 @luau.method("SetMinutesAfterMidnight")
-pub fn set_minutes_after_midnight(instance: Lighting, minutes: Float) -> Nil
+pub fn set_minutes_after_midnight(instance: Lighting, minutes: OptionDouble) -> Nil
 
 @luau.event("LightingChanged")
 pub fn lighting_changed(instance: Lighting) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn get_sandboxed(instance: Lighting) -> Bool
 pub fn set_sandboxed(instance: Lighting, value: Bool) -> Lighting
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Lighting) -> Int
+pub fn get_source_asset_id(instance: Lighting) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Lighting) -> UniqueId
@@ -205,7 +206,7 @@ pub fn get_actor(instance: Lighting) -> Actor
 pub fn get_attribute(instance: Lighting, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Lighting, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Lighting, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Lighting) -> Dynamic
@@ -223,7 +224,7 @@ pub fn get_full_name(instance: Lighting) -> String
 pub fn get_styled(instance: Lighting, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Lighting, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Lighting, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Lighting) -> List(Dynamic)
@@ -253,7 +254,7 @@ pub fn reset_property_to_default(instance: Lighting, property: String) -> Nil
 pub fn set_attribute(instance: Lighting, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Lighting, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Lighting, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Lighting) -> RBXScriptSignal(Dynamic)
@@ -283,7 +284,7 @@ pub fn styled_properties_changed(instance: Lighting) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Lighting) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Lighting, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Lighting, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Lighting, class_name: String) -> Bool

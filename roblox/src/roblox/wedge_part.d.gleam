@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type Instance, type Material, type NormalId, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type UniqueId, type Vector3, type WedgePart}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type Instance, type Material, type NormalId, type OptionDouble, type OptionInt64, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type UniqueId, type Vector3, type WedgePart}
 
 @luau.property("Anchored")
 pub fn get_anchored(instance: WedgePart) -> Bool
@@ -261,9 +262,6 @@ pub fn get_connected_parts(instance: WedgePart, recursive: Bool) -> List(Instanc
 @luau.method("GetJoints")
 pub fn get_joints(instance: WedgePart) -> List(Instance)
 
-@luau.method("GetMass")
-pub fn get_mass(instance: WedgePart) -> Float
-
 @luau.method("GetNetworkOwner")
 pub fn get_network_owner(instance: WedgePart) -> Instance
 
@@ -349,7 +347,7 @@ pub fn get_sandboxed(instance: WedgePart) -> Bool
 pub fn set_sandboxed(instance: WedgePart, value: Bool) -> WedgePart
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: WedgePart) -> Int
+pub fn get_source_asset_id(instance: WedgePart) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: WedgePart) -> UniqueId
@@ -394,7 +392,7 @@ pub fn get_actor(instance: WedgePart) -> Actor
 pub fn get_attribute(instance: WedgePart, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: WedgePart, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: WedgePart, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: WedgePart) -> Dynamic
@@ -412,7 +410,7 @@ pub fn get_full_name(instance: WedgePart) -> String
 pub fn get_styled(instance: WedgePart, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: WedgePart, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: WedgePart, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: WedgePart) -> List(Dynamic)
@@ -442,7 +440,7 @@ pub fn reset_property_to_default(instance: WedgePart, property: String) -> Nil
 pub fn set_attribute(instance: WedgePart, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: WedgePart, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: WedgePart, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: WedgePart) -> RBXScriptSignal(Dynamic)
@@ -472,7 +470,7 @@ pub fn styled_properties_changed(instance: WedgePart) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: WedgePart) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: WedgePart, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: WedgePart, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: WedgePart, class_name: String) -> Bool

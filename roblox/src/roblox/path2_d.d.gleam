@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Color3, type Instance, type Path2D, type Path2DControlPoint, type Rect, type SecurityCapabilities, type UDim2, type UniqueId, type Vector2}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Color3, type Instance, type OptionDouble, type OptionInt64, type Path2D, type Path2DControlPoint, type Rect, type SecurityCapabilities, type UDim2, type UniqueId, type Vector2}
 
 @luau.property("Closed")
 pub fn get_closed(instance: Path2D) -> Bool
@@ -118,7 +119,7 @@ pub fn get_sandboxed(instance: Path2D) -> Bool
 pub fn set_sandboxed(instance: Path2D, value: Bool) -> Path2D
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Path2D) -> Int
+pub fn get_source_asset_id(instance: Path2D) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Path2D) -> UniqueId
@@ -163,7 +164,7 @@ pub fn get_actor(instance: Path2D) -> Actor
 pub fn get_attribute(instance: Path2D, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Path2D, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Path2D, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Path2D) -> Dynamic
@@ -181,7 +182,7 @@ pub fn get_full_name(instance: Path2D) -> String
 pub fn get_styled(instance: Path2D, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Path2D, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Path2D, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Path2D) -> List(Dynamic)
@@ -211,7 +212,7 @@ pub fn reset_property_to_default(instance: Path2D, property: String) -> Nil
 pub fn set_attribute(instance: Path2D, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Path2D, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Path2D, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Path2D) -> RBXScriptSignal(Dynamic)
@@ -241,7 +242,7 @@ pub fn styled_properties_changed(instance: Path2D) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Path2D) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Path2D, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Path2D, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Path2D, class_name: String) -> Bool

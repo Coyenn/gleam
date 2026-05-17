@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Content, type ContentId, type InputObject, type Instance, type KeyCode, type MouseBehavior, type Object, type OverrideMouseIconBehavior, type PreferredInput, type SecurityCapabilities, type TextBox, type UniqueId, type UserInputService, type UserInputType, type Vector2}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Content, type ContentId, type InputObject, type Instance, type KeyCode, type MouseBehavior, type Object, type OptionDouble, type OptionInt64, type OverrideMouseIconBehavior, type PreferredInput, type SecurityCapabilities, type TextBox, type UniqueId, type UserInputService, type UserInputType, type Vector2}
 
 @luau.property("AccelerometerEnabled")
 pub fn get_accelerometer_enabled(instance: UserInputService) -> Bool
@@ -55,7 +56,7 @@ pub fn set_mouse_icon_enabled(instance: UserInputService, value: Bool) -> UserIn
 pub fn get_nav_bar_size(instance: UserInputService) -> Vector2
 
 @luau.property("OnScreenKeyboardAnimationDuration")
-pub fn get_on_screen_keyboard_animation_duration(instance: UserInputService) -> Float
+pub fn get_on_screen_keyboard_animation_duration(instance: UserInputService) -> OptionDouble
 
 @luau.property("OnScreenKeyboardPosition")
 pub fn get_on_screen_keyboard_position(instance: UserInputService) -> Vector2
@@ -271,7 +272,7 @@ pub fn get_sandboxed(instance: UserInputService) -> Bool
 pub fn set_sandboxed(instance: UserInputService, value: Bool) -> UserInputService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: UserInputService) -> Int
+pub fn get_source_asset_id(instance: UserInputService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: UserInputService) -> UniqueId
@@ -316,7 +317,7 @@ pub fn get_actor(instance: UserInputService) -> Actor
 pub fn get_attribute(instance: UserInputService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: UserInputService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: UserInputService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: UserInputService) -> Dynamic
@@ -334,7 +335,7 @@ pub fn get_full_name(instance: UserInputService) -> String
 pub fn get_styled(instance: UserInputService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: UserInputService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: UserInputService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: UserInputService) -> List(Dynamic)
@@ -364,7 +365,7 @@ pub fn reset_property_to_default(instance: UserInputService, property: String) -
 pub fn set_attribute(instance: UserInputService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: UserInputService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: UserInputService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: UserInputService) -> RBXScriptSignal(Dynamic)
@@ -394,7 +395,7 @@ pub fn styled_properties_changed(instance: UserInputService) -> RBXScriptSignal(
 pub fn get_class_name(instance: UserInputService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: UserInputService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: UserInputService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: UserInputService, class_name: String) -> Bool

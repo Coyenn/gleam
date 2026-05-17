@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type Instance, type SecurityCapabilities, type UniqueId, type WeldConstraint}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type WeldConstraint}
 
 @luau.property("Active")
 pub fn get_active(instance: WeldConstraint) -> Bool
@@ -58,7 +59,7 @@ pub fn get_sandboxed(instance: WeldConstraint) -> Bool
 pub fn set_sandboxed(instance: WeldConstraint, value: Bool) -> WeldConstraint
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: WeldConstraint) -> Int
+pub fn get_source_asset_id(instance: WeldConstraint) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: WeldConstraint) -> UniqueId
@@ -103,7 +104,7 @@ pub fn get_actor(instance: WeldConstraint) -> Actor
 pub fn get_attribute(instance: WeldConstraint, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: WeldConstraint, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: WeldConstraint, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: WeldConstraint) -> Dynamic
@@ -121,7 +122,7 @@ pub fn get_full_name(instance: WeldConstraint) -> String
 pub fn get_styled(instance: WeldConstraint, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: WeldConstraint, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: WeldConstraint, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: WeldConstraint) -> List(Dynamic)
@@ -151,7 +152,7 @@ pub fn reset_property_to_default(instance: WeldConstraint, property: String) -> 
 pub fn set_attribute(instance: WeldConstraint, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: WeldConstraint, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: WeldConstraint, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: WeldConstraint) -> RBXScriptSignal(Dynamic)
@@ -181,7 +182,7 @@ pub fn styled_properties_changed(instance: WeldConstraint) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: WeldConstraint) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: WeldConstraint, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: WeldConstraint, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: WeldConstraint, class_name: String) -> Bool

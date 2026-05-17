@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type TrackerExtrapolationFlagMode, type TrackerLodController, type TrackerLodFlagMode, type TrackerLodValueMode, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TrackerExtrapolationFlagMode, type TrackerLodController, type TrackerLodFlagMode, type TrackerLodValueMode, type UniqueId}
 
 @luau.property("AudioMode")
 pub fn get_audio_mode(instance: TrackerLodController) -> TrackerLodFlagMode
@@ -61,7 +62,7 @@ pub fn get_sandboxed(instance: TrackerLodController) -> Bool
 pub fn set_sandboxed(instance: TrackerLodController, value: Bool) -> TrackerLodController
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TrackerLodController) -> Int
+pub fn get_source_asset_id(instance: TrackerLodController) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TrackerLodController) -> UniqueId
@@ -106,7 +107,7 @@ pub fn get_actor(instance: TrackerLodController) -> Actor
 pub fn get_attribute(instance: TrackerLodController, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TrackerLodController, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TrackerLodController, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TrackerLodController) -> Dynamic
@@ -124,7 +125,7 @@ pub fn get_full_name(instance: TrackerLodController) -> String
 pub fn get_styled(instance: TrackerLodController, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TrackerLodController, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TrackerLodController, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TrackerLodController) -> List(Dynamic)
@@ -154,7 +155,7 @@ pub fn reset_property_to_default(instance: TrackerLodController, property: Strin
 pub fn set_attribute(instance: TrackerLodController, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TrackerLodController, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TrackerLodController, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TrackerLodController) -> RBXScriptSignal(Dynamic)
@@ -184,7 +185,7 @@ pub fn styled_properties_changed(instance: TrackerLodController) -> RBXScriptSig
 pub fn get_class_name(instance: TrackerLodController) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TrackerLodController, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TrackerLodController, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TrackerLodController, class_name: String) -> Bool

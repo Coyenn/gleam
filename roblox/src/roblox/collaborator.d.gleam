@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CFrame, type Collaborator, type CollaboratorStatus, type Color3, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type CFrame, type Collaborator, type CollaboratorStatus, type Color3, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("CFrame")
 pub fn get_cframe(instance: Collaborator) -> CFrame
@@ -40,10 +41,10 @@ pub fn get_status(instance: Collaborator) -> CollaboratorStatus
 pub fn set_status(instance: Collaborator, value: CollaboratorStatus) -> Collaborator
 
 @luau.property("UserId")
-pub fn get_user_id(instance: Collaborator) -> Int
+pub fn get_user_id(instance: Collaborator) -> OptionInt64
 
 @luau.set_property("UserId")
-pub fn set_user_id(instance: Collaborator, value: Int) -> Collaborator
+pub fn set_user_id(instance: Collaborator, value: OptionInt64) -> Collaborator
 
 @luau.property("Username")
 pub fn get_username(instance: Collaborator) -> String
@@ -85,7 +86,7 @@ pub fn get_sandboxed(instance: Collaborator) -> Bool
 pub fn set_sandboxed(instance: Collaborator, value: Bool) -> Collaborator
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Collaborator) -> Int
+pub fn get_source_asset_id(instance: Collaborator) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Collaborator) -> UniqueId
@@ -130,7 +131,7 @@ pub fn get_actor(instance: Collaborator) -> Actor
 pub fn get_attribute(instance: Collaborator, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Collaborator, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Collaborator, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Collaborator) -> Dynamic
@@ -148,7 +149,7 @@ pub fn get_full_name(instance: Collaborator) -> String
 pub fn get_styled(instance: Collaborator, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Collaborator, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Collaborator, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Collaborator) -> List(Dynamic)
@@ -178,7 +179,7 @@ pub fn reset_property_to_default(instance: Collaborator, property: String) -> Ni
 pub fn set_attribute(instance: Collaborator, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Collaborator, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Collaborator, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Collaborator) -> RBXScriptSignal(Dynamic)
@@ -208,7 +209,7 @@ pub fn styled_properties_changed(instance: Collaborator) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: Collaborator) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Collaborator, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Collaborator, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Collaborator, class_name: String) -> Bool

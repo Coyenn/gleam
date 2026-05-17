@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CustomEventReceiver, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type CustomEventReceiver, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Source")
 pub fn get_source(instance: CustomEventReceiver) -> Instance
@@ -55,7 +56,7 @@ pub fn get_sandboxed(instance: CustomEventReceiver) -> Bool
 pub fn set_sandboxed(instance: CustomEventReceiver, value: Bool) -> CustomEventReceiver
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: CustomEventReceiver) -> Int
+pub fn get_source_asset_id(instance: CustomEventReceiver) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: CustomEventReceiver) -> UniqueId
@@ -100,7 +101,7 @@ pub fn get_actor(instance: CustomEventReceiver) -> Actor
 pub fn get_attribute(instance: CustomEventReceiver, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: CustomEventReceiver, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: CustomEventReceiver, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: CustomEventReceiver) -> Dynamic
@@ -118,7 +119,7 @@ pub fn get_full_name(instance: CustomEventReceiver) -> String
 pub fn get_styled(instance: CustomEventReceiver, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: CustomEventReceiver, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: CustomEventReceiver, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: CustomEventReceiver) -> List(Dynamic)
@@ -148,7 +149,7 @@ pub fn reset_property_to_default(instance: CustomEventReceiver, property: String
 pub fn set_attribute(instance: CustomEventReceiver, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: CustomEventReceiver, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: CustomEventReceiver, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: CustomEventReceiver) -> RBXScriptSignal(Dynamic)
@@ -178,7 +179,7 @@ pub fn styled_properties_changed(instance: CustomEventReceiver) -> RBXScriptSign
 pub fn get_class_name(instance: CustomEventReceiver) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: CustomEventReceiver, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: CustomEventReceiver, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: CustomEventReceiver, class_name: String) -> Bool

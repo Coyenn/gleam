@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AutomaticSize, type BorderMode, type Camera, type Color3, type EasingDirection, type EasingStyle, type GuiObject, type GuiState, type InputSink, type Instance, type LocalizationTable, type Rect, type SecurityCapabilities, type SelectionBehavior, type SizeConstraint, type UDim2, type UniqueId, type Vector2, type Vector3, type ViewportFrame}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AutomaticSize, type BorderMode, type Camera, type Color3, type EasingDirection, type EasingStyle, type GuiObject, type GuiState, type InputSink, type Instance, type LocalizationTable, type OptionDouble, type OptionInt64, type Rect, type SecurityCapabilities, type SelectionBehavior, type SizeConstraint, type UDim2, type UniqueId, type Vector2, type Vector3, type ViewportFrame}
 
 @luau.property("Ambient")
 pub fn get_ambient(instance: ViewportFrame) -> Color3
@@ -361,7 +362,7 @@ pub fn get_sandboxed(instance: ViewportFrame) -> Bool
 pub fn set_sandboxed(instance: ViewportFrame, value: Bool) -> ViewportFrame
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ViewportFrame) -> Int
+pub fn get_source_asset_id(instance: ViewportFrame) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ViewportFrame) -> UniqueId
@@ -406,7 +407,7 @@ pub fn get_actor(instance: ViewportFrame) -> Actor
 pub fn get_attribute(instance: ViewportFrame, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ViewportFrame, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ViewportFrame, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ViewportFrame) -> Dynamic
@@ -424,7 +425,7 @@ pub fn get_full_name(instance: ViewportFrame) -> String
 pub fn get_styled(instance: ViewportFrame, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ViewportFrame, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ViewportFrame, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ViewportFrame) -> List(Dynamic)
@@ -454,7 +455,7 @@ pub fn reset_property_to_default(instance: ViewportFrame, property: String) -> N
 pub fn set_attribute(instance: ViewportFrame, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ViewportFrame, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ViewportFrame, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ViewportFrame) -> RBXScriptSignal(Dynamic)
@@ -484,7 +485,7 @@ pub fn styled_properties_changed(instance: ViewportFrame) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: ViewportFrame) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ViewportFrame, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ViewportFrame, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ViewportFrame, class_name: String) -> Bool

@@ -1,6 +1,7 @@
+// Generated class bindings for Roblox API
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Capture, type CaptureType, type DateTime}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Capture, type CaptureType, type DateTime, type OptionInt64}
 
 @luau.property("CaptureTime")
 pub fn get_capture_time(instance: Capture) -> DateTime
@@ -15,16 +16,16 @@ pub fn get_file_path_string(instance: Capture) -> String
 pub fn get_local_id(instance: Capture) -> String
 
 @luau.property("SourcePlaceId")
-pub fn get_source_place_id(instance: Capture) -> Int
+pub fn get_source_place_id(instance: Capture) -> OptionInt64
 
 @luau.property("SourceUniverseId")
-pub fn get_source_universe_id(instance: Capture) -> Int
+pub fn get_source_universe_id(instance: Capture) -> OptionInt64
 
 @luau.property("ClassName")
 pub fn get_class_name(instance: Capture) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Capture, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Capture, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Capture, class_name: String) -> Bool

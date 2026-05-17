@@ -1,13 +1,14 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type TaskScheduler, type ThreadPoolConfig, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TaskScheduler, type ThreadPoolConfig, type UniqueId}
 
 @luau.property("SchedulerDutyCycle")
-pub fn get_scheduler_duty_cycle(instance: TaskScheduler) -> Float
+pub fn get_scheduler_duty_cycle(instance: TaskScheduler) -> OptionDouble
 
 @luau.property("SchedulerRate")
-pub fn get_scheduler_rate(instance: TaskScheduler) -> Float
+pub fn get_scheduler_rate(instance: TaskScheduler) -> OptionDouble
 
 @luau.property("ThreadPoolConfig")
 pub fn get_thread_pool_config(instance: TaskScheduler) -> ThreadPoolConfig
@@ -52,7 +53,7 @@ pub fn get_sandboxed(instance: TaskScheduler) -> Bool
 pub fn set_sandboxed(instance: TaskScheduler, value: Bool) -> TaskScheduler
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TaskScheduler) -> Int
+pub fn get_source_asset_id(instance: TaskScheduler) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TaskScheduler) -> UniqueId
@@ -97,7 +98,7 @@ pub fn get_actor(instance: TaskScheduler) -> Actor
 pub fn get_attribute(instance: TaskScheduler, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TaskScheduler, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TaskScheduler, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TaskScheduler) -> Dynamic
@@ -115,7 +116,7 @@ pub fn get_full_name(instance: TaskScheduler) -> String
 pub fn get_styled(instance: TaskScheduler, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TaskScheduler, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TaskScheduler, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TaskScheduler) -> List(Dynamic)
@@ -145,7 +146,7 @@ pub fn reset_property_to_default(instance: TaskScheduler, property: String) -> N
 pub fn set_attribute(instance: TaskScheduler, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TaskScheduler, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TaskScheduler, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TaskScheduler) -> RBXScriptSignal(Dynamic)
@@ -175,7 +176,7 @@ pub fn styled_properties_changed(instance: TaskScheduler) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: TaskScheduler) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TaskScheduler, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TaskScheduler, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TaskScheduler, class_name: String) -> Bool

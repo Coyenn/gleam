@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type FormFactorPart, type Instance, type Material, type NormalId, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type FormFactorPart, type Instance, type Material, type NormalId, type OptionDouble, type OptionInt64, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type UniqueId, type Vector3}
 
 @luau.property("Anchored")
 pub fn get_anchored(instance: FormFactorPart) -> Bool
@@ -261,9 +262,6 @@ pub fn get_connected_parts(instance: FormFactorPart, recursive: Bool) -> List(In
 @luau.method("GetJoints")
 pub fn get_joints(instance: FormFactorPart) -> List(Instance)
 
-@luau.method("GetMass")
-pub fn get_mass(instance: FormFactorPart) -> Float
-
 @luau.method("GetNetworkOwner")
 pub fn get_network_owner(instance: FormFactorPart) -> Instance
 
@@ -349,7 +347,7 @@ pub fn get_sandboxed(instance: FormFactorPart) -> Bool
 pub fn set_sandboxed(instance: FormFactorPart, value: Bool) -> FormFactorPart
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: FormFactorPart) -> Int
+pub fn get_source_asset_id(instance: FormFactorPart) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: FormFactorPart) -> UniqueId
@@ -394,7 +392,7 @@ pub fn get_actor(instance: FormFactorPart) -> Actor
 pub fn get_attribute(instance: FormFactorPart, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: FormFactorPart, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: FormFactorPart, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: FormFactorPart) -> Dynamic
@@ -412,7 +410,7 @@ pub fn get_full_name(instance: FormFactorPart) -> String
 pub fn get_styled(instance: FormFactorPart, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: FormFactorPart, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: FormFactorPart, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: FormFactorPart) -> List(Dynamic)
@@ -442,7 +440,7 @@ pub fn reset_property_to_default(instance: FormFactorPart, property: String) -> 
 pub fn set_attribute(instance: FormFactorPart, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: FormFactorPart, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: FormFactorPart, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: FormFactorPart) -> RBXScriptSignal(Dynamic)
@@ -472,7 +470,7 @@ pub fn styled_properties_changed(instance: FormFactorPart) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: FormFactorPart) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: FormFactorPart, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: FormFactorPart, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: FormFactorPart, class_name: String) -> Bool

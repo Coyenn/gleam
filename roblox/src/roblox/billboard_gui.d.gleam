@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BillboardGui, type Instance, type LocalizationTable, type Rect, type SecurityCapabilities, type SelectionBehavior, type UDim2, type UniqueId, type Vector2, type Vector3, type ZIndexBehavior}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BillboardGui, type Instance, type LocalizationTable, type OptionDouble, type OptionInt64, type Rect, type SecurityCapabilities, type SelectionBehavior, type UDim2, type UniqueId, type Vector2, type Vector3, type ZIndexBehavior}
 
 @luau.property("Active")
 pub fn get_active(instance: BillboardGui) -> Bool
@@ -217,7 +218,7 @@ pub fn get_sandboxed(instance: BillboardGui) -> Bool
 pub fn set_sandboxed(instance: BillboardGui, value: Bool) -> BillboardGui
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: BillboardGui) -> Int
+pub fn get_source_asset_id(instance: BillboardGui) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: BillboardGui) -> UniqueId
@@ -262,7 +263,7 @@ pub fn get_actor(instance: BillboardGui) -> Actor
 pub fn get_attribute(instance: BillboardGui, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: BillboardGui, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: BillboardGui, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: BillboardGui) -> Dynamic
@@ -280,7 +281,7 @@ pub fn get_full_name(instance: BillboardGui) -> String
 pub fn get_styled(instance: BillboardGui, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: BillboardGui, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: BillboardGui, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: BillboardGui) -> List(Dynamic)
@@ -310,7 +311,7 @@ pub fn reset_property_to_default(instance: BillboardGui, property: String) -> Ni
 pub fn set_attribute(instance: BillboardGui, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: BillboardGui, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: BillboardGui, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: BillboardGui) -> RBXScriptSignal(Dynamic)
@@ -340,7 +341,7 @@ pub fn styled_properties_changed(instance: BillboardGui) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: BillboardGui) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: BillboardGui, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: BillboardGui, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: BillboardGui, class_name: String) -> Bool

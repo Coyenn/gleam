@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type StudioService, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type StudioService, type UniqueId}
 
 @luau.property("ActiveScript")
 pub fn get_active_script(instance: StudioService) -> Instance
@@ -79,7 +80,7 @@ pub fn get_sandboxed(instance: StudioService) -> Bool
 pub fn set_sandboxed(instance: StudioService, value: Bool) -> StudioService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: StudioService) -> Int
+pub fn get_source_asset_id(instance: StudioService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: StudioService) -> UniqueId
@@ -124,7 +125,7 @@ pub fn get_actor(instance: StudioService) -> Actor
 pub fn get_attribute(instance: StudioService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: StudioService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: StudioService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: StudioService) -> Dynamic
@@ -142,7 +143,7 @@ pub fn get_full_name(instance: StudioService) -> String
 pub fn get_styled(instance: StudioService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: StudioService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: StudioService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: StudioService) -> List(Dynamic)
@@ -172,7 +173,7 @@ pub fn reset_property_to_default(instance: StudioService, property: String) -> N
 pub fn set_attribute(instance: StudioService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: StudioService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: StudioService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: StudioService) -> RBXScriptSignal(Dynamic)
@@ -202,7 +203,7 @@ pub fn styled_properties_changed(instance: StudioService) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: StudioService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: StudioService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: StudioService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: StudioService, class_name: String) -> Bool

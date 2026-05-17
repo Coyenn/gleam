@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type GroundController, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type GroundController, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("AccelerationLean")
 pub fn get_acceleration_lean(instance: GroundController) -> Float
@@ -118,7 +119,7 @@ pub fn get_sandboxed(instance: GroundController) -> Bool
 pub fn set_sandboxed(instance: GroundController, value: Bool) -> GroundController
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: GroundController) -> Int
+pub fn get_source_asset_id(instance: GroundController) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: GroundController) -> UniqueId
@@ -163,7 +164,7 @@ pub fn get_actor(instance: GroundController) -> Actor
 pub fn get_attribute(instance: GroundController, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: GroundController, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: GroundController, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: GroundController) -> Dynamic
@@ -181,7 +182,7 @@ pub fn get_full_name(instance: GroundController) -> String
 pub fn get_styled(instance: GroundController, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: GroundController, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: GroundController, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: GroundController) -> List(Dynamic)
@@ -211,7 +212,7 @@ pub fn reset_property_to_default(instance: GroundController, property: String) -
 pub fn set_attribute(instance: GroundController, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: GroundController, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: GroundController, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: GroundController) -> RBXScriptSignal(Dynamic)
@@ -241,7 +242,7 @@ pub fn styled_properties_changed(instance: GroundController) -> RBXScriptSignal(
 pub fn get_class_name(instance: GroundController) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: GroundController, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: GroundController, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: GroundController, class_name: String) -> Bool

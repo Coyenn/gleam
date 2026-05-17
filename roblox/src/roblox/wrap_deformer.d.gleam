@@ -1,10 +1,11 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CFrame, type Content, type ContentId, type CoordinateFrame?, type EditableMesh, type Instance, type SecurityCapabilities, type UniqueId, type WrapDeformer}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type CFrame, type Content, type ContentId, type EditableMesh, type Instance, type OptionCoordinateFrame, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type WrapDeformer}
 
 @luau.method("SetCageMeshContent")
-pub fn set_cage_mesh_content(instance: WrapDeformer, content: Content, cage_origin: CoordinateFrame?) -> Nil
+pub fn set_cage_mesh_content(instance: WrapDeformer, content: Content, cage_origin: OptionCoordinateFrame) -> Nil
 
 @luau.method("CreateEditableMeshAsync")
 pub fn create_editable_mesh_async(instance: WrapDeformer) -> EditableMesh
@@ -67,7 +68,7 @@ pub fn get_sandboxed(instance: WrapDeformer) -> Bool
 pub fn set_sandboxed(instance: WrapDeformer, value: Bool) -> WrapDeformer
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: WrapDeformer) -> Int
+pub fn get_source_asset_id(instance: WrapDeformer) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: WrapDeformer) -> UniqueId
@@ -112,7 +113,7 @@ pub fn get_actor(instance: WrapDeformer) -> Actor
 pub fn get_attribute(instance: WrapDeformer, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: WrapDeformer, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: WrapDeformer, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: WrapDeformer) -> Dynamic
@@ -130,7 +131,7 @@ pub fn get_full_name(instance: WrapDeformer) -> String
 pub fn get_styled(instance: WrapDeformer, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: WrapDeformer, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: WrapDeformer, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: WrapDeformer) -> List(Dynamic)
@@ -160,7 +161,7 @@ pub fn reset_property_to_default(instance: WrapDeformer, property: String) -> Ni
 pub fn set_attribute(instance: WrapDeformer, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: WrapDeformer, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: WrapDeformer, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: WrapDeformer) -> RBXScriptSignal(Dynamic)
@@ -190,7 +191,7 @@ pub fn styled_properties_changed(instance: WrapDeformer) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: WrapDeformer) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: WrapDeformer, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: WrapDeformer, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: WrapDeformer, class_name: String) -> Bool

@@ -1,13 +1,14 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type TextFilterResult, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TextFilterResult, type UniqueId}
 
 @luau.method("GetNonChatStringForBroadcastAsync")
 pub fn get_non_chat_string_for_broadcast_async(instance: TextFilterResult) -> String
 
 @luau.method("GetNonChatStringForUserAsync")
-pub fn get_non_chat_string_for_user_async(instance: TextFilterResult, to_user_id: Int) -> String
+pub fn get_non_chat_string_for_user_async(instance: TextFilterResult, to_user_id: OptionInt64) -> String
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: TextFilterResult) -> Bool
@@ -43,7 +44,7 @@ pub fn get_sandboxed(instance: TextFilterResult) -> Bool
 pub fn set_sandboxed(instance: TextFilterResult, value: Bool) -> TextFilterResult
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TextFilterResult) -> Int
+pub fn get_source_asset_id(instance: TextFilterResult) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TextFilterResult) -> UniqueId
@@ -88,7 +89,7 @@ pub fn get_actor(instance: TextFilterResult) -> Actor
 pub fn get_attribute(instance: TextFilterResult, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TextFilterResult, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TextFilterResult, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TextFilterResult) -> Dynamic
@@ -106,7 +107,7 @@ pub fn get_full_name(instance: TextFilterResult) -> String
 pub fn get_styled(instance: TextFilterResult, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TextFilterResult, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TextFilterResult, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TextFilterResult) -> List(Dynamic)
@@ -136,7 +137,7 @@ pub fn reset_property_to_default(instance: TextFilterResult, property: String) -
 pub fn set_attribute(instance: TextFilterResult, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TextFilterResult, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TextFilterResult, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TextFilterResult) -> RBXScriptSignal(Dynamic)
@@ -166,7 +167,7 @@ pub fn styled_properties_changed(instance: TextFilterResult) -> RBXScriptSignal(
 pub fn get_class_name(instance: TextFilterResult) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TextFilterResult, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TextFilterResult, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TextFilterResult, class_name: String) -> Bool

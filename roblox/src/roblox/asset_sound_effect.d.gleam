@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AssetSoundEffect, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AssetSoundEffect, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Enabled")
 pub fn get_enabled(instance: AssetSoundEffect) -> Bool
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: AssetSoundEffect) -> Bool
 pub fn set_sandboxed(instance: AssetSoundEffect, value: Bool) -> AssetSoundEffect
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AssetSoundEffect) -> Int
+pub fn get_source_asset_id(instance: AssetSoundEffect) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AssetSoundEffect) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: AssetSoundEffect) -> Actor
 pub fn get_attribute(instance: AssetSoundEffect, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AssetSoundEffect, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AssetSoundEffect, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AssetSoundEffect) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: AssetSoundEffect) -> String
 pub fn get_styled(instance: AssetSoundEffect, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AssetSoundEffect, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AssetSoundEffect, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AssetSoundEffect) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: AssetSoundEffect, property: String) -
 pub fn set_attribute(instance: AssetSoundEffect, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AssetSoundEffect, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AssetSoundEffect, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AssetSoundEffect) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: AssetSoundEffect) -> RBXScriptSignal(
 pub fn get_class_name(instance: AssetSoundEffect) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AssetSoundEffect, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AssetSoundEffect, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AssetSoundEffect, class_name: String) -> Bool

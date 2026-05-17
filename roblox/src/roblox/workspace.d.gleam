@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AnimatorRetargetingMode, type AuthorityMode, type BasePart, type BulkMoveMode, type CFrame, type Camera, type ClientAnimatorThrottlingMode, type Instance, type JointCreationMode, type LuauTypeCheckMode, type ModelLevelOfDetail, type ModelStreamingMode, type OverlapParams, type Player, type RaycastParams, type RaycastResult?, type SecurityCapabilities, type Terrain, type UniqueId, type Vector3, type Workspace}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AnimatorRetargetingMode, type AuthorityMode, type BasePart, type BulkMoveMode, type CFrame, type Camera, type ClientAnimatorThrottlingMode, type Instance, type JointCreationMode, type LuauTypeCheckMode, type ModelLevelOfDetail, type ModelStreamingMode, type OptionDouble, type OptionInt64, type OptionRaycastResult, type OverlapParams, type Player, type RaycastParams, type SecurityCapabilities, type Terrain, type UniqueId, type Vector3, type Workspace}
 
 @luau.property("AirDensity")
 pub fn get_air_density(instance: Workspace) -> Float
@@ -37,10 +38,10 @@ pub fn get_current_camera(instance: Workspace) -> Camera
 pub fn set_current_camera(instance: Workspace, value: Camera) -> Workspace
 
 @luau.property("DistributedGameTime")
-pub fn get_distributed_game_time(instance: Workspace) -> Float
+pub fn get_distributed_game_time(instance: Workspace) -> OptionDouble
 
 @luau.set_property("DistributedGameTime")
-pub fn set_distributed_game_time(instance: Workspace, value: Float) -> Workspace
+pub fn set_distributed_game_time(instance: Workspace, value: OptionDouble) -> Workspace
 
 @luau.property("FallHeightEnabled")
 pub fn get_fall_height_enabled(instance: Workspace) -> Bool
@@ -88,10 +89,10 @@ pub fn get_num_awake_parts(instance: Workspace) -> Int
 pub fn get_physics_throttling(instance: Workspace) -> Int
 
 @luau.method("GetRealPhysicsFPS")
-pub fn get_real_physics_fps(instance: Workspace) -> Float
+pub fn get_real_physics_fps(instance: Workspace) -> OptionDouble
 
 @luau.method("GetServerTimeNow")
-pub fn get_server_time_now(instance: Workspace) -> Float
+pub fn get_server_time_now(instance: Workspace) -> OptionDouble
 
 @luau.method("JoinToOutsiders")
 pub fn join_to_outsiders(instance: Workspace, objects: List(Instance), joint_type: JointCreationMode) -> Nil
@@ -112,7 +113,7 @@ pub fn get_physics_step_time(instance: Workspace) -> Float
 pub fn are_parts_touching_others(instance: Workspace, part_list: List(Instance), overlap_ignored: Float) -> Bool
 
 @luau.method("Blockcast")
-pub fn blockcast(instance: Workspace, cframe: CFrame, size: Vector3, direction: Vector3, params: RaycastParams) -> RaycastResult?
+pub fn blockcast(instance: Workspace, cframe: CFrame, size: Vector3, direction: Vector3, params: RaycastParams) -> OptionRaycastResult
 
 @luau.method("BulkMoveTo")
 pub fn bulk_move_to(instance: Workspace, part_list: List(Instance), cframe_list: List(Dynamic), event_mode: BulkMoveMode) -> Nil
@@ -127,13 +128,13 @@ pub fn get_part_bounds_in_radius(instance: Workspace, position: Vector3, radius:
 pub fn get_parts_in_part(instance: Workspace, part: BasePart, overlap_params: OverlapParams) -> List(Instance)
 
 @luau.method("Raycast")
-pub fn raycast(instance: Workspace, origin: Vector3, direction: Vector3, raycast_params: RaycastParams) -> RaycastResult?
+pub fn raycast(instance: Workspace, origin: Vector3, direction: Vector3, raycast_params: RaycastParams) -> OptionRaycastResult
 
 @luau.method("Shapecast")
-pub fn shapecast(instance: Workspace, part: BasePart, direction: Vector3, params: RaycastParams) -> RaycastResult?
+pub fn shapecast(instance: Workspace, part: BasePart, direction: Vector3, params: RaycastParams) -> OptionRaycastResult
 
 @luau.method("Spherecast")
-pub fn spherecast(instance: Workspace, position: Vector3, radius: Float, direction: Vector3, params: RaycastParams) -> RaycastResult?
+pub fn spherecast(instance: Workspace, position: Vector3, radius: Float, direction: Vector3, params: RaycastParams) -> OptionRaycastResult
 
 @luau.property("LevelOfDetail")
 pub fn get_level_of_detail(instance: Workspace) -> ModelLevelOfDetail
@@ -223,7 +224,7 @@ pub fn get_sandboxed(instance: Workspace) -> Bool
 pub fn set_sandboxed(instance: Workspace, value: Bool) -> Workspace
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Workspace) -> Int
+pub fn get_source_asset_id(instance: Workspace) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Workspace) -> UniqueId
@@ -268,7 +269,7 @@ pub fn get_actor(instance: Workspace) -> Actor
 pub fn get_attribute(instance: Workspace, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Workspace, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Workspace, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Workspace) -> Dynamic
@@ -286,7 +287,7 @@ pub fn get_full_name(instance: Workspace) -> String
 pub fn get_styled(instance: Workspace, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Workspace, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Workspace, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Workspace) -> List(Dynamic)
@@ -316,7 +317,7 @@ pub fn reset_property_to_default(instance: Workspace, property: String) -> Nil
 pub fn set_attribute(instance: Workspace, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Workspace, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Workspace, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Workspace) -> RBXScriptSignal(Dynamic)
@@ -346,7 +347,7 @@ pub fn styled_properties_changed(instance: Workspace) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: Workspace) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Workspace, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Workspace, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Workspace, class_name: String) -> Bool

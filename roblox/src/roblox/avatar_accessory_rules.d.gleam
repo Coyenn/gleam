@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AvatarAccessoryRules, type AvatarSettingsAccessoryLimitMethod, type AvatarSettingsAccessoryMode, type AvatarSettingsCustomAccessoryMode, type Instance, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AvatarAccessoryRules, type AvatarSettingsAccessoryLimitMethod, type AvatarSettingsAccessoryMode, type AvatarSettingsCustomAccessoryMode, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("AccessoryMode")
 pub fn get_accessory_mode(instance: AvatarAccessoryRules) -> AvatarSettingsAccessoryMode
@@ -13,49 +14,49 @@ pub fn get_custom_accessory_mode(instance: AvatarAccessoryRules) -> AvatarSettin
 pub fn get_custom_back_accessory_enabled(instance: AvatarAccessoryRules) -> Bool
 
 @luau.property("CustomBackAccessoryId")
-pub fn get_custom_back_accessory_id(instance: AvatarAccessoryRules) -> Int
+pub fn get_custom_back_accessory_id(instance: AvatarAccessoryRules) -> OptionInt64
 
 @luau.property("CustomFaceAccessoryEnabled")
 pub fn get_custom_face_accessory_enabled(instance: AvatarAccessoryRules) -> Bool
 
 @luau.property("CustomFaceAccessoryId")
-pub fn get_custom_face_accessory_id(instance: AvatarAccessoryRules) -> Int
+pub fn get_custom_face_accessory_id(instance: AvatarAccessoryRules) -> OptionInt64
 
 @luau.property("CustomFrontAccessoryEnabled")
 pub fn get_custom_front_accessory_enabled(instance: AvatarAccessoryRules) -> Bool
 
 @luau.property("CustomFrontAccessoryId")
-pub fn get_custom_front_accessory_id(instance: AvatarAccessoryRules) -> Int
+pub fn get_custom_front_accessory_id(instance: AvatarAccessoryRules) -> OptionInt64
 
 @luau.property("CustomHairAccessoryEnabled")
 pub fn get_custom_hair_accessory_enabled(instance: AvatarAccessoryRules) -> Bool
 
 @luau.property("CustomHairAccessoryId")
-pub fn get_custom_hair_accessory_id(instance: AvatarAccessoryRules) -> Int
+pub fn get_custom_hair_accessory_id(instance: AvatarAccessoryRules) -> OptionInt64
 
 @luau.property("CustomHeadAccessoryEnabled")
 pub fn get_custom_head_accessory_enabled(instance: AvatarAccessoryRules) -> Bool
 
 @luau.property("CustomHeadAccessoryId")
-pub fn get_custom_head_accessory_id(instance: AvatarAccessoryRules) -> Int
+pub fn get_custom_head_accessory_id(instance: AvatarAccessoryRules) -> OptionInt64
 
 @luau.property("CustomNeckAccessoryEnabled")
 pub fn get_custom_neck_accessory_enabled(instance: AvatarAccessoryRules) -> Bool
 
 @luau.property("CustomNeckAccessoryId")
-pub fn get_custom_neck_accessory_id(instance: AvatarAccessoryRules) -> Int
+pub fn get_custom_neck_accessory_id(instance: AvatarAccessoryRules) -> OptionInt64
 
 @luau.property("CustomShoulderAccessoryEnabled")
 pub fn get_custom_shoulder_accessory_enabled(instance: AvatarAccessoryRules) -> Bool
 
 @luau.property("CustomShoulderAccessoryId")
-pub fn get_custom_shoulder_accessory_id(instance: AvatarAccessoryRules) -> Int
+pub fn get_custom_shoulder_accessory_id(instance: AvatarAccessoryRules) -> OptionInt64
 
 @luau.property("CustomWaistAccessoryEnabled")
 pub fn get_custom_waist_accessory_enabled(instance: AvatarAccessoryRules) -> Bool
 
 @luau.property("CustomWaistAccessoryId")
-pub fn get_custom_waist_accessory_id(instance: AvatarAccessoryRules) -> Int
+pub fn get_custom_waist_accessory_id(instance: AvatarAccessoryRules) -> OptionInt64
 
 @luau.property("EnableSound")
 pub fn get_enable_sound(instance: AvatarAccessoryRules) -> Bool
@@ -103,7 +104,7 @@ pub fn get_sandboxed(instance: AvatarAccessoryRules) -> Bool
 pub fn set_sandboxed(instance: AvatarAccessoryRules, value: Bool) -> AvatarAccessoryRules
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AvatarAccessoryRules) -> Int
+pub fn get_source_asset_id(instance: AvatarAccessoryRules) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AvatarAccessoryRules) -> UniqueId
@@ -148,7 +149,7 @@ pub fn get_actor(instance: AvatarAccessoryRules) -> Actor
 pub fn get_attribute(instance: AvatarAccessoryRules, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AvatarAccessoryRules, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AvatarAccessoryRules, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AvatarAccessoryRules) -> Dynamic
@@ -166,7 +167,7 @@ pub fn get_full_name(instance: AvatarAccessoryRules) -> String
 pub fn get_styled(instance: AvatarAccessoryRules, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AvatarAccessoryRules, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AvatarAccessoryRules, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AvatarAccessoryRules) -> List(Dynamic)
@@ -196,7 +197,7 @@ pub fn reset_property_to_default(instance: AvatarAccessoryRules, property: Strin
 pub fn set_attribute(instance: AvatarAccessoryRules, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AvatarAccessoryRules, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AvatarAccessoryRules, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AvatarAccessoryRules) -> RBXScriptSignal(Dynamic)
@@ -226,7 +227,7 @@ pub fn styled_properties_changed(instance: AvatarAccessoryRules) -> RBXScriptSig
 pub fn get_class_name(instance: AvatarAccessoryRules) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AvatarAccessoryRules, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AvatarAccessoryRules, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AvatarAccessoryRules, class_name: String) -> Bool

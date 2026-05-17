@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BodyAngularVelocity, type Instance, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BodyAngularVelocity, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("AngularVelocity")
 pub fn get_angular_velocity(instance: BodyAngularVelocity) -> Vector3
@@ -55,7 +56,7 @@ pub fn get_sandboxed(instance: BodyAngularVelocity) -> Bool
 pub fn set_sandboxed(instance: BodyAngularVelocity, value: Bool) -> BodyAngularVelocity
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: BodyAngularVelocity) -> Int
+pub fn get_source_asset_id(instance: BodyAngularVelocity) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: BodyAngularVelocity) -> UniqueId
@@ -100,7 +101,7 @@ pub fn get_actor(instance: BodyAngularVelocity) -> Actor
 pub fn get_attribute(instance: BodyAngularVelocity, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: BodyAngularVelocity, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: BodyAngularVelocity, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: BodyAngularVelocity) -> Dynamic
@@ -118,7 +119,7 @@ pub fn get_full_name(instance: BodyAngularVelocity) -> String
 pub fn get_styled(instance: BodyAngularVelocity, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: BodyAngularVelocity, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: BodyAngularVelocity, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: BodyAngularVelocity) -> List(Dynamic)
@@ -148,7 +149,7 @@ pub fn reset_property_to_default(instance: BodyAngularVelocity, property: String
 pub fn set_attribute(instance: BodyAngularVelocity, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: BodyAngularVelocity, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: BodyAngularVelocity, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: BodyAngularVelocity) -> RBXScriptSignal(Dynamic)
@@ -178,7 +179,7 @@ pub fn styled_properties_changed(instance: BodyAngularVelocity) -> RBXScriptSign
 pub fn get_class_name(instance: BodyAngularVelocity) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: BodyAngularVelocity, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: BodyAngularVelocity, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: BodyAngularVelocity, class_name: String) -> Bool

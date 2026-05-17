@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type MetaBreakpointManager, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type MetaBreakpointManager, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: MetaBreakpointManager) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: MetaBreakpointManager) -> Bool
 pub fn set_sandboxed(instance: MetaBreakpointManager, value: Bool) -> MetaBreakpointManager
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: MetaBreakpointManager) -> Int
+pub fn get_source_asset_id(instance: MetaBreakpointManager) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: MetaBreakpointManager) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: MetaBreakpointManager) -> Actor
 pub fn get_attribute(instance: MetaBreakpointManager, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: MetaBreakpointManager, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: MetaBreakpointManager, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: MetaBreakpointManager) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: MetaBreakpointManager) -> String
 pub fn get_styled(instance: MetaBreakpointManager, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: MetaBreakpointManager, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: MetaBreakpointManager, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: MetaBreakpointManager) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: MetaBreakpointManager, property: Stri
 pub fn set_attribute(instance: MetaBreakpointManager, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: MetaBreakpointManager, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: MetaBreakpointManager, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: MetaBreakpointManager) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: MetaBreakpointManager) -> RBXScriptSi
 pub fn get_class_name(instance: MetaBreakpointManager) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: MetaBreakpointManager, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: MetaBreakpointManager, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: MetaBreakpointManager, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AudioEmitter, type AudioListener, type BinaryString, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AudioEmitter, type AudioListener, type BinaryString, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("AcousticSimulationEnabled")
 pub fn get_acoustic_simulation_enabled(instance: AudioListener) -> Bool
@@ -24,17 +25,11 @@ pub fn get_distance_attenuation(instance: AudioListener) -> BinaryString
 @luau.property("PositionOverride")
 pub fn get_position_override(instance: AudioListener) -> Instance
 
-@luau.method("GetAngleAttenuation")
-pub fn get_angle_attenuation(instance: AudioListener) -> Dynamic
-
 @luau.method("GetAudibilityFor")
 pub fn get_audibility_for(instance: AudioListener, emitter: AudioEmitter) -> Float
 
 @luau.method("GetConnectedWires")
 pub fn get_connected_wires(instance: AudioListener, pin: String) -> List(Instance)
-
-@luau.method("GetDistanceAttenuation")
-pub fn get_distance_attenuation(instance: AudioListener) -> Dynamic
 
 @luau.method("GetInputPins")
 pub fn get_input_pins(instance: AudioListener) -> List(Dynamic)
@@ -88,7 +83,7 @@ pub fn get_sandboxed(instance: AudioListener) -> Bool
 pub fn set_sandboxed(instance: AudioListener, value: Bool) -> AudioListener
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AudioListener) -> Int
+pub fn get_source_asset_id(instance: AudioListener) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AudioListener) -> UniqueId
@@ -133,7 +128,7 @@ pub fn get_actor(instance: AudioListener) -> Actor
 pub fn get_attribute(instance: AudioListener, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AudioListener, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AudioListener, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AudioListener) -> Dynamic
@@ -151,7 +146,7 @@ pub fn get_full_name(instance: AudioListener) -> String
 pub fn get_styled(instance: AudioListener, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AudioListener, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AudioListener, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AudioListener) -> List(Dynamic)
@@ -181,7 +176,7 @@ pub fn reset_property_to_default(instance: AudioListener, property: String) -> N
 pub fn set_attribute(instance: AudioListener, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AudioListener, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AudioListener, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AudioListener) -> RBXScriptSignal(Dynamic)
@@ -211,7 +206,7 @@ pub fn styled_properties_changed(instance: AudioListener) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: AudioListener) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AudioListener, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AudioListener, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AudioListener, class_name: String) -> Bool

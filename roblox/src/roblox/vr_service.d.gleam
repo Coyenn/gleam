@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CFrame, type Instance, type SecurityCapabilities, type UniqueId, type UserCFrame, type VRControllerModelMode, type VRLaserPointerMode, type VRScaling, type VRService, type VRSessionState, type VRTouchpad, type VRTouchpadMode}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type CFrame, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type UserCFrame, type VRControllerModelMode, type VRLaserPointerMode, type VRScaling, type VRService, type VRSessionState, type VRTouchpad, type VRTouchpadMode}
 
 @luau.property("AutomaticScaling")
 pub fn get_automatic_scaling(instance: VRService) -> VRScaling
@@ -133,7 +134,7 @@ pub fn get_sandboxed(instance: VRService) -> Bool
 pub fn set_sandboxed(instance: VRService, value: Bool) -> VRService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: VRService) -> Int
+pub fn get_source_asset_id(instance: VRService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: VRService) -> UniqueId
@@ -178,7 +179,7 @@ pub fn get_actor(instance: VRService) -> Actor
 pub fn get_attribute(instance: VRService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: VRService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: VRService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: VRService) -> Dynamic
@@ -196,7 +197,7 @@ pub fn get_full_name(instance: VRService) -> String
 pub fn get_styled(instance: VRService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: VRService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: VRService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: VRService) -> List(Dynamic)
@@ -226,7 +227,7 @@ pub fn reset_property_to_default(instance: VRService, property: String) -> Nil
 pub fn set_attribute(instance: VRService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: VRService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: VRService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: VRService) -> RBXScriptSignal(Dynamic)
@@ -256,7 +257,7 @@ pub fn styled_properties_changed(instance: VRService) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: VRService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: VRService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: VRService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: VRService, class_name: String) -> Bool

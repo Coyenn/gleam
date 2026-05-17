@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BackpackItem, type BasePart, type CFrame, type Content, type ContentId, type Instance, type ModelLevelOfDetail, type ModelStreamingMode, type Player, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BackpackItem, type BasePart, type CFrame, type Content, type ContentId, type Instance, type ModelLevelOfDetail, type ModelStreamingMode, type OptionDouble, type OptionInt64, type Player, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("TextureContent")
 pub fn get_texture_content(instance: BackpackItem) -> Content
@@ -103,7 +104,7 @@ pub fn get_sandboxed(instance: BackpackItem) -> Bool
 pub fn set_sandboxed(instance: BackpackItem, value: Bool) -> BackpackItem
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: BackpackItem) -> Int
+pub fn get_source_asset_id(instance: BackpackItem) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: BackpackItem) -> UniqueId
@@ -148,7 +149,7 @@ pub fn get_actor(instance: BackpackItem) -> Actor
 pub fn get_attribute(instance: BackpackItem, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: BackpackItem, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: BackpackItem, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: BackpackItem) -> Dynamic
@@ -166,7 +167,7 @@ pub fn get_full_name(instance: BackpackItem) -> String
 pub fn get_styled(instance: BackpackItem, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: BackpackItem, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: BackpackItem, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: BackpackItem) -> List(Dynamic)
@@ -196,7 +197,7 @@ pub fn reset_property_to_default(instance: BackpackItem, property: String) -> Ni
 pub fn set_attribute(instance: BackpackItem, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: BackpackItem, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: BackpackItem, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: BackpackItem) -> RBXScriptSignal(Dynamic)
@@ -226,7 +227,7 @@ pub fn styled_properties_changed(instance: BackpackItem) -> RBXScriptSignal(Dyna
 pub fn get_class_name(instance: BackpackItem) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: BackpackItem, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: BackpackItem, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: BackpackItem, class_name: String) -> Bool

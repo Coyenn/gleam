@@ -540,6 +540,8 @@ Acceptance:
 
 Once basic Roblox code works, invest in APIs that make Gleam valuable on Roblox.
 
+Status: completed for the first pass. The Roblox package now includes typed `RemoteEvent` and `RemoteFunction` wrappers, decoder/encoder boundaries for payload validation, signal connection helpers, and Roblox `task` bindings. Generated Roblox API declarations are reproducible from `roblox/codegen/generate.py`.
+
 Features:
 
 - typed `RemoteEvent` wrappers

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type UniqueId, type WebSocketClient, type WebSocketState}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type WebSocketClient, type WebSocketState}
 
 @luau.property("ConnectionState")
 pub fn get_connection_state(instance: WebSocketClient) -> WebSocketState
@@ -55,7 +56,7 @@ pub fn get_sandboxed(instance: WebSocketClient) -> Bool
 pub fn set_sandboxed(instance: WebSocketClient, value: Bool) -> WebSocketClient
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: WebSocketClient) -> Int
+pub fn get_source_asset_id(instance: WebSocketClient) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: WebSocketClient) -> UniqueId
@@ -100,7 +101,7 @@ pub fn get_actor(instance: WebSocketClient) -> Actor
 pub fn get_attribute(instance: WebSocketClient, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: WebSocketClient, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: WebSocketClient, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: WebSocketClient) -> Dynamic
@@ -118,7 +119,7 @@ pub fn get_full_name(instance: WebSocketClient) -> String
 pub fn get_styled(instance: WebSocketClient, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: WebSocketClient, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: WebSocketClient, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: WebSocketClient) -> List(Dynamic)
@@ -148,7 +149,7 @@ pub fn reset_property_to_default(instance: WebSocketClient, property: String) ->
 pub fn set_attribute(instance: WebSocketClient, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: WebSocketClient, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: WebSocketClient, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: WebSocketClient) -> RBXScriptSignal(Dynamic)
@@ -178,7 +179,7 @@ pub fn styled_properties_changed(instance: WebSocketClient) -> RBXScriptSignal(D
 pub fn get_class_name(instance: WebSocketClient) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: WebSocketClient, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: WebSocketClient, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: WebSocketClient, class_name: String) -> Bool

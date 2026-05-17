@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type NetworkSettings, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type NetworkSettings, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("EmulatedTotalMemoryInMB")
 pub fn get_emulated_total_memory_in_mb(instance: NetworkSettings) -> Int
@@ -25,10 +26,10 @@ pub fn get_inbound_network_loss_percent(instance: NetworkSettings) -> Float
 pub fn get_inbound_network_min_delay_ms(instance: NetworkSettings) -> Float
 
 @luau.property("IncomingReplicationLag")
-pub fn get_incoming_replication_lag(instance: NetworkSettings) -> Float
+pub fn get_incoming_replication_lag(instance: NetworkSettings) -> OptionDouble
 
 @luau.set_property("IncomingReplicationLag")
-pub fn set_incoming_replication_lag(instance: NetworkSettings, value: Float) -> NetworkSettings
+pub fn set_incoming_replication_lag(instance: NetworkSettings, value: OptionDouble) -> NetworkSettings
 
 @luau.property("OutboundNetworkJitterMs")
 pub fn get_outbound_network_jitter_ms(instance: NetworkSettings) -> Float
@@ -109,7 +110,7 @@ pub fn get_sandboxed(instance: NetworkSettings) -> Bool
 pub fn set_sandboxed(instance: NetworkSettings, value: Bool) -> NetworkSettings
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: NetworkSettings) -> Int
+pub fn get_source_asset_id(instance: NetworkSettings) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: NetworkSettings) -> UniqueId
@@ -154,7 +155,7 @@ pub fn get_actor(instance: NetworkSettings) -> Actor
 pub fn get_attribute(instance: NetworkSettings, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: NetworkSettings, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: NetworkSettings, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: NetworkSettings) -> Dynamic
@@ -172,7 +173,7 @@ pub fn get_full_name(instance: NetworkSettings) -> String
 pub fn get_styled(instance: NetworkSettings, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: NetworkSettings, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: NetworkSettings, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: NetworkSettings) -> List(Dynamic)
@@ -202,7 +203,7 @@ pub fn reset_property_to_default(instance: NetworkSettings, property: String) ->
 pub fn set_attribute(instance: NetworkSettings, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: NetworkSettings, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: NetworkSettings, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: NetworkSettings) -> RBXScriptSignal(Dynamic)
@@ -232,7 +233,7 @@ pub fn styled_properties_changed(instance: NetworkSettings) -> RBXScriptSignal(D
 pub fn get_class_name(instance: NetworkSettings) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: NetworkSettings, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: NetworkSettings, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: NetworkSettings, class_name: String) -> Bool

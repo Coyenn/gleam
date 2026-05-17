@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type TestCase, type TestService, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TestCase, type TestService, type UniqueId}
 
 @luau.property("AutoRuns")
 pub fn get_auto_runs(instance: TestService) -> Bool
@@ -43,10 +44,10 @@ pub fn get_number_of_players(instance: TestService) -> Int
 pub fn set_number_of_players(instance: TestService, value: Int) -> TestService
 
 @luau.property("SimulateSecondsLag")
-pub fn get_simulate_seconds_lag(instance: TestService) -> Float
+pub fn get_simulate_seconds_lag(instance: TestService) -> OptionDouble
 
 @luau.set_property("SimulateSecondsLag")
-pub fn set_simulate_seconds_lag(instance: TestService, value: Float) -> TestService
+pub fn set_simulate_seconds_lag(instance: TestService, value: OptionDouble) -> TestService
 
 @luau.property("TestCount")
 pub fn get_test_count(instance: TestService) -> Int
@@ -58,10 +59,10 @@ pub fn get_throttle_physics_to_realtime(instance: TestService) -> Bool
 pub fn set_throttle_physics_to_realtime(instance: TestService, value: Bool) -> TestService
 
 @luau.property("Timeout")
-pub fn get_timeout(instance: TestService) -> Float
+pub fn get_timeout(instance: TestService) -> OptionDouble
 
 @luau.set_property("Timeout")
-pub fn set_timeout(instance: TestService, value: Float) -> TestService
+pub fn set_timeout(instance: TestService, value: OptionDouble) -> TestService
 
 @luau.property("WarnCount")
 pub fn get_warn_count(instance: TestService) -> Int
@@ -157,7 +158,7 @@ pub fn get_sandboxed(instance: TestService) -> Bool
 pub fn set_sandboxed(instance: TestService, value: Bool) -> TestService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TestService) -> Int
+pub fn get_source_asset_id(instance: TestService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TestService) -> UniqueId
@@ -202,7 +203,7 @@ pub fn get_actor(instance: TestService) -> Actor
 pub fn get_attribute(instance: TestService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TestService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TestService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TestService) -> Dynamic
@@ -220,7 +221,7 @@ pub fn get_full_name(instance: TestService) -> String
 pub fn get_styled(instance: TestService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TestService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TestService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TestService) -> List(Dynamic)
@@ -250,7 +251,7 @@ pub fn reset_property_to_default(instance: TestService, property: String) -> Nil
 pub fn set_attribute(instance: TestService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TestService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TestService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TestService) -> RBXScriptSignal(Dynamic)
@@ -280,7 +281,7 @@ pub fn styled_properties_changed(instance: TestService) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: TestService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TestService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TestService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TestService, class_name: String) -> Bool

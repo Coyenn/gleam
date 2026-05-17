@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ContentId, type Instance, type KeyframeSequenceProvider, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ContentId, type Instance, type KeyframeSequenceProvider, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.method("RegisterActiveKeyframeSequence")
 pub fn register_active_keyframe_sequence(instance: KeyframeSequenceProvider, keyframe_sequence: Instance) -> ContentId
@@ -10,7 +11,7 @@ pub fn register_active_keyframe_sequence(instance: KeyframeSequenceProvider, key
 pub fn register_keyframe_sequence(instance: KeyframeSequenceProvider, keyframe_sequence: Instance) -> ContentId
 
 @luau.method("GetAnimationsAsync")
-pub fn get_animations_async(instance: KeyframeSequenceProvider, user_id: Int) -> Instance
+pub fn get_animations_async(instance: KeyframeSequenceProvider, user_id: OptionInt64) -> Instance
 
 @luau.method("GetKeyframeSequenceAsync")
 pub fn get_keyframe_sequence_async(instance: KeyframeSequenceProvider, asset_id: ContentId) -> Instance
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: KeyframeSequenceProvider) -> Bool
 pub fn set_sandboxed(instance: KeyframeSequenceProvider, value: Bool) -> KeyframeSequenceProvider
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: KeyframeSequenceProvider) -> Int
+pub fn get_source_asset_id(instance: KeyframeSequenceProvider) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: KeyframeSequenceProvider) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: KeyframeSequenceProvider) -> Actor
 pub fn get_attribute(instance: KeyframeSequenceProvider, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: KeyframeSequenceProvider, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: KeyframeSequenceProvider, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: KeyframeSequenceProvider) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: KeyframeSequenceProvider) -> String
 pub fn get_styled(instance: KeyframeSequenceProvider, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: KeyframeSequenceProvider, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: KeyframeSequenceProvider, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: KeyframeSequenceProvider) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: KeyframeSequenceProvider, property: S
 pub fn set_attribute(instance: KeyframeSequenceProvider, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: KeyframeSequenceProvider, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: KeyframeSequenceProvider, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: KeyframeSequenceProvider) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: KeyframeSequenceProvider) -> RBXScrip
 pub fn get_class_name(instance: KeyframeSequenceProvider) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: KeyframeSequenceProvider, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: KeyframeSequenceProvider, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: KeyframeSequenceProvider, class_name: String) -> Bool

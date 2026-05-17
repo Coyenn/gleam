@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type Instance, type Material, type NormalId, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type Instance, type Material, type NormalId, type OptionDouble, type OptionInt64, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type UniqueId, type Vector3}
 
 @luau.property("Anchored")
 pub fn get_anchored(instance: BasePart) -> Bool
@@ -261,9 +262,6 @@ pub fn get_connected_parts(instance: BasePart, recursive: Bool) -> List(Instance
 @luau.method("GetJoints")
 pub fn get_joints(instance: BasePart) -> List(Instance)
 
-@luau.method("GetMass")
-pub fn get_mass(instance: BasePart) -> Float
-
 @luau.method("GetNetworkOwner")
 pub fn get_network_owner(instance: BasePart) -> Instance
 
@@ -349,7 +347,7 @@ pub fn get_sandboxed(instance: BasePart) -> Bool
 pub fn set_sandboxed(instance: BasePart, value: Bool) -> BasePart
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: BasePart) -> Int
+pub fn get_source_asset_id(instance: BasePart) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: BasePart) -> UniqueId
@@ -394,7 +392,7 @@ pub fn get_actor(instance: BasePart) -> Actor
 pub fn get_attribute(instance: BasePart, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: BasePart, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: BasePart, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: BasePart) -> Dynamic
@@ -412,7 +410,7 @@ pub fn get_full_name(instance: BasePart) -> String
 pub fn get_styled(instance: BasePart, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: BasePart, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: BasePart, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: BasePart) -> List(Dynamic)
@@ -442,7 +440,7 @@ pub fn reset_property_to_default(instance: BasePart, property: String) -> Nil
 pub fn set_attribute(instance: BasePart, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: BasePart, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: BasePart, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: BasePart) -> RBXScriptSignal(Dynamic)
@@ -472,7 +470,7 @@ pub fn styled_properties_changed(instance: BasePart) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: BasePart) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: BasePart, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: BasePart, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: BasePart, class_name: String) -> Bool

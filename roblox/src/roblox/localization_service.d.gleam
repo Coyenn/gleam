@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type LocalizationService, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type LocalizationService, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("ForcePlayModeGameLocaleId")
 pub fn get_force_play_mode_game_locale_id(instance: LocalizationService) -> String
@@ -28,7 +29,7 @@ pub fn get_system_locale_id(instance: LocalizationService) -> String
 pub fn get_corescript_localizations(instance: LocalizationService) -> List(Instance)
 
 @luau.method("GetTableEntries")
-pub fn get_table_entries(instance: LocalizationService, instance: Instance) -> List(Dynamic)
+pub fn get_table_entries(instance: LocalizationService, instance_: Instance) -> List(Dynamic)
 
 @luau.method("GetTranslatorForPlayer")
 pub fn get_translator_for_player(instance: LocalizationService, player: Instance) -> Instance
@@ -76,7 +77,7 @@ pub fn get_sandboxed(instance: LocalizationService) -> Bool
 pub fn set_sandboxed(instance: LocalizationService, value: Bool) -> LocalizationService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: LocalizationService) -> Int
+pub fn get_source_asset_id(instance: LocalizationService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: LocalizationService) -> UniqueId
@@ -121,7 +122,7 @@ pub fn get_actor(instance: LocalizationService) -> Actor
 pub fn get_attribute(instance: LocalizationService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: LocalizationService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: LocalizationService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: LocalizationService) -> Dynamic
@@ -139,7 +140,7 @@ pub fn get_full_name(instance: LocalizationService) -> String
 pub fn get_styled(instance: LocalizationService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: LocalizationService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: LocalizationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: LocalizationService) -> List(Dynamic)
@@ -169,7 +170,7 @@ pub fn reset_property_to_default(instance: LocalizationService, property: String
 pub fn set_attribute(instance: LocalizationService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: LocalizationService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: LocalizationService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: LocalizationService) -> RBXScriptSignal(Dynamic)
@@ -199,7 +200,7 @@ pub fn styled_properties_changed(instance: LocalizationService) -> RBXScriptSign
 pub fn get_class_name(instance: LocalizationService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: LocalizationService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: LocalizationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: LocalizationService, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type StudioCallout, type UniqueId, type Vector2}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type StudioCallout, type UniqueId, type Vector2}
 
 @luau.property("AnchorPoint")
 pub fn get_anchor_point(instance: StudioCallout) -> Vector2
@@ -55,7 +56,7 @@ pub fn get_sandboxed(instance: StudioCallout) -> Bool
 pub fn set_sandboxed(instance: StudioCallout, value: Bool) -> StudioCallout
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: StudioCallout) -> Int
+pub fn get_source_asset_id(instance: StudioCallout) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: StudioCallout) -> UniqueId
@@ -100,7 +101,7 @@ pub fn get_actor(instance: StudioCallout) -> Actor
 pub fn get_attribute(instance: StudioCallout, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: StudioCallout, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: StudioCallout, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: StudioCallout) -> Dynamic
@@ -118,7 +119,7 @@ pub fn get_full_name(instance: StudioCallout) -> String
 pub fn get_styled(instance: StudioCallout, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: StudioCallout, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: StudioCallout, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: StudioCallout) -> List(Dynamic)
@@ -148,7 +149,7 @@ pub fn reset_property_to_default(instance: StudioCallout, property: String) -> N
 pub fn set_attribute(instance: StudioCallout, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: StudioCallout, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: StudioCallout, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: StudioCallout) -> RBXScriptSignal(Dynamic)
@@ -178,7 +179,7 @@ pub fn styled_properties_changed(instance: StudioCallout) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: StudioCallout) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: StudioCallout, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: StudioCallout, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: StudioCallout, class_name: String) -> Bool

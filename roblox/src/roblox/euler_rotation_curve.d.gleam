@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CFrame, type EulerRotationCurve, type FloatCurve, type Instance, type RotationOrder, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type CFrame, type EulerRotationCurve, type FloatCurve, type Instance, type OptionDouble, type OptionInt64, type RotationOrder, type SecurityCapabilities, type UniqueId}
 
 @luau.property("RotationOrder")
 pub fn get_rotation_order(instance: EulerRotationCurve) -> RotationOrder
@@ -58,7 +59,7 @@ pub fn get_sandboxed(instance: EulerRotationCurve) -> Bool
 pub fn set_sandboxed(instance: EulerRotationCurve, value: Bool) -> EulerRotationCurve
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: EulerRotationCurve) -> Int
+pub fn get_source_asset_id(instance: EulerRotationCurve) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: EulerRotationCurve) -> UniqueId
@@ -103,7 +104,7 @@ pub fn get_actor(instance: EulerRotationCurve) -> Actor
 pub fn get_attribute(instance: EulerRotationCurve, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: EulerRotationCurve, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: EulerRotationCurve, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: EulerRotationCurve) -> Dynamic
@@ -121,7 +122,7 @@ pub fn get_full_name(instance: EulerRotationCurve) -> String
 pub fn get_styled(instance: EulerRotationCurve, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: EulerRotationCurve, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: EulerRotationCurve, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: EulerRotationCurve) -> List(Dynamic)
@@ -151,7 +152,7 @@ pub fn reset_property_to_default(instance: EulerRotationCurve, property: String)
 pub fn set_attribute(instance: EulerRotationCurve, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: EulerRotationCurve, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: EulerRotationCurve, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: EulerRotationCurve) -> RBXScriptSignal(Dynamic)
@@ -181,7 +182,7 @@ pub fn styled_properties_changed(instance: EulerRotationCurve) -> RBXScriptSigna
 pub fn get_class_name(instance: EulerRotationCurve) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: EulerRotationCurve, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: EulerRotationCurve, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: EulerRotationCurve, class_name: String) -> Bool

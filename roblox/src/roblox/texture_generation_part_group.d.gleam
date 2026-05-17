@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type TextureGenerationPartGroup, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TextureGenerationPartGroup, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: TextureGenerationPartGroup) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: TextureGenerationPartGroup) -> Bool
 pub fn set_sandboxed(instance: TextureGenerationPartGroup, value: Bool) -> TextureGenerationPartGroup
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TextureGenerationPartGroup) -> Int
+pub fn get_source_asset_id(instance: TextureGenerationPartGroup) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TextureGenerationPartGroup) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: TextureGenerationPartGroup) -> Actor
 pub fn get_attribute(instance: TextureGenerationPartGroup, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TextureGenerationPartGroup, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TextureGenerationPartGroup, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TextureGenerationPartGroup) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: TextureGenerationPartGroup) -> String
 pub fn get_styled(instance: TextureGenerationPartGroup, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TextureGenerationPartGroup, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TextureGenerationPartGroup, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TextureGenerationPartGroup) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: TextureGenerationPartGroup, property:
 pub fn set_attribute(instance: TextureGenerationPartGroup, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TextureGenerationPartGroup, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TextureGenerationPartGroup, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TextureGenerationPartGroup) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: TextureGenerationPartGroup) -> RBXScr
 pub fn get_class_name(instance: TextureGenerationPartGroup) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TextureGenerationPartGroup, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TextureGenerationPartGroup, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TextureGenerationPartGroup, class_name: String) -> Bool

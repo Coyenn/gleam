@@ -1,6 +1,7 @@
+// Generated class bindings for Roblox API
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type AntiAliasing, type Color3, type Dictionary?, type EditableImage, type EditableMesh, type ImageCombineType, type Vector2, type buffer}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type AntiAliasing, type Buffer, type Color3, type EditableImage, type EditableMesh, type ImageCombineType, type Vector2}
 
 @luau.property("Size")
 pub fn get_size(instance: EditableImage) -> Vector2
@@ -18,7 +19,7 @@ pub fn draw_image(instance: EditableImage, position: Vector2, image: EditableIma
 pub fn draw_image_projected(instance: EditableImage, mesh: EditableMesh, projection: Dynamic, brush_config: Dynamic) -> Nil
 
 @luau.method("DrawImageTransformed")
-pub fn draw_image_transformed(instance: EditableImage, position: Vector2, scale: Vector2, rotation: Float, image: EditableImage, options: Dictionary?) -> Nil
+pub fn draw_image_transformed(instance: EditableImage, position: Vector2, scale: Vector2, rotation: Float, image: EditableImage, options: Dynamic) -> Nil
 
 @luau.method("DrawLine")
 pub fn draw_line(instance: EditableImage, p1: Vector2, p2: Vector2, color: Color3, transparency: Float, combine_type: ImageCombineType, anti_aliasing: AntiAliasing) -> Nil
@@ -27,16 +28,16 @@ pub fn draw_line(instance: EditableImage, p1: Vector2, p2: Vector2, color: Color
 pub fn draw_rectangle(instance: EditableImage, position: Vector2, size: Vector2, color: Color3, transparency: Float, combine_type: ImageCombineType) -> Nil
 
 @luau.method("ReadPixelsBuffer")
-pub fn read_pixels_buffer(instance: EditableImage, position: Vector2, size: Vector2) -> buffer
+pub fn read_pixels_buffer(instance: EditableImage, position: Vector2, size: Vector2) -> Buffer
 
 @luau.method("WritePixelsBuffer")
-pub fn write_pixels_buffer(instance: EditableImage, position: Vector2, size: Vector2, buffer: buffer) -> Nil
+pub fn write_pixels_buffer(instance: EditableImage, position: Vector2, size: Vector2, buffer: Buffer) -> Nil
 
 @luau.property("ClassName")
 pub fn get_class_name(instance: EditableImage) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: EditableImage, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: EditableImage, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: EditableImage, class_name: String) -> Bool

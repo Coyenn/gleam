@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Attachment, type BrickColor, type Instance, type LineForce, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Attachment, type BrickColor, type Instance, type LineForce, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("ApplyAtCenterOfMass")
 pub fn get_apply_at_center_of_mass(instance: LineForce) -> Bool
@@ -100,7 +101,7 @@ pub fn get_sandboxed(instance: LineForce) -> Bool
 pub fn set_sandboxed(instance: LineForce, value: Bool) -> LineForce
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: LineForce) -> Int
+pub fn get_source_asset_id(instance: LineForce) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: LineForce) -> UniqueId
@@ -145,7 +146,7 @@ pub fn get_actor(instance: LineForce) -> Actor
 pub fn get_attribute(instance: LineForce, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: LineForce, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: LineForce, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: LineForce) -> Dynamic
@@ -163,7 +164,7 @@ pub fn get_full_name(instance: LineForce) -> String
 pub fn get_styled(instance: LineForce, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: LineForce, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: LineForce, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: LineForce) -> List(Dynamic)
@@ -193,7 +194,7 @@ pub fn reset_property_to_default(instance: LineForce, property: String) -> Nil
 pub fn set_attribute(instance: LineForce, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: LineForce, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: LineForce, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: LineForce) -> RBXScriptSignal(Dynamic)
@@ -223,7 +224,7 @@ pub fn styled_properties_changed(instance: LineForce) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: LineForce) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: LineForce, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: LineForce, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: LineForce, class_name: String) -> Bool

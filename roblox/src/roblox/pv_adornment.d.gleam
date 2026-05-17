@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Color3, type Instance, type PVAdornment, type PVInstance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Color3, type Instance, type OptionDouble, type OptionInt64, type PVAdornment, type PVInstance, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Adornee")
 pub fn get_adornee(instance: PVAdornment) -> PVInstance
@@ -61,7 +62,7 @@ pub fn get_sandboxed(instance: PVAdornment) -> Bool
 pub fn set_sandboxed(instance: PVAdornment, value: Bool) -> PVAdornment
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: PVAdornment) -> Int
+pub fn get_source_asset_id(instance: PVAdornment) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: PVAdornment) -> UniqueId
@@ -106,7 +107,7 @@ pub fn get_actor(instance: PVAdornment) -> Actor
 pub fn get_attribute(instance: PVAdornment, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: PVAdornment, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: PVAdornment, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: PVAdornment) -> Dynamic
@@ -124,7 +125,7 @@ pub fn get_full_name(instance: PVAdornment) -> String
 pub fn get_styled(instance: PVAdornment, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: PVAdornment, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: PVAdornment, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: PVAdornment) -> List(Dynamic)
@@ -154,7 +155,7 @@ pub fn reset_property_to_default(instance: PVAdornment, property: String) -> Nil
 pub fn set_attribute(instance: PVAdornment, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: PVAdornment, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: PVAdornment, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: PVAdornment) -> RBXScriptSignal(Dynamic)
@@ -184,7 +185,7 @@ pub fn styled_properties_changed(instance: PVAdornment) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: PVAdornment) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: PVAdornment, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: PVAdornment, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: PVAdornment, class_name: String) -> Bool

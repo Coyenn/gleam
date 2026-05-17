@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type KeyCode, type LocalizationTable, type ProximityPrompt, type ProximityPromptExclusivity, type ProximityPromptStyle, type SecurityCapabilities, type UniqueId, type Vector2}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type KeyCode, type LocalizationTable, type OptionDouble, type OptionInt64, type ProximityPrompt, type ProximityPromptExclusivity, type ProximityPromptStyle, type SecurityCapabilities, type UniqueId, type Vector2}
 
 @luau.property("ActionText")
 pub fn get_action_text(instance: ProximityPrompt) -> String
@@ -157,7 +158,7 @@ pub fn get_sandboxed(instance: ProximityPrompt) -> Bool
 pub fn set_sandboxed(instance: ProximityPrompt, value: Bool) -> ProximityPrompt
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ProximityPrompt) -> Int
+pub fn get_source_asset_id(instance: ProximityPrompt) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ProximityPrompt) -> UniqueId
@@ -202,7 +203,7 @@ pub fn get_actor(instance: ProximityPrompt) -> Actor
 pub fn get_attribute(instance: ProximityPrompt, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ProximityPrompt, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ProximityPrompt, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ProximityPrompt) -> Dynamic
@@ -220,7 +221,7 @@ pub fn get_full_name(instance: ProximityPrompt) -> String
 pub fn get_styled(instance: ProximityPrompt, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ProximityPrompt, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ProximityPrompt, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ProximityPrompt) -> List(Dynamic)
@@ -250,7 +251,7 @@ pub fn reset_property_to_default(instance: ProximityPrompt, property: String) ->
 pub fn set_attribute(instance: ProximityPrompt, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ProximityPrompt, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ProximityPrompt, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ProximityPrompt) -> RBXScriptSignal(Dynamic)
@@ -280,7 +281,7 @@ pub fn styled_properties_changed(instance: ProximityPrompt) -> RBXScriptSignal(D
 pub fn get_class_name(instance: ProximityPrompt) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ProximityPrompt, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ProximityPrompt, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ProximityPrompt, class_name: String) -> Bool

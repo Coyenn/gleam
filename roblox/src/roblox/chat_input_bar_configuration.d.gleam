@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ChatInputBarConfiguration, type Color3, type Font, type Instance, type KeyCode, type SecurityCapabilities, type TextBox, type TextChannel, type UniqueId, type Vector2}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ChatInputBarConfiguration, type Color3, type Font, type Instance, type KeyCode, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TextBox, type TextChannel, type UniqueId, type Vector2}
 
 @luau.property("AbsolutePosition")
 pub fn get_absolute_position(instance: ChatInputBarConfiguration) -> Vector2
@@ -28,10 +29,10 @@ pub fn get_background_color3(instance: ChatInputBarConfiguration) -> Color3
 pub fn set_background_color3(instance: ChatInputBarConfiguration, value: Color3) -> ChatInputBarConfiguration
 
 @luau.property("BackgroundTransparency")
-pub fn get_background_transparency(instance: ChatInputBarConfiguration) -> Float
+pub fn get_background_transparency(instance: ChatInputBarConfiguration) -> OptionDouble
 
 @luau.set_property("BackgroundTransparency")
-pub fn set_background_transparency(instance: ChatInputBarConfiguration, value: Float) -> ChatInputBarConfiguration
+pub fn set_background_transparency(instance: ChatInputBarConfiguration, value: OptionDouble) -> ChatInputBarConfiguration
 
 @luau.property("Enabled")
 pub fn get_enabled(instance: ChatInputBarConfiguration) -> Bool
@@ -82,10 +83,10 @@ pub fn get_text_color3(instance: ChatInputBarConfiguration) -> Color3
 pub fn set_text_color3(instance: ChatInputBarConfiguration, value: Color3) -> ChatInputBarConfiguration
 
 @luau.property("TextSize")
-pub fn get_text_size(instance: ChatInputBarConfiguration) -> Int
+pub fn get_text_size(instance: ChatInputBarConfiguration) -> OptionInt64
 
 @luau.set_property("TextSize")
-pub fn set_text_size(instance: ChatInputBarConfiguration, value: Int) -> ChatInputBarConfiguration
+pub fn set_text_size(instance: ChatInputBarConfiguration, value: OptionInt64) -> ChatInputBarConfiguration
 
 @luau.property("TextStrokeColor3")
 pub fn get_text_stroke_color3(instance: ChatInputBarConfiguration) -> Color3
@@ -94,10 +95,10 @@ pub fn get_text_stroke_color3(instance: ChatInputBarConfiguration) -> Color3
 pub fn set_text_stroke_color3(instance: ChatInputBarConfiguration, value: Color3) -> ChatInputBarConfiguration
 
 @luau.property("TextStrokeTransparency")
-pub fn get_text_stroke_transparency(instance: ChatInputBarConfiguration) -> Float
+pub fn get_text_stroke_transparency(instance: ChatInputBarConfiguration) -> OptionDouble
 
 @luau.set_property("TextStrokeTransparency")
-pub fn set_text_stroke_transparency(instance: ChatInputBarConfiguration, value: Float) -> ChatInputBarConfiguration
+pub fn set_text_stroke_transparency(instance: ChatInputBarConfiguration, value: OptionDouble) -> ChatInputBarConfiguration
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: ChatInputBarConfiguration) -> Bool
@@ -133,7 +134,7 @@ pub fn get_sandboxed(instance: ChatInputBarConfiguration) -> Bool
 pub fn set_sandboxed(instance: ChatInputBarConfiguration, value: Bool) -> ChatInputBarConfiguration
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ChatInputBarConfiguration) -> Int
+pub fn get_source_asset_id(instance: ChatInputBarConfiguration) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ChatInputBarConfiguration) -> UniqueId
@@ -178,7 +179,7 @@ pub fn get_actor(instance: ChatInputBarConfiguration) -> Actor
 pub fn get_attribute(instance: ChatInputBarConfiguration, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ChatInputBarConfiguration, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ChatInputBarConfiguration, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ChatInputBarConfiguration) -> Dynamic
@@ -196,7 +197,7 @@ pub fn get_full_name(instance: ChatInputBarConfiguration) -> String
 pub fn get_styled(instance: ChatInputBarConfiguration, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ChatInputBarConfiguration, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ChatInputBarConfiguration, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ChatInputBarConfiguration) -> List(Dynamic)
@@ -226,7 +227,7 @@ pub fn reset_property_to_default(instance: ChatInputBarConfiguration, property: 
 pub fn set_attribute(instance: ChatInputBarConfiguration, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ChatInputBarConfiguration, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ChatInputBarConfiguration, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ChatInputBarConfiguration) -> RBXScriptSignal(Dynamic)
@@ -256,7 +257,7 @@ pub fn styled_properties_changed(instance: ChatInputBarConfiguration) -> RBXScri
 pub fn get_class_name(instance: ChatInputBarConfiguration) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ChatInputBarConfiguration, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ChatInputBarConfiguration, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ChatInputBarConfiguration, class_name: String) -> Bool

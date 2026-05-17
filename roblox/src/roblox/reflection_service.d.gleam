@@ -1,10 +1,11 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Dictionary?, type Instance, type ReflectionService, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type ReflectionService, type SecurityCapabilities, type UniqueId}
 
 @luau.method("GetClass")
-pub fn get_class(instance: ReflectionService, class_name: String, filter: Dynamic) -> Dictionary?
+pub fn get_class(instance: ReflectionService, class_name: String, filter: Dynamic) -> Dynamic
 
 @luau.method("GetClasses")
 pub fn get_classes(instance: ReflectionService, filter: Dynamic) -> List(Dynamic)
@@ -52,7 +53,7 @@ pub fn get_sandboxed(instance: ReflectionService) -> Bool
 pub fn set_sandboxed(instance: ReflectionService, value: Bool) -> ReflectionService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ReflectionService) -> Int
+pub fn get_source_asset_id(instance: ReflectionService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ReflectionService) -> UniqueId
@@ -97,7 +98,7 @@ pub fn get_actor(instance: ReflectionService) -> Actor
 pub fn get_attribute(instance: ReflectionService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ReflectionService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ReflectionService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ReflectionService) -> Dynamic
@@ -115,7 +116,7 @@ pub fn get_full_name(instance: ReflectionService) -> String
 pub fn get_styled(instance: ReflectionService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ReflectionService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ReflectionService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ReflectionService) -> List(Dynamic)
@@ -145,7 +146,7 @@ pub fn reset_property_to_default(instance: ReflectionService, property: String) 
 pub fn set_attribute(instance: ReflectionService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ReflectionService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ReflectionService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ReflectionService) -> RBXScriptSignal(Dynamic)
@@ -175,7 +176,7 @@ pub fn styled_properties_changed(instance: ReflectionService) -> RBXScriptSignal
 pub fn get_class_name(instance: ReflectionService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ReflectionService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ReflectionService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ReflectionService, class_name: String) -> Bool

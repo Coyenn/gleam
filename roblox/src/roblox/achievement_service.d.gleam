@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type AchievementService, type Actor, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type AchievementService, type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: AchievementService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: AchievementService) -> Bool
 pub fn set_sandboxed(instance: AchievementService, value: Bool) -> AchievementService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AchievementService) -> Int
+pub fn get_source_asset_id(instance: AchievementService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AchievementService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: AchievementService) -> Actor
 pub fn get_attribute(instance: AchievementService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AchievementService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AchievementService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AchievementService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: AchievementService) -> String
 pub fn get_styled(instance: AchievementService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AchievementService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AchievementService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AchievementService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: AchievementService, property: String)
 pub fn set_attribute(instance: AchievementService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AchievementService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AchievementService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AchievementService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: AchievementService) -> RBXScriptSigna
 pub fn get_class_name(instance: AchievementService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AchievementService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AchievementService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AchievementService, class_name: String) -> Bool

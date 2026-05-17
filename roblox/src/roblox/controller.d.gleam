@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Button, type Controller, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Button, type Controller, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.method("BindButton")
 pub fn bind_button(instance: Controller, button: Button, caption: String) -> Nil
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: Controller) -> Bool
 pub fn set_sandboxed(instance: Controller, value: Bool) -> Controller
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Controller) -> Int
+pub fn get_source_asset_id(instance: Controller) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Controller) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: Controller) -> Actor
 pub fn get_attribute(instance: Controller, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Controller, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Controller, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Controller) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: Controller) -> String
 pub fn get_styled(instance: Controller, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Controller, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Controller, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Controller) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: Controller, property: String) -> Nil
 pub fn set_attribute(instance: Controller, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Controller, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Controller, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Controller) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: Controller) -> RBXScriptSignal(Dynami
 pub fn get_class_name(instance: Controller) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Controller, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Controller, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Controller, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AssetRepresentation, type Content, type ContentId, type Instance, type NumberRange, type RollOffMode, type SecurityCapabilities, type Sound, type SoundGroup, type UniqueId, type UsageContext}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AssetRepresentation, type Content, type ContentId, type Instance, type NumberRange, type OptionDouble, type OptionInt64, type RollOffMode, type SecurityCapabilities, type Sound, type SoundGroup, type UniqueId, type UsageContext}
 
 @luau.property("AcousticSimulationEnabled")
 pub fn get_acoustic_simulation_enabled(instance: Sound) -> Bool
@@ -52,7 +53,7 @@ pub fn get_play_on_remove(instance: Sound) -> Bool
 pub fn set_play_on_remove(instance: Sound, value: Bool) -> Sound
 
 @luau.property("PlaybackLoudness")
-pub fn get_playback_loudness(instance: Sound) -> Float
+pub fn get_playback_loudness(instance: Sound) -> OptionDouble
 
 @luau.property("PlaybackRegion")
 pub fn get_playback_region(instance: Sound) -> NumberRange
@@ -112,13 +113,13 @@ pub fn get_sound_id(instance: Sound) -> ContentId
 pub fn set_sound_id(instance: Sound, value: ContentId) -> Sound
 
 @luau.property("TimeLength")
-pub fn get_time_length(instance: Sound) -> Float
+pub fn get_time_length(instance: Sound) -> OptionDouble
 
 @luau.property("TimePosition")
-pub fn get_time_position(instance: Sound) -> Float
+pub fn get_time_position(instance: Sound) -> OptionDouble
 
 @luau.set_property("TimePosition")
-pub fn set_time_position(instance: Sound, value: Float) -> Sound
+pub fn set_time_position(instance: Sound, value: OptionDouble) -> Sound
 
 @luau.property("UsageContextPermission")
 pub fn get_usage_context_permission(instance: Sound) -> UsageContext
@@ -196,7 +197,7 @@ pub fn get_sandboxed(instance: Sound) -> Bool
 pub fn set_sandboxed(instance: Sound, value: Bool) -> Sound
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Sound) -> Int
+pub fn get_source_asset_id(instance: Sound) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Sound) -> UniqueId
@@ -241,7 +242,7 @@ pub fn get_actor(instance: Sound) -> Actor
 pub fn get_attribute(instance: Sound, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Sound, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Sound, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Sound) -> Dynamic
@@ -259,7 +260,7 @@ pub fn get_full_name(instance: Sound) -> String
 pub fn get_styled(instance: Sound, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Sound, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Sound, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Sound) -> List(Dynamic)
@@ -289,7 +290,7 @@ pub fn reset_property_to_default(instance: Sound, property: String) -> Nil
 pub fn set_attribute(instance: Sound, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Sound, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Sound, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Sound) -> RBXScriptSignal(Dynamic)
@@ -319,7 +320,7 @@ pub fn styled_properties_changed(instance: Sound) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Sound) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Sound, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Sound, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Sound, class_name: String) -> Bool

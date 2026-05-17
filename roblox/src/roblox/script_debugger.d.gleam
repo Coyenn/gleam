@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type ScriptDebugger, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type ScriptDebugger, type SecurityCapabilities, type UniqueId}
 
 @luau.property("CurrentLine")
 pub fn get_current_line(instance: ScriptDebugger) -> Int
@@ -103,7 +104,7 @@ pub fn get_sandboxed(instance: ScriptDebugger) -> Bool
 pub fn set_sandboxed(instance: ScriptDebugger, value: Bool) -> ScriptDebugger
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ScriptDebugger) -> Int
+pub fn get_source_asset_id(instance: ScriptDebugger) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ScriptDebugger) -> UniqueId
@@ -148,7 +149,7 @@ pub fn get_actor(instance: ScriptDebugger) -> Actor
 pub fn get_attribute(instance: ScriptDebugger, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ScriptDebugger, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ScriptDebugger, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ScriptDebugger) -> Dynamic
@@ -166,7 +167,7 @@ pub fn get_full_name(instance: ScriptDebugger) -> String
 pub fn get_styled(instance: ScriptDebugger, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ScriptDebugger, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ScriptDebugger, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ScriptDebugger) -> List(Dynamic)
@@ -196,7 +197,7 @@ pub fn reset_property_to_default(instance: ScriptDebugger, property: String) -> 
 pub fn set_attribute(instance: ScriptDebugger, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ScriptDebugger, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ScriptDebugger, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ScriptDebugger) -> RBXScriptSignal(Dynamic)
@@ -226,7 +227,7 @@ pub fn styled_properties_changed(instance: ScriptDebugger) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: ScriptDebugger) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ScriptDebugger, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ScriptDebugger, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ScriptDebugger, class_name: String) -> Bool

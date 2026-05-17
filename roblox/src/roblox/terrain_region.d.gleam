@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type TerrainRegion, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TerrainRegion, type UniqueId, type Vector3}
 
 @luau.property("SizeInCells")
 pub fn get_size_in_cells(instance: TerrainRegion) -> Vector3
@@ -40,7 +41,7 @@ pub fn get_sandboxed(instance: TerrainRegion) -> Bool
 pub fn set_sandboxed(instance: TerrainRegion, value: Bool) -> TerrainRegion
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TerrainRegion) -> Int
+pub fn get_source_asset_id(instance: TerrainRegion) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TerrainRegion) -> UniqueId
@@ -85,7 +86,7 @@ pub fn get_actor(instance: TerrainRegion) -> Actor
 pub fn get_attribute(instance: TerrainRegion, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TerrainRegion, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TerrainRegion, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TerrainRegion) -> Dynamic
@@ -103,7 +104,7 @@ pub fn get_full_name(instance: TerrainRegion) -> String
 pub fn get_styled(instance: TerrainRegion, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TerrainRegion, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TerrainRegion, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TerrainRegion) -> List(Dynamic)
@@ -133,7 +134,7 @@ pub fn reset_property_to_default(instance: TerrainRegion, property: String) -> N
 pub fn set_attribute(instance: TerrainRegion, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TerrainRegion, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TerrainRegion, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TerrainRegion) -> RBXScriptSignal(Dynamic)
@@ -163,7 +164,7 @@ pub fn styled_properties_changed(instance: TerrainRegion) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: TerrainRegion) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TerrainRegion, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TerrainRegion, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TerrainRegion, class_name: String) -> Bool

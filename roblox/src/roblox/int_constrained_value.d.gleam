@@ -1,31 +1,32 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type IntConstrainedValue, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type IntConstrainedValue, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("ConstrainedValue")
-pub fn get_constrained_value(instance: IntConstrainedValue) -> Int
+pub fn get_constrained_value(instance: IntConstrainedValue) -> OptionInt64
 
 @luau.set_property("ConstrainedValue")
-pub fn set_constrained_value(instance: IntConstrainedValue, value: Int) -> IntConstrainedValue
+pub fn set_constrained_value(instance: IntConstrainedValue, value: OptionInt64) -> IntConstrainedValue
 
 @luau.property("MaxValue")
-pub fn get_max_value(instance: IntConstrainedValue) -> Int
+pub fn get_max_value(instance: IntConstrainedValue) -> OptionInt64
 
 @luau.set_property("MaxValue")
-pub fn set_max_value(instance: IntConstrainedValue, value: Int) -> IntConstrainedValue
+pub fn set_max_value(instance: IntConstrainedValue, value: OptionInt64) -> IntConstrainedValue
 
 @luau.property("MinValue")
-pub fn get_min_value(instance: IntConstrainedValue) -> Int
+pub fn get_min_value(instance: IntConstrainedValue) -> OptionInt64
 
 @luau.set_property("MinValue")
-pub fn set_min_value(instance: IntConstrainedValue, value: Int) -> IntConstrainedValue
+pub fn set_min_value(instance: IntConstrainedValue, value: OptionInt64) -> IntConstrainedValue
 
 @luau.property("Value")
-pub fn get_value(instance: IntConstrainedValue) -> Int
+pub fn get_value(instance: IntConstrainedValue) -> OptionInt64
 
 @luau.set_property("Value")
-pub fn set_value(instance: IntConstrainedValue, value: Int) -> IntConstrainedValue
+pub fn set_value(instance: IntConstrainedValue, value: OptionInt64) -> IntConstrainedValue
 
 @luau.event("Changed")
 pub fn changed(instance: IntConstrainedValue) -> RBXScriptSignal(Dynamic)
@@ -64,7 +65,7 @@ pub fn get_sandboxed(instance: IntConstrainedValue) -> Bool
 pub fn set_sandboxed(instance: IntConstrainedValue, value: Bool) -> IntConstrainedValue
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: IntConstrainedValue) -> Int
+pub fn get_source_asset_id(instance: IntConstrainedValue) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: IntConstrainedValue) -> UniqueId
@@ -109,7 +110,7 @@ pub fn get_actor(instance: IntConstrainedValue) -> Actor
 pub fn get_attribute(instance: IntConstrainedValue, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: IntConstrainedValue, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: IntConstrainedValue, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: IntConstrainedValue) -> Dynamic
@@ -127,7 +128,7 @@ pub fn get_full_name(instance: IntConstrainedValue) -> String
 pub fn get_styled(instance: IntConstrainedValue, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: IntConstrainedValue, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: IntConstrainedValue, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: IntConstrainedValue) -> List(Dynamic)
@@ -157,7 +158,7 @@ pub fn reset_property_to_default(instance: IntConstrainedValue, property: String
 pub fn set_attribute(instance: IntConstrainedValue, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: IntConstrainedValue, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: IntConstrainedValue, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: IntConstrainedValue) -> RBXScriptSignal(Dynamic)
@@ -187,7 +188,7 @@ pub fn styled_properties_changed(instance: IntConstrainedValue) -> RBXScriptSign
 pub fn get_class_name(instance: IntConstrainedValue) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: IntConstrainedValue, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: IntConstrainedValue, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: IntConstrainedValue, class_name: String) -> Bool

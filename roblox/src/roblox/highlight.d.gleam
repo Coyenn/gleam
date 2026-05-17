@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Color3, type Highlight, type HighlightDepthMode, type Instance, type ReservedHighlightId, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Color3, type Highlight, type HighlightDepthMode, type Instance, type OptionDouble, type OptionInt64, type ReservedHighlightId, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Adornee")
 pub fn get_adornee(instance: Highlight) -> Instance
@@ -85,7 +86,7 @@ pub fn get_sandboxed(instance: Highlight) -> Bool
 pub fn set_sandboxed(instance: Highlight, value: Bool) -> Highlight
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Highlight) -> Int
+pub fn get_source_asset_id(instance: Highlight) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Highlight) -> UniqueId
@@ -130,7 +131,7 @@ pub fn get_actor(instance: Highlight) -> Actor
 pub fn get_attribute(instance: Highlight, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Highlight, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Highlight, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Highlight) -> Dynamic
@@ -148,7 +149,7 @@ pub fn get_full_name(instance: Highlight) -> String
 pub fn get_styled(instance: Highlight, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Highlight, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Highlight, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Highlight) -> List(Dynamic)
@@ -178,7 +179,7 @@ pub fn reset_property_to_default(instance: Highlight, property: String) -> Nil
 pub fn set_attribute(instance: Highlight, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Highlight, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Highlight, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Highlight) -> RBXScriptSignal(Dynamic)
@@ -208,7 +209,7 @@ pub fn styled_properties_changed(instance: Highlight) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: Highlight) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Highlight, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Highlight, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Highlight, class_name: String) -> Bool

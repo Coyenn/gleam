@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type SoundGroup, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type SoundGroup, type UniqueId}
 
 @luau.property("Volume")
 pub fn get_volume(instance: SoundGroup) -> Float
@@ -43,7 +44,7 @@ pub fn get_sandboxed(instance: SoundGroup) -> Bool
 pub fn set_sandboxed(instance: SoundGroup, value: Bool) -> SoundGroup
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: SoundGroup) -> Int
+pub fn get_source_asset_id(instance: SoundGroup) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: SoundGroup) -> UniqueId
@@ -88,7 +89,7 @@ pub fn get_actor(instance: SoundGroup) -> Actor
 pub fn get_attribute(instance: SoundGroup, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: SoundGroup, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: SoundGroup, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: SoundGroup) -> Dynamic
@@ -106,7 +107,7 @@ pub fn get_full_name(instance: SoundGroup) -> String
 pub fn get_styled(instance: SoundGroup, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: SoundGroup, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: SoundGroup, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: SoundGroup) -> List(Dynamic)
@@ -136,7 +137,7 @@ pub fn reset_property_to_default(instance: SoundGroup, property: String) -> Nil
 pub fn set_attribute(instance: SoundGroup, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: SoundGroup, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: SoundGroup, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: SoundGroup) -> RBXScriptSignal(Dynamic)
@@ -166,7 +167,7 @@ pub fn styled_properties_changed(instance: SoundGroup) -> RBXScriptSignal(Dynami
 pub fn get_class_name(instance: SoundGroup) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: SoundGroup, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: SoundGroup, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: SoundGroup, class_name: String) -> Bool

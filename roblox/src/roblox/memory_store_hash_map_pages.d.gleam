@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type MemoryStoreHashMapPages, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type MemoryStoreHashMapPages, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("IsFinished")
 pub fn get_is_finished(instance: MemoryStoreHashMapPages) -> Bool
@@ -46,7 +47,7 @@ pub fn get_sandboxed(instance: MemoryStoreHashMapPages) -> Bool
 pub fn set_sandboxed(instance: MemoryStoreHashMapPages, value: Bool) -> MemoryStoreHashMapPages
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: MemoryStoreHashMapPages) -> Int
+pub fn get_source_asset_id(instance: MemoryStoreHashMapPages) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: MemoryStoreHashMapPages) -> UniqueId
@@ -91,7 +92,7 @@ pub fn get_actor(instance: MemoryStoreHashMapPages) -> Actor
 pub fn get_attribute(instance: MemoryStoreHashMapPages, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: MemoryStoreHashMapPages, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: MemoryStoreHashMapPages, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: MemoryStoreHashMapPages) -> Dynamic
@@ -109,7 +110,7 @@ pub fn get_full_name(instance: MemoryStoreHashMapPages) -> String
 pub fn get_styled(instance: MemoryStoreHashMapPages, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: MemoryStoreHashMapPages, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: MemoryStoreHashMapPages, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: MemoryStoreHashMapPages) -> List(Dynamic)
@@ -139,7 +140,7 @@ pub fn reset_property_to_default(instance: MemoryStoreHashMapPages, property: St
 pub fn set_attribute(instance: MemoryStoreHashMapPages, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: MemoryStoreHashMapPages, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: MemoryStoreHashMapPages, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: MemoryStoreHashMapPages) -> RBXScriptSignal(Dynamic)
@@ -169,7 +170,7 @@ pub fn styled_properties_changed(instance: MemoryStoreHashMapPages) -> RBXScript
 pub fn get_class_name(instance: MemoryStoreHashMapPages) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: MemoryStoreHashMapPages, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: MemoryStoreHashMapPages, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: MemoryStoreHashMapPages, class_name: String) -> Bool

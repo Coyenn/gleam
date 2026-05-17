@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type NetworkMarker, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type NetworkMarker, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.event("Received")
 pub fn received(instance: NetworkMarker) -> RBXScriptSignal(Dynamic)
@@ -40,7 +41,7 @@ pub fn get_sandboxed(instance: NetworkMarker) -> Bool
 pub fn set_sandboxed(instance: NetworkMarker, value: Bool) -> NetworkMarker
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: NetworkMarker) -> Int
+pub fn get_source_asset_id(instance: NetworkMarker) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: NetworkMarker) -> UniqueId
@@ -85,7 +86,7 @@ pub fn get_actor(instance: NetworkMarker) -> Actor
 pub fn get_attribute(instance: NetworkMarker, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: NetworkMarker, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: NetworkMarker, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: NetworkMarker) -> Dynamic
@@ -103,7 +104,7 @@ pub fn get_full_name(instance: NetworkMarker) -> String
 pub fn get_styled(instance: NetworkMarker, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: NetworkMarker, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: NetworkMarker, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: NetworkMarker) -> List(Dynamic)
@@ -133,7 +134,7 @@ pub fn reset_property_to_default(instance: NetworkMarker, property: String) -> N
 pub fn set_attribute(instance: NetworkMarker, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: NetworkMarker, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: NetworkMarker, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: NetworkMarker) -> RBXScriptSignal(Dynamic)
@@ -163,7 +164,7 @@ pub fn styled_properties_changed(instance: NetworkMarker) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: NetworkMarker) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: NetworkMarker, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: NetworkMarker, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: NetworkMarker, class_name: String) -> Bool

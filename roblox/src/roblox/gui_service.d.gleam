@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type DisplayScalingMode, type DisplaySize, type Folder, type GuiObject, type GuiService, type Instance, type PreferredTextSize, type Rect, type ScreenInsets, type SecurityCapabilities, type UniqueId, type Vector2}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type DisplayScalingMode, type DisplaySize, type Folder, type GuiObject, type GuiService, type Instance, type OptionDouble, type OptionInt64, type PreferredTextSize, type Rect, type ScreenInsets, type SecurityCapabilities, type UniqueId, type Vector2}
 
 @luau.property("AutoSelectGuiEnabled")
 pub fn get_auto_select_gui_enabled(instance: GuiService) -> Bool
@@ -91,7 +92,7 @@ pub fn get_inspect_menu_enabled(instance: GuiService) -> Bool
 pub fn inspect_player_from_humanoid_description(instance: GuiService, humanoid_description: Instance, name: String) -> Nil
 
 @luau.method("InspectPlayerFromUserId")
-pub fn inspect_player_from_user_id(instance: GuiService, user_id: Int) -> Nil
+pub fn inspect_player_from_user_id(instance: GuiService, user_id: OptionInt64) -> Nil
 
 @luau.method("IsTenFootInterface")
 pub fn is_ten_foot_interface(instance: GuiService) -> Bool
@@ -151,7 +152,7 @@ pub fn get_sandboxed(instance: GuiService) -> Bool
 pub fn set_sandboxed(instance: GuiService, value: Bool) -> GuiService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: GuiService) -> Int
+pub fn get_source_asset_id(instance: GuiService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: GuiService) -> UniqueId
@@ -196,7 +197,7 @@ pub fn get_actor(instance: GuiService) -> Actor
 pub fn get_attribute(instance: GuiService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: GuiService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: GuiService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: GuiService) -> Dynamic
@@ -214,7 +215,7 @@ pub fn get_full_name(instance: GuiService) -> String
 pub fn get_styled(instance: GuiService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: GuiService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: GuiService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: GuiService) -> List(Dynamic)
@@ -244,7 +245,7 @@ pub fn reset_property_to_default(instance: GuiService, property: String) -> Nil
 pub fn set_attribute(instance: GuiService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: GuiService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: GuiService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: GuiService) -> RBXScriptSignal(Dynamic)
@@ -274,7 +275,7 @@ pub fn styled_properties_changed(instance: GuiService) -> RBXScriptSignal(Dynami
 pub fn get_class_name(instance: GuiService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: GuiService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: GuiService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: GuiService, class_name: String) -> Bool

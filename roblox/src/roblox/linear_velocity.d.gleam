@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ActuatorRelativeTo, type Attachment, type BrickColor, type ForceLimitMode, type Instance, type LinearVelocity, type SecurityCapabilities, type UniqueId, type Vector2, type Vector3, type VelocityConstraintMode}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ActuatorRelativeTo, type Attachment, type BrickColor, type ForceLimitMode, type Instance, type LinearVelocity, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector2, type Vector3, type VelocityConstraintMode}
 
 @luau.property("ForceLimitMode")
 pub fn get_force_limit_mode(instance: LinearVelocity) -> ForceLimitMode
@@ -154,7 +155,7 @@ pub fn get_sandboxed(instance: LinearVelocity) -> Bool
 pub fn set_sandboxed(instance: LinearVelocity, value: Bool) -> LinearVelocity
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: LinearVelocity) -> Int
+pub fn get_source_asset_id(instance: LinearVelocity) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: LinearVelocity) -> UniqueId
@@ -199,7 +200,7 @@ pub fn get_actor(instance: LinearVelocity) -> Actor
 pub fn get_attribute(instance: LinearVelocity, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: LinearVelocity, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: LinearVelocity, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: LinearVelocity) -> Dynamic
@@ -217,7 +218,7 @@ pub fn get_full_name(instance: LinearVelocity) -> String
 pub fn get_styled(instance: LinearVelocity, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: LinearVelocity, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: LinearVelocity, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: LinearVelocity) -> List(Dynamic)
@@ -247,7 +248,7 @@ pub fn reset_property_to_default(instance: LinearVelocity, property: String) -> 
 pub fn set_attribute(instance: LinearVelocity, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: LinearVelocity, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: LinearVelocity, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: LinearVelocity) -> RBXScriptSignal(Dynamic)
@@ -277,7 +278,7 @@ pub fn styled_properties_changed(instance: LinearVelocity) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: LinearVelocity) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: LinearVelocity, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: LinearVelocity, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: LinearVelocity, class_name: String) -> Bool

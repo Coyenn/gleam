@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type UniqueId, type VisualizationMode}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type VisualizationMode}
 
 @luau.property("Enabled")
 pub fn get_enabled(instance: VisualizationMode) -> Bool
@@ -46,7 +47,7 @@ pub fn get_sandboxed(instance: VisualizationMode) -> Bool
 pub fn set_sandboxed(instance: VisualizationMode, value: Bool) -> VisualizationMode
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: VisualizationMode) -> Int
+pub fn get_source_asset_id(instance: VisualizationMode) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: VisualizationMode) -> UniqueId
@@ -91,7 +92,7 @@ pub fn get_actor(instance: VisualizationMode) -> Actor
 pub fn get_attribute(instance: VisualizationMode, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: VisualizationMode, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: VisualizationMode, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: VisualizationMode) -> Dynamic
@@ -109,7 +110,7 @@ pub fn get_full_name(instance: VisualizationMode) -> String
 pub fn get_styled(instance: VisualizationMode, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: VisualizationMode, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: VisualizationMode, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: VisualizationMode) -> List(Dynamic)
@@ -139,7 +140,7 @@ pub fn reset_property_to_default(instance: VisualizationMode, property: String) 
 pub fn set_attribute(instance: VisualizationMode, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: VisualizationMode, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: VisualizationMode, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: VisualizationMode) -> RBXScriptSignal(Dynamic)
@@ -169,7 +170,7 @@ pub fn styled_properties_changed(instance: VisualizationMode) -> RBXScriptSignal
 pub fn get_class_name(instance: VisualizationMode) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: VisualizationMode, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: VisualizationMode, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: VisualizationMode, class_name: String) -> Bool

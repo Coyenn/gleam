@@ -1,5 +1,6 @@
+// Generated class bindings for Roblox API
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
+import roblox/dynamic.{type Dynamic}
 import roblox/types.{type WebStreamClient, type WebStreamClientState}
 
 @luau.property("ConnectionState")
@@ -27,7 +28,7 @@ pub fn opened(instance: WebStreamClient) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: WebStreamClient) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: WebStreamClient, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: WebStreamClient, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: WebStreamClient, class_name: String) -> Bool

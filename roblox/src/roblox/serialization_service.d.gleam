@@ -1,13 +1,14 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type SerializationService, type UniqueId, type buffer}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Buffer, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type SerializationService, type UniqueId}
 
 @luau.method("DeserializeInstancesAsync")
-pub fn deserialize_instances_async(instance: SerializationService, buffer: buffer) -> List(Instance)
+pub fn deserialize_instances_async(instance: SerializationService, buffer: Buffer) -> List(Instance)
 
 @luau.method("SerializeInstancesAsync")
-pub fn serialize_instances_async(instance: SerializationService, input_instances: List(Instance)) -> buffer
+pub fn serialize_instances_async(instance: SerializationService, input_instances: List(Instance)) -> Buffer
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: SerializationService) -> Bool
@@ -43,7 +44,7 @@ pub fn get_sandboxed(instance: SerializationService) -> Bool
 pub fn set_sandboxed(instance: SerializationService, value: Bool) -> SerializationService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: SerializationService) -> Int
+pub fn get_source_asset_id(instance: SerializationService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: SerializationService) -> UniqueId
@@ -88,7 +89,7 @@ pub fn get_actor(instance: SerializationService) -> Actor
 pub fn get_attribute(instance: SerializationService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: SerializationService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: SerializationService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: SerializationService) -> Dynamic
@@ -106,7 +107,7 @@ pub fn get_full_name(instance: SerializationService) -> String
 pub fn get_styled(instance: SerializationService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: SerializationService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: SerializationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: SerializationService) -> List(Dynamic)
@@ -136,7 +137,7 @@ pub fn reset_property_to_default(instance: SerializationService, property: Strin
 pub fn set_attribute(instance: SerializationService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: SerializationService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: SerializationService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: SerializationService) -> RBXScriptSignal(Dynamic)
@@ -166,7 +167,7 @@ pub fn styled_properties_changed(instance: SerializationService) -> RBXScriptSig
 pub fn get_class_name(instance: SerializationService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: SerializationService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: SerializationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: SerializationService, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type LodDataEntity, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type LodDataEntity, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("EntityLodEnabled")
 pub fn get_entity_lod_enabled(instance: LodDataEntity) -> Bool
@@ -43,7 +44,7 @@ pub fn get_sandboxed(instance: LodDataEntity) -> Bool
 pub fn set_sandboxed(instance: LodDataEntity, value: Bool) -> LodDataEntity
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: LodDataEntity) -> Int
+pub fn get_source_asset_id(instance: LodDataEntity) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: LodDataEntity) -> UniqueId
@@ -88,7 +89,7 @@ pub fn get_actor(instance: LodDataEntity) -> Actor
 pub fn get_attribute(instance: LodDataEntity, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: LodDataEntity, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: LodDataEntity, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: LodDataEntity) -> Dynamic
@@ -106,7 +107,7 @@ pub fn get_full_name(instance: LodDataEntity) -> String
 pub fn get_styled(instance: LodDataEntity, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: LodDataEntity, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: LodDataEntity, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: LodDataEntity) -> List(Dynamic)
@@ -136,7 +137,7 @@ pub fn reset_property_to_default(instance: LodDataEntity, property: String) -> N
 pub fn set_attribute(instance: LodDataEntity, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: LodDataEntity, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: LodDataEntity, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: LodDataEntity) -> RBXScriptSignal(Dynamic)
@@ -166,7 +167,7 @@ pub fn styled_properties_changed(instance: LodDataEntity) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: LodDataEntity) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: LodDataEntity, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: LodDataEntity, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: LodDataEntity, class_name: String) -> Bool

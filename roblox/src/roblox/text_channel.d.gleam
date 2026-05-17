@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type Player, type SecurityCapabilities, type TextChannel, type TextChatMessage, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type Player, type SecurityCapabilities, type TextChannel, type TextChatMessage, type UniqueId}
 
 @luau.property("DirectChatRequester")
 pub fn get_direct_chat_requester(instance: TextChannel) -> Player
@@ -13,7 +14,7 @@ pub fn display_system_message(instance: TextChannel, system_message: String, met
 pub fn set_direct_chat_requester(instance: TextChannel, requester: Player) -> Nil
 
 @luau.method("AddUserAsync")
-pub fn add_user_async(instance: TextChannel, user_id: Int) -> Dynamic
+pub fn add_user_async(instance: TextChannel, user_id: OptionInt64) -> Dynamic
 
 @luau.method("SendAsync")
 pub fn send_async(instance: TextChannel, message: String, metadata: String) -> TextChatMessage
@@ -55,7 +56,7 @@ pub fn get_sandboxed(instance: TextChannel) -> Bool
 pub fn set_sandboxed(instance: TextChannel, value: Bool) -> TextChannel
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TextChannel) -> Int
+pub fn get_source_asset_id(instance: TextChannel) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TextChannel) -> UniqueId
@@ -100,7 +101,7 @@ pub fn get_actor(instance: TextChannel) -> Actor
 pub fn get_attribute(instance: TextChannel, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TextChannel, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TextChannel, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TextChannel) -> Dynamic
@@ -118,7 +119,7 @@ pub fn get_full_name(instance: TextChannel) -> String
 pub fn get_styled(instance: TextChannel, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TextChannel, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TextChannel, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TextChannel) -> List(Dynamic)
@@ -148,7 +149,7 @@ pub fn reset_property_to_default(instance: TextChannel, property: String) -> Nil
 pub fn set_attribute(instance: TextChannel, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TextChannel, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TextChannel, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TextChannel) -> RBXScriptSignal(Dynamic)
@@ -178,7 +179,7 @@ pub fn styled_properties_changed(instance: TextChannel) -> RBXScriptSignal(Dynam
 pub fn get_class_name(instance: TextChannel) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TextChannel, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TextChannel, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TextChannel, class_name: String) -> Bool

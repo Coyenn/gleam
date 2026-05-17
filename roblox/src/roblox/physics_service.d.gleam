@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type PhysicsService, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type PhysicsService, type SecurityCapabilities, type UniqueId}
 
 @luau.method("CollisionGroupSetCollidable")
 pub fn collision_group_set_collidable(instance: PhysicsService, name1: String, name2: String, collidable: Bool) -> Nil
@@ -61,7 +62,7 @@ pub fn get_sandboxed(instance: PhysicsService) -> Bool
 pub fn set_sandboxed(instance: PhysicsService, value: Bool) -> PhysicsService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: PhysicsService) -> Int
+pub fn get_source_asset_id(instance: PhysicsService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: PhysicsService) -> UniqueId
@@ -106,7 +107,7 @@ pub fn get_actor(instance: PhysicsService) -> Actor
 pub fn get_attribute(instance: PhysicsService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: PhysicsService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: PhysicsService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: PhysicsService) -> Dynamic
@@ -124,7 +125,7 @@ pub fn get_full_name(instance: PhysicsService) -> String
 pub fn get_styled(instance: PhysicsService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: PhysicsService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: PhysicsService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: PhysicsService) -> List(Dynamic)
@@ -154,7 +155,7 @@ pub fn reset_property_to_default(instance: PhysicsService, property: String) -> 
 pub fn set_attribute(instance: PhysicsService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: PhysicsService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: PhysicsService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: PhysicsService) -> RBXScriptSignal(Dynamic)
@@ -184,7 +185,7 @@ pub fn styled_properties_changed(instance: PhysicsService) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: PhysicsService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: PhysicsService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: PhysicsService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: PhysicsService, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AssetFetchStatus, type AudioTextToSpeech, type Instance, type NumberRange, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AssetFetchStatus, type AudioTextToSpeech, type Instance, type NumberRange, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("IsLoaded")
 pub fn get_is_loaded(instance: AudioTextToSpeech) -> Bool
@@ -40,13 +41,13 @@ pub fn get_text(instance: AudioTextToSpeech) -> String
 pub fn set_text(instance: AudioTextToSpeech, value: String) -> AudioTextToSpeech
 
 @luau.property("TimeLength")
-pub fn get_time_length(instance: AudioTextToSpeech) -> Float
+pub fn get_time_length(instance: AudioTextToSpeech) -> OptionDouble
 
 @luau.property("TimePosition")
-pub fn get_time_position(instance: AudioTextToSpeech) -> Float
+pub fn get_time_position(instance: AudioTextToSpeech) -> OptionDouble
 
 @luau.set_property("TimePosition")
-pub fn set_time_position(instance: AudioTextToSpeech, value: Float) -> AudioTextToSpeech
+pub fn set_time_position(instance: AudioTextToSpeech, value: OptionDouble) -> AudioTextToSpeech
 
 @luau.property("VoiceId")
 pub fn get_voice_id(instance: AudioTextToSpeech) -> String
@@ -121,7 +122,7 @@ pub fn get_sandboxed(instance: AudioTextToSpeech) -> Bool
 pub fn set_sandboxed(instance: AudioTextToSpeech, value: Bool) -> AudioTextToSpeech
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AudioTextToSpeech) -> Int
+pub fn get_source_asset_id(instance: AudioTextToSpeech) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AudioTextToSpeech) -> UniqueId
@@ -166,7 +167,7 @@ pub fn get_actor(instance: AudioTextToSpeech) -> Actor
 pub fn get_attribute(instance: AudioTextToSpeech, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AudioTextToSpeech, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AudioTextToSpeech, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AudioTextToSpeech) -> Dynamic
@@ -184,7 +185,7 @@ pub fn get_full_name(instance: AudioTextToSpeech) -> String
 pub fn get_styled(instance: AudioTextToSpeech, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AudioTextToSpeech, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AudioTextToSpeech, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AudioTextToSpeech) -> List(Dynamic)
@@ -214,7 +215,7 @@ pub fn reset_property_to_default(instance: AudioTextToSpeech, property: String) 
 pub fn set_attribute(instance: AudioTextToSpeech, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AudioTextToSpeech, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AudioTextToSpeech, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AudioTextToSpeech) -> RBXScriptSignal(Dynamic)
@@ -244,7 +245,7 @@ pub fn styled_properties_changed(instance: AudioTextToSpeech) -> RBXScriptSignal
 pub fn get_class_name(instance: AudioTextToSpeech) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AudioTextToSpeech, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AudioTextToSpeech, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AudioTextToSpeech, class_name: String) -> Bool

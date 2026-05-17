@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BaseImportData, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BaseImportData, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Id")
 pub fn get_id(instance: BaseImportData) -> String
@@ -58,7 +59,7 @@ pub fn get_sandboxed(instance: BaseImportData) -> Bool
 pub fn set_sandboxed(instance: BaseImportData, value: Bool) -> BaseImportData
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: BaseImportData) -> Int
+pub fn get_source_asset_id(instance: BaseImportData) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: BaseImportData) -> UniqueId
@@ -103,7 +104,7 @@ pub fn get_actor(instance: BaseImportData) -> Actor
 pub fn get_attribute(instance: BaseImportData, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: BaseImportData, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: BaseImportData, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: BaseImportData) -> Dynamic
@@ -121,7 +122,7 @@ pub fn get_full_name(instance: BaseImportData) -> String
 pub fn get_styled(instance: BaseImportData, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: BaseImportData, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: BaseImportData, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: BaseImportData) -> List(Dynamic)
@@ -151,7 +152,7 @@ pub fn reset_property_to_default(instance: BaseImportData, property: String) -> 
 pub fn set_attribute(instance: BaseImportData, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: BaseImportData, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: BaseImportData, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: BaseImportData) -> RBXScriptSignal(Dynamic)
@@ -181,7 +182,7 @@ pub fn styled_properties_changed(instance: BaseImportData) -> RBXScriptSignal(Dy
 pub fn get_class_name(instance: BaseImportData) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: BaseImportData, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: BaseImportData, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: BaseImportData, class_name: String) -> Bool

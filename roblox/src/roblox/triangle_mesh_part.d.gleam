@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type FluidFidelity, type Instance, type Material, type NormalId, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type TriangleMeshPart, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type FluidFidelity, type Instance, type Material, type NormalId, type OptionDouble, type OptionInt64, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SurfaceType, type TriangleMeshPart, type UniqueId, type Vector3}
 
 @luau.property("CollisionFidelity")
 pub fn get_collision_fidelity(instance: TriangleMeshPart) -> CollisionFidelity
@@ -282,9 +283,6 @@ pub fn get_connected_parts(instance: TriangleMeshPart, recursive: Bool) -> List(
 @luau.method("GetJoints")
 pub fn get_joints(instance: TriangleMeshPart) -> List(Instance)
 
-@luau.method("GetMass")
-pub fn get_mass(instance: TriangleMeshPart) -> Float
-
 @luau.method("GetNetworkOwner")
 pub fn get_network_owner(instance: TriangleMeshPart) -> Instance
 
@@ -370,7 +368,7 @@ pub fn get_sandboxed(instance: TriangleMeshPart) -> Bool
 pub fn set_sandboxed(instance: TriangleMeshPart, value: Bool) -> TriangleMeshPart
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TriangleMeshPart) -> Int
+pub fn get_source_asset_id(instance: TriangleMeshPart) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TriangleMeshPart) -> UniqueId
@@ -415,7 +413,7 @@ pub fn get_actor(instance: TriangleMeshPart) -> Actor
 pub fn get_attribute(instance: TriangleMeshPart, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TriangleMeshPart, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TriangleMeshPart, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TriangleMeshPart) -> Dynamic
@@ -433,7 +431,7 @@ pub fn get_full_name(instance: TriangleMeshPart) -> String
 pub fn get_styled(instance: TriangleMeshPart, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TriangleMeshPart, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TriangleMeshPart, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TriangleMeshPart) -> List(Dynamic)
@@ -463,7 +461,7 @@ pub fn reset_property_to_default(instance: TriangleMeshPart, property: String) -
 pub fn set_attribute(instance: TriangleMeshPart, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TriangleMeshPart, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TriangleMeshPart, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TriangleMeshPart) -> RBXScriptSignal(Dynamic)
@@ -493,7 +491,7 @@ pub fn styled_properties_changed(instance: TriangleMeshPart) -> RBXScriptSignal(
 pub fn get_class_name(instance: TriangleMeshPart) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TriangleMeshPart, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TriangleMeshPart, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TriangleMeshPart, class_name: String) -> Bool

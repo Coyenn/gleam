@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type TextChatCommand, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TextChatCommand, type UniqueId}
 
 @luau.property("AutocompleteVisible")
 pub fn get_autocomplete_visible(instance: TextChatCommand) -> Bool
@@ -64,7 +65,7 @@ pub fn get_sandboxed(instance: TextChatCommand) -> Bool
 pub fn set_sandboxed(instance: TextChatCommand, value: Bool) -> TextChatCommand
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TextChatCommand) -> Int
+pub fn get_source_asset_id(instance: TextChatCommand) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TextChatCommand) -> UniqueId
@@ -109,7 +110,7 @@ pub fn get_actor(instance: TextChatCommand) -> Actor
 pub fn get_attribute(instance: TextChatCommand, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TextChatCommand, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TextChatCommand, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TextChatCommand) -> Dynamic
@@ -127,7 +128,7 @@ pub fn get_full_name(instance: TextChatCommand) -> String
 pub fn get_styled(instance: TextChatCommand, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TextChatCommand, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TextChatCommand, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TextChatCommand) -> List(Dynamic)
@@ -157,7 +158,7 @@ pub fn reset_property_to_default(instance: TextChatCommand, property: String) ->
 pub fn set_attribute(instance: TextChatCommand, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TextChatCommand, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TextChatCommand, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TextChatCommand) -> RBXScriptSignal(Dynamic)
@@ -187,7 +188,7 @@ pub fn styled_properties_changed(instance: TextChatCommand) -> RBXScriptSignal(D
 pub fn get_class_name(instance: TextChatCommand) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TextChatCommand, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TextChatCommand, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TextChatCommand, class_name: String) -> Bool

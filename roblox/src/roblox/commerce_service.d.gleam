@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CommerceService, type Instance, type Player, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type CommerceService, type Instance, type OptionDouble, type OptionInt64, type Player, type SecurityCapabilities, type UniqueId}
 
 @luau.method("PromptCommerceProductPurchase")
 pub fn prompt_commerce_product_purchase(instance: CommerceService, user: Player, commerce_product_id: String) -> Nil
@@ -52,7 +53,7 @@ pub fn get_sandboxed(instance: CommerceService) -> Bool
 pub fn set_sandboxed(instance: CommerceService, value: Bool) -> CommerceService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: CommerceService) -> Int
+pub fn get_source_asset_id(instance: CommerceService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: CommerceService) -> UniqueId
@@ -97,7 +98,7 @@ pub fn get_actor(instance: CommerceService) -> Actor
 pub fn get_attribute(instance: CommerceService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: CommerceService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: CommerceService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: CommerceService) -> Dynamic
@@ -115,7 +116,7 @@ pub fn get_full_name(instance: CommerceService) -> String
 pub fn get_styled(instance: CommerceService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: CommerceService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: CommerceService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: CommerceService) -> List(Dynamic)
@@ -145,7 +146,7 @@ pub fn reset_property_to_default(instance: CommerceService, property: String) ->
 pub fn set_attribute(instance: CommerceService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: CommerceService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: CommerceService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: CommerceService) -> RBXScriptSignal(Dynamic)
@@ -175,7 +176,7 @@ pub fn styled_properties_changed(instance: CommerceService) -> RBXScriptSignal(D
 pub fn get_class_name(instance: CommerceService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: CommerceService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: CommerceService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: CommerceService, class_name: String) -> Bool

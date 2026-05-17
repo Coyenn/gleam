@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Breakpoint, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Breakpoint, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Condition")
 pub fn get_condition(instance: Breakpoint) -> String
@@ -70,7 +71,7 @@ pub fn get_sandboxed(instance: Breakpoint) -> Bool
 pub fn set_sandboxed(instance: Breakpoint, value: Bool) -> Breakpoint
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Breakpoint) -> Int
+pub fn get_source_asset_id(instance: Breakpoint) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Breakpoint) -> UniqueId
@@ -115,7 +116,7 @@ pub fn get_actor(instance: Breakpoint) -> Actor
 pub fn get_attribute(instance: Breakpoint, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Breakpoint, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Breakpoint, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Breakpoint) -> Dynamic
@@ -133,7 +134,7 @@ pub fn get_full_name(instance: Breakpoint) -> String
 pub fn get_styled(instance: Breakpoint, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Breakpoint, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Breakpoint, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Breakpoint) -> List(Dynamic)
@@ -163,7 +164,7 @@ pub fn reset_property_to_default(instance: Breakpoint, property: String) -> Nil
 pub fn set_attribute(instance: Breakpoint, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Breakpoint, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Breakpoint, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Breakpoint) -> RBXScriptSignal(Dynamic)
@@ -193,7 +194,7 @@ pub fn styled_properties_changed(instance: Breakpoint) -> RBXScriptSignal(Dynami
 pub fn get_class_name(instance: Breakpoint) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Breakpoint, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Breakpoint, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Breakpoint, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type DataModelSession, type Instance, type SecurityCapabilities, type StudioDataModelType, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type DataModelSession, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type StudioDataModelType, type UniqueId}
 
 @luau.property("CurrentDataModelType")
 pub fn get_current_data_model_type(instance: DataModelSession) -> StudioDataModelType
@@ -43,7 +44,7 @@ pub fn get_sandboxed(instance: DataModelSession) -> Bool
 pub fn set_sandboxed(instance: DataModelSession, value: Bool) -> DataModelSession
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: DataModelSession) -> Int
+pub fn get_source_asset_id(instance: DataModelSession) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: DataModelSession) -> UniqueId
@@ -88,7 +89,7 @@ pub fn get_actor(instance: DataModelSession) -> Actor
 pub fn get_attribute(instance: DataModelSession, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: DataModelSession, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: DataModelSession, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: DataModelSession) -> Dynamic
@@ -106,7 +107,7 @@ pub fn get_full_name(instance: DataModelSession) -> String
 pub fn get_styled(instance: DataModelSession, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: DataModelSession, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: DataModelSession, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: DataModelSession) -> List(Dynamic)
@@ -136,7 +137,7 @@ pub fn reset_property_to_default(instance: DataModelSession, property: String) -
 pub fn set_attribute(instance: DataModelSession, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: DataModelSession, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: DataModelSession, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: DataModelSession) -> RBXScriptSignal(Dynamic)
@@ -166,7 +167,7 @@ pub fn styled_properties_changed(instance: DataModelSession) -> RBXScriptSignal(
 pub fn get_class_name(instance: DataModelSession) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: DataModelSession, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: DataModelSession, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: DataModelSession, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type CFrame, type Content, type ContentId, type Instance, type SecurityCapabilities, type UniqueId, type Vector3, type WrapLayer, type WrapLayerAutoSkin}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type CFrame, type Content, type ContentId, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector3, type WrapLayer, type WrapLayerAutoSkin}
 
 @luau.property("AutoSkin")
 pub fn get_auto_skin(instance: WrapLayer) -> WrapLayerAutoSkin
@@ -106,7 +107,7 @@ pub fn get_sandboxed(instance: WrapLayer) -> Bool
 pub fn set_sandboxed(instance: WrapLayer, value: Bool) -> WrapLayer
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: WrapLayer) -> Int
+pub fn get_source_asset_id(instance: WrapLayer) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: WrapLayer) -> UniqueId
@@ -151,7 +152,7 @@ pub fn get_actor(instance: WrapLayer) -> Actor
 pub fn get_attribute(instance: WrapLayer, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: WrapLayer, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: WrapLayer, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: WrapLayer) -> Dynamic
@@ -169,7 +170,7 @@ pub fn get_full_name(instance: WrapLayer) -> String
 pub fn get_styled(instance: WrapLayer, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: WrapLayer, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: WrapLayer, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: WrapLayer) -> List(Dynamic)
@@ -199,7 +200,7 @@ pub fn reset_property_to_default(instance: WrapLayer, property: String) -> Nil
 pub fn set_attribute(instance: WrapLayer, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: WrapLayer, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: WrapLayer, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: WrapLayer) -> RBXScriptSignal(Dynamic)
@@ -229,7 +230,7 @@ pub fn styled_properties_changed(instance: WrapLayer) -> RBXScriptSignal(Dynamic
 pub fn get_class_name(instance: WrapLayer) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: WrapLayer, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: WrapLayer, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: WrapLayer, class_name: String) -> Bool

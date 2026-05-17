@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type EnviromentalPhysicsThrottle, type Instance, type PhysicsSettings, type SecurityCapabilities, type SolverConvergenceMetricType, type SolverConvergenceVisualizationMode, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type EnviromentalPhysicsThrottle, type Instance, type OptionDouble, type OptionInt64, type PhysicsSettings, type SecurityCapabilities, type SolverConvergenceMetricType, type SolverConvergenceVisualizationMode, type UniqueId}
 
 @luau.property("AllowSleep")
 pub fn get_allow_sleep(instance: PhysicsSettings) -> Bool
@@ -139,7 +140,7 @@ pub fn get_solver_convergence_metric_type(instance: PhysicsSettings) -> SolverCo
 pub fn get_solver_convergence_visualization_mode(instance: PhysicsSettings) -> SolverConvergenceVisualizationMode
 
 @luau.property("ThrottleAdjustTime")
-pub fn get_throttle_adjust_time(instance: PhysicsSettings) -> Float
+pub fn get_throttle_adjust_time(instance: PhysicsSettings) -> OptionDouble
 
 @luau.property("TorqueDrawScale")
 pub fn get_torque_draw_scale(instance: PhysicsSettings) -> Float
@@ -181,7 +182,7 @@ pub fn get_sandboxed(instance: PhysicsSettings) -> Bool
 pub fn set_sandboxed(instance: PhysicsSettings, value: Bool) -> PhysicsSettings
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: PhysicsSettings) -> Int
+pub fn get_source_asset_id(instance: PhysicsSettings) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: PhysicsSettings) -> UniqueId
@@ -226,7 +227,7 @@ pub fn get_actor(instance: PhysicsSettings) -> Actor
 pub fn get_attribute(instance: PhysicsSettings, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: PhysicsSettings, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: PhysicsSettings, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: PhysicsSettings) -> Dynamic
@@ -244,7 +245,7 @@ pub fn get_full_name(instance: PhysicsSettings) -> String
 pub fn get_styled(instance: PhysicsSettings, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: PhysicsSettings, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: PhysicsSettings, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: PhysicsSettings) -> List(Dynamic)
@@ -274,7 +275,7 @@ pub fn reset_property_to_default(instance: PhysicsSettings, property: String) ->
 pub fn set_attribute(instance: PhysicsSettings, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: PhysicsSettings, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: PhysicsSettings, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: PhysicsSettings) -> RBXScriptSignal(Dynamic)
@@ -304,7 +305,7 @@ pub fn styled_properties_changed(instance: PhysicsSettings) -> RBXScriptSignal(D
 pub fn get_class_name(instance: PhysicsSettings) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: PhysicsSettings, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: PhysicsSettings, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: PhysicsSettings, class_name: String) -> Bool

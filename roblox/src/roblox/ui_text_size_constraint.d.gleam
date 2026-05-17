@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type UITextSizeConstraint, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UITextSizeConstraint, type UniqueId}
 
 @luau.property("MaxTextSize")
 pub fn get_max_text_size(instance: UITextSizeConstraint) -> Int
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: UITextSizeConstraint) -> Bool
 pub fn set_sandboxed(instance: UITextSizeConstraint, value: Bool) -> UITextSizeConstraint
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: UITextSizeConstraint) -> Int
+pub fn get_source_asset_id(instance: UITextSizeConstraint) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: UITextSizeConstraint) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: UITextSizeConstraint) -> Actor
 pub fn get_attribute(instance: UITextSizeConstraint, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: UITextSizeConstraint, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: UITextSizeConstraint, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: UITextSizeConstraint) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: UITextSizeConstraint) -> String
 pub fn get_styled(instance: UITextSizeConstraint, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: UITextSizeConstraint, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: UITextSizeConstraint, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: UITextSizeConstraint) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: UITextSizeConstraint, property: Strin
 pub fn set_attribute(instance: UITextSizeConstraint, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: UITextSizeConstraint, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: UITextSizeConstraint, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: UITextSizeConstraint) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: UITextSizeConstraint) -> RBXScriptSig
 pub fn get_class_name(instance: UITextSizeConstraint) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: UITextSizeConstraint, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: UITextSizeConstraint, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: UITextSizeConstraint, class_name: String) -> Bool

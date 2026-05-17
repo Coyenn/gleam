@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type DataModelSession, type Instance, type MultipleDocumentInterfaceInstance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type DataModelSession, type Instance, type MultipleDocumentInterfaceInstance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("FocusedDataModelSession")
 pub fn get_focused_data_model_session(instance: MultipleDocumentInterfaceInstance) -> DataModelSession
@@ -40,7 +41,7 @@ pub fn get_sandboxed(instance: MultipleDocumentInterfaceInstance) -> Bool
 pub fn set_sandboxed(instance: MultipleDocumentInterfaceInstance, value: Bool) -> MultipleDocumentInterfaceInstance
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: MultipleDocumentInterfaceInstance) -> Int
+pub fn get_source_asset_id(instance: MultipleDocumentInterfaceInstance) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: MultipleDocumentInterfaceInstance) -> UniqueId
@@ -85,7 +86,7 @@ pub fn get_actor(instance: MultipleDocumentInterfaceInstance) -> Actor
 pub fn get_attribute(instance: MultipleDocumentInterfaceInstance, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: MultipleDocumentInterfaceInstance, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: MultipleDocumentInterfaceInstance, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: MultipleDocumentInterfaceInstance) -> Dynamic
@@ -103,7 +104,7 @@ pub fn get_full_name(instance: MultipleDocumentInterfaceInstance) -> String
 pub fn get_styled(instance: MultipleDocumentInterfaceInstance, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: MultipleDocumentInterfaceInstance, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: MultipleDocumentInterfaceInstance, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: MultipleDocumentInterfaceInstance) -> List(Dynamic)
@@ -133,7 +134,7 @@ pub fn reset_property_to_default(instance: MultipleDocumentInterfaceInstance, pr
 pub fn set_attribute(instance: MultipleDocumentInterfaceInstance, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: MultipleDocumentInterfaceInstance, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: MultipleDocumentInterfaceInstance, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: MultipleDocumentInterfaceInstance) -> RBXScriptSignal(Dynamic)
@@ -163,7 +164,7 @@ pub fn styled_properties_changed(instance: MultipleDocumentInterfaceInstance) ->
 pub fn get_class_name(instance: MultipleDocumentInterfaceInstance) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: MultipleDocumentInterfaceInstance, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: MultipleDocumentInterfaceInstance, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: MultipleDocumentInterfaceInstance, class_name: String) -> Bool

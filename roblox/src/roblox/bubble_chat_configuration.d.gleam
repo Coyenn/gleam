@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BubbleChatConfiguration, type Color3, type Font, type Instance, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BubbleChatConfiguration, type Color3, type Font, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("AdorneeName")
 pub fn get_adornee_name(instance: BubbleChatConfiguration) -> String
@@ -16,10 +17,10 @@ pub fn get_background_color3(instance: BubbleChatConfiguration) -> Color3
 pub fn set_background_color3(instance: BubbleChatConfiguration, value: Color3) -> BubbleChatConfiguration
 
 @luau.property("BackgroundTransparency")
-pub fn get_background_transparency(instance: BubbleChatConfiguration) -> Float
+pub fn get_background_transparency(instance: BubbleChatConfiguration) -> OptionDouble
 
 @luau.set_property("BackgroundTransparency")
-pub fn set_background_transparency(instance: BubbleChatConfiguration, value: Float) -> BubbleChatConfiguration
+pub fn set_background_transparency(instance: BubbleChatConfiguration, value: OptionDouble) -> BubbleChatConfiguration
 
 @luau.property("BubbleDuration")
 pub fn get_bubble_duration(instance: BubbleChatConfiguration) -> Float
@@ -88,10 +89,10 @@ pub fn get_text_color3(instance: BubbleChatConfiguration) -> Color3
 pub fn set_text_color3(instance: BubbleChatConfiguration, value: Color3) -> BubbleChatConfiguration
 
 @luau.property("TextSize")
-pub fn get_text_size(instance: BubbleChatConfiguration) -> Int
+pub fn get_text_size(instance: BubbleChatConfiguration) -> OptionInt64
 
 @luau.set_property("TextSize")
-pub fn set_text_size(instance: BubbleChatConfiguration, value: Int) -> BubbleChatConfiguration
+pub fn set_text_size(instance: BubbleChatConfiguration, value: OptionInt64) -> BubbleChatConfiguration
 
 @luau.property("VerticalStudsOffset")
 pub fn get_vertical_studs_offset(instance: BubbleChatConfiguration) -> Float
@@ -133,7 +134,7 @@ pub fn get_sandboxed(instance: BubbleChatConfiguration) -> Bool
 pub fn set_sandboxed(instance: BubbleChatConfiguration, value: Bool) -> BubbleChatConfiguration
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: BubbleChatConfiguration) -> Int
+pub fn get_source_asset_id(instance: BubbleChatConfiguration) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: BubbleChatConfiguration) -> UniqueId
@@ -178,7 +179,7 @@ pub fn get_actor(instance: BubbleChatConfiguration) -> Actor
 pub fn get_attribute(instance: BubbleChatConfiguration, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: BubbleChatConfiguration, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: BubbleChatConfiguration, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: BubbleChatConfiguration) -> Dynamic
@@ -196,7 +197,7 @@ pub fn get_full_name(instance: BubbleChatConfiguration) -> String
 pub fn get_styled(instance: BubbleChatConfiguration, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: BubbleChatConfiguration, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: BubbleChatConfiguration, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: BubbleChatConfiguration) -> List(Dynamic)
@@ -226,7 +227,7 @@ pub fn reset_property_to_default(instance: BubbleChatConfiguration, property: St
 pub fn set_attribute(instance: BubbleChatConfiguration, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: BubbleChatConfiguration, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: BubbleChatConfiguration, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: BubbleChatConfiguration) -> RBXScriptSignal(Dynamic)
@@ -256,7 +257,7 @@ pub fn styled_properties_changed(instance: BubbleChatConfiguration) -> RBXScript
 pub fn get_class_name(instance: BubbleChatConfiguration) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: BubbleChatConfiguration, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: BubbleChatConfiguration, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: BubbleChatConfiguration, class_name: String) -> Bool

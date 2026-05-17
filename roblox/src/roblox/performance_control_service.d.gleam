@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type PerformanceControlService, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type PerformanceControlService, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Archivable")
 pub fn get_archivable(instance: PerformanceControlService) -> Bool
@@ -37,7 +38,7 @@ pub fn get_sandboxed(instance: PerformanceControlService) -> Bool
 pub fn set_sandboxed(instance: PerformanceControlService, value: Bool) -> PerformanceControlService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: PerformanceControlService) -> Int
+pub fn get_source_asset_id(instance: PerformanceControlService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: PerformanceControlService) -> UniqueId
@@ -82,7 +83,7 @@ pub fn get_actor(instance: PerformanceControlService) -> Actor
 pub fn get_attribute(instance: PerformanceControlService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: PerformanceControlService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: PerformanceControlService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: PerformanceControlService) -> Dynamic
@@ -100,7 +101,7 @@ pub fn get_full_name(instance: PerformanceControlService) -> String
 pub fn get_styled(instance: PerformanceControlService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: PerformanceControlService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: PerformanceControlService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: PerformanceControlService) -> List(Dynamic)
@@ -130,7 +131,7 @@ pub fn reset_property_to_default(instance: PerformanceControlService, property: 
 pub fn set_attribute(instance: PerformanceControlService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: PerformanceControlService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: PerformanceControlService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: PerformanceControlService) -> RBXScriptSignal(Dynamic)
@@ -160,7 +161,7 @@ pub fn styled_properties_changed(instance: PerformanceControlService) -> RBXScri
 pub fn get_class_name(instance: PerformanceControlService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: PerformanceControlService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: PerformanceControlService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: PerformanceControlService, class_name: String) -> Bool

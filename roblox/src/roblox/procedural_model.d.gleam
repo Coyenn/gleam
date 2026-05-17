@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type CFrame, type Instance, type ModelLevelOfDetail, type ModelStreamingMode, type ModuleScript, type Player, type ProceduralModel, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type CFrame, type Instance, type ModelLevelOfDetail, type ModelStreamingMode, type ModuleScript, type OptionDouble, type OptionInt64, type Player, type ProceduralModel, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.property("GenerationError")
 pub fn get_generation_error(instance: ProceduralModel) -> String
@@ -112,7 +113,7 @@ pub fn get_sandboxed(instance: ProceduralModel) -> Bool
 pub fn set_sandboxed(instance: ProceduralModel, value: Bool) -> ProceduralModel
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: ProceduralModel) -> Int
+pub fn get_source_asset_id(instance: ProceduralModel) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: ProceduralModel) -> UniqueId
@@ -157,7 +158,7 @@ pub fn get_actor(instance: ProceduralModel) -> Actor
 pub fn get_attribute(instance: ProceduralModel, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: ProceduralModel, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: ProceduralModel, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: ProceduralModel) -> Dynamic
@@ -175,7 +176,7 @@ pub fn get_full_name(instance: ProceduralModel) -> String
 pub fn get_styled(instance: ProceduralModel, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: ProceduralModel, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: ProceduralModel, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: ProceduralModel) -> List(Dynamic)
@@ -205,7 +206,7 @@ pub fn reset_property_to_default(instance: ProceduralModel, property: String) ->
 pub fn set_attribute(instance: ProceduralModel, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: ProceduralModel, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: ProceduralModel, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: ProceduralModel) -> RBXScriptSignal(Dynamic)
@@ -235,7 +236,7 @@ pub fn styled_properties_changed(instance: ProceduralModel) -> RBXScriptSignal(D
 pub fn get_class_name(instance: ProceduralModel) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ProceduralModel, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: ProceduralModel, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: ProceduralModel, class_name: String) -> Bool

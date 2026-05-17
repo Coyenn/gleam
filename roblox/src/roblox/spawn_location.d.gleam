@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type Instance, type Material, type NormalId, type PartType, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SpawnLocation, type SurfaceType, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BasePart, type BrickColor, type CFrame, type CollisionFidelity, type Color3, type Faces, type Instance, type Material, type NormalId, type OptionDouble, type OptionInt64, type PartType, type PhysicalProperties, type Player, type RenderFidelity, type SecurityCapabilities, type SpawnLocation, type SurfaceType, type UniqueId, type Vector3}
 
 @luau.property("AllowTeamChangeOnTouch")
 pub fn get_allow_team_change_on_touch(instance: SpawnLocation) -> Bool
@@ -297,9 +298,6 @@ pub fn get_connected_parts(instance: SpawnLocation, recursive: Bool) -> List(Ins
 @luau.method("GetJoints")
 pub fn get_joints(instance: SpawnLocation) -> List(Instance)
 
-@luau.method("GetMass")
-pub fn get_mass(instance: SpawnLocation) -> Float
-
 @luau.method("GetNetworkOwner")
 pub fn get_network_owner(instance: SpawnLocation) -> Instance
 
@@ -385,7 +383,7 @@ pub fn get_sandboxed(instance: SpawnLocation) -> Bool
 pub fn set_sandboxed(instance: SpawnLocation, value: Bool) -> SpawnLocation
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: SpawnLocation) -> Int
+pub fn get_source_asset_id(instance: SpawnLocation) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: SpawnLocation) -> UniqueId
@@ -430,7 +428,7 @@ pub fn get_actor(instance: SpawnLocation) -> Actor
 pub fn get_attribute(instance: SpawnLocation, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: SpawnLocation, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: SpawnLocation, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: SpawnLocation) -> Dynamic
@@ -448,7 +446,7 @@ pub fn get_full_name(instance: SpawnLocation) -> String
 pub fn get_styled(instance: SpawnLocation, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: SpawnLocation, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: SpawnLocation, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: SpawnLocation) -> List(Dynamic)
@@ -478,7 +476,7 @@ pub fn reset_property_to_default(instance: SpawnLocation, property: String) -> N
 pub fn set_attribute(instance: SpawnLocation, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: SpawnLocation, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: SpawnLocation, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: SpawnLocation) -> RBXScriptSignal(Dynamic)
@@ -508,7 +506,7 @@ pub fn styled_properties_changed(instance: SpawnLocation) -> RBXScriptSignal(Dyn
 pub fn get_class_name(instance: SpawnLocation) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: SpawnLocation, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: SpawnLocation, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: SpawnLocation, class_name: String) -> Bool

@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Axis, type Dragger, type Instance, type Ray, type SecurityCapabilities, type UniqueId, type Vector3}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Axis, type Dragger, type Instance, type OptionDouble, type OptionInt64, type Ray, type SecurityCapabilities, type UniqueId, type Vector3}
 
 @luau.method("AxisRotate")
 pub fn axis_rotate(instance: Dragger, axis: Axis) -> Nil
@@ -49,7 +50,7 @@ pub fn get_sandboxed(instance: Dragger) -> Bool
 pub fn set_sandboxed(instance: Dragger, value: Bool) -> Dragger
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: Dragger) -> Int
+pub fn get_source_asset_id(instance: Dragger) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: Dragger) -> UniqueId
@@ -94,7 +95,7 @@ pub fn get_actor(instance: Dragger) -> Actor
 pub fn get_attribute(instance: Dragger, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: Dragger, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: Dragger, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: Dragger) -> Dynamic
@@ -112,7 +113,7 @@ pub fn get_full_name(instance: Dragger) -> String
 pub fn get_styled(instance: Dragger, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: Dragger, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: Dragger, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: Dragger) -> List(Dynamic)
@@ -142,7 +143,7 @@ pub fn reset_property_to_default(instance: Dragger, property: String) -> Nil
 pub fn set_attribute(instance: Dragger, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: Dragger, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: Dragger, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: Dragger) -> RBXScriptSignal(Dynamic)
@@ -172,7 +173,7 @@ pub fn styled_properties_changed(instance: Dragger) -> RBXScriptSignal(Dynamic)
 pub fn get_class_name(instance: Dragger) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Dragger, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: Dragger, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: Dragger, class_name: String) -> Bool

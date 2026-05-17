@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type AudioDeviceOutput, type Instance, type Player, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type AudioDeviceOutput, type Instance, type OptionDouble, type OptionInt64, type Player, type SecurityCapabilities, type UniqueId}
 
 @luau.property("Player")
 pub fn get_player(instance: AudioDeviceOutput) -> Player
@@ -55,7 +56,7 @@ pub fn get_sandboxed(instance: AudioDeviceOutput) -> Bool
 pub fn set_sandboxed(instance: AudioDeviceOutput, value: Bool) -> AudioDeviceOutput
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: AudioDeviceOutput) -> Int
+pub fn get_source_asset_id(instance: AudioDeviceOutput) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: AudioDeviceOutput) -> UniqueId
@@ -100,7 +101,7 @@ pub fn get_actor(instance: AudioDeviceOutput) -> Actor
 pub fn get_attribute(instance: AudioDeviceOutput, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: AudioDeviceOutput, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: AudioDeviceOutput, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: AudioDeviceOutput) -> Dynamic
@@ -118,7 +119,7 @@ pub fn get_full_name(instance: AudioDeviceOutput) -> String
 pub fn get_styled(instance: AudioDeviceOutput, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: AudioDeviceOutput, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: AudioDeviceOutput, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: AudioDeviceOutput) -> List(Dynamic)
@@ -148,7 +149,7 @@ pub fn reset_property_to_default(instance: AudioDeviceOutput, property: String) 
 pub fn set_attribute(instance: AudioDeviceOutput, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: AudioDeviceOutput, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: AudioDeviceOutput, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: AudioDeviceOutput) -> RBXScriptSignal(Dynamic)
@@ -178,7 +179,7 @@ pub fn styled_properties_changed(instance: AudioDeviceOutput) -> RBXScriptSignal
 pub fn get_class_name(instance: AudioDeviceOutput) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: AudioDeviceOutput, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: AudioDeviceOutput, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: AudioDeviceOutput, class_name: String) -> Bool

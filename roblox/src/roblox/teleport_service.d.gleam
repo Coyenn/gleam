@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type Player, type PromptExperienceDetailsResult, type SecurityCapabilities, type TeleportService, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type Player, type PromptExperienceDetailsResult, type SecurityCapabilities, type TeleportService, type UniqueId}
 
 @luau.method("GetArrivingTeleportGui")
 pub fn get_arriving_teleport_gui(instance: TeleportService) -> Instance
@@ -19,31 +20,31 @@ pub fn set_teleport_gui(instance: TeleportService, gui: Instance) -> Nil
 pub fn set_teleport_setting(instance: TeleportService, setting: String, value: Dynamic) -> Nil
 
 @luau.method("Teleport")
-pub fn teleport(instance: TeleportService, place_id: Int, player: Instance, teleport_data: Dynamic, custom_loading_screen: Instance) -> Nil
+pub fn teleport(instance: TeleportService, place_id: OptionInt64, player: Instance, teleport_data: Dynamic, custom_loading_screen: Instance) -> Nil
 
 @luau.method("TeleportToPlaceInstance")
-pub fn teleport_to_place_instance(instance: TeleportService, place_id: Int, instance_id: String, player: Instance, spawn_name: String, teleport_data: Dynamic, custom_loading_screen: Instance) -> Nil
+pub fn teleport_to_place_instance(instance: TeleportService, place_id: OptionInt64, instance_id: String, player: Instance, spawn_name: String, teleport_data: Dynamic, custom_loading_screen: Instance) -> Nil
 
 @luau.method("TeleportToPrivateServer")
-pub fn teleport_to_private_server(instance: TeleportService, place_id: Int, reserved_server_access_code: String, players: List(Instance), spawn_name: String, teleport_data: Dynamic, custom_loading_screen: Instance) -> Nil
+pub fn teleport_to_private_server(instance: TeleportService, place_id: OptionInt64, reserved_server_access_code: String, players: List(Instance), spawn_name: String, teleport_data: Dynamic, custom_loading_screen: Instance) -> Nil
 
 @luau.method("TeleportToSpawnByName")
-pub fn teleport_to_spawn_by_name(instance: TeleportService, place_id: Int, spawn_name: String, player: Instance, teleport_data: Dynamic, custom_loading_screen: Instance) -> Nil
+pub fn teleport_to_spawn_by_name(instance: TeleportService, place_id: OptionInt64, spawn_name: String, player: Instance, teleport_data: Dynamic, custom_loading_screen: Instance) -> Nil
 
 @luau.method("GetPlayerPlaceInstanceAsync")
-pub fn get_player_place_instance_async(instance: TeleportService, user_id: Int) -> Dynamic
+pub fn get_player_place_instance_async(instance: TeleportService, user_id: OptionInt64) -> Dynamic
 
 @luau.method("PromptExperienceDetailsAsync")
-pub fn prompt_experience_details_async(instance: TeleportService, player: Player, universe_id: Int) -> PromptExperienceDetailsResult
+pub fn prompt_experience_details_async(instance: TeleportService, player: Player, universe_id: OptionInt64) -> PromptExperienceDetailsResult
 
 @luau.method("ReserveServerAsync")
-pub fn reserve_server_async(instance: TeleportService, place_id: Int) -> Dynamic
+pub fn reserve_server_async(instance: TeleportService, place_id: OptionInt64) -> Dynamic
 
 @luau.method("TeleportAsync")
-pub fn teleport_async(instance: TeleportService, place_id: Int, players: List(Instance), teleport_options: Instance) -> Instance
+pub fn teleport_async(instance: TeleportService, place_id: OptionInt64, players: List(Instance), teleport_options: Instance) -> Instance
 
 @luau.method("TeleportPartyAsync")
-pub fn teleport_party_async(instance: TeleportService, place_id: Int, players: List(Instance), teleport_data: Dynamic, custom_loading_screen: Instance) -> String
+pub fn teleport_party_async(instance: TeleportService, place_id: OptionInt64, players: List(Instance), teleport_data: Dynamic, custom_loading_screen: Instance) -> String
 
 @luau.event("LocalPlayerArrivedFromTeleport")
 pub fn local_player_arrived_from_teleport(instance: TeleportService) -> RBXScriptSignal(Dynamic)
@@ -85,7 +86,7 @@ pub fn get_sandboxed(instance: TeleportService) -> Bool
 pub fn set_sandboxed(instance: TeleportService, value: Bool) -> TeleportService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TeleportService) -> Int
+pub fn get_source_asset_id(instance: TeleportService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TeleportService) -> UniqueId
@@ -130,7 +131,7 @@ pub fn get_actor(instance: TeleportService) -> Actor
 pub fn get_attribute(instance: TeleportService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TeleportService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TeleportService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TeleportService) -> Dynamic
@@ -148,7 +149,7 @@ pub fn get_full_name(instance: TeleportService) -> String
 pub fn get_styled(instance: TeleportService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TeleportService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TeleportService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TeleportService) -> List(Dynamic)
@@ -178,7 +179,7 @@ pub fn reset_property_to_default(instance: TeleportService, property: String) ->
 pub fn set_attribute(instance: TeleportService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TeleportService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TeleportService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TeleportService) -> RBXScriptSignal(Dynamic)
@@ -208,7 +209,7 @@ pub fn styled_properties_changed(instance: TeleportService) -> RBXScriptSignal(D
 pub fn get_class_name(instance: TeleportService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TeleportService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TeleportService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TeleportService, class_name: String) -> Bool

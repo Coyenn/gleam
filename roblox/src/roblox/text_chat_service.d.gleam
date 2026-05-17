@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type ChatVersion, type Instance, type SecurityCapabilities, type TextChatService, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type ChatVersion, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type TextChatService, type UniqueId}
 
 @luau.property("ChatTranslationEnabled")
 pub fn get_chat_translation_enabled(instance: TextChatService) -> Bool
@@ -31,13 +32,13 @@ pub fn get_is_legacy_chat_disabled(instance: TextChatService) -> Bool
 pub fn display_bubble(instance: TextChatService, part_or_character: Instance, message: String) -> Nil
 
 @luau.method("CanUserChatAsync")
-pub fn can_user_chat_async(instance: TextChatService, user_id: Int) -> Bool
+pub fn can_user_chat_async(instance: TextChatService, user_id: OptionInt64) -> Bool
 
 @luau.method("CanUsersChatAsync")
-pub fn can_users_chat_async(instance: TextChatService, user_id_from: Int, user_id_to: Int) -> Bool
+pub fn can_users_chat_async(instance: TextChatService, user_id_from: OptionInt64, user_id_to: OptionInt64) -> Bool
 
 @luau.method("CanUsersDirectChatAsync")
-pub fn can_users_direct_chat_async(instance: TextChatService, requester_user_id: Int, user_ids: List(Dynamic)) -> List(Dynamic)
+pub fn can_users_direct_chat_async(instance: TextChatService, requester_user_id: OptionInt64, user_ids: List(Dynamic)) -> List(Dynamic)
 
 @luau.method("GetChatGroupsAsync")
 pub fn get_chat_groups_async(instance: TextChatService, players: List(Instance)) -> List(Dynamic)
@@ -85,7 +86,7 @@ pub fn get_sandboxed(instance: TextChatService) -> Bool
 pub fn set_sandboxed(instance: TextChatService, value: Bool) -> TextChatService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: TextChatService) -> Int
+pub fn get_source_asset_id(instance: TextChatService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: TextChatService) -> UniqueId
@@ -130,7 +131,7 @@ pub fn get_actor(instance: TextChatService) -> Actor
 pub fn get_attribute(instance: TextChatService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: TextChatService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: TextChatService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: TextChatService) -> Dynamic
@@ -148,7 +149,7 @@ pub fn get_full_name(instance: TextChatService) -> String
 pub fn get_styled(instance: TextChatService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: TextChatService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: TextChatService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: TextChatService) -> List(Dynamic)
@@ -178,7 +179,7 @@ pub fn reset_property_to_default(instance: TextChatService, property: String) ->
 pub fn set_attribute(instance: TextChatService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: TextChatService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: TextChatService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: TextChatService) -> RBXScriptSignal(Dynamic)
@@ -208,7 +209,7 @@ pub fn styled_properties_changed(instance: TextChatService) -> RBXScriptSignal(D
 pub fn get_class_name(instance: TextChatService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: TextChatService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: TextChatService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: TextChatService, class_name: String) -> Bool

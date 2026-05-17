@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Dictionary?, type Function?, type GenerationService, type Instance, type MeshPart, type Player, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type GenerationService, type Instance, type MeshPart, type OptionDouble, type OptionFunction, type OptionInt64, type Player, type SecurityCapabilities, type UniqueId}
 
 @luau.method("ConnectAsync")
 pub fn connect_async(instance: GenerationService, session_id: String, sdp: String, type_: String, relay: String) -> Dynamic
@@ -10,10 +11,10 @@ pub fn connect_async(instance: GenerationService, session_id: String, sdp: Strin
 pub fn disconnect_async(instance: GenerationService, session_id: String) -> Bool
 
 @luau.method("GenerateMeshAsync")
-pub fn generate_mesh_async(instance: GenerationService, inputs: Dynamic, player: Player, options: Dynamic, intermediate_result_callback: Function?) -> Dynamic
+pub fn generate_mesh_async(instance: GenerationService, inputs: Dynamic, player: Player, options: Dynamic, intermediate_result_callback: OptionFunction) -> Dynamic
 
 @luau.method("GenerateModelAsync")
-pub fn generate_model_async(instance: GenerationService, inputs: Dynamic, schema: Dynamic, options: Dictionary?) -> Dynamic
+pub fn generate_model_async(instance: GenerationService, inputs: Dynamic, schema: Dynamic, options: Dynamic) -> Dynamic
 
 @luau.method("GetVideoGenSessionAsync")
 pub fn get_video_gen_session_async(instance: GenerationService) -> Dynamic
@@ -67,7 +68,7 @@ pub fn get_sandboxed(instance: GenerationService) -> Bool
 pub fn set_sandboxed(instance: GenerationService, value: Bool) -> GenerationService
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: GenerationService) -> Int
+pub fn get_source_asset_id(instance: GenerationService) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: GenerationService) -> UniqueId
@@ -112,7 +113,7 @@ pub fn get_actor(instance: GenerationService) -> Actor
 pub fn get_attribute(instance: GenerationService, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: GenerationService, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: GenerationService, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: GenerationService) -> Dynamic
@@ -130,7 +131,7 @@ pub fn get_full_name(instance: GenerationService) -> String
 pub fn get_styled(instance: GenerationService, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: GenerationService, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: GenerationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: GenerationService) -> List(Dynamic)
@@ -160,7 +161,7 @@ pub fn reset_property_to_default(instance: GenerationService, property: String) 
 pub fn set_attribute(instance: GenerationService, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: GenerationService, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: GenerationService, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: GenerationService) -> RBXScriptSignal(Dynamic)
@@ -190,7 +191,7 @@ pub fn styled_properties_changed(instance: GenerationService) -> RBXScriptSignal
 pub fn get_class_name(instance: GenerationService) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: GenerationService, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: GenerationService, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: GenerationService, class_name: String) -> Bool

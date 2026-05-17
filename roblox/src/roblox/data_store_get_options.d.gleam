@@ -1,7 +1,8 @@
+// Generated class bindings for Roblox API
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
-import gleam/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type DataStoreGetOptions, type Instance, type SecurityCapabilities, type UniqueId}
+import roblox/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type DataStoreGetOptions, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
 
 @luau.property("UseCache")
 pub fn get_use_cache(instance: DataStoreGetOptions) -> Bool
@@ -43,7 +44,7 @@ pub fn get_sandboxed(instance: DataStoreGetOptions) -> Bool
 pub fn set_sandboxed(instance: DataStoreGetOptions, value: Bool) -> DataStoreGetOptions
 
 @luau.property("SourceAssetId")
-pub fn get_source_asset_id(instance: DataStoreGetOptions) -> Int
+pub fn get_source_asset_id(instance: DataStoreGetOptions) -> OptionInt64
 
 @luau.property("UniqueId")
 pub fn get_unique_id(instance: DataStoreGetOptions) -> UniqueId
@@ -88,7 +89,7 @@ pub fn get_actor(instance: DataStoreGetOptions) -> Actor
 pub fn get_attribute(instance: DataStoreGetOptions, attribute: String) -> Dynamic
 
 @luau.method("GetAttributeChangedSignal")
-pub fn get_attribute_changed_signal(instance: DataStoreGetOptions, attribute: String) -> RBXScriptSignal
+pub fn get_attribute_changed_signal(instance: DataStoreGetOptions, attribute: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetAttributes")
 pub fn get_attributes(instance: DataStoreGetOptions) -> Dynamic
@@ -106,7 +107,7 @@ pub fn get_full_name(instance: DataStoreGetOptions) -> String
 pub fn get_styled(instance: DataStoreGetOptions, name: String, selector: Option(String)) -> Dynamic
 
 @luau.method("GetStyledPropertyChangedSignal")
-pub fn get_styled_property_changed_signal(instance: DataStoreGetOptions, property: String) -> RBXScriptSignal
+pub fn get_styled_property_changed_signal(instance: DataStoreGetOptions, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("GetTags")
 pub fn get_tags(instance: DataStoreGetOptions) -> List(Dynamic)
@@ -136,7 +137,7 @@ pub fn reset_property_to_default(instance: DataStoreGetOptions, property: String
 pub fn set_attribute(instance: DataStoreGetOptions, attribute: String, value: Dynamic) -> Nil
 
 @luau.method("WaitForChild")
-pub fn wait_for_child(instance: DataStoreGetOptions, child_name: String, time_out: Float) -> Instance
+pub fn wait_for_child(instance: DataStoreGetOptions, child_name: String, time_out: OptionDouble) -> Instance
 
 @luau.event("AncestryChanged")
 pub fn ancestry_changed(instance: DataStoreGetOptions) -> RBXScriptSignal(Dynamic)
@@ -166,7 +167,7 @@ pub fn styled_properties_changed(instance: DataStoreGetOptions) -> RBXScriptSign
 pub fn get_class_name(instance: DataStoreGetOptions) -> String
 
 @luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: DataStoreGetOptions, property: String) -> RBXScriptSignal
+pub fn get_property_changed_signal(instance: DataStoreGetOptions, property: String) -> RBXScriptSignal(Dynamic)
 
 @luau.method("IsA")
 pub fn is_a(instance: DataStoreGetOptions, class_name: String) -> Bool
