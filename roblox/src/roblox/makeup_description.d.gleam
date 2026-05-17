@@ -1,0 +1,196 @@
+import roblox/option.{type Option}
+import roblox/signal.{type RBXScriptSignal}
+import gleam/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type MakeupDescription, type MakeupType, type SecurityCapabilities, type UniqueId}
+
+@luau.property("AssetId")
+pub fn get_asset_id(instance: MakeupDescription) -> Int
+
+@luau.set_property("AssetId")
+pub fn set_asset_id(instance: MakeupDescription, value: Int) -> MakeupDescription
+
+@luau.property("Instance")
+pub fn get_instance(instance: MakeupDescription) -> Instance
+
+@luau.set_property("Instance")
+pub fn set_instance(instance: MakeupDescription, value: Instance) -> MakeupDescription
+
+@luau.property("MakeupType")
+pub fn get_makeup_type(instance: MakeupDescription) -> MakeupType
+
+@luau.set_property("MakeupType")
+pub fn set_makeup_type(instance: MakeupDescription, value: MakeupType) -> MakeupDescription
+
+@luau.property("Order")
+pub fn get_order(instance: MakeupDescription) -> Int
+
+@luau.set_property("Order")
+pub fn set_order(instance: MakeupDescription, value: Int) -> MakeupDescription
+
+@luau.method("GetAppliedInstance")
+pub fn get_applied_instance(instance: MakeupDescription) -> Instance
+
+@luau.property("Archivable")
+pub fn get_archivable(instance: MakeupDescription) -> Bool
+
+@luau.set_property("Archivable")
+pub fn set_archivable(instance: MakeupDescription, value: Bool) -> MakeupDescription
+
+@luau.property("Capabilities")
+pub fn get_capabilities(instance: MakeupDescription) -> SecurityCapabilities
+
+@luau.set_property("Capabilities")
+pub fn set_capabilities(instance: MakeupDescription, value: SecurityCapabilities) -> MakeupDescription
+
+@luau.property("Name")
+pub fn get_name(instance: MakeupDescription) -> String
+
+@luau.set_property("Name")
+pub fn set_name(instance: MakeupDescription, value: String) -> MakeupDescription
+
+@luau.property("Parent")
+pub fn get_parent(instance: MakeupDescription) -> Instance
+
+@luau.set_property("Parent")
+pub fn set_parent(instance: MakeupDescription, value: Instance) -> MakeupDescription
+
+@luau.property("RobloxLocked")
+pub fn get_roblox_locked(instance: MakeupDescription) -> Bool
+
+@luau.property("Sandboxed")
+pub fn get_sandboxed(instance: MakeupDescription) -> Bool
+
+@luau.set_property("Sandboxed")
+pub fn set_sandboxed(instance: MakeupDescription, value: Bool) -> MakeupDescription
+
+@luau.property("SourceAssetId")
+pub fn get_source_asset_id(instance: MakeupDescription) -> Int
+
+@luau.property("UniqueId")
+pub fn get_unique_id(instance: MakeupDescription) -> UniqueId
+
+@luau.method("AddTag")
+pub fn add_tag(instance: MakeupDescription, tag: String) -> Nil
+
+@luau.method("ClearAllChildren")
+pub fn clear_all_children(instance: MakeupDescription) -> Nil
+
+@luau.method("Clone")
+pub fn clone(instance: MakeupDescription) -> Instance
+
+@luau.method("Destroy")
+pub fn destroy(instance: MakeupDescription) -> Nil
+
+@luau.method("FindFirstAncestor")
+pub fn find_first_ancestor(instance: MakeupDescription, name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorOfClass")
+pub fn find_first_ancestor_of_class(instance: MakeupDescription, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorWhichIsA")
+pub fn find_first_ancestor_which_is_a(instance: MakeupDescription, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChild")
+pub fn find_first_child(instance: MakeupDescription, name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstChildOfClass")
+pub fn find_first_child_of_class(instance: MakeupDescription, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChildWhichIsA")
+pub fn find_first_child_which_is_a(instance: MakeupDescription, class_name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstDescendant")
+pub fn find_first_descendant(instance: MakeupDescription, name: String) -> Option(Instance)
+
+@luau.method("GetActor")
+pub fn get_actor(instance: MakeupDescription) -> Actor
+
+@luau.method("GetAttribute")
+pub fn get_attribute(instance: MakeupDescription, attribute: String) -> Dynamic
+
+@luau.method("GetAttributeChangedSignal")
+pub fn get_attribute_changed_signal(instance: MakeupDescription, attribute: String) -> RBXScriptSignal
+
+@luau.method("GetAttributes")
+pub fn get_attributes(instance: MakeupDescription) -> Dynamic
+
+@luau.method("GetChildren")
+pub fn get_children(instance: MakeupDescription) -> List(Instance)
+
+@luau.method("GetDescendants")
+pub fn get_descendants(instance: MakeupDescription) -> List(Instance)
+
+@luau.method("GetFullName")
+pub fn get_full_name(instance: MakeupDescription) -> String
+
+@luau.method("GetStyled")
+pub fn get_styled(instance: MakeupDescription, name: String, selector: Option(String)) -> Dynamic
+
+@luau.method("GetStyledPropertyChangedSignal")
+pub fn get_styled_property_changed_signal(instance: MakeupDescription, property: String) -> RBXScriptSignal
+
+@luau.method("GetTags")
+pub fn get_tags(instance: MakeupDescription) -> List(Dynamic)
+
+@luau.method("HasTag")
+pub fn has_tag(instance: MakeupDescription, tag: String) -> Bool
+
+@luau.method("IsAncestorOf")
+pub fn is_ancestor_of(instance: MakeupDescription, descendant: Instance) -> Bool
+
+@luau.method("IsDescendantOf")
+pub fn is_descendant_of(instance: MakeupDescription, ancestor: Instance) -> Bool
+
+@luau.method("IsPropertyModified")
+pub fn is_property_modified(instance: MakeupDescription, property: String) -> Bool
+
+@luau.method("QueryDescendants")
+pub fn query_descendants(instance: MakeupDescription, selector: String) -> List(Instance)
+
+@luau.method("RemoveTag")
+pub fn remove_tag(instance: MakeupDescription, tag: String) -> Nil
+
+@luau.method("ResetPropertyToDefault")
+pub fn reset_property_to_default(instance: MakeupDescription, property: String) -> Nil
+
+@luau.method("SetAttribute")
+pub fn set_attribute(instance: MakeupDescription, attribute: String, value: Dynamic) -> Nil
+
+@luau.method("WaitForChild")
+pub fn wait_for_child(instance: MakeupDescription, child_name: String, time_out: Float) -> Instance
+
+@luau.event("AncestryChanged")
+pub fn ancestry_changed(instance: MakeupDescription) -> RBXScriptSignal(Dynamic)
+
+@luau.event("AttributeChanged")
+pub fn attribute_changed(instance: MakeupDescription) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildAdded")
+pub fn child_added(instance: MakeupDescription) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildRemoved")
+pub fn child_removed(instance: MakeupDescription) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantAdded")
+pub fn descendant_added(instance: MakeupDescription) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantRemoving")
+pub fn descendant_removing(instance: MakeupDescription) -> RBXScriptSignal(Dynamic)
+
+@luau.event("Destroying")
+pub fn destroying(instance: MakeupDescription) -> RBXScriptSignal(Dynamic)
+
+@luau.event("StyledPropertiesChanged")
+pub fn styled_properties_changed(instance: MakeupDescription) -> RBXScriptSignal(Dynamic)
+
+@luau.property("ClassName")
+pub fn get_class_name(instance: MakeupDescription) -> String
+
+@luau.method("GetPropertyChangedSignal")
+pub fn get_property_changed_signal(instance: MakeupDescription, property: String) -> RBXScriptSignal
+
+@luau.method("IsA")
+pub fn is_a(instance: MakeupDescription, class_name: String) -> Bool
+
+@luau.event("Changed")
+pub fn changed(instance: MakeupDescription) -> RBXScriptSignal(Dynamic)

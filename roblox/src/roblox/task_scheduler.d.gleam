@@ -1,0 +1,184 @@
+import roblox/option.{type Option}
+import roblox/signal.{type RBXScriptSignal}
+import gleam/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type TaskScheduler, type ThreadPoolConfig, type UniqueId}
+
+@luau.property("SchedulerDutyCycle")
+pub fn get_scheduler_duty_cycle(instance: TaskScheduler) -> Float
+
+@luau.property("SchedulerRate")
+pub fn get_scheduler_rate(instance: TaskScheduler) -> Float
+
+@luau.property("ThreadPoolConfig")
+pub fn get_thread_pool_config(instance: TaskScheduler) -> ThreadPoolConfig
+
+@luau.set_property("ThreadPoolConfig")
+pub fn set_thread_pool_config(instance: TaskScheduler, value: ThreadPoolConfig) -> TaskScheduler
+
+@luau.property("ThreadPoolSize")
+pub fn get_thread_pool_size(instance: TaskScheduler) -> Int
+
+@luau.property("Archivable")
+pub fn get_archivable(instance: TaskScheduler) -> Bool
+
+@luau.set_property("Archivable")
+pub fn set_archivable(instance: TaskScheduler, value: Bool) -> TaskScheduler
+
+@luau.property("Capabilities")
+pub fn get_capabilities(instance: TaskScheduler) -> SecurityCapabilities
+
+@luau.set_property("Capabilities")
+pub fn set_capabilities(instance: TaskScheduler, value: SecurityCapabilities) -> TaskScheduler
+
+@luau.property("Name")
+pub fn get_name(instance: TaskScheduler) -> String
+
+@luau.set_property("Name")
+pub fn set_name(instance: TaskScheduler, value: String) -> TaskScheduler
+
+@luau.property("Parent")
+pub fn get_parent(instance: TaskScheduler) -> Instance
+
+@luau.set_property("Parent")
+pub fn set_parent(instance: TaskScheduler, value: Instance) -> TaskScheduler
+
+@luau.property("RobloxLocked")
+pub fn get_roblox_locked(instance: TaskScheduler) -> Bool
+
+@luau.property("Sandboxed")
+pub fn get_sandboxed(instance: TaskScheduler) -> Bool
+
+@luau.set_property("Sandboxed")
+pub fn set_sandboxed(instance: TaskScheduler, value: Bool) -> TaskScheduler
+
+@luau.property("SourceAssetId")
+pub fn get_source_asset_id(instance: TaskScheduler) -> Int
+
+@luau.property("UniqueId")
+pub fn get_unique_id(instance: TaskScheduler) -> UniqueId
+
+@luau.method("AddTag")
+pub fn add_tag(instance: TaskScheduler, tag: String) -> Nil
+
+@luau.method("ClearAllChildren")
+pub fn clear_all_children(instance: TaskScheduler) -> Nil
+
+@luau.method("Clone")
+pub fn clone(instance: TaskScheduler) -> Instance
+
+@luau.method("Destroy")
+pub fn destroy(instance: TaskScheduler) -> Nil
+
+@luau.method("FindFirstAncestor")
+pub fn find_first_ancestor(instance: TaskScheduler, name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorOfClass")
+pub fn find_first_ancestor_of_class(instance: TaskScheduler, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorWhichIsA")
+pub fn find_first_ancestor_which_is_a(instance: TaskScheduler, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChild")
+pub fn find_first_child(instance: TaskScheduler, name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstChildOfClass")
+pub fn find_first_child_of_class(instance: TaskScheduler, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChildWhichIsA")
+pub fn find_first_child_which_is_a(instance: TaskScheduler, class_name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstDescendant")
+pub fn find_first_descendant(instance: TaskScheduler, name: String) -> Option(Instance)
+
+@luau.method("GetActor")
+pub fn get_actor(instance: TaskScheduler) -> Actor
+
+@luau.method("GetAttribute")
+pub fn get_attribute(instance: TaskScheduler, attribute: String) -> Dynamic
+
+@luau.method("GetAttributeChangedSignal")
+pub fn get_attribute_changed_signal(instance: TaskScheduler, attribute: String) -> RBXScriptSignal
+
+@luau.method("GetAttributes")
+pub fn get_attributes(instance: TaskScheduler) -> Dynamic
+
+@luau.method("GetChildren")
+pub fn get_children(instance: TaskScheduler) -> List(Instance)
+
+@luau.method("GetDescendants")
+pub fn get_descendants(instance: TaskScheduler) -> List(Instance)
+
+@luau.method("GetFullName")
+pub fn get_full_name(instance: TaskScheduler) -> String
+
+@luau.method("GetStyled")
+pub fn get_styled(instance: TaskScheduler, name: String, selector: Option(String)) -> Dynamic
+
+@luau.method("GetStyledPropertyChangedSignal")
+pub fn get_styled_property_changed_signal(instance: TaskScheduler, property: String) -> RBXScriptSignal
+
+@luau.method("GetTags")
+pub fn get_tags(instance: TaskScheduler) -> List(Dynamic)
+
+@luau.method("HasTag")
+pub fn has_tag(instance: TaskScheduler, tag: String) -> Bool
+
+@luau.method("IsAncestorOf")
+pub fn is_ancestor_of(instance: TaskScheduler, descendant: Instance) -> Bool
+
+@luau.method("IsDescendantOf")
+pub fn is_descendant_of(instance: TaskScheduler, ancestor: Instance) -> Bool
+
+@luau.method("IsPropertyModified")
+pub fn is_property_modified(instance: TaskScheduler, property: String) -> Bool
+
+@luau.method("QueryDescendants")
+pub fn query_descendants(instance: TaskScheduler, selector: String) -> List(Instance)
+
+@luau.method("RemoveTag")
+pub fn remove_tag(instance: TaskScheduler, tag: String) -> Nil
+
+@luau.method("ResetPropertyToDefault")
+pub fn reset_property_to_default(instance: TaskScheduler, property: String) -> Nil
+
+@luau.method("SetAttribute")
+pub fn set_attribute(instance: TaskScheduler, attribute: String, value: Dynamic) -> Nil
+
+@luau.method("WaitForChild")
+pub fn wait_for_child(instance: TaskScheduler, child_name: String, time_out: Float) -> Instance
+
+@luau.event("AncestryChanged")
+pub fn ancestry_changed(instance: TaskScheduler) -> RBXScriptSignal(Dynamic)
+
+@luau.event("AttributeChanged")
+pub fn attribute_changed(instance: TaskScheduler) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildAdded")
+pub fn child_added(instance: TaskScheduler) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildRemoved")
+pub fn child_removed(instance: TaskScheduler) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantAdded")
+pub fn descendant_added(instance: TaskScheduler) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantRemoving")
+pub fn descendant_removing(instance: TaskScheduler) -> RBXScriptSignal(Dynamic)
+
+@luau.event("Destroying")
+pub fn destroying(instance: TaskScheduler) -> RBXScriptSignal(Dynamic)
+
+@luau.event("StyledPropertiesChanged")
+pub fn styled_properties_changed(instance: TaskScheduler) -> RBXScriptSignal(Dynamic)
+
+@luau.property("ClassName")
+pub fn get_class_name(instance: TaskScheduler) -> String
+
+@luau.method("GetPropertyChangedSignal")
+pub fn get_property_changed_signal(instance: TaskScheduler, property: String) -> RBXScriptSignal
+
+@luau.method("IsA")
+pub fn is_a(instance: TaskScheduler, class_name: String) -> Bool
+
+@luau.event("Changed")
+pub fn changed(instance: TaskScheduler) -> RBXScriptSignal(Dynamic)

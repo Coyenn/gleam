@@ -1,0 +1,211 @@
+import roblox/option.{type Option}
+import roblox/signal.{type RBXScriptSignal}
+import gleam/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BodyPart, type CharacterMesh, type Content, type Instance, type SecurityCapabilities, type UniqueId}
+
+@luau.property("BaseTextureContent")
+pub fn get_base_texture_content(instance: CharacterMesh) -> Content
+
+@luau.set_property("BaseTextureContent")
+pub fn set_base_texture_content(instance: CharacterMesh, value: Content) -> CharacterMesh
+
+@luau.property("BaseTextureId")
+pub fn get_base_texture_id(instance: CharacterMesh) -> Int
+
+@luau.set_property("BaseTextureId")
+pub fn set_base_texture_id(instance: CharacterMesh, value: Int) -> CharacterMesh
+
+@luau.property("BodyPart")
+pub fn get_body_part(instance: CharacterMesh) -> BodyPart
+
+@luau.set_property("BodyPart")
+pub fn set_body_part(instance: CharacterMesh, value: BodyPart) -> CharacterMesh
+
+@luau.property("MeshContent")
+pub fn get_mesh_content(instance: CharacterMesh) -> Content
+
+@luau.set_property("MeshContent")
+pub fn set_mesh_content(instance: CharacterMesh, value: Content) -> CharacterMesh
+
+@luau.property("MeshId")
+pub fn get_mesh_id(instance: CharacterMesh) -> Int
+
+@luau.set_property("MeshId")
+pub fn set_mesh_id(instance: CharacterMesh, value: Int) -> CharacterMesh
+
+@luau.property("OverlayTextureContent")
+pub fn get_overlay_texture_content(instance: CharacterMesh) -> Content
+
+@luau.set_property("OverlayTextureContent")
+pub fn set_overlay_texture_content(instance: CharacterMesh, value: Content) -> CharacterMesh
+
+@luau.property("OverlayTextureId")
+pub fn get_overlay_texture_id(instance: CharacterMesh) -> Int
+
+@luau.set_property("OverlayTextureId")
+pub fn set_overlay_texture_id(instance: CharacterMesh, value: Int) -> CharacterMesh
+
+@luau.property("Archivable")
+pub fn get_archivable(instance: CharacterMesh) -> Bool
+
+@luau.set_property("Archivable")
+pub fn set_archivable(instance: CharacterMesh, value: Bool) -> CharacterMesh
+
+@luau.property("Capabilities")
+pub fn get_capabilities(instance: CharacterMesh) -> SecurityCapabilities
+
+@luau.set_property("Capabilities")
+pub fn set_capabilities(instance: CharacterMesh, value: SecurityCapabilities) -> CharacterMesh
+
+@luau.property("Name")
+pub fn get_name(instance: CharacterMesh) -> String
+
+@luau.set_property("Name")
+pub fn set_name(instance: CharacterMesh, value: String) -> CharacterMesh
+
+@luau.property("Parent")
+pub fn get_parent(instance: CharacterMesh) -> Instance
+
+@luau.set_property("Parent")
+pub fn set_parent(instance: CharacterMesh, value: Instance) -> CharacterMesh
+
+@luau.property("RobloxLocked")
+pub fn get_roblox_locked(instance: CharacterMesh) -> Bool
+
+@luau.property("Sandboxed")
+pub fn get_sandboxed(instance: CharacterMesh) -> Bool
+
+@luau.set_property("Sandboxed")
+pub fn set_sandboxed(instance: CharacterMesh, value: Bool) -> CharacterMesh
+
+@luau.property("SourceAssetId")
+pub fn get_source_asset_id(instance: CharacterMesh) -> Int
+
+@luau.property("UniqueId")
+pub fn get_unique_id(instance: CharacterMesh) -> UniqueId
+
+@luau.method("AddTag")
+pub fn add_tag(instance: CharacterMesh, tag: String) -> Nil
+
+@luau.method("ClearAllChildren")
+pub fn clear_all_children(instance: CharacterMesh) -> Nil
+
+@luau.method("Clone")
+pub fn clone(instance: CharacterMesh) -> Instance
+
+@luau.method("Destroy")
+pub fn destroy(instance: CharacterMesh) -> Nil
+
+@luau.method("FindFirstAncestor")
+pub fn find_first_ancestor(instance: CharacterMesh, name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorOfClass")
+pub fn find_first_ancestor_of_class(instance: CharacterMesh, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorWhichIsA")
+pub fn find_first_ancestor_which_is_a(instance: CharacterMesh, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChild")
+pub fn find_first_child(instance: CharacterMesh, name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstChildOfClass")
+pub fn find_first_child_of_class(instance: CharacterMesh, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChildWhichIsA")
+pub fn find_first_child_which_is_a(instance: CharacterMesh, class_name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstDescendant")
+pub fn find_first_descendant(instance: CharacterMesh, name: String) -> Option(Instance)
+
+@luau.method("GetActor")
+pub fn get_actor(instance: CharacterMesh) -> Actor
+
+@luau.method("GetAttribute")
+pub fn get_attribute(instance: CharacterMesh, attribute: String) -> Dynamic
+
+@luau.method("GetAttributeChangedSignal")
+pub fn get_attribute_changed_signal(instance: CharacterMesh, attribute: String) -> RBXScriptSignal
+
+@luau.method("GetAttributes")
+pub fn get_attributes(instance: CharacterMesh) -> Dynamic
+
+@luau.method("GetChildren")
+pub fn get_children(instance: CharacterMesh) -> List(Instance)
+
+@luau.method("GetDescendants")
+pub fn get_descendants(instance: CharacterMesh) -> List(Instance)
+
+@luau.method("GetFullName")
+pub fn get_full_name(instance: CharacterMesh) -> String
+
+@luau.method("GetStyled")
+pub fn get_styled(instance: CharacterMesh, name: String, selector: Option(String)) -> Dynamic
+
+@luau.method("GetStyledPropertyChangedSignal")
+pub fn get_styled_property_changed_signal(instance: CharacterMesh, property: String) -> RBXScriptSignal
+
+@luau.method("GetTags")
+pub fn get_tags(instance: CharacterMesh) -> List(Dynamic)
+
+@luau.method("HasTag")
+pub fn has_tag(instance: CharacterMesh, tag: String) -> Bool
+
+@luau.method("IsAncestorOf")
+pub fn is_ancestor_of(instance: CharacterMesh, descendant: Instance) -> Bool
+
+@luau.method("IsDescendantOf")
+pub fn is_descendant_of(instance: CharacterMesh, ancestor: Instance) -> Bool
+
+@luau.method("IsPropertyModified")
+pub fn is_property_modified(instance: CharacterMesh, property: String) -> Bool
+
+@luau.method("QueryDescendants")
+pub fn query_descendants(instance: CharacterMesh, selector: String) -> List(Instance)
+
+@luau.method("RemoveTag")
+pub fn remove_tag(instance: CharacterMesh, tag: String) -> Nil
+
+@luau.method("ResetPropertyToDefault")
+pub fn reset_property_to_default(instance: CharacterMesh, property: String) -> Nil
+
+@luau.method("SetAttribute")
+pub fn set_attribute(instance: CharacterMesh, attribute: String, value: Dynamic) -> Nil
+
+@luau.method("WaitForChild")
+pub fn wait_for_child(instance: CharacterMesh, child_name: String, time_out: Float) -> Instance
+
+@luau.event("AncestryChanged")
+pub fn ancestry_changed(instance: CharacterMesh) -> RBXScriptSignal(Dynamic)
+
+@luau.event("AttributeChanged")
+pub fn attribute_changed(instance: CharacterMesh) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildAdded")
+pub fn child_added(instance: CharacterMesh) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildRemoved")
+pub fn child_removed(instance: CharacterMesh) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantAdded")
+pub fn descendant_added(instance: CharacterMesh) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantRemoving")
+pub fn descendant_removing(instance: CharacterMesh) -> RBXScriptSignal(Dynamic)
+
+@luau.event("Destroying")
+pub fn destroying(instance: CharacterMesh) -> RBXScriptSignal(Dynamic)
+
+@luau.event("StyledPropertiesChanged")
+pub fn styled_properties_changed(instance: CharacterMesh) -> RBXScriptSignal(Dynamic)
+
+@luau.property("ClassName")
+pub fn get_class_name(instance: CharacterMesh) -> String
+
+@luau.method("GetPropertyChangedSignal")
+pub fn get_property_changed_signal(instance: CharacterMesh, property: String) -> RBXScriptSignal
+
+@luau.method("IsA")
+pub fn is_a(instance: CharacterMesh, class_name: String) -> Bool
+
+@luau.event("Changed")
+pub fn changed(instance: CharacterMesh) -> RBXScriptSignal(Dynamic)

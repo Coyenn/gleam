@@ -1,0 +1,196 @@
+import roblox/option.{type Option}
+import roblox/signal.{type RBXScriptSignal}
+import gleam/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type InputAction, type InputActionType, type Instance, type SecurityCapabilities, type UniqueId}
+
+@luau.property("Enabled")
+pub fn get_enabled(instance: InputAction) -> Bool
+
+@luau.set_property("Enabled")
+pub fn set_enabled(instance: InputAction, value: Bool) -> InputAction
+
+@luau.property("Type")
+pub fn get_type_(instance: InputAction) -> InputActionType
+
+@luau.set_property("Type")
+pub fn set_type_(instance: InputAction, value: InputActionType) -> InputAction
+
+@luau.method("Fire")
+pub fn fire(instance: InputAction, state: Dynamic) -> Nil
+
+@luau.method("GetState")
+pub fn get_state(instance: InputAction) -> Dynamic
+
+@luau.event("Pressed")
+pub fn pressed(instance: InputAction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("Released")
+pub fn released(instance: InputAction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("StateChanged")
+pub fn state_changed(instance: InputAction) -> RBXScriptSignal(Dynamic)
+
+@luau.property("Archivable")
+pub fn get_archivable(instance: InputAction) -> Bool
+
+@luau.set_property("Archivable")
+pub fn set_archivable(instance: InputAction, value: Bool) -> InputAction
+
+@luau.property("Capabilities")
+pub fn get_capabilities(instance: InputAction) -> SecurityCapabilities
+
+@luau.set_property("Capabilities")
+pub fn set_capabilities(instance: InputAction, value: SecurityCapabilities) -> InputAction
+
+@luau.property("Name")
+pub fn get_name(instance: InputAction) -> String
+
+@luau.set_property("Name")
+pub fn set_name(instance: InputAction, value: String) -> InputAction
+
+@luau.property("Parent")
+pub fn get_parent(instance: InputAction) -> Instance
+
+@luau.set_property("Parent")
+pub fn set_parent(instance: InputAction, value: Instance) -> InputAction
+
+@luau.property("RobloxLocked")
+pub fn get_roblox_locked(instance: InputAction) -> Bool
+
+@luau.property("Sandboxed")
+pub fn get_sandboxed(instance: InputAction) -> Bool
+
+@luau.set_property("Sandboxed")
+pub fn set_sandboxed(instance: InputAction, value: Bool) -> InputAction
+
+@luau.property("SourceAssetId")
+pub fn get_source_asset_id(instance: InputAction) -> Int
+
+@luau.property("UniqueId")
+pub fn get_unique_id(instance: InputAction) -> UniqueId
+
+@luau.method("AddTag")
+pub fn add_tag(instance: InputAction, tag: String) -> Nil
+
+@luau.method("ClearAllChildren")
+pub fn clear_all_children(instance: InputAction) -> Nil
+
+@luau.method("Clone")
+pub fn clone(instance: InputAction) -> Instance
+
+@luau.method("Destroy")
+pub fn destroy(instance: InputAction) -> Nil
+
+@luau.method("FindFirstAncestor")
+pub fn find_first_ancestor(instance: InputAction, name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorOfClass")
+pub fn find_first_ancestor_of_class(instance: InputAction, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorWhichIsA")
+pub fn find_first_ancestor_which_is_a(instance: InputAction, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChild")
+pub fn find_first_child(instance: InputAction, name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstChildOfClass")
+pub fn find_first_child_of_class(instance: InputAction, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChildWhichIsA")
+pub fn find_first_child_which_is_a(instance: InputAction, class_name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstDescendant")
+pub fn find_first_descendant(instance: InputAction, name: String) -> Option(Instance)
+
+@luau.method("GetActor")
+pub fn get_actor(instance: InputAction) -> Actor
+
+@luau.method("GetAttribute")
+pub fn get_attribute(instance: InputAction, attribute: String) -> Dynamic
+
+@luau.method("GetAttributeChangedSignal")
+pub fn get_attribute_changed_signal(instance: InputAction, attribute: String) -> RBXScriptSignal
+
+@luau.method("GetAttributes")
+pub fn get_attributes(instance: InputAction) -> Dynamic
+
+@luau.method("GetChildren")
+pub fn get_children(instance: InputAction) -> List(Instance)
+
+@luau.method("GetDescendants")
+pub fn get_descendants(instance: InputAction) -> List(Instance)
+
+@luau.method("GetFullName")
+pub fn get_full_name(instance: InputAction) -> String
+
+@luau.method("GetStyled")
+pub fn get_styled(instance: InputAction, name: String, selector: Option(String)) -> Dynamic
+
+@luau.method("GetStyledPropertyChangedSignal")
+pub fn get_styled_property_changed_signal(instance: InputAction, property: String) -> RBXScriptSignal
+
+@luau.method("GetTags")
+pub fn get_tags(instance: InputAction) -> List(Dynamic)
+
+@luau.method("HasTag")
+pub fn has_tag(instance: InputAction, tag: String) -> Bool
+
+@luau.method("IsAncestorOf")
+pub fn is_ancestor_of(instance: InputAction, descendant: Instance) -> Bool
+
+@luau.method("IsDescendantOf")
+pub fn is_descendant_of(instance: InputAction, ancestor: Instance) -> Bool
+
+@luau.method("IsPropertyModified")
+pub fn is_property_modified(instance: InputAction, property: String) -> Bool
+
+@luau.method("QueryDescendants")
+pub fn query_descendants(instance: InputAction, selector: String) -> List(Instance)
+
+@luau.method("RemoveTag")
+pub fn remove_tag(instance: InputAction, tag: String) -> Nil
+
+@luau.method("ResetPropertyToDefault")
+pub fn reset_property_to_default(instance: InputAction, property: String) -> Nil
+
+@luau.method("SetAttribute")
+pub fn set_attribute(instance: InputAction, attribute: String, value: Dynamic) -> Nil
+
+@luau.method("WaitForChild")
+pub fn wait_for_child(instance: InputAction, child_name: String, time_out: Float) -> Instance
+
+@luau.event("AncestryChanged")
+pub fn ancestry_changed(instance: InputAction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("AttributeChanged")
+pub fn attribute_changed(instance: InputAction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildAdded")
+pub fn child_added(instance: InputAction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildRemoved")
+pub fn child_removed(instance: InputAction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantAdded")
+pub fn descendant_added(instance: InputAction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantRemoving")
+pub fn descendant_removing(instance: InputAction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("Destroying")
+pub fn destroying(instance: InputAction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("StyledPropertiesChanged")
+pub fn styled_properties_changed(instance: InputAction) -> RBXScriptSignal(Dynamic)
+
+@luau.property("ClassName")
+pub fn get_class_name(instance: InputAction) -> String
+
+@luau.method("GetPropertyChangedSignal")
+pub fn get_property_changed_signal(instance: InputAction, property: String) -> RBXScriptSignal
+
+@luau.method("IsA")
+pub fn is_a(instance: InputAction, class_name: String) -> Bool
+
+@luau.event("Changed")
+pub fn changed(instance: InputAction) -> RBXScriptSignal(Dynamic)

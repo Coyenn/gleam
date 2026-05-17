@@ -1,0 +1,169 @@
+import roblox/option.{type Option}
+import roblox/signal.{type RBXScriptSignal}
+import gleam/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type ReflectionMetadataEvents, type SecurityCapabilities, type UniqueId}
+
+@luau.property("Archivable")
+pub fn get_archivable(instance: ReflectionMetadataEvents) -> Bool
+
+@luau.set_property("Archivable")
+pub fn set_archivable(instance: ReflectionMetadataEvents, value: Bool) -> ReflectionMetadataEvents
+
+@luau.property("Capabilities")
+pub fn get_capabilities(instance: ReflectionMetadataEvents) -> SecurityCapabilities
+
+@luau.set_property("Capabilities")
+pub fn set_capabilities(instance: ReflectionMetadataEvents, value: SecurityCapabilities) -> ReflectionMetadataEvents
+
+@luau.property("Name")
+pub fn get_name(instance: ReflectionMetadataEvents) -> String
+
+@luau.set_property("Name")
+pub fn set_name(instance: ReflectionMetadataEvents, value: String) -> ReflectionMetadataEvents
+
+@luau.property("Parent")
+pub fn get_parent(instance: ReflectionMetadataEvents) -> Instance
+
+@luau.set_property("Parent")
+pub fn set_parent(instance: ReflectionMetadataEvents, value: Instance) -> ReflectionMetadataEvents
+
+@luau.property("RobloxLocked")
+pub fn get_roblox_locked(instance: ReflectionMetadataEvents) -> Bool
+
+@luau.property("Sandboxed")
+pub fn get_sandboxed(instance: ReflectionMetadataEvents) -> Bool
+
+@luau.set_property("Sandboxed")
+pub fn set_sandboxed(instance: ReflectionMetadataEvents, value: Bool) -> ReflectionMetadataEvents
+
+@luau.property("SourceAssetId")
+pub fn get_source_asset_id(instance: ReflectionMetadataEvents) -> Int
+
+@luau.property("UniqueId")
+pub fn get_unique_id(instance: ReflectionMetadataEvents) -> UniqueId
+
+@luau.method("AddTag")
+pub fn add_tag(instance: ReflectionMetadataEvents, tag: String) -> Nil
+
+@luau.method("ClearAllChildren")
+pub fn clear_all_children(instance: ReflectionMetadataEvents) -> Nil
+
+@luau.method("Clone")
+pub fn clone(instance: ReflectionMetadataEvents) -> Instance
+
+@luau.method("Destroy")
+pub fn destroy(instance: ReflectionMetadataEvents) -> Nil
+
+@luau.method("FindFirstAncestor")
+pub fn find_first_ancestor(instance: ReflectionMetadataEvents, name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorOfClass")
+pub fn find_first_ancestor_of_class(instance: ReflectionMetadataEvents, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorWhichIsA")
+pub fn find_first_ancestor_which_is_a(instance: ReflectionMetadataEvents, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChild")
+pub fn find_first_child(instance: ReflectionMetadataEvents, name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstChildOfClass")
+pub fn find_first_child_of_class(instance: ReflectionMetadataEvents, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChildWhichIsA")
+pub fn find_first_child_which_is_a(instance: ReflectionMetadataEvents, class_name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstDescendant")
+pub fn find_first_descendant(instance: ReflectionMetadataEvents, name: String) -> Option(Instance)
+
+@luau.method("GetActor")
+pub fn get_actor(instance: ReflectionMetadataEvents) -> Actor
+
+@luau.method("GetAttribute")
+pub fn get_attribute(instance: ReflectionMetadataEvents, attribute: String) -> Dynamic
+
+@luau.method("GetAttributeChangedSignal")
+pub fn get_attribute_changed_signal(instance: ReflectionMetadataEvents, attribute: String) -> RBXScriptSignal
+
+@luau.method("GetAttributes")
+pub fn get_attributes(instance: ReflectionMetadataEvents) -> Dynamic
+
+@luau.method("GetChildren")
+pub fn get_children(instance: ReflectionMetadataEvents) -> List(Instance)
+
+@luau.method("GetDescendants")
+pub fn get_descendants(instance: ReflectionMetadataEvents) -> List(Instance)
+
+@luau.method("GetFullName")
+pub fn get_full_name(instance: ReflectionMetadataEvents) -> String
+
+@luau.method("GetStyled")
+pub fn get_styled(instance: ReflectionMetadataEvents, name: String, selector: Option(String)) -> Dynamic
+
+@luau.method("GetStyledPropertyChangedSignal")
+pub fn get_styled_property_changed_signal(instance: ReflectionMetadataEvents, property: String) -> RBXScriptSignal
+
+@luau.method("GetTags")
+pub fn get_tags(instance: ReflectionMetadataEvents) -> List(Dynamic)
+
+@luau.method("HasTag")
+pub fn has_tag(instance: ReflectionMetadataEvents, tag: String) -> Bool
+
+@luau.method("IsAncestorOf")
+pub fn is_ancestor_of(instance: ReflectionMetadataEvents, descendant: Instance) -> Bool
+
+@luau.method("IsDescendantOf")
+pub fn is_descendant_of(instance: ReflectionMetadataEvents, ancestor: Instance) -> Bool
+
+@luau.method("IsPropertyModified")
+pub fn is_property_modified(instance: ReflectionMetadataEvents, property: String) -> Bool
+
+@luau.method("QueryDescendants")
+pub fn query_descendants(instance: ReflectionMetadataEvents, selector: String) -> List(Instance)
+
+@luau.method("RemoveTag")
+pub fn remove_tag(instance: ReflectionMetadataEvents, tag: String) -> Nil
+
+@luau.method("ResetPropertyToDefault")
+pub fn reset_property_to_default(instance: ReflectionMetadataEvents, property: String) -> Nil
+
+@luau.method("SetAttribute")
+pub fn set_attribute(instance: ReflectionMetadataEvents, attribute: String, value: Dynamic) -> Nil
+
+@luau.method("WaitForChild")
+pub fn wait_for_child(instance: ReflectionMetadataEvents, child_name: String, time_out: Float) -> Instance
+
+@luau.event("AncestryChanged")
+pub fn ancestry_changed(instance: ReflectionMetadataEvents) -> RBXScriptSignal(Dynamic)
+
+@luau.event("AttributeChanged")
+pub fn attribute_changed(instance: ReflectionMetadataEvents) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildAdded")
+pub fn child_added(instance: ReflectionMetadataEvents) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildRemoved")
+pub fn child_removed(instance: ReflectionMetadataEvents) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantAdded")
+pub fn descendant_added(instance: ReflectionMetadataEvents) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantRemoving")
+pub fn descendant_removing(instance: ReflectionMetadataEvents) -> RBXScriptSignal(Dynamic)
+
+@luau.event("Destroying")
+pub fn destroying(instance: ReflectionMetadataEvents) -> RBXScriptSignal(Dynamic)
+
+@luau.event("StyledPropertiesChanged")
+pub fn styled_properties_changed(instance: ReflectionMetadataEvents) -> RBXScriptSignal(Dynamic)
+
+@luau.property("ClassName")
+pub fn get_class_name(instance: ReflectionMetadataEvents) -> String
+
+@luau.method("GetPropertyChangedSignal")
+pub fn get_property_changed_signal(instance: ReflectionMetadataEvents, property: String) -> RBXScriptSignal
+
+@luau.method("IsA")
+pub fn is_a(instance: ReflectionMetadataEvents, class_name: String) -> Bool
+
+@luau.event("Changed")
+pub fn changed(instance: ReflectionMetadataEvents) -> RBXScriptSignal(Dynamic)

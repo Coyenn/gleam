@@ -1,0 +1,172 @@
+import roblox/option.{type Option}
+import roblox/signal.{type RBXScriptSignal}
+import gleam/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type BindableFunction, type Instance, type SecurityCapabilities, type UniqueId}
+
+@luau.method("Invoke")
+pub fn invoke(instance: BindableFunction, arguments: Dynamic) -> Dynamic
+
+@luau.property("Archivable")
+pub fn get_archivable(instance: BindableFunction) -> Bool
+
+@luau.set_property("Archivable")
+pub fn set_archivable(instance: BindableFunction, value: Bool) -> BindableFunction
+
+@luau.property("Capabilities")
+pub fn get_capabilities(instance: BindableFunction) -> SecurityCapabilities
+
+@luau.set_property("Capabilities")
+pub fn set_capabilities(instance: BindableFunction, value: SecurityCapabilities) -> BindableFunction
+
+@luau.property("Name")
+pub fn get_name(instance: BindableFunction) -> String
+
+@luau.set_property("Name")
+pub fn set_name(instance: BindableFunction, value: String) -> BindableFunction
+
+@luau.property("Parent")
+pub fn get_parent(instance: BindableFunction) -> Instance
+
+@luau.set_property("Parent")
+pub fn set_parent(instance: BindableFunction, value: Instance) -> BindableFunction
+
+@luau.property("RobloxLocked")
+pub fn get_roblox_locked(instance: BindableFunction) -> Bool
+
+@luau.property("Sandboxed")
+pub fn get_sandboxed(instance: BindableFunction) -> Bool
+
+@luau.set_property("Sandboxed")
+pub fn set_sandboxed(instance: BindableFunction, value: Bool) -> BindableFunction
+
+@luau.property("SourceAssetId")
+pub fn get_source_asset_id(instance: BindableFunction) -> Int
+
+@luau.property("UniqueId")
+pub fn get_unique_id(instance: BindableFunction) -> UniqueId
+
+@luau.method("AddTag")
+pub fn add_tag(instance: BindableFunction, tag: String) -> Nil
+
+@luau.method("ClearAllChildren")
+pub fn clear_all_children(instance: BindableFunction) -> Nil
+
+@luau.method("Clone")
+pub fn clone(instance: BindableFunction) -> Instance
+
+@luau.method("Destroy")
+pub fn destroy(instance: BindableFunction) -> Nil
+
+@luau.method("FindFirstAncestor")
+pub fn find_first_ancestor(instance: BindableFunction, name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorOfClass")
+pub fn find_first_ancestor_of_class(instance: BindableFunction, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorWhichIsA")
+pub fn find_first_ancestor_which_is_a(instance: BindableFunction, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChild")
+pub fn find_first_child(instance: BindableFunction, name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstChildOfClass")
+pub fn find_first_child_of_class(instance: BindableFunction, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChildWhichIsA")
+pub fn find_first_child_which_is_a(instance: BindableFunction, class_name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstDescendant")
+pub fn find_first_descendant(instance: BindableFunction, name: String) -> Option(Instance)
+
+@luau.method("GetActor")
+pub fn get_actor(instance: BindableFunction) -> Actor
+
+@luau.method("GetAttribute")
+pub fn get_attribute(instance: BindableFunction, attribute: String) -> Dynamic
+
+@luau.method("GetAttributeChangedSignal")
+pub fn get_attribute_changed_signal(instance: BindableFunction, attribute: String) -> RBXScriptSignal
+
+@luau.method("GetAttributes")
+pub fn get_attributes(instance: BindableFunction) -> Dynamic
+
+@luau.method("GetChildren")
+pub fn get_children(instance: BindableFunction) -> List(Instance)
+
+@luau.method("GetDescendants")
+pub fn get_descendants(instance: BindableFunction) -> List(Instance)
+
+@luau.method("GetFullName")
+pub fn get_full_name(instance: BindableFunction) -> String
+
+@luau.method("GetStyled")
+pub fn get_styled(instance: BindableFunction, name: String, selector: Option(String)) -> Dynamic
+
+@luau.method("GetStyledPropertyChangedSignal")
+pub fn get_styled_property_changed_signal(instance: BindableFunction, property: String) -> RBXScriptSignal
+
+@luau.method("GetTags")
+pub fn get_tags(instance: BindableFunction) -> List(Dynamic)
+
+@luau.method("HasTag")
+pub fn has_tag(instance: BindableFunction, tag: String) -> Bool
+
+@luau.method("IsAncestorOf")
+pub fn is_ancestor_of(instance: BindableFunction, descendant: Instance) -> Bool
+
+@luau.method("IsDescendantOf")
+pub fn is_descendant_of(instance: BindableFunction, ancestor: Instance) -> Bool
+
+@luau.method("IsPropertyModified")
+pub fn is_property_modified(instance: BindableFunction, property: String) -> Bool
+
+@luau.method("QueryDescendants")
+pub fn query_descendants(instance: BindableFunction, selector: String) -> List(Instance)
+
+@luau.method("RemoveTag")
+pub fn remove_tag(instance: BindableFunction, tag: String) -> Nil
+
+@luau.method("ResetPropertyToDefault")
+pub fn reset_property_to_default(instance: BindableFunction, property: String) -> Nil
+
+@luau.method("SetAttribute")
+pub fn set_attribute(instance: BindableFunction, attribute: String, value: Dynamic) -> Nil
+
+@luau.method("WaitForChild")
+pub fn wait_for_child(instance: BindableFunction, child_name: String, time_out: Float) -> Instance
+
+@luau.event("AncestryChanged")
+pub fn ancestry_changed(instance: BindableFunction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("AttributeChanged")
+pub fn attribute_changed(instance: BindableFunction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildAdded")
+pub fn child_added(instance: BindableFunction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildRemoved")
+pub fn child_removed(instance: BindableFunction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantAdded")
+pub fn descendant_added(instance: BindableFunction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantRemoving")
+pub fn descendant_removing(instance: BindableFunction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("Destroying")
+pub fn destroying(instance: BindableFunction) -> RBXScriptSignal(Dynamic)
+
+@luau.event("StyledPropertiesChanged")
+pub fn styled_properties_changed(instance: BindableFunction) -> RBXScriptSignal(Dynamic)
+
+@luau.property("ClassName")
+pub fn get_class_name(instance: BindableFunction) -> String
+
+@luau.method("GetPropertyChangedSignal")
+pub fn get_property_changed_signal(instance: BindableFunction, property: String) -> RBXScriptSignal
+
+@luau.method("IsA")
+pub fn is_a(instance: BindableFunction, class_name: String) -> Bool
+
+@luau.event("Changed")
+pub fn changed(instance: BindableFunction) -> RBXScriptSignal(Dynamic)

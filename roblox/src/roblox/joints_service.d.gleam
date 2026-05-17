@@ -1,0 +1,184 @@
+import roblox/option.{type Option}
+import roblox/signal.{type RBXScriptSignal}
+import gleam/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type JointsService, type SecurityCapabilities, type UniqueId}
+
+@luau.method("ClearJoinAfterMoveJoints")
+pub fn clear_join_after_move_joints(instance: JointsService) -> Nil
+
+@luau.method("CreateJoinAfterMoveJoints")
+pub fn create_join_after_move_joints(instance: JointsService) -> Nil
+
+@luau.method("SetJoinAfterMoveInstance")
+pub fn set_join_after_move_instance(instance: JointsService, join_instance: Instance) -> Nil
+
+@luau.method("SetJoinAfterMoveTarget")
+pub fn set_join_after_move_target(instance: JointsService, join_target: Instance) -> Nil
+
+@luau.method("ShowPermissibleJoints")
+pub fn show_permissible_joints(instance: JointsService) -> Nil
+
+@luau.property("Archivable")
+pub fn get_archivable(instance: JointsService) -> Bool
+
+@luau.set_property("Archivable")
+pub fn set_archivable(instance: JointsService, value: Bool) -> JointsService
+
+@luau.property("Capabilities")
+pub fn get_capabilities(instance: JointsService) -> SecurityCapabilities
+
+@luau.set_property("Capabilities")
+pub fn set_capabilities(instance: JointsService, value: SecurityCapabilities) -> JointsService
+
+@luau.property("Name")
+pub fn get_name(instance: JointsService) -> String
+
+@luau.set_property("Name")
+pub fn set_name(instance: JointsService, value: String) -> JointsService
+
+@luau.property("Parent")
+pub fn get_parent(instance: JointsService) -> Instance
+
+@luau.set_property("Parent")
+pub fn set_parent(instance: JointsService, value: Instance) -> JointsService
+
+@luau.property("RobloxLocked")
+pub fn get_roblox_locked(instance: JointsService) -> Bool
+
+@luau.property("Sandboxed")
+pub fn get_sandboxed(instance: JointsService) -> Bool
+
+@luau.set_property("Sandboxed")
+pub fn set_sandboxed(instance: JointsService, value: Bool) -> JointsService
+
+@luau.property("SourceAssetId")
+pub fn get_source_asset_id(instance: JointsService) -> Int
+
+@luau.property("UniqueId")
+pub fn get_unique_id(instance: JointsService) -> UniqueId
+
+@luau.method("AddTag")
+pub fn add_tag(instance: JointsService, tag: String) -> Nil
+
+@luau.method("ClearAllChildren")
+pub fn clear_all_children(instance: JointsService) -> Nil
+
+@luau.method("Clone")
+pub fn clone(instance: JointsService) -> Instance
+
+@luau.method("Destroy")
+pub fn destroy(instance: JointsService) -> Nil
+
+@luau.method("FindFirstAncestor")
+pub fn find_first_ancestor(instance: JointsService, name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorOfClass")
+pub fn find_first_ancestor_of_class(instance: JointsService, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorWhichIsA")
+pub fn find_first_ancestor_which_is_a(instance: JointsService, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChild")
+pub fn find_first_child(instance: JointsService, name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstChildOfClass")
+pub fn find_first_child_of_class(instance: JointsService, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChildWhichIsA")
+pub fn find_first_child_which_is_a(instance: JointsService, class_name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstDescendant")
+pub fn find_first_descendant(instance: JointsService, name: String) -> Option(Instance)
+
+@luau.method("GetActor")
+pub fn get_actor(instance: JointsService) -> Actor
+
+@luau.method("GetAttribute")
+pub fn get_attribute(instance: JointsService, attribute: String) -> Dynamic
+
+@luau.method("GetAttributeChangedSignal")
+pub fn get_attribute_changed_signal(instance: JointsService, attribute: String) -> RBXScriptSignal
+
+@luau.method("GetAttributes")
+pub fn get_attributes(instance: JointsService) -> Dynamic
+
+@luau.method("GetChildren")
+pub fn get_children(instance: JointsService) -> List(Instance)
+
+@luau.method("GetDescendants")
+pub fn get_descendants(instance: JointsService) -> List(Instance)
+
+@luau.method("GetFullName")
+pub fn get_full_name(instance: JointsService) -> String
+
+@luau.method("GetStyled")
+pub fn get_styled(instance: JointsService, name: String, selector: Option(String)) -> Dynamic
+
+@luau.method("GetStyledPropertyChangedSignal")
+pub fn get_styled_property_changed_signal(instance: JointsService, property: String) -> RBXScriptSignal
+
+@luau.method("GetTags")
+pub fn get_tags(instance: JointsService) -> List(Dynamic)
+
+@luau.method("HasTag")
+pub fn has_tag(instance: JointsService, tag: String) -> Bool
+
+@luau.method("IsAncestorOf")
+pub fn is_ancestor_of(instance: JointsService, descendant: Instance) -> Bool
+
+@luau.method("IsDescendantOf")
+pub fn is_descendant_of(instance: JointsService, ancestor: Instance) -> Bool
+
+@luau.method("IsPropertyModified")
+pub fn is_property_modified(instance: JointsService, property: String) -> Bool
+
+@luau.method("QueryDescendants")
+pub fn query_descendants(instance: JointsService, selector: String) -> List(Instance)
+
+@luau.method("RemoveTag")
+pub fn remove_tag(instance: JointsService, tag: String) -> Nil
+
+@luau.method("ResetPropertyToDefault")
+pub fn reset_property_to_default(instance: JointsService, property: String) -> Nil
+
+@luau.method("SetAttribute")
+pub fn set_attribute(instance: JointsService, attribute: String, value: Dynamic) -> Nil
+
+@luau.method("WaitForChild")
+pub fn wait_for_child(instance: JointsService, child_name: String, time_out: Float) -> Instance
+
+@luau.event("AncestryChanged")
+pub fn ancestry_changed(instance: JointsService) -> RBXScriptSignal(Dynamic)
+
+@luau.event("AttributeChanged")
+pub fn attribute_changed(instance: JointsService) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildAdded")
+pub fn child_added(instance: JointsService) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildRemoved")
+pub fn child_removed(instance: JointsService) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantAdded")
+pub fn descendant_added(instance: JointsService) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantRemoving")
+pub fn descendant_removing(instance: JointsService) -> RBXScriptSignal(Dynamic)
+
+@luau.event("Destroying")
+pub fn destroying(instance: JointsService) -> RBXScriptSignal(Dynamic)
+
+@luau.event("StyledPropertiesChanged")
+pub fn styled_properties_changed(instance: JointsService) -> RBXScriptSignal(Dynamic)
+
+@luau.property("ClassName")
+pub fn get_class_name(instance: JointsService) -> String
+
+@luau.method("GetPropertyChangedSignal")
+pub fn get_property_changed_signal(instance: JointsService, property: String) -> RBXScriptSignal
+
+@luau.method("IsA")
+pub fn is_a(instance: JointsService, class_name: String) -> Bool
+
+@luau.event("Changed")
+pub fn changed(instance: JointsService) -> RBXScriptSignal(Dynamic)

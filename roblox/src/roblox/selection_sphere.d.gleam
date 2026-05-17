@@ -1,0 +1,205 @@
+import roblox/option.{type Option}
+import roblox/signal.{type RBXScriptSignal}
+import gleam/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Color3, type Instance, type PVInstance, type SecurityCapabilities, type SelectionSphere, type UniqueId}
+
+@luau.property("SurfaceColor3")
+pub fn get_surface_color3(instance: SelectionSphere) -> Color3
+
+@luau.set_property("SurfaceColor3")
+pub fn set_surface_color3(instance: SelectionSphere, value: Color3) -> SelectionSphere
+
+@luau.property("SurfaceTransparency")
+pub fn get_surface_transparency(instance: SelectionSphere) -> Float
+
+@luau.set_property("SurfaceTransparency")
+pub fn set_surface_transparency(instance: SelectionSphere, value: Float) -> SelectionSphere
+
+@luau.property("Adornee")
+pub fn get_adornee(instance: SelectionSphere) -> PVInstance
+
+@luau.set_property("Adornee")
+pub fn set_adornee(instance: SelectionSphere, value: PVInstance) -> SelectionSphere
+
+@luau.property("Color3")
+pub fn get_color3(instance: SelectionSphere) -> Color3
+
+@luau.set_property("Color3")
+pub fn set_color3(instance: SelectionSphere, value: Color3) -> SelectionSphere
+
+@luau.property("Transparency")
+pub fn get_transparency(instance: SelectionSphere) -> Float
+
+@luau.set_property("Transparency")
+pub fn set_transparency(instance: SelectionSphere, value: Float) -> SelectionSphere
+
+@luau.property("Visible")
+pub fn get_visible(instance: SelectionSphere) -> Bool
+
+@luau.set_property("Visible")
+pub fn set_visible(instance: SelectionSphere, value: Bool) -> SelectionSphere
+
+@luau.property("Archivable")
+pub fn get_archivable(instance: SelectionSphere) -> Bool
+
+@luau.set_property("Archivable")
+pub fn set_archivable(instance: SelectionSphere, value: Bool) -> SelectionSphere
+
+@luau.property("Capabilities")
+pub fn get_capabilities(instance: SelectionSphere) -> SecurityCapabilities
+
+@luau.set_property("Capabilities")
+pub fn set_capabilities(instance: SelectionSphere, value: SecurityCapabilities) -> SelectionSphere
+
+@luau.property("Name")
+pub fn get_name(instance: SelectionSphere) -> String
+
+@luau.set_property("Name")
+pub fn set_name(instance: SelectionSphere, value: String) -> SelectionSphere
+
+@luau.property("Parent")
+pub fn get_parent(instance: SelectionSphere) -> Instance
+
+@luau.set_property("Parent")
+pub fn set_parent(instance: SelectionSphere, value: Instance) -> SelectionSphere
+
+@luau.property("RobloxLocked")
+pub fn get_roblox_locked(instance: SelectionSphere) -> Bool
+
+@luau.property("Sandboxed")
+pub fn get_sandboxed(instance: SelectionSphere) -> Bool
+
+@luau.set_property("Sandboxed")
+pub fn set_sandboxed(instance: SelectionSphere, value: Bool) -> SelectionSphere
+
+@luau.property("SourceAssetId")
+pub fn get_source_asset_id(instance: SelectionSphere) -> Int
+
+@luau.property("UniqueId")
+pub fn get_unique_id(instance: SelectionSphere) -> UniqueId
+
+@luau.method("AddTag")
+pub fn add_tag(instance: SelectionSphere, tag: String) -> Nil
+
+@luau.method("ClearAllChildren")
+pub fn clear_all_children(instance: SelectionSphere) -> Nil
+
+@luau.method("Clone")
+pub fn clone(instance: SelectionSphere) -> Instance
+
+@luau.method("Destroy")
+pub fn destroy(instance: SelectionSphere) -> Nil
+
+@luau.method("FindFirstAncestor")
+pub fn find_first_ancestor(instance: SelectionSphere, name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorOfClass")
+pub fn find_first_ancestor_of_class(instance: SelectionSphere, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorWhichIsA")
+pub fn find_first_ancestor_which_is_a(instance: SelectionSphere, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChild")
+pub fn find_first_child(instance: SelectionSphere, name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstChildOfClass")
+pub fn find_first_child_of_class(instance: SelectionSphere, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChildWhichIsA")
+pub fn find_first_child_which_is_a(instance: SelectionSphere, class_name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstDescendant")
+pub fn find_first_descendant(instance: SelectionSphere, name: String) -> Option(Instance)
+
+@luau.method("GetActor")
+pub fn get_actor(instance: SelectionSphere) -> Actor
+
+@luau.method("GetAttribute")
+pub fn get_attribute(instance: SelectionSphere, attribute: String) -> Dynamic
+
+@luau.method("GetAttributeChangedSignal")
+pub fn get_attribute_changed_signal(instance: SelectionSphere, attribute: String) -> RBXScriptSignal
+
+@luau.method("GetAttributes")
+pub fn get_attributes(instance: SelectionSphere) -> Dynamic
+
+@luau.method("GetChildren")
+pub fn get_children(instance: SelectionSphere) -> List(Instance)
+
+@luau.method("GetDescendants")
+pub fn get_descendants(instance: SelectionSphere) -> List(Instance)
+
+@luau.method("GetFullName")
+pub fn get_full_name(instance: SelectionSphere) -> String
+
+@luau.method("GetStyled")
+pub fn get_styled(instance: SelectionSphere, name: String, selector: Option(String)) -> Dynamic
+
+@luau.method("GetStyledPropertyChangedSignal")
+pub fn get_styled_property_changed_signal(instance: SelectionSphere, property: String) -> RBXScriptSignal
+
+@luau.method("GetTags")
+pub fn get_tags(instance: SelectionSphere) -> List(Dynamic)
+
+@luau.method("HasTag")
+pub fn has_tag(instance: SelectionSphere, tag: String) -> Bool
+
+@luau.method("IsAncestorOf")
+pub fn is_ancestor_of(instance: SelectionSphere, descendant: Instance) -> Bool
+
+@luau.method("IsDescendantOf")
+pub fn is_descendant_of(instance: SelectionSphere, ancestor: Instance) -> Bool
+
+@luau.method("IsPropertyModified")
+pub fn is_property_modified(instance: SelectionSphere, property: String) -> Bool
+
+@luau.method("QueryDescendants")
+pub fn query_descendants(instance: SelectionSphere, selector: String) -> List(Instance)
+
+@luau.method("RemoveTag")
+pub fn remove_tag(instance: SelectionSphere, tag: String) -> Nil
+
+@luau.method("ResetPropertyToDefault")
+pub fn reset_property_to_default(instance: SelectionSphere, property: String) -> Nil
+
+@luau.method("SetAttribute")
+pub fn set_attribute(instance: SelectionSphere, attribute: String, value: Dynamic) -> Nil
+
+@luau.method("WaitForChild")
+pub fn wait_for_child(instance: SelectionSphere, child_name: String, time_out: Float) -> Instance
+
+@luau.event("AncestryChanged")
+pub fn ancestry_changed(instance: SelectionSphere) -> RBXScriptSignal(Dynamic)
+
+@luau.event("AttributeChanged")
+pub fn attribute_changed(instance: SelectionSphere) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildAdded")
+pub fn child_added(instance: SelectionSphere) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildRemoved")
+pub fn child_removed(instance: SelectionSphere) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantAdded")
+pub fn descendant_added(instance: SelectionSphere) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantRemoving")
+pub fn descendant_removing(instance: SelectionSphere) -> RBXScriptSignal(Dynamic)
+
+@luau.event("Destroying")
+pub fn destroying(instance: SelectionSphere) -> RBXScriptSignal(Dynamic)
+
+@luau.event("StyledPropertiesChanged")
+pub fn styled_properties_changed(instance: SelectionSphere) -> RBXScriptSignal(Dynamic)
+
+@luau.property("ClassName")
+pub fn get_class_name(instance: SelectionSphere) -> String
+
+@luau.method("GetPropertyChangedSignal")
+pub fn get_property_changed_signal(instance: SelectionSphere, property: String) -> RBXScriptSignal
+
+@luau.method("IsA")
+pub fn is_a(instance: SelectionSphere, class_name: String) -> Bool
+
+@luau.event("Changed")
+pub fn changed(instance: SelectionSphere) -> RBXScriptSignal(Dynamic)

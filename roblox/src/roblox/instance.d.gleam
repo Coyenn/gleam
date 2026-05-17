@@ -1,25 +1,169 @@
-pub opaque type Instance
+import roblox/option.{type Option}
+import roblox/signal.{type RBXScriptSignal}
+import gleam/dynamic.{type Dynamic}
+import roblox/types.{type Actor, type Instance, type SecurityCapabilities, type UniqueId}
+
+@luau.property("Archivable")
+pub fn get_archivable(instance: Instance) -> Bool
+
+@luau.set_property("Archivable")
+pub fn set_archivable(instance: Instance, value: Bool) -> Instance
+
+@luau.property("Capabilities")
+pub fn get_capabilities(instance: Instance) -> SecurityCapabilities
+
+@luau.set_property("Capabilities")
+pub fn set_capabilities(instance: Instance, value: SecurityCapabilities) -> Instance
 
 @luau.property("Name")
 pub fn get_name(instance: Instance) -> String
 
 @luau.set_property("Name")
-pub fn set_name(instance: Instance, name: String) -> Instance
+pub fn set_name(instance: Instance, value: String) -> Instance
+
+@luau.property("Parent")
+pub fn get_parent(instance: Instance) -> Instance
 
 @luau.set_property("Parent")
-pub fn set_parent(instance: Instance, parent: Instance) -> Instance
+pub fn set_parent(instance: Instance, value: Instance) -> Instance
 
-// We'll use a generic Option type here.
-pub type Option(a) {
-  Some(a)
-  None
-}
+@luau.property("RobloxLocked")
+pub fn get_roblox_locked(instance: Instance) -> Bool
 
-@luau.method("FindFirstChild")
-pub fn find_first_child(instance: Instance, name: String) -> Option(Instance)
+@luau.property("Sandboxed")
+pub fn get_sandboxed(instance: Instance) -> Bool
 
-@luau.method("WaitForChild")
-pub fn wait_for_child(instance: Instance, name: String) -> Instance
+@luau.set_property("Sandboxed")
+pub fn set_sandboxed(instance: Instance, value: Bool) -> Instance
+
+@luau.property("SourceAssetId")
+pub fn get_source_asset_id(instance: Instance) -> Int
+
+@luau.property("UniqueId")
+pub fn get_unique_id(instance: Instance) -> UniqueId
+
+@luau.method("AddTag")
+pub fn add_tag(instance: Instance, tag: String) -> Nil
+
+@luau.method("ClearAllChildren")
+pub fn clear_all_children(instance: Instance) -> Nil
+
+@luau.method("Clone")
+pub fn clone(instance: Instance) -> Instance
 
 @luau.method("Destroy")
-pub fn destroy(instance: Instance) -> Nil
+pub fn destroy_instance(instance: Instance) -> Nil
+
+@luau.method("FindFirstAncestor")
+pub fn find_first_ancestor(instance: Instance, name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorOfClass")
+pub fn find_first_ancestor_of_class(instance: Instance, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstAncestorWhichIsA")
+pub fn find_first_ancestor_which_is_a(instance: Instance, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChild")
+pub fn find_first_child(instance: Instance, name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstChildOfClass")
+pub fn find_first_child_of_class(instance: Instance, class_name: String) -> Option(Instance)
+
+@luau.method("FindFirstChildWhichIsA")
+pub fn find_first_child_which_is_a(instance: Instance, class_name: String, recursive: Bool) -> Option(Instance)
+
+@luau.method("FindFirstDescendant")
+pub fn find_first_descendant(instance: Instance, name: String) -> Option(Instance)
+
+@luau.method("GetActor")
+pub fn get_actor(instance: Instance) -> Actor
+
+@luau.method("GetAttribute")
+pub fn get_attribute(instance: Instance, attribute: String) -> Dynamic
+
+@luau.method("GetAttributeChangedSignal")
+pub fn get_attribute_changed_signal(instance: Instance, attribute: String) -> RBXScriptSignal
+
+@luau.method("GetAttributes")
+pub fn get_attributes(instance: Instance) -> Dynamic
+
+@luau.method("GetChildren")
+pub fn get_children(instance: Instance) -> List(Instance)
+
+@luau.method("GetDescendants")
+pub fn get_descendants(instance: Instance) -> List(Instance)
+
+@luau.method("GetFullName")
+pub fn get_full_name(instance: Instance) -> String
+
+@luau.method("GetStyled")
+pub fn get_styled(instance: Instance, name: String, selector: Option(String)) -> Dynamic
+
+@luau.method("GetStyledPropertyChangedSignal")
+pub fn get_styled_property_changed_signal(instance: Instance, property: String) -> RBXScriptSignal
+
+@luau.method("GetTags")
+pub fn get_tags(instance: Instance) -> List(Dynamic)
+
+@luau.method("HasTag")
+pub fn has_tag(instance: Instance, tag: String) -> Bool
+
+@luau.method("IsAncestorOf")
+pub fn is_ancestor_of(instance: Instance, descendant: Instance) -> Bool
+
+@luau.method("IsDescendantOf")
+pub fn is_descendant_of(instance: Instance, ancestor: Instance) -> Bool
+
+@luau.method("IsPropertyModified")
+pub fn is_property_modified(instance: Instance, property: String) -> Bool
+
+@luau.method("QueryDescendants")
+pub fn query_descendants(instance: Instance, selector: String) -> List(Instance)
+
+@luau.method("RemoveTag")
+pub fn remove_tag(instance: Instance, tag: String) -> Nil
+
+@luau.method("ResetPropertyToDefault")
+pub fn reset_property_to_default(instance: Instance, property: String) -> Nil
+
+@luau.method("SetAttribute")
+pub fn set_attribute(instance: Instance, attribute: String, value: Dynamic) -> Nil
+
+@luau.method("WaitForChild")
+pub fn wait_for_child(instance: Instance, child_name: String, time_out: Float) -> Instance
+
+@luau.event("AncestryChanged")
+pub fn ancestry_changed(instance: Instance) -> RBXScriptSignal(Dynamic)
+
+@luau.event("AttributeChanged")
+pub fn attribute_changed(instance: Instance) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildAdded")
+pub fn child_added(instance: Instance) -> RBXScriptSignal(Dynamic)
+
+@luau.event("ChildRemoved")
+pub fn child_removed(instance: Instance) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantAdded")
+pub fn descendant_added(instance: Instance) -> RBXScriptSignal(Dynamic)
+
+@luau.event("DescendantRemoving")
+pub fn descendant_removing(instance: Instance) -> RBXScriptSignal(Dynamic)
+
+@luau.event("Destroying")
+pub fn destroying(instance: Instance) -> RBXScriptSignal(Dynamic)
+
+@luau.event("StyledPropertiesChanged")
+pub fn styled_properties_changed(instance: Instance) -> RBXScriptSignal(Dynamic)
+
+@luau.property("ClassName")
+pub fn get_class_name(instance: Instance) -> String
+
+@luau.method("GetPropertyChangedSignal")
+pub fn get_property_changed_signal(instance: Instance, property: String) -> RBXScriptSignal
+
+@luau.method("IsA")
+pub fn is_a(instance: Instance, class_name: String) -> Bool
+
+@luau.event("Changed")
+pub fn changed(instance: Instance) -> RBXScriptSignal(Dynamic)
