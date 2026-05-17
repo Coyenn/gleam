@@ -12,8 +12,10 @@ pub fn let_test() {
 
 
 ----- COMPILED LUAU
+local _gleam = require("../gleam")
+
 local function let_test()
-  local a = {1, 2, 3}
+  local a = _gleam.toList({1, 2, 3})
   local b = {1, "a", 3.0}
   return a
 end

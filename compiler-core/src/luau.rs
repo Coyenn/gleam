@@ -16,6 +16,8 @@ use camino::Utf8Path;
 use ecow::{EcoString, eco_format};
 use itertools::Itertools;
 
+pub const PRELUDE: &str = include_str!("../templates/prelude.luau");
+
 const INDENT: isize = 2;
 
 #[derive(Debug)]
@@ -34,9 +36,15 @@ pub fn module(config: ModuleConfig<'_>) -> (String, Option<SourceMap>) {
     (document.to_pretty_string(80), None)
 }
 
+#[derive(Debug, Default)]
+pub struct UsageTracker {
+    pub prelude_used: bool,
+}
+
 struct Generator<'a> {
     module_name: EcoString,
     line_numbers: &'a LineNumbers,
+    tracker: UsageTracker,
 }
 
 impl<'a> Generator<'a> {
@@ -44,6 +52,7 @@ impl<'a> Generator<'a> {
         Self {
             module_name,
             line_numbers,
+            tracker: UsageTracker::default(),
         }
     }
 
@@ -51,59 +60,6 @@ impl<'a> Generator<'a> {
         let mut statements = vec![];
         let mut exports = vec![];
         let current_module_name_segments_count = module.name.split('/').count();
-
-        // Generate imports
-        let mut imports = vec![];
-        for import in &module.definitions.imports {
-            let module_name = import.module.clone();
-            let alias = match &import.as_name {
-                Some((crate::ast::AssignName::Variable(name), _)) => name.clone(),
-                _ => {
-                    // Get the last segment of the module name
-                    EcoString::from(module_name.split('/').next_back().unwrap())
-                }
-            };
-            
-            // Calculate relative path
-            let path = if import.package == module.type_info.package || import.package.is_empty() {
-                match current_module_name_segments_count {
-                    1 => eco_format!("./{module_name}"),
-                    _ => {
-                        let prefix = "../".repeat(current_module_name_segments_count - 1);
-                        eco_format!("{prefix}{module_name}")
-                    }
-                }
-            } else {
-                let prefix = "../".repeat(current_module_name_segments_count);
-                eco_format!("{prefix}{}/{module_name}", import.package)
-            };
-            
-            imports.push(docvec![
-                "local ",
-                alias.clone(),
-                " = require(\"",
-                path,
-                "\")",
-            ]);
-            
-            // For unqualified imports, we assign them to local variables from the imported module
-            for unqualified in &import.unqualified_values {
-                let unq_name = unqualified.used_name();
-                let original_name = &unqualified.name;
-                imports.push(docvec![
-                    "local ",
-                    unq_name.clone(),
-                    " = ",
-                    alias.clone(),
-                    ".",
-                    original_name.clone()
-                ]);
-            }
-        }
-        
-        if !imports.is_empty() {
-            statements.push(join(imports, line()));
-        }
 
         // Generate custom types (records)
         for custom_type in &module.definitions.custom_types {
@@ -165,7 +121,7 @@ impl<'a> Generator<'a> {
 
         for function in &module.definitions.functions {
             if let Some((_, name)) = &function.name {
-                let mut expr_gen = expression::Generator::new(self.module_name.clone(), self.line_numbers);
+                let mut expr_gen = expression::Generator::new(self.module_name.clone(), self.line_numbers, &mut self.tracker);
                 
                 let head = "local function ";
                 
@@ -197,6 +153,67 @@ impl<'a> Generator<'a> {
                     ]);
                 }
             }
+        }
+
+        let mut imports = vec![];
+        if self.tracker.prelude_used {
+            let prelude_path = if current_module_name_segments_count <= 1 {
+                eco_format!("./gleam")
+            } else {
+                let prefix = "../".repeat(current_module_name_segments_count - 1);
+                eco_format!("{prefix}gleam")
+            };
+            imports.push(docvec![
+                "local _gleam = require(\"",
+                prelude_path,
+                "\")",
+            ]);
+        }
+
+        for import in &module.definitions.imports {
+            let module_name = import.module.clone();
+            let alias = match &import.as_name {
+                Some((crate::ast::AssignName::Variable(name), _)) => name.clone(),
+                _ => EcoString::from(module_name.split('/').next_back().unwrap())
+            };
+            
+            let path = if import.package == module.type_info.package || import.package.is_empty() {
+                match current_module_name_segments_count {
+                    1 => eco_format!("./{module_name}"),
+                    _ => {
+                        let prefix = "../".repeat(current_module_name_segments_count - 1);
+                        eco_format!("{prefix}{module_name}")
+                    }
+                }
+            } else {
+                let prefix = "../".repeat(current_module_name_segments_count);
+                eco_format!("{prefix}{}/{module_name}", import.package)
+            };
+            
+            imports.push(docvec![
+                "local ",
+                alias.clone(),
+                " = require(\"",
+                path,
+                "\")",
+            ]);
+            
+            for unqualified in &import.unqualified_values {
+                let unq_name = unqualified.used_name();
+                let original_name = &unqualified.name;
+                imports.push(docvec![
+                    "local ",
+                    unq_name.clone(),
+                    " = ",
+                    alias.clone(),
+                    ".",
+                    original_name.clone()
+                ]);
+            }
+        }
+
+        if !imports.is_empty() {
+            statements.insert(0, join(imports, line()));
         }
 
         let export_table = if exports.is_empty() {

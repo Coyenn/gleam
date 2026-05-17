@@ -16,19 +16,21 @@ use crate::{
 const INDENT: isize = 2;
 
 #[derive(Debug)]
-pub struct Generator<'a> {
+pub struct Generator<'a, 'b> {
     pub module_name: EcoString,
     pub line_numbers: &'a LineNumbers,
     pub module_scope: HashMap<EcoString, usize>,
+    pub tracker: &'b mut crate::luau::UsageTracker,
     tail_recursion_used: bool,
 }
 
-impl<'a> Generator<'a> {
-    pub fn new(module_name: EcoString, line_numbers: &'a LineNumbers) -> Self {
+impl<'a, 'b> Generator<'a, 'b> {
+    pub fn new(module_name: EcoString, line_numbers: &'a LineNumbers, tracker: &'b mut crate::luau::UsageTracker) -> Self {
         Self {
             module_name,
             line_numbers,
             module_scope: HashMap::new(),
+            tracker,
             tail_recursion_used: false,
         }
     }
@@ -98,12 +100,20 @@ impl<'a> Generator<'a> {
                 );
                 docvec!["{", elements_doc, "}"]
             }
-            TypedExpr::List { elements, .. } => {
+            TypedExpr::List { elements, tail, .. } => {
+                self.tracker.prelude_used = true;
                 let elements_doc = join(
                     elements.iter().map(|e| self.expression(e)),
                     break_(",", ", "),
                 );
-                docvec!["{", elements_doc, "}"]
+                let elements_array = docvec!["{", elements_doc, "}"];
+                match tail {
+                    Some(tail) => {
+                        let tail_doc = self.expression(tail);
+                        docvec!["_gleam.toList(", elements_array, ", ", tail_doc, ")"]
+                    }
+                    None => docvec!["_gleam.toList(", elements_array, ")"],
+                }
             }
             TypedExpr::Fn { arguments, body, .. } => {
                 let arg_names = arguments.iter().map(|arg| {
@@ -149,23 +159,38 @@ impl<'a> Generator<'a> {
             TypedExpr::BinOp { name, left, right, .. } => {
                 let left_doc = self.expression(left);
                 let right_doc = self.expression(right);
-                let op = match name {
-                    BinOp::And => "and",
-                    BinOp::Or => "or",
-                    BinOp::Eq => "==",
-                    BinOp::NotEq => "~=",
-                    BinOp::LtInt | BinOp::LtFloat => "<",
-                    BinOp::LtEqInt | BinOp::LtEqFloat => "<=",
-                    BinOp::GtEqInt | BinOp::GtEqFloat => ">=",
-                    BinOp::GtInt | BinOp::GtFloat => ">",
-                    BinOp::AddInt | BinOp::AddFloat => "+",
-                    BinOp::SubInt | BinOp::SubFloat => "-",
-                    BinOp::MultInt | BinOp::MultFloat => "*",
-                    BinOp::DivInt | BinOp::DivFloat => "/",
-                    BinOp::RemainderInt => "%",
-                    BinOp::Concatenate => "..",
-                };
-                docvec![left_doc, " ", op, " ", right_doc]
+                match name {
+                    BinOp::And => docvec![left_doc, " and ", right_doc],
+                    BinOp::Or => docvec![left_doc, " or ", right_doc],
+                    BinOp::Eq => {
+                        self.tracker.prelude_used = true;
+                        docvec!["_gleam.isEqual(", left_doc, ", ", right_doc, ")"]
+                    }
+                    BinOp::NotEq => {
+                        self.tracker.prelude_used = true;
+                        docvec!["not _gleam.isEqual(", left_doc, ", ", right_doc, ")"]
+                    }
+                    BinOp::LtInt | BinOp::LtFloat => docvec![left_doc, " < ", right_doc],
+                    BinOp::LtEqInt | BinOp::LtEqFloat => docvec![left_doc, " <= ", right_doc],
+                    BinOp::GtEqInt | BinOp::GtEqFloat => docvec![left_doc, " >= ", right_doc],
+                    BinOp::GtInt | BinOp::GtFloat => docvec![left_doc, " > ", right_doc],
+                    BinOp::AddInt | BinOp::AddFloat => docvec![left_doc, " + ", right_doc],
+                    BinOp::SubInt | BinOp::SubFloat => docvec![left_doc, " - ", right_doc],
+                    BinOp::MultInt | BinOp::MultFloat => docvec![left_doc, " * ", right_doc],
+                    BinOp::DivInt => {
+                        self.tracker.prelude_used = true;
+                        docvec!["_gleam.divideInt(", left_doc, ", ", right_doc, ")"]
+                    }
+                    BinOp::DivFloat => {
+                        self.tracker.prelude_used = true;
+                        docvec!["_gleam.divideFloat(", left_doc, ", ", right_doc, ")"]
+                    }
+                    BinOp::RemainderInt => {
+                        self.tracker.prelude_used = true;
+                        docvec!["_gleam.remainderInt(", left_doc, ", ", right_doc, ")"]
+                    }
+                    BinOp::Concatenate => docvec![left_doc, " .. ", right_doc],
+                }
             }
             TypedExpr::Todo { .. } => "error(\"TODO\")".to_doc(),
             TypedExpr::Panic { .. } => "error(\"panic\")".to_doc(),
@@ -230,6 +255,9 @@ impl<'a> Generator<'a> {
                     line(),
                     "end)()"
                 ]
+            }
+            TypedExpr::BitArray { .. } => {
+                docvec!["error(\"BitArray unsupported in Luau\")"]
             }
             _ => docvec!["-- TODO: unhandled expression type"],
         }

@@ -312,26 +312,29 @@ where
     }
 
     fn write_prelude(&self) -> Result<()> {
-        // Only the JavaScript target has a prelude to write.
-        if !self.target().is_javascript() {
-            return Ok(());
-        }
-
         let build = self
             .paths
             .build_directory_for_target(self.mode(), self.target());
 
-        // Write the JavaScript prelude
-        let path = build.join("prelude.mjs");
-        if !self.io.is_file(&path) {
-            self.io.write(&path, crate::javascript::PRELUDE)?;
-        }
-
-        // Write the TypeScript prelude, if asked for
-        if self.config.javascript.typescript_declarations {
-            let path = build.join("prelude.d.mts");
+        if self.target().is_javascript() {
+            // Write the JavaScript prelude
+            let path = build.join("prelude.mjs");
             if !self.io.is_file(&path) {
-                self.io.write(&path, crate::javascript::PRELUDE_TS_DEF)?;
+                self.io.write(&path, crate::javascript::PRELUDE)?;
+            }
+
+            // Write the TypeScript prelude, if asked for
+            if self.config.javascript.typescript_declarations {
+                let path = build.join("prelude.d.mts");
+                if !self.io.is_file(&path) {
+                    self.io.write(&path, crate::javascript::PRELUDE_TS_DEF)?;
+                }
+            }
+        } else if self.target().is_luau() {
+            // Write the Luau prelude
+            let path = build.join("prelude.luau");
+            if !self.io.is_file(&path) {
+                self.io.write(&path, crate::luau::PRELUDE)?;
             }
         }
 
