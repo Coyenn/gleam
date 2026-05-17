@@ -270,3 +270,47 @@ pub fn map(opt: Option(Int)) {
 "#
     );
 }
+
+#[test]
+fn externals() {
+    assert_luau!(
+        r#"
+@external(luau, "my_mod", "my_func")
+pub fn module_fn(a: Int) -> Int
+
+@external(luau, "my_mod", "my_func")
+pub fn module_fn2(a: Int) -> Int {
+  a
+}
+
+@luau.property("Name")
+pub fn get_name(a: a) -> String
+
+@luau.set_property("Name")
+pub fn set_name(a: a, b: String) -> a
+
+@luau.method("Destroy")
+pub fn destroy(a: a) -> Nil
+
+@luau.method("Clone")
+pub fn clone(a: a) -> a
+
+@luau.event("Changed")
+pub fn changed(a: a) -> a
+
+@luau.global("print")
+pub fn print(a: a) -> Nil
+
+pub fn use_them(x) {
+  module_fn(1)
+  module_fn2(2)
+  get_name(x)
+  set_name(x, "hello")
+  destroy(x)
+  clone(x)
+  changed(x)
+  print(x)
+}
+"#
+    );
+}

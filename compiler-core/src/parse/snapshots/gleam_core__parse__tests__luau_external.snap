@@ -88,14 +88,14 @@ Parsed {
                         external_erlang: None,
                         external_javascript: None,
                         external_luau: Some(
-                            (
-                                "one",
-                                "two",
-                                SrcSpan {
+                            Module {
+                                module: "one",
+                                function: "two",
+                                location: SrcSpan {
                                     start: 1,
                                     end: 30,
                                 },
-                            ),
+                            },
                         ),
                         implementations: Implementations {
                             gleam: true,

@@ -13,6 +13,17 @@ pub mod tests;
 
 use camino::Utf8PathBuf;
 use ecow::EcoString;
+
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub enum ExternalLuauFunction {
+    Module { module: EcoString, function: EcoString },
+    Property { property: EcoString },
+    SetProperty { property: EcoString },
+    Method { method: EcoString },
+    Event { event: EcoString },
+    Global { global: EcoString },
+}
+
 pub use environment::*;
 pub use error::{Error, Problems, UnifyErrorSituation, Warning};
 pub(crate) use expression::ExprTyper;
@@ -30,6 +41,7 @@ use crate::{
     },
     bit_array,
     build::{Origin, Target},
+
     inline::InlinableFunction,
     line_numbers::LineNumbers,
     reference::ReferenceMap,
@@ -731,7 +743,7 @@ pub enum ValueConstructorVariant {
         external_javascript: Option<(EcoString, EcoString)>,
         purity: Purity,
         #[serde(default)]
-        external_luau: Option<(EcoString, EcoString)>,
+        external_luau: Option<ExternalLuauFunction>,
     },
 
     /// A constructor for a custom type
@@ -925,7 +937,7 @@ pub enum ModuleValueConstructor {
         ///
         external_erlang: Option<(EcoString, EcoString)>,
         external_javascript: Option<(EcoString, EcoString)>,
-        external_luau: Option<(EcoString, EcoString)>,
+        external_luau: Option<ExternalLuauFunction>,
         field_map: Option<FieldMap>,
         documentation: Option<EcoString>,
         purity: Purity,

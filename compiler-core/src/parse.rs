@@ -126,7 +126,7 @@ struct Attributes {
     deprecated: Deprecation,
     external_erlang: Option<(EcoString, EcoString, SrcSpan)>,
     external_javascript: Option<(EcoString, EcoString, SrcSpan)>,
-    external_luau: Option<(EcoString, EcoString, SrcSpan)>,
+    external_luau: Option<crate::ast::ExternalLuauFunction>,
     internal: InternalAttribute,
 }
 
@@ -149,7 +149,7 @@ impl Attributes {
         match target {
             Target::Erlang => self.external_erlang = ext,
             Target::JavaScript => self.external_javascript = ext,
-            Target::Luau => self.external_luau = ext,
+            Target::Luau => self.external_luau = ext.map(|(module, function, location)| crate::ast::ExternalLuauFunction::Module { module, function, location }),
         }
     }
 }
@@ -4536,9 +4536,41 @@ functions are declared separately from types.";
             "target" => self.parse_target_attribute(start, end, attributes),
             "deprecated" => self.parse_deprecated_attribute(start, end, attributes),
             "internal" => self.parse_internal_attribute(start, end, attributes),
+            "luau" if self.maybe_one(&Token::Dot).is_some() => {
+                self.parse_luau_attribute(start, attributes)
+            }
             _ => parse_error(ParseErrorType::UnknownAttribute, SrcSpan { start, end }),
         }?;
 
+        Ok(end)
+    }
+
+    
+    fn parse_luau_attribute(
+        &mut self,
+        start: u32,
+        attributes: &mut Attributes,
+    ) -> Result<u32, ParseError> {
+        let (_, name, _) = self.expect_name()?;
+        let _ = self.expect_one(&Token::LeftParen)?;
+        let (_, value, _) = self.expect_string()?;
+        let (_, end) = self.expect_one(&Token::RightParen)?;
+
+        if attributes.external_luau.is_some() {
+            return parse_error(ParseErrorType::DuplicateAttribute, SrcSpan { start, end });
+        }
+
+        let location = SrcSpan { start, end };
+        let ext = match name.as_str() {
+            "property" => crate::ast::ExternalLuauFunction::Property { property: value, location },
+            "set_property" => crate::ast::ExternalLuauFunction::SetProperty { property: value, location },
+            "method" => crate::ast::ExternalLuauFunction::Method { method: value, location },
+            "event" => crate::ast::ExternalLuauFunction::Event { event: value, location },
+            "global" => crate::ast::ExternalLuauFunction::Global { global: value, location },
+            _ => return parse_error(ParseErrorType::UnknownAttribute, location),
+        };
+
+        attributes.external_luau = Some(ext);
         Ok(end)
     }
 

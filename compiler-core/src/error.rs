@@ -4849,6 +4849,28 @@ modules should not import them. Perhaps change `{package}` to a regular dependen
             }),
         },
 
+        TypeError::InvalidLuauExternalArity { location, expected, actual, kind } => {
+            let expected_str = if *kind == "method" {
+                format!("at least {}", expected)
+            } else {
+                format!("exactly {}", expected)
+            };
+            Diagnostic {
+                title: "Invalid Luau external arity".into(),
+                text: format!("A Luau {} external must have {} argument(s), but it has {}.", kind, expected_str, actual),
+                hint: None,
+                level: Level::Error,
+                location: Some(Location {
+                    label: Label {
+                        text: None,
+                        span: *location,
+                    },
+                    path: path.clone(),
+                    src: src.clone(),
+                    extra_labels: vec![],
+                }),
+            }
+        },
         TypeError::ExternalTypeWithConstructors { location } => Diagnostic {
             title: "External type with constructors".to_string(),
             text: wrap_format!(

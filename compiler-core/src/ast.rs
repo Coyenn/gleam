@@ -41,6 +41,29 @@ pub const USE_ASSIGNMENT_VARIABLE: &str = "_use";
 pub const RECORD_UPDATE_VARIABLE: &str = "_record";
 pub const ASSERT_FAIL_VARIABLE: &str = "_assert_fail";
 pub const ASSERT_SUBJECT_VARIABLE: &str = "_assert_subject";
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum ExternalLuauFunction {
+    Module { module: EcoString, function: EcoString, location: SrcSpan },
+    Property { property: EcoString, location: SrcSpan },
+    SetProperty { property: EcoString, location: SrcSpan },
+    Method { method: EcoString, location: SrcSpan },
+    Event { event: EcoString, location: SrcSpan },
+    Global { global: EcoString, location: SrcSpan },
+}
+
+impl ExternalLuauFunction {
+    pub fn location(&self) -> SrcSpan {
+        match self {
+            Self::Module { location, .. } => *location,
+            Self::Property { location, .. } => *location,
+            Self::SetProperty { location, .. } => *location,
+            Self::Method { location, .. } => *location,
+            Self::Event { location, .. } => *location,
+            Self::Global { location, .. } => *location,
+        }
+    }
+}
+
 pub const CAPTURE_VARIABLE: &str = "_capture";
 pub const BLOCK_VARIABLE: &str = "_block";
 
@@ -866,7 +889,7 @@ pub struct Function<T, Expr> {
     pub documentation: Option<(u32, EcoString)>,
     pub external_erlang: Option<(EcoString, EcoString, SrcSpan)>,
     pub external_javascript: Option<(EcoString, EcoString, SrcSpan)>,
-    pub external_luau: Option<(EcoString, EcoString, SrcSpan)>,
+    pub external_luau: Option<ExternalLuauFunction>,
     pub implementations: Implementations,
     pub purity: Purity,
 }
@@ -1116,7 +1139,7 @@ pub struct CustomType<T> {
     pub typed_parameters: Vec<T>,
     pub external_erlang: Option<(EcoString, EcoString, SrcSpan)>,
     pub external_javascript: Option<(EcoString, EcoString, SrcSpan)>,
-    pub external_luau: Option<(EcoString, EcoString, SrcSpan)>,
+    pub external_luau: Option<ExternalLuauFunction>,
 }
 
 impl<T> CustomType<T> {

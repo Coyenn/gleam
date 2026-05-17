@@ -3688,7 +3688,7 @@ fn constant_call_arg_formatting<A, B>(
 struct AttributesPrinter<'a> {
     external_erlang: &'a Option<(EcoString, EcoString, SrcSpan)>,
     external_javascript: &'a Option<(EcoString, EcoString, SrcSpan)>,
-    external_luau: &'a Option<(EcoString, EcoString, SrcSpan)>,
+    external_luau: &'a Option<ExternalLuauFunction>,
     deprecation: &'a Deprecation,
     internal: bool,
 }
@@ -3722,7 +3722,7 @@ impl<'a> AttributesPrinter<'a> {
 
     pub fn set_external_luau(
         mut self,
-        external: &'a Option<(EcoString, EcoString, SrcSpan)>,
+        external: &'a Option<ExternalLuauFunction>,
     ) -> Self {
         self.external_luau = external;
         self
@@ -3757,8 +3757,27 @@ impl<'a> Documentable<'a> for AttributesPrinter<'a> {
             attributes.push(docvec!["@external(javascript, \"", m, "\", \"", f, "\")"])
         };
 
-        if let Some((m, f, _)) = self.external_luau {
-            attributes.push(docvec!["@external(luau, \"", m, "\", \"", f, "\")"])
+        if let Some(ext) = self.external_luau {
+            match ext {
+                ExternalLuauFunction::Module { module: m, function: f, .. } => {
+                    attributes.push(docvec!["@external(luau, \"", m, "\", \"", f, "\")"])
+                }
+                ExternalLuauFunction::Property { property, .. } => {
+                    attributes.push(docvec!["@luau.property(\"", property, "\")"])
+                }
+                ExternalLuauFunction::SetProperty { property, .. } => {
+                    attributes.push(docvec!["@luau.set_property(\"", property, "\")"])
+                }
+                ExternalLuauFunction::Method { method, .. } => {
+                    attributes.push(docvec!["@luau.method(\"", method, "\")"])
+                }
+                ExternalLuauFunction::Event { event, .. } => {
+                    attributes.push(docvec!["@luau.event(\"", event, "\")"])
+                }
+                ExternalLuauFunction::Global { global, .. } => {
+                    attributes.push(docvec!["@luau.global(\"", global, "\")"])
+                }
+            }
         };
 
         // @internal attribute

@@ -792,7 +792,7 @@ impl<'a, A> ModuleAnalyzer<'a, A> {
                 .map(|(m, f, _)| (m.clone(), f.clone())),
             external_luau: external_luau
                 .as_ref()
-                .map(|(m, f, _)| (m.clone(), f.clone())),
+                .map(|ext| match ext { ast::ExternalLuauFunction::Module { module, function, .. } => type_::ExternalLuauFunction::Module { module: module.clone(), function: function.clone() }, ast::ExternalLuauFunction::Property { property, .. } => type_::ExternalLuauFunction::Property { property: property.clone() }, ast::ExternalLuauFunction::SetProperty { property, .. } => type_::ExternalLuauFunction::SetProperty { property: property.clone() }, ast::ExternalLuauFunction::Method { method, .. } => type_::ExternalLuauFunction::Method { method: method.clone() }, ast::ExternalLuauFunction::Event { event, .. } => type_::ExternalLuauFunction::Event { event: event.clone() }, ast::ExternalLuauFunction::Global { global, .. } => type_::ExternalLuauFunction::Global { global: global.clone() } }),
             field_map,
             module: environment.current_module.clone(),
             arity: typed_arguments.len(),
@@ -914,7 +914,7 @@ impl<'a, A> ModuleAnalyzer<'a, A> {
         body: &[UntypedStatement],
         external_erlang: &Option<(EcoString, EcoString, SrcSpan)>,
         external_javascript: &Option<(EcoString, EcoString, SrcSpan)>,
-        external_luau: &Option<(EcoString, EcoString, SrcSpan)>,
+        external_luau: &Option<ast::ExternalLuauFunction>,
         location: SrcSpan,
     ) -> bool {
         if self.src_path.as_str().ends_with(".d.gleam") {
@@ -1641,6 +1641,28 @@ impl<'a, A> ModuleAnalyzer<'a, A> {
             external_erlang.is_none() && external_javascript.is_none() && external_luau.is_none(),
         );
 
+        if let Some(ext) = external_luau {
+            let (expected, kind) = match ext {
+                ast::ExternalLuauFunction::Property { .. } => (1, "property"),
+                ast::ExternalLuauFunction::SetProperty { .. } => (2, "set_property"),
+                ast::ExternalLuauFunction::Method { .. } => (1, "method"),
+                ast::ExternalLuauFunction::Event { .. } => (1, "event"),
+                _ => (0, ""),
+            };
+            
+            if expected > 0 {
+                let actual = arguments.len();
+                if (kind == "method" && actual < 1) || (kind != "method" && actual != expected) {
+                    self.problems.error(Error::InvalidLuauExternalArity {
+                        location: ext.location(),
+                        expected,
+                        actual,
+                        kind,
+                    });
+                }
+            }
+        }
+
         let arguments_types = arguments
             .iter()
             .map(|argument| {
@@ -1683,7 +1705,7 @@ impl<'a, A> ModuleAnalyzer<'a, A> {
                 .map(|(m, f, _)| (m.clone(), f.clone())),
             external_luau: external_luau
                 .as_ref()
-                .map(|(m, f, _)| (m.clone(), f.clone())),
+                .map(|ext| match ext { ast::ExternalLuauFunction::Module { module, function, .. } => type_::ExternalLuauFunction::Module { module: module.clone(), function: function.clone() }, ast::ExternalLuauFunction::Property { property, .. } => type_::ExternalLuauFunction::Property { property: property.clone() }, ast::ExternalLuauFunction::SetProperty { property, .. } => type_::ExternalLuauFunction::SetProperty { property: property.clone() }, ast::ExternalLuauFunction::Method { method, .. } => type_::ExternalLuauFunction::Method { method: method.clone() }, ast::ExternalLuauFunction::Event { event, .. } => type_::ExternalLuauFunction::Event { event: event.clone() }, ast::ExternalLuauFunction::Global { global, .. } => type_::ExternalLuauFunction::Global { global: global.clone() } }),
             module: environment.current_module.clone(),
             arity: arguments.len(),
             location: *location,
@@ -1783,12 +1805,12 @@ fn target_function_implementation<'a>(
     target: Target,
     external_erlang: &'a Option<(EcoString, EcoString, SrcSpan)>,
     external_javascript: &'a Option<(EcoString, EcoString, SrcSpan)>,
-    external_luau: &'a Option<(EcoString, EcoString, SrcSpan)>,
-) -> Option<&'a (EcoString, EcoString, SrcSpan)> {
+    external_luau: &'a Option<ast::ExternalLuauFunction>,
+) -> Option<SrcSpan> {
     match target {
-        Target::Erlang => external_erlang.as_ref(),
-        Target::JavaScript => external_javascript.as_ref(),
-        Target::Luau => external_luau.as_ref(),
+        Target::Erlang => external_erlang.as_ref().map(|(_, _, l)| *l),
+        Target::JavaScript => external_javascript.as_ref().map(|(_, _, l)| *l),
+        Target::Luau => external_luau.as_ref().map(|ext| ext.location()),
     }
 }
 
@@ -1982,7 +2004,7 @@ fn generalise_function(
             .map(|(m, f, _)| (m.clone(), f.clone())),
         external_luau: external_luau
             .as_ref()
-            .map(|(m, f, _)| (m.clone(), f.clone())),
+            .map(|ext| match ext { ast::ExternalLuauFunction::Module { module, function, .. } => type_::ExternalLuauFunction::Module { module: module.clone(), function: function.clone() }, ast::ExternalLuauFunction::Property { property, .. } => type_::ExternalLuauFunction::Property { property: property.clone() }, ast::ExternalLuauFunction::SetProperty { property, .. } => type_::ExternalLuauFunction::SetProperty { property: property.clone() }, ast::ExternalLuauFunction::Method { method, .. } => type_::ExternalLuauFunction::Method { method: method.clone() }, ast::ExternalLuauFunction::Event { event, .. } => type_::ExternalLuauFunction::Event { event: event.clone() }, ast::ExternalLuauFunction::Global { global, .. } => type_::ExternalLuauFunction::Global { global: global.clone() } }),
         module: module_name.clone(),
         arity: arguments.len(),
         location,

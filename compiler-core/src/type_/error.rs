@@ -682,6 +682,13 @@ pub enum Error {
         location: SrcSpan,
     },
 
+    InvalidLuauExternalArity {
+        location: SrcSpan,
+        expected: usize,
+        actual: usize,
+        kind: &'static str,
+    },
+
     LowercaseBoolPattern {
         location: SrcSpan,
     },
@@ -1374,6 +1381,7 @@ impl Error {
             | Error::PrivateOpaqueType { location }
             | Error::SrcImportingDevDependency { location, .. }
             | Error::ExternalTypeWithConstructors { location, .. }
+            | Error::InvalidLuauExternalArity { location, .. }
             | Error::RecordUpdateVariantWithNoFields { location }
             | Error::QualifiedTypeMissingName { location }
             | Error::TodoConstant { location }

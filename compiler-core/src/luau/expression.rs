@@ -4,13 +4,12 @@ use ecow::{EcoString, eco_format};
 
 use crate::{
     ast::{
-        Assignment, AssignmentKind, BinOp, CallArg, Clause, TypedArg, TypedClause, TypedExpr, TypedFunction,
-        TypedModuleConstant, TypedStatement, Use, Pattern,
+        Assignment, BinOp, TypedArg, TypedExpr, TypedStatement, Pattern,
     },
     docvec,
     line_numbers::LineNumbers,
     pretty::*,
-    type_::{Type, TypeVar, ValueConstructorVariant},
+    type_::Type,
 };
 
 const INDENT: isize = 2;
@@ -149,11 +148,81 @@ impl<'a, 'b> Generator<'a, 'b> {
                 }
             }
             TypedExpr::Call { fun, arguments, .. } => {
+                let external_luau = match &**fun {
+                    TypedExpr::Var { constructor, .. } => {
+                        if let crate::type_::ValueConstructorVariant::ModuleFn { external_luau, .. } = &constructor.variant {
+                            external_luau.as_ref()
+                        } else {
+                            None
+                        }
+                    }
+                    TypedExpr::ModuleSelect { constructor, .. } => {
+                        if let crate::type_::ModuleValueConstructor::Fn { external_luau, .. } = constructor {
+                            external_luau.as_ref()
+                        } else {
+                            None
+                        }
+                    }
+                    _ => None,
+                };
+
+                let mut args_docs = vec![];
+                for arg in arguments {
+                    args_docs.push(self.expression(&arg.value));
+                }
+
+                if let Some(ext) = external_luau {
+                    match ext {
+                        crate::type_::ExternalLuauFunction::Module { .. } => {
+                            // In a real implementation this would import the module if it's not already imported
+                            // For now we just emit a direct call if it's in the same module, or a require otherwise
+                            // Wait, actually, if it's an external module, we should emit `require("module").function(...)`
+                            // Or use the module alias if it was imported.
+                            // But `TypedExpr::ModuleSelect` already handles the module alias!
+                            // So if it's a ModuleSelect, `fun_doc` will be `alias.function`.
+                            // Let's just fall back to the default behavior for Module.
+                        }
+                        crate::type_::ExternalLuauFunction::Property { property } => {
+                            if args_docs.len() == 1 {
+                                return docvec![args_docs[0].clone(), ".", property.clone().to_doc()];
+                            }
+                        }
+                        crate::type_::ExternalLuauFunction::SetProperty { property } => {
+                            if args_docs.len() == 2 {
+                                // x.Name = value; return x
+                                // Since Luau doesn't have assignment expressions, we need to wrap it in an IIFE
+                                return docvec![
+                                    "(function() local _x = ",
+                                    args_docs[0].clone(),
+                                    "; _x.",
+                                    property.clone().to_doc(),
+                                    " = ",
+                                    args_docs[1].clone(),
+                                    "; return _x end)()"
+                                ];
+                            }
+                        }
+                        crate::type_::ExternalLuauFunction::Method { method } => {
+                            if args_docs.len() >= 1 {
+                                let target = args_docs.remove(0);
+                                let args_doc = join(args_docs, break_(",", ", "));
+                                return docvec![target, ":", method.clone().to_doc(), "(", args_doc, ")"];
+                            }
+                        }
+                        crate::type_::ExternalLuauFunction::Event { event } => {
+                            if args_docs.len() == 1 {
+                                return docvec![args_docs[0].clone(), ".", event.clone().to_doc()];
+                            }
+                        }
+                        crate::type_::ExternalLuauFunction::Global { global } => {
+                            let args_doc = join(args_docs, break_(",", ", "));
+                            return docvec![global.clone().to_doc(), "(", args_doc, ")"];
+                        }
+                    }
+                }
+
                 let fun_doc = self.expression(fun);
-                let args_doc = join(
-                    arguments.iter().map(|a| self.expression(&a.value)),
-                    break_(",", ", "),
-                );
+                let args_doc = join(args_docs, break_(",", ", "));
                 docvec![fun_doc, "(", args_doc, ")"]
             }
             TypedExpr::BinOp { name, left, right, .. } => {

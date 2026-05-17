@@ -2,7 +2,6 @@ mod expression;
 #[cfg(test)]
 mod tests;
 
-use std::collections::HashMap;
 
 use sourcemap::SourceMap;
 
@@ -14,7 +13,6 @@ use crate::{
 };
 use camino::Utf8Path;
 use ecow::{EcoString, eco_format};
-use itertools::Itertools;
 
 pub const PRELUDE: &str = include_str!("../templates/prelude.luau");
 
@@ -123,33 +121,78 @@ impl<'a> Generator<'a> {
             if let Some((_, name)) = &function.name {
                 let mut expr_gen = expression::Generator::new(self.module_name.clone(), self.line_numbers, &mut self.tracker);
                 
-                let head = "local function ";
-                
-                let arg_names = function.arguments.iter().map(|arg| {
+                let arg_names: Vec<_> = function.arguments.iter().map(|arg| {
                     match arg.names.get_variable_name() {
                         Some(name) => name.to_doc(),
                         None => "_".to_doc(),
                     }
-                });
+                }).collect();
                 
-                let args = docvec!["(", join(arg_names, break_(",", ", ")), ")"];
+                let args = docvec!["(", join(arg_names.clone(), break_(",", ", ")), ")"];
                 
-                let body = expr_gen.function_body(&function.body, &function.arguments);
-                
-                statements.push(docvec![
-                    head,
-                    name,
-                    args,
-                    docvec![line(), body].nest(INDENT),
-                    line(),
-                    "end",
-                ]);
+                if let Some(ext) = &function.external_luau {
+                    match ext {
+                        ExternalLuauFunction::Module { module, function: ext_fn, .. } => {
+                            statements.push(docvec![
+                                "local ", name.clone(), " = require(\"", module.clone(), "\").", ext_fn.clone()
+                            ]);
+                        }
+                        ExternalLuauFunction::Property { property, .. } => {
+                            statements.push(docvec![
+                                "local function ", name.clone(), args, line(),
+                                "return ", arg_names[0].clone(), ".", property.clone(), line(),
+                                "end"
+                            ]);
+                        }
+                        ExternalLuauFunction::SetProperty { property, .. } => {
+                            statements.push(docvec![
+                                "local function ", name.clone(), args, line(),
+                                arg_names[0].clone(), ".", property.clone(), " = ", arg_names[1].clone(), line(),
+                                "return ", arg_names[0].clone(), line(),
+                                "end"
+                            ]);
+                        }
+                        ExternalLuauFunction::Method { method, .. } => {
+                            let mut args_without_first = arg_names.clone();
+                            let first = args_without_first.remove(0);
+                            statements.push(docvec![
+                                "local function ", name.clone(), args, line(),
+                                "return ", first, ":", method.clone(), "(", join(args_without_first, break_(",", ", ")), ")", line(),
+                                "end"
+                            ]);
+                        }
+                        ExternalLuauFunction::Event { event, .. } => {
+                            statements.push(docvec![
+                                "local function ", name.clone(), args, line(),
+                                "return ", arg_names[0].clone(), ".", event.clone(), line(),
+                                "end"
+                            ]);
+                        }
+                        ExternalLuauFunction::Global { global, .. } => {
+                            statements.push(docvec![
+                                "local ", name.clone(), " = ", global.clone()
+                            ]);
+                        }
+                    }
+                } else {
+                    let head = "local function ";
+                    let body = expr_gen.function_body(&function.body, &function.arguments);
+                    
+                    statements.push(docvec![
+                        head,
+                        name.clone(),
+                        args,
+                        docvec![line(), body].nest(INDENT),
+                        line(),
+                        "end",
+                    ]);
+                }
 
                 if function.publicity.is_public() {
                     exports.push(docvec![
-                        name,
+                        name.clone(),
                         " = ",
-                        name,
+                        name.clone(),
                     ]);
                 }
             }
@@ -173,7 +216,7 @@ impl<'a> Generator<'a> {
         for import in &module.definitions.imports {
             let module_name = import.module.clone();
             let alias = match &import.as_name {
-                Some((crate::ast::AssignName::Variable(name), _)) => name.clone(),
+                Some((AssignName::Variable(name), _)) => name.clone(),
                 _ => EcoString::from(module_name.split('/').next_back().unwrap())
             };
             
