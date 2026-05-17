@@ -49,6 +49,10 @@ end)
 - Support `.d.gleam` declaration files as type-only interop surfaces, similar in spirit to TypeScript `.d.ts` files.
 - Do not rename Roblox itself. Store native names as metadata on declarations and lower to those names in Luau codegen.
 
+## Development Environment
+
+- This checkout uses Nix with `comma`; run Nix-provided tools as `, <bin>`, for example `, cargo check` or `, rustc`.
+
 ## Current Compiler Integration Points
 
 - `compiler-core/src/build.rs`
