@@ -142,6 +142,9 @@ def to_type_name(name):
         return 'Buffer'
     return name[:1].upper() + name[1:]
 
+def is_real_class_name(name):
+    return bool(name) and not name.startswith('<<<')
+
 def map_type(val_type):
     if isinstance(val_type, list):
         return 'Dynamic', ['Dynamic']
@@ -169,6 +172,8 @@ def map_type(val_type):
     if name == 'Dictionary': return 'Dynamic', ['Dynamic']
     if name == 'Dictionary?': return 'Dynamic', ['Dynamic']
     if name == 'Map': return 'Dynamic', ['Dynamic']
+    if name == 'RBXScriptSignal': return 'RBXScriptSignal(Dynamic)', ['RBXScriptSignal', 'Dynamic']
+    if name == 'RBXScriptConnection': return 'RBXScriptConnection', ['RBXScriptConnection']
     if name == 'Objects': return 'List(Instance)', ['List', 'Instance']
     if name == 'Instances': return 'List(Instance)', ['List', 'Instance']
     if name == 'buffer': return 'Buffer', ['Buffer']
@@ -218,7 +223,7 @@ def generate():
                     all_types.update(base_types)
                     
     # Remove built-ins from all_types
-    builtins = {'Bool', 'Int', 'Float', 'String', 'Nil', 'Dynamic', 'List', 'Option'}
+    builtins = {'Bool', 'Int', 'Float', 'String', 'Nil', 'Dynamic', 'List', 'Option', 'RBXScriptConnection', 'RBXScriptSignal'}
     custom_types = sorted(list(all_types - builtins))
     
     # Generate types.gleam
@@ -241,21 +246,8 @@ def generate():
         cls_overrides = overrides.get('classes', {}).get(name, {})
         if 'rename' in cls_overrides:
             snake_name = cls_overrides['rename']
-            
-        # Flatten members
-        members = []
-        seen_members = set()
-        
-        current_cls = cls
-        while current_cls:
-            for member in current_cls.get('Members', []):
-                if member['Name'] not in seen_members:
-                    members.append(member)
-                    seen_members.add(member['Name'])
-            super_name = current_cls.get('Superclass')
-            if super_name == '<<<' or not super_name:
-                break
-            current_cls = class_map.get(super_name)
+
+        members = cls.get('Members', [])
             
         lines = [generated_header]
         
@@ -263,9 +255,30 @@ def generate():
         needs_option = False
         needs_dynamic = False
         needs_signal = False
+        needs_connection = False
         
         generated_funcs = set()
         body_lines = []
+
+        ancestors = []
+        super_name = cls.get('Superclass')
+        while is_real_class_name(super_name):
+            ancestors.append(super_name)
+            current_cls = class_map.get(super_name)
+            if not current_cls:
+                break
+            super_name = current_cls.get('Superclass')
+
+        for ancestor in ancestors:
+            used_custom_types.add(ancestor)
+            cast_name = f'as_{to_snake_case(ancestor)}'
+            generated_funcs.add(cast_name.lower())
+            body_lines.append(f'/// Treats `{name}` as its Roblox ancestor `{ancestor}`.')
+            body_lines.append('///')
+            body_lines.append('/// This is an upcast only; it does not check or change the underlying Roblox object.')
+            body_lines.append('@luau.global("(function(x) return x end)")')
+            body_lines.append(f'pub fn {cast_name}(instance: {name}) -> {ancestor}')
+            body_lines.append('')
         
         for member in members:
             if 'Deprecated' in member.get('Tags', []):
@@ -294,6 +307,8 @@ def generate():
                 used_custom_types.update(set(base_types) - builtins)
                 if 'Option' in base_types: needs_option = True
                 if 'Dynamic' in base_types: needs_dynamic = True
+                if 'RBXScriptSignal' in base_types: needs_signal = True
+                if 'RBXScriptConnection' in base_types: needs_connection = True
                 
                 getter_name = f'get_{m_snake_lower}'
                 if getter_name not in generated_funcs:
@@ -344,6 +359,8 @@ def generate():
                 
                 if 'Option' in base_types: needs_option = True
                 if 'Dynamic' in base_types: needs_dynamic = True
+                if 'RBXScriptSignal' in base_types: needs_signal = True
+                if 'RBXScriptConnection' in base_types: needs_connection = True
                 used_custom_types.update(set(base_types) - builtins)
                     
                 args = []
@@ -368,6 +385,8 @@ def generate():
                     p_type, p_base_types = map_type(p['Type'])
                     if 'Option' in p_base_types: needs_option = True
                     if 'Dynamic' in p_base_types: needs_dynamic = True
+                    if 'RBXScriptSignal' in p_base_types: needs_signal = True
+                    if 'RBXScriptConnection' in p_base_types: needs_connection = True
                     used_custom_types.update(set(p_base_types) - builtins)
                     args.append(f'{p_name}: {p_type}')
                     
@@ -398,9 +417,13 @@ def generate():
         # Imports
         if needs_option:
             lines.append('import roblox/option.{type Option}')
+        signal_imports = []
+        if needs_connection:
+            signal_imports.append('type RBXScriptConnection')
         if needs_signal:
-            lines.append('import roblox/signal.{type RBXScriptSignal}')
-            used_custom_types.discard('RBXScriptSignal') # We import it from signal
+            signal_imports.append('type RBXScriptSignal')
+        if signal_imports:
+            lines.append(f'import roblox/signal.{{{", ".join(signal_imports)}}}')
         if needs_dynamic:
             lines.append('import roblox/dynamic.{type Dynamic}')
             

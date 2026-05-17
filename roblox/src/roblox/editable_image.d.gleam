@@ -1,7 +1,12 @@
 // Generated class bindings for Roblox API
-import roblox/signal.{type RBXScriptSignal}
 import roblox/dynamic.{type Dynamic}
-import roblox/types.{type AntiAliasing, type Buffer, type Color3, type EditableImage, type EditableMesh, type ImageCombineType, type Vector2}
+import roblox/types.{type AntiAliasing, type Buffer, type Color3, type EditableImage, type EditableMesh, type ImageCombineType, type Object, type Vector2}
+
+/// Treats `EditableImage` as its Roblox ancestor `Object`.
+///
+/// This is an upcast only; it does not check or change the underlying Roblox object.
+@luau.global("(function(x) return x end)")
+pub fn as_object(instance: EditableImage) -> Object
 
 /// Gets Roblox property `EditableImage.Size`.
 ///
@@ -148,31 +153,3 @@ pub fn read_pixels_buffer(instance: EditableImage, position: Vector2, size: Vect
 /// - `buffer`: A buffer where each pixel is represented by four bytes (red, green, blue, and alpha respectively). The length of the buffer should be X * Size.Y * 4 bytes.
 @luau.method("WritePixelsBuffer")
 pub fn write_pixels_buffer(instance: EditableImage, position: Vector2, size: Vector2, buffer: Buffer) -> Nil
-
-/// Gets Roblox property `EditableImage.ClassName`.
-///
-/// Roblox: `EditableImage.ClassName`
-/// ThreadSafety: ReadSafe
-/// Tags: ReadOnly, NotReplicated
-/// See: https://create.roblox.com/docs/reference/engine/classes/EditableImage#ClassName
-@luau.property("ClassName")
-pub fn get_class_name(instance: EditableImage) -> String
-
-/// Roblox: `EditableImage.GetPropertyChangedSignal`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/EditableImage#GetPropertyChangedSignal
-@luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: EditableImage, property: String) -> RBXScriptSignal(Dynamic)
-
-/// Roblox: `EditableImage.IsA`
-/// ThreadSafety: Safe
-/// Tags: CustomLuaState
-/// See: https://create.roblox.com/docs/reference/engine/classes/EditableImage#IsA
-@luau.method("IsA")
-pub fn is_a(instance: EditableImage, class_name: String) -> Bool
-
-/// Roblox: `EditableImage.Changed`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/EditableImage#Changed
-@luau.event("Changed")
-pub fn changed(instance: EditableImage) -> RBXScriptSignal(Dynamic)

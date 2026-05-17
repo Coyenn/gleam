@@ -1,7 +1,11 @@
 // Generated class bindings for Roblox API
-import roblox/signal.{type RBXScriptSignal}
-import roblox/dynamic.{type Dynamic}
-import roblox/types.{type PluginConnection, type PluginConnectionTargetType}
+import roblox/types.{type Object, type PluginConnection, type PluginConnectionTargetType}
+
+/// Treats `PluginConnection` as its Roblox ancestor `Object`.
+///
+/// This is an upcast only; it does not check or change the underlying Roblox object.
+@luau.global("(function(x) return x end)")
+pub fn as_object(instance: PluginConnection) -> Object
 
 /// Gets Roblox property `PluginConnection.Connected`.
 ///
@@ -35,31 +39,3 @@ pub fn get_target_id(instance: PluginConnection) -> String
 /// See: https://create.roblox.com/docs/reference/engine/classes/PluginConnection#Type
 @luau.property("Type")
 pub fn get_type_(instance: PluginConnection) -> PluginConnectionTargetType
-
-/// Gets Roblox property `PluginConnection.ClassName`.
-///
-/// Roblox: `PluginConnection.ClassName`
-/// ThreadSafety: ReadSafe
-/// Tags: ReadOnly, NotReplicated
-/// See: https://create.roblox.com/docs/reference/engine/classes/PluginConnection#ClassName
-@luau.property("ClassName")
-pub fn get_class_name(instance: PluginConnection) -> String
-
-/// Roblox: `PluginConnection.GetPropertyChangedSignal`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/PluginConnection#GetPropertyChangedSignal
-@luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: PluginConnection, property: String) -> RBXScriptSignal(Dynamic)
-
-/// Roblox: `PluginConnection.IsA`
-/// ThreadSafety: Safe
-/// Tags: CustomLuaState
-/// See: https://create.roblox.com/docs/reference/engine/classes/PluginConnection#IsA
-@luau.method("IsA")
-pub fn is_a(instance: PluginConnection, class_name: String) -> Bool
-
-/// Roblox: `PluginConnection.Changed`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/PluginConnection#Changed
-@luau.event("Changed")
-pub fn changed(instance: PluginConnection) -> RBXScriptSignal(Dynamic)

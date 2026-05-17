@@ -1,7 +1,12 @@
 // Generated class bindings for Roblox API
-import roblox/signal.{type RBXScriptSignal}
 import roblox/dynamic.{type Dynamic}
-import roblox/types.{type CFrame, type Color3, type EditableMesh, type FacsActionUnit, type OptionColor3, type OptionFloat, type OptionInt64, type OptionVector2, type OptionVector3, type Vector2, type Vector3}
+import roblox/types.{type CFrame, type Color3, type EditableMesh, type FacsActionUnit, type Object, type OptionColor3, type OptionFloat, type OptionInt64, type OptionVector2, type OptionVector3, type Vector2, type Vector3}
+
+/// Treats `EditableMesh` as its Roblox ancestor `Object`.
+///
+/// This is an upcast only; it does not check or change the underlying Roblox object.
+@luau.global("(function(x) return x end)")
+pub fn as_object(instance: EditableMesh) -> Object
 
 /// Gets Roblox property `EditableMesh.FixedSize`.
 ///
@@ -1205,31 +1210,3 @@ pub fn set_vertex_face_uv(instance: EditableMesh, vertex_id: OptionInt64, face_i
 /// - `instance`: Instance which allows for the runtime creation and manipulation of meshes.
 @luau.method("Triangulate")
 pub fn triangulate(instance: EditableMesh) -> Nil
-
-/// Gets Roblox property `EditableMesh.ClassName`.
-///
-/// Roblox: `EditableMesh.ClassName`
-/// ThreadSafety: ReadSafe
-/// Tags: ReadOnly, NotReplicated
-/// See: https://create.roblox.com/docs/reference/engine/classes/EditableMesh#ClassName
-@luau.property("ClassName")
-pub fn get_class_name(instance: EditableMesh) -> String
-
-/// Roblox: `EditableMesh.GetPropertyChangedSignal`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/EditableMesh#GetPropertyChangedSignal
-@luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: EditableMesh, property: String) -> RBXScriptSignal(Dynamic)
-
-/// Roblox: `EditableMesh.IsA`
-/// ThreadSafety: Safe
-/// Tags: CustomLuaState
-/// See: https://create.roblox.com/docs/reference/engine/classes/EditableMesh#IsA
-@luau.method("IsA")
-pub fn is_a(instance: EditableMesh, class_name: String) -> Bool
-
-/// Roblox: `EditableMesh.Changed`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/EditableMesh#Changed
-@luau.event("Changed")
-pub fn changed(instance: EditableMesh) -> RBXScriptSignal(Dynamic)

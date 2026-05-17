@@ -1,7 +1,7 @@
-import roblox/dynamic.{type Dynamic, type DecodeError}
+import roblox/dynamic.{type DecodeError, type Dynamic}
 import roblox/remote_event
-import roblox/types.{type RemoteEvent, type RemoteFunction, type Player}
 import roblox/signal.{type RBXScriptConnection}
+import roblox/types.{type Player, type RemoteEvent, type RemoteFunction}
 
 /// Typed wrapper for a `RemoteEvent` plus payload codec functions.
 pub type TypedRemoteEvent(payload) {
@@ -18,12 +18,19 @@ pub fn fire_server(event: TypedRemoteEvent(payload), payload: payload) -> Nil {
 }
 
 /// Encodes and fires an event from server to one client.
-pub fn fire_client(event: TypedRemoteEvent(payload), player: Player, payload: payload) -> Nil {
+pub fn fire_client(
+  event: TypedRemoteEvent(payload),
+  player: Player,
+  payload: payload,
+) -> Nil {
   remote_event.fire_client(event.instance, player, event.encoder(payload))
 }
 
 /// Encodes and fires an event from server to all clients.
-pub fn fire_all_clients(event: TypedRemoteEvent(payload), payload: payload) -> Nil {
+pub fn fire_all_clients(
+  event: TypedRemoteEvent(payload),
+  payload: payload,
+) -> Nil {
   remote_event.fire_all_clients(event.instance, event.encoder(payload))
 }
 
@@ -36,12 +43,15 @@ pub fn on_server_event(
   event: TypedRemoteEvent(payload),
   callback: fn(Player, payload) -> Nil,
 ) -> RBXScriptConnection {
-  remote_internal.connect_server_event(remote_event.on_server_event(event.instance), fn(player, dyn_payload) {
-    case event.decoder(dyn_payload) {
-      Ok(payload) -> callback(player, payload)
-      Error(_) -> Nil
-    }
-  })
+  remote_internal.connect_server_event(
+    remote_event.on_server_event(event.instance),
+    fn(player, dyn_payload) {
+      case event.decoder(dyn_payload) {
+        Ok(payload) -> callback(player, payload)
+        Error(_) -> Nil
+      }
+    },
+  )
 }
 
 /// Connects a typed client event callback.
@@ -51,12 +61,15 @@ pub fn on_client_event(
   event: TypedRemoteEvent(payload),
   callback: fn(payload) -> Nil,
 ) -> RBXScriptConnection {
-  remote_internal.connect_client_event(remote_event.on_client_event(event.instance), fn(dyn_payload) {
-    case event.decoder(dyn_payload) {
-      Ok(payload) -> callback(payload)
-      Error(_) -> Nil
-    }
-  })
+  remote_internal.connect_client_event(
+    remote_event.on_client_event(event.instance),
+    fn(dyn_payload) {
+      case event.decoder(dyn_payload) {
+        Ok(payload) -> callback(payload)
+        Error(_) -> Nil
+      }
+    },
+  )
 }
 
 /// Typed wrapper for a `RemoteFunction` with request/response codecs.
@@ -75,7 +88,8 @@ pub fn invoke_server_typed(
   func: TypedRemoteFunction(req, res),
   req: req,
 ) -> Result(res, List(DecodeError)) {
-  let res_dyn = remote_internal.invoke_server(func.instance, func.req_encoder(req))
+  let res_dyn =
+    remote_internal.invoke_server(func.instance, func.req_encoder(req))
   func.res_decoder(res_dyn)
 }
 
@@ -85,7 +99,8 @@ pub fn invoke_client_typed(
   player: Player,
   req: req,
 ) -> Result(res, List(DecodeError)) {
-  let res_dyn = remote_internal.invoke_client(func.instance, player, func.req_encoder(req))
+  let res_dyn =
+    remote_internal.invoke_client(func.instance, player, func.req_encoder(req))
   func.res_decoder(res_dyn)
 }
 

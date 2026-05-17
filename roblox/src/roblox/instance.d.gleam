@@ -2,7 +2,13 @@
 import roblox/option.{type Option}
 import roblox/signal.{type RBXScriptSignal}
 import roblox/dynamic.{type Dynamic}
-import roblox/types.{type Actor, type Instance, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
+import roblox/types.{type Actor, type Instance, type Object, type OptionDouble, type OptionInt64, type SecurityCapabilities, type UniqueId}
+
+/// Treats `Instance` as its Roblox ancestor `Object`.
+///
+/// This is an upcast only; it does not check or change the underlying Roblox object.
+@luau.global("(function(x) return x end)")
+pub fn as_object(instance: Instance) -> Object
 
 /// Gets Roblox property `Instance.Archivable`.
 ///
@@ -618,31 +624,3 @@ pub fn destroying(instance: Instance) -> RBXScriptSignal(Dynamic)
 /// See: https://create.roblox.com/docs/reference/engine/classes/Instance#StyledPropertiesChanged
 @luau.event("StyledPropertiesChanged")
 pub fn styled_properties_changed(instance: Instance) -> RBXScriptSignal(Dynamic)
-
-/// Gets Roblox property `Instance.ClassName`.
-///
-/// Roblox: `Instance.ClassName`
-/// ThreadSafety: ReadSafe
-/// Tags: ReadOnly, NotReplicated
-/// See: https://create.roblox.com/docs/reference/engine/classes/Instance#ClassName
-@luau.property("ClassName")
-pub fn get_class_name(instance: Instance) -> String
-
-/// Roblox: `Instance.GetPropertyChangedSignal`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/Instance#GetPropertyChangedSignal
-@luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Instance, property: String) -> RBXScriptSignal(Dynamic)
-
-/// Roblox: `Instance.IsA`
-/// ThreadSafety: Safe
-/// Tags: CustomLuaState
-/// See: https://create.roblox.com/docs/reference/engine/classes/Instance#IsA
-@luau.method("IsA")
-pub fn is_a(instance: Instance, class_name: String) -> Bool
-
-/// Roblox: `Instance.Changed`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/Instance#Changed
-@luau.event("Changed")
-pub fn changed(instance: Instance) -> RBXScriptSignal(Dynamic)

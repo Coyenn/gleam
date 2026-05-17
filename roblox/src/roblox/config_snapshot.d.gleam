@@ -1,7 +1,13 @@
 // Generated class bindings for Roblox API
 import roblox/signal.{type RBXScriptSignal}
 import roblox/dynamic.{type Dynamic}
-import roblox/types.{type ConfigSnapshot, type ConfigSnapshotErrorState}
+import roblox/types.{type ConfigSnapshot, type ConfigSnapshotErrorState, type Object}
+
+/// Treats `ConfigSnapshot` as its Roblox ancestor `Object`.
+///
+/// This is an upcast only; it does not check or change the underlying Roblox object.
+@luau.global("(function(x) return x end)")
+pub fn as_object(instance: ConfigSnapshot) -> Object
 
 /// Gets Roblox property `ConfigSnapshot.Error`.
 ///
@@ -73,31 +79,3 @@ pub fn refresh(instance: ConfigSnapshot) -> Nil
 /// See: https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#UpdateAvailable
 @luau.event("UpdateAvailable")
 pub fn update_available(instance: ConfigSnapshot) -> RBXScriptSignal(Dynamic)
-
-/// Gets Roblox property `ConfigSnapshot.ClassName`.
-///
-/// Roblox: `ConfigSnapshot.ClassName`
-/// ThreadSafety: ReadSafe
-/// Tags: ReadOnly, NotReplicated
-/// See: https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#ClassName
-@luau.property("ClassName")
-pub fn get_class_name(instance: ConfigSnapshot) -> String
-
-/// Roblox: `ConfigSnapshot.GetPropertyChangedSignal`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#GetPropertyChangedSignal
-@luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: ConfigSnapshot, property: String) -> RBXScriptSignal(Dynamic)
-
-/// Roblox: `ConfigSnapshot.IsA`
-/// ThreadSafety: Safe
-/// Tags: CustomLuaState
-/// See: https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#IsA
-@luau.method("IsA")
-pub fn is_a(instance: ConfigSnapshot, class_name: String) -> Bool
-
-/// Roblox: `ConfigSnapshot.Changed`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/ConfigSnapshot#Changed
-@luau.event("Changed")
-pub fn changed(instance: ConfigSnapshot) -> RBXScriptSignal(Dynamic)

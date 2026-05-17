@@ -1,7 +1,11 @@
 // Generated class bindings for Roblox API
-import roblox/signal.{type RBXScriptSignal}
-import roblox/dynamic.{type Dynamic}
-import roblox/types.{type Capture, type CaptureType, type DateTime, type OptionInt64}
+import roblox/types.{type Capture, type CaptureType, type DateTime, type Object, type OptionInt64}
+
+/// Treats `Capture` as its Roblox ancestor `Object`.
+///
+/// This is an upcast only; it does not check or change the underlying Roblox object.
+@luau.global("(function(x) return x end)")
+pub fn as_object(instance: Capture) -> Object
 
 /// Gets Roblox property `Capture.CaptureTime`.
 ///
@@ -56,31 +60,3 @@ pub fn get_source_place_id(instance: Capture) -> OptionInt64
 /// See: https://create.roblox.com/docs/reference/engine/classes/Capture#SourceUniverseId
 @luau.property("SourceUniverseId")
 pub fn get_source_universe_id(instance: Capture) -> OptionInt64
-
-/// Gets Roblox property `Capture.ClassName`.
-///
-/// Roblox: `Capture.ClassName`
-/// ThreadSafety: ReadSafe
-/// Tags: ReadOnly, NotReplicated
-/// See: https://create.roblox.com/docs/reference/engine/classes/Capture#ClassName
-@luau.property("ClassName")
-pub fn get_class_name(instance: Capture) -> String
-
-/// Roblox: `Capture.GetPropertyChangedSignal`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/Capture#GetPropertyChangedSignal
-@luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: Capture, property: String) -> RBXScriptSignal(Dynamic)
-
-/// Roblox: `Capture.IsA`
-/// ThreadSafety: Safe
-/// Tags: CustomLuaState
-/// See: https://create.roblox.com/docs/reference/engine/classes/Capture#IsA
-@luau.method("IsA")
-pub fn is_a(instance: Capture, class_name: String) -> Bool
-
-/// Roblox: `Capture.Changed`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/Capture#Changed
-@luau.event("Changed")
-pub fn changed(instance: Capture) -> RBXScriptSignal(Dynamic)

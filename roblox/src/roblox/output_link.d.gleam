@@ -1,32 +1,8 @@
 // Generated class bindings for Roblox API
-import roblox/signal.{type RBXScriptSignal}
-import roblox/dynamic.{type Dynamic}
-import roblox/types.{type OutputLink}
+import roblox/types.{type Object, type OutputLink}
 
-/// Gets Roblox property `OutputLink.ClassName`.
+/// Treats `OutputLink` as its Roblox ancestor `Object`.
 ///
-/// Roblox: `OutputLink.ClassName`
-/// ThreadSafety: ReadSafe
-/// Tags: ReadOnly, NotReplicated
-/// See: https://create.roblox.com/docs/reference/engine/classes/OutputLink#ClassName
-@luau.property("ClassName")
-pub fn get_class_name(instance: OutputLink) -> String
-
-/// Roblox: `OutputLink.GetPropertyChangedSignal`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/OutputLink#GetPropertyChangedSignal
-@luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: OutputLink, property: String) -> RBXScriptSignal(Dynamic)
-
-/// Roblox: `OutputLink.IsA`
-/// ThreadSafety: Safe
-/// Tags: CustomLuaState
-/// See: https://create.roblox.com/docs/reference/engine/classes/OutputLink#IsA
-@luau.method("IsA")
-pub fn is_a(instance: OutputLink, class_name: String) -> Bool
-
-/// Roblox: `OutputLink.Changed`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/OutputLink#Changed
-@luau.event("Changed")
-pub fn changed(instance: OutputLink) -> RBXScriptSignal(Dynamic)
+/// This is an upcast only; it does not check or change the underlying Roblox object.
+@luau.global("(function(x) return x end)")
+pub fn as_object(instance: OutputLink) -> Object

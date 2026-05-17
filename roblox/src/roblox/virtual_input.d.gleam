@@ -1,7 +1,12 @@
 // Generated class bindings for Roblox API
-import roblox/signal.{type RBXScriptSignal}
 import roblox/dynamic.{type Dynamic}
-import roblox/types.{type KeyCode, type UserInputType, type Vector2, type VirtualInput}
+import roblox/types.{type KeyCode, type Object, type UserInputType, type Vector2, type VirtualInput}
+
+/// Treats `VirtualInput` as its Roblox ancestor `Object`.
+///
+/// This is an upcast only; it does not check or change the underlying Roblox object.
+@luau.global("(function(x) return x end)")
+pub fn as_object(instance: VirtualInput) -> Object
 
 /// Injects a keyboard key press or release event.
 ///
@@ -80,31 +85,3 @@ pub fn send_pointer_action(instance: VirtualInput, position: Vector2, pointer_ac
 /// - `text`: The string to inject as text input.
 @luau.method("SendTextInput")
 pub fn send_text_input(instance: VirtualInput, text: String) -> Nil
-
-/// Gets Roblox property `VirtualInput.ClassName`.
-///
-/// Roblox: `VirtualInput.ClassName`
-/// ThreadSafety: ReadSafe
-/// Tags: ReadOnly, NotReplicated
-/// See: https://create.roblox.com/docs/reference/engine/classes/VirtualInput#ClassName
-@luau.property("ClassName")
-pub fn get_class_name(instance: VirtualInput) -> String
-
-/// Roblox: `VirtualInput.GetPropertyChangedSignal`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/VirtualInput#GetPropertyChangedSignal
-@luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: VirtualInput, property: String) -> RBXScriptSignal(Dynamic)
-
-/// Roblox: `VirtualInput.IsA`
-/// ThreadSafety: Safe
-/// Tags: CustomLuaState
-/// See: https://create.roblox.com/docs/reference/engine/classes/VirtualInput#IsA
-@luau.method("IsA")
-pub fn is_a(instance: VirtualInput, class_name: String) -> Bool
-
-/// Roblox: `VirtualInput.Changed`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/VirtualInput#Changed
-@luau.event("Changed")
-pub fn changed(instance: VirtualInput) -> RBXScriptSignal(Dynamic)

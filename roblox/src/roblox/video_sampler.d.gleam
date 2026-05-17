@@ -1,7 +1,12 @@
 // Generated class bindings for Roblox API
-import roblox/signal.{type RBXScriptSignal}
 import roblox/dynamic.{type Dynamic}
-import roblox/types.{type Content, type OptionDouble, type VideoSampler}
+import roblox/types.{type Content, type Object, type OptionDouble, type VideoSampler}
+
+/// Treats `VideoSampler` as its Roblox ancestor `Object`.
+///
+/// This is an upcast only; it does not check or change the underlying Roblox object.
+@luau.global("(function(x) return x end)")
+pub fn as_object(instance: VideoSampler) -> Object
 
 /// Gets Roblox property `VideoSampler.TimeLength`.
 ///
@@ -40,31 +45,3 @@ pub fn get_video_content(instance: VideoSampler) -> Content
 /// - An array of dictionary or nil values for each requested timestamp. If a requested timestamp is out of range or the VideoSampler was unable to produce a sample, the corresponding entry in the returned array will be nil. Each dictionary contains the following keys: Time (number): The timestamp of the returned image frame in seconds. This value may differ slightly from the requested timestamp. Image (Content): A Content with a SourceType of ContentSourceType.Opaque containing the image frame at the corresponding timestamp.
 @luau.method("GetSamplesAtTimesAsync")
 pub fn get_samples_at_times_async(instance: VideoSampler, times: List(Dynamic)) -> List(Dynamic)
-
-/// Gets Roblox property `VideoSampler.ClassName`.
-///
-/// Roblox: `VideoSampler.ClassName`
-/// ThreadSafety: ReadSafe
-/// Tags: ReadOnly, NotReplicated
-/// See: https://create.roblox.com/docs/reference/engine/classes/VideoSampler#ClassName
-@luau.property("ClassName")
-pub fn get_class_name(instance: VideoSampler) -> String
-
-/// Roblox: `VideoSampler.GetPropertyChangedSignal`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/VideoSampler#GetPropertyChangedSignal
-@luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: VideoSampler, property: String) -> RBXScriptSignal(Dynamic)
-
-/// Roblox: `VideoSampler.IsA`
-/// ThreadSafety: Safe
-/// Tags: CustomLuaState
-/// See: https://create.roblox.com/docs/reference/engine/classes/VideoSampler#IsA
-@luau.method("IsA")
-pub fn is_a(instance: VideoSampler, class_name: String) -> Bool
-
-/// Roblox: `VideoSampler.Changed`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/VideoSampler#Changed
-@luau.event("Changed")
-pub fn changed(instance: VideoSampler) -> RBXScriptSignal(Dynamic)

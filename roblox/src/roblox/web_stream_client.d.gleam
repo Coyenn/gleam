@@ -1,7 +1,13 @@
 // Generated class bindings for Roblox API
 import roblox/signal.{type RBXScriptSignal}
 import roblox/dynamic.{type Dynamic}
-import roblox/types.{type WebStreamClient, type WebStreamClientState}
+import roblox/types.{type Object, type WebStreamClient, type WebStreamClientState}
+
+/// Treats `WebStreamClient` as its Roblox ancestor `Object`.
+///
+/// This is an upcast only; it does not check or change the underlying Roblox object.
+@luau.global("(function(x) return x end)")
+pub fn as_object(instance: WebStreamClient) -> Object
 
 /// Gets Roblox property `WebStreamClient.ConnectionState`.
 ///
@@ -66,31 +72,3 @@ pub fn message_received(instance: WebStreamClient) -> RBXScriptSignal(Dynamic)
 /// See: https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#Opened
 @luau.event("Opened")
 pub fn opened(instance: WebStreamClient) -> RBXScriptSignal(Dynamic)
-
-/// Gets Roblox property `WebStreamClient.ClassName`.
-///
-/// Roblox: `WebStreamClient.ClassName`
-/// ThreadSafety: ReadSafe
-/// Tags: ReadOnly, NotReplicated
-/// See: https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#ClassName
-@luau.property("ClassName")
-pub fn get_class_name(instance: WebStreamClient) -> String
-
-/// Roblox: `WebStreamClient.GetPropertyChangedSignal`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#GetPropertyChangedSignal
-@luau.method("GetPropertyChangedSignal")
-pub fn get_property_changed_signal(instance: WebStreamClient, property: String) -> RBXScriptSignal(Dynamic)
-
-/// Roblox: `WebStreamClient.IsA`
-/// ThreadSafety: Safe
-/// Tags: CustomLuaState
-/// See: https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#IsA
-@luau.method("IsA")
-pub fn is_a(instance: WebStreamClient, class_name: String) -> Bool
-
-/// Roblox: `WebStreamClient.Changed`
-/// ThreadSafety: Unsafe
-/// See: https://create.roblox.com/docs/reference/engine/classes/WebStreamClient#Changed
-@luau.event("Changed")
-pub fn changed(instance: WebStreamClient) -> RBXScriptSignal(Dynamic)
