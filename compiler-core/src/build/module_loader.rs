@@ -129,6 +129,7 @@ where
             dependencies: meta.dependencies,
             source_path: file.path,
             origin: self.origin,
+            is_declaration: meta.is_declaration,
             name: file.module_name,
             line_numbers: meta.line_numbers,
         }
@@ -166,6 +167,7 @@ where
         package: package_name,
         dependencies,
         origin,
+        is_declaration: path.as_str().ends_with(".d.gleam"),
         extra,
         mtime,
         path,

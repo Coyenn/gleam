@@ -1769,6 +1769,9 @@ impl GleamFile {
 
         // my/module
         let _ = module_path.set_extension("");
+        if module_path.extension() == Some("d") {
+            let _ = module_path.set_extension("");
+        }
 
         // Stringify
         let name = module_path.to_string();
@@ -1784,7 +1787,7 @@ impl GleamFile {
 
         RE.get_or_init(|| {
             Regex::new(&format!(
-                "^({module}{slash})*{module}\\.gleam$",
+                "^({module}{slash})*{module}(\\.d)?\\.gleam$",
                 module = "[a-z][_a-z0-9]*",
                 slash = "(/|\\\\)",
             ))

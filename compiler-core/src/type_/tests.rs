@@ -23,6 +23,7 @@ mod assignments;
 mod conditional_compilation;
 mod custom_types;
 mod dead_code_detection;
+mod declarations;
 mod echo;
 mod errors;
 mod exhaustiveness;
@@ -59,6 +60,20 @@ macro_rules! assert_module_infer {
 
     ($src:expr, $module:expr $(,)?) => {{
         let constructors = $crate::type_::tests::infer_module($src, vec![]);
+        let expected = $crate::type_::tests::stringify_tuple_strs($module);
+        assert_eq!(($src, constructors), ($src, expected));
+    }};
+}
+
+#[macro_export]
+macro_rules! assert_declaration_module_infer {
+    ($src:expr, $module:expr $(,)?) => {{
+        let constructors = $crate::type_::tests::infer_module_with_target(
+            "themodule.d",
+            $src,
+            vec![],
+            $crate::build::Target::Erlang,
+        );
         let expected = $crate::type_::tests::stringify_tuple_strs($module);
         assert_eq!(($src, constructors), ($src, expected));
     }};
@@ -557,7 +572,15 @@ pub fn compile_module_with_opts(
         target_support: TargetSupport::Enforced,
         package_config: &config,
     }
-    .infer_module(ast, LineNumbers::new(src), "".into())
+    .infer_module(
+        ast,
+        LineNumbers::new(src),
+        if module_name.ends_with(".d") {
+            Utf8PathBuf::from(format!("/src/{}.gleam", module_name))
+        } else {
+            "".into()
+        },
+    )
 }
 
 pub fn module_error(src: &str, deps: Vec<DependencyModule<'_>>) -> String {

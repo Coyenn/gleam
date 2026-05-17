@@ -40,6 +40,9 @@ impl<'a> Erlang<'a> {
         root: &Utf8Path,
     ) -> Result<()> {
         for module in modules {
+            if module.is_declaration {
+                continue;
+            }
             let erl_name = module.erlang_name();
             self.erlang_module(&writer, module, &erl_name, root)?;
             self.erlang_record_headers(&writer, module, &erl_name)?;
@@ -203,6 +206,9 @@ impl<'a> JavaScript<'a> {
         stdlib_package: StdlibPackage,
     ) -> Result<()> {
         for module in modules {
+            if module.is_declaration {
+                continue;
+            }
             let js_name = module.name.clone();
             if self.typescript == TypeScriptDeclarations::Emit {
                 self.ts_declaration(writer, module, &js_name)?;
@@ -323,6 +329,9 @@ impl<'a> Luau<'a> {
         modules: &[Module],
     ) -> Result<()> {
         for module in modules {
+            if module.is_declaration {
+                continue;
+            }
             let luau_name = module.name.clone();
             self.luau_module(writer, module, &luau_name)?
         }

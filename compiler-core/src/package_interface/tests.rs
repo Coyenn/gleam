@@ -131,6 +131,7 @@ pub fn compile_package(
         mtime: SystemTime::UNIX_EPOCH,
         input_path: "wibble".into(),
         origin: Origin::Src,
+        is_declaration: false,
         ast,
         extra: parsed.extra,
         dependencies: vec![],

@@ -338,6 +338,7 @@ where
             let info = CacheMetadata {
                 mtime: module.mtime,
                 codegen_performed: self.perform_codegen,
+                is_declaration: module.is_declaration,
                 dependencies: module.dependencies.clone(),
                 fingerprint: SourceFingerprint::new(&module.code),
                 line_numbers: module.ast.type_info.line_numbers.clone(),
@@ -368,7 +369,9 @@ where
             TargetCodegenConfiguration::Erlang { app_file } => {
                 self.perform_erlang_codegen(modules, app_file.as_ref())
             }
-            TargetCodegenConfiguration::Luau => Ok(()),
+            TargetCodegenConfiguration::Luau => {
+                self.perform_luau_codegen(modules)
+            }
         }
     }
 
@@ -418,6 +421,24 @@ where
                 native_modules,
             )?;
         }
+        Ok(())
+    }
+
+    fn perform_luau_codegen(&mut self, modules: &[Module]) -> Result<(), Error> {
+        let mut written = HashSet::new();
+        crate::codegen::Luau::new(
+            &self.out,
+            false,
+            &self.root,
+        )
+        .render(&self.io, modules)?;
+
+        if self.copy_native_files {
+            self.copy_project_native_files(&self.out, &mut written)?;
+        } else {
+            tracing::debug!("skipping_native_file_copying");
+        }
+
         Ok(())
     }
 
@@ -581,6 +602,7 @@ fn analyse(
         path,
         mtime,
         origin,
+        is_declaration,
         package,
         dependencies,
         extra,
@@ -650,6 +672,7 @@ fn analyse(
                 let mut module = Module {
                     dependencies,
                     origin,
+                    is_declaration,
                     extra,
                     mtime,
                     name,
@@ -692,6 +715,7 @@ fn analyse(
                 let mut module = Module {
                     dependencies,
                     origin,
+                    is_declaration,
                     extra,
                     mtime,
                     name,
@@ -798,6 +822,7 @@ impl Input {
 pub(crate) struct CachedModule {
     pub name: EcoString,
     pub origin: Origin,
+    pub is_declaration: bool,
     pub dependencies: Vec<(EcoString, SrcSpan)>,
     pub source_path: Utf8PathBuf,
     pub line_numbers: LineNumbers,
@@ -807,6 +832,7 @@ pub(crate) struct CachedModule {
 pub(crate) struct CacheMetadata {
     pub mtime: SystemTime,
     pub codegen_performed: bool,
+    pub is_declaration: bool,
     pub dependencies: Vec<(EcoString, SrcSpan)>,
     pub fingerprint: SourceFingerprint,
     pub line_numbers: LineNumbers,
@@ -848,6 +874,7 @@ pub(crate) struct UncompiledModule {
     pub code: EcoString,
     pub mtime: SystemTime,
     pub origin: Origin,
+    pub is_declaration: bool,
     pub package: EcoString,
     pub dependencies: Vec<(EcoString, SrcSpan)>,
     pub ast: UntypedModule,

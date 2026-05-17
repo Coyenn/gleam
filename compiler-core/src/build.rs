@@ -285,6 +285,7 @@ pub struct Module {
     pub mtime: SystemTime,
     pub input_path: Utf8PathBuf,
     pub origin: Origin,
+    pub is_declaration: bool,
     pub ast: TypedModule,
     pub extra: ModuleExtra,
     pub dependencies: Vec<(EcoString, SrcSpan)>,

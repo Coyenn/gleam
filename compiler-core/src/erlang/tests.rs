@@ -120,6 +120,7 @@ pub fn compile_test_project(
         mtime: SystemTime::UNIX_EPOCH,
         input_path: path,
         origin: Origin::Src,
+        is_declaration: false,
         ast,
         extra: parsed.extra,
         dependencies: vec![],
