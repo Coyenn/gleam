@@ -1,0 +1,6 @@
+name = "roblox"
+version = "0.1.0"
+target = "luau"
+
+[luau]
+runtime = "roblox"
