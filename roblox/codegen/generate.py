@@ -1,9 +1,122 @@
 import json
 import re
 import os
+import html
 import urllib.request
 
-API_DUMP_URL = "https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Client-Tracker/roblox/API-Dump.json"
+ROBLOX_CLIENT_TRACKER_URL_BASE = "https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/refs/heads/roblox"
+API_DUMP_URL = f"{ROBLOX_CLIENT_TRACKER_URL_BASE}/API-Dump.json"
+API_DOCS_URL = f"{ROBLOX_CLIENT_TRACKER_URL_BASE}/api-docs/mini/en-us.json"
+
+
+def fetch_json(url):
+    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    with urllib.request.urlopen(req) as response:
+        return json.loads(response.read().decode('utf-8'))
+
+
+def sanitize_doc_text(text):
+    if not isinstance(text, str):
+        return ''
+
+    cleaned = html.unescape(text)
+    cleaned = re.sub(r'(?i)<\s*br\s*/?\s*>', '\n', cleaned)
+    cleaned = re.sub(r'(?i)</\s*p\s*>', '\n', cleaned)
+    cleaned = re.sub(r'(?i)<\s*p[^>]*>', '', cleaned)
+    cleaned = re.sub(r'<[^>]+>', '', cleaned)
+    cleaned = cleaned.replace('\r\n', '\n').replace('\r', '\n')
+
+    lines = []
+    for line in cleaned.split('\n'):
+        collapsed = ' '.join(line.split())
+        if collapsed:
+            lines.append(collapsed)
+
+    return '\n'.join(lines).strip()
+
+
+def resolve_doc_text(docs_map, doc_value):
+    if not isinstance(doc_value, str) or not doc_value:
+        return ''
+
+    if doc_value in docs_map:
+        return sanitize_doc_text(docs_map[doc_value].get('documentation', ''))
+
+    return sanitize_doc_text(doc_value)
+
+
+def get_docs_entry(docs_map, class_name, member_name=None):
+    if member_name is None:
+        return docs_map.get(f'@roblox/globaltype/{class_name}')
+    return docs_map.get(f'@roblox/globaltype/{class_name}.{member_name}')
+
+
+def append_doc(lines, doc_lines):
+    if not doc_lines:
+        return
+
+    for line in doc_lines:
+        if line:
+            lines.append(f'/// {line}')
+        else:
+            lines.append('///')
+
+
+def build_member_doc_lines(docs_map, class_name, member_name, member, leading=None):
+    doc_lines = []
+    entry = get_docs_entry(docs_map, class_name, member_name) or {}
+    summary = resolve_doc_text(docs_map, entry.get('documentation'))
+
+    if leading:
+        doc_lines.append(leading)
+    if summary:
+        if leading:
+            doc_lines.append('')
+        doc_lines.append(summary)
+
+    thread_safety = member.get('ThreadSafety')
+    tags = [tag for tag in member.get('Tags', []) if isinstance(tag, str)]
+    link = f'https://create.roblox.com/docs/reference/engine/classes/{class_name}#{member_name}'
+
+    details = [f'Roblox: `{class_name}.{member_name}`']
+    if thread_safety:
+        details.append(f'ThreadSafety: {thread_safety}')
+    if tags:
+        details.append(f'Tags: {", ".join(tags)}')
+    details.append(f'See: {link}')
+
+    if doc_lines:
+        doc_lines.append('')
+    doc_lines.extend(details)
+
+    params = []
+    for param in entry.get('params', []):
+        if not isinstance(param, dict):
+            continue
+        p_name = param.get('name')
+        if p_name == 'self':
+            p_name = 'instance'
+        p_doc = resolve_doc_text(docs_map, param.get('documentation'))
+        if p_name and p_doc:
+            params.append(f'- `{p_name}`: {p_doc}')
+
+    if params:
+        doc_lines.append('')
+        doc_lines.append('Parameters:')
+        doc_lines.extend(params)
+
+    returns = []
+    for return_doc_key in entry.get('returns', []):
+        r_doc = resolve_doc_text(docs_map, return_doc_key)
+        if r_doc:
+            returns.append(f'- {r_doc}')
+
+    if returns:
+        doc_lines.append('')
+        doc_lines.append('Returns:')
+        doc_lines.extend(returns)
+
+    return doc_lines
 
 def to_snake_case(name):
     name = re.sub(r'UID', 'Uid', name)
@@ -64,10 +177,12 @@ def map_type(val_type):
 
 def generate():
     print(f"Downloading Roblox API dump from {API_DUMP_URL}...")
-    req = urllib.request.Request(API_DUMP_URL, headers={'User-Agent': 'Mozilla/5.0'})
-    with urllib.request.urlopen(req) as response:
-        dump = json.loads(response.read().decode('utf-8'))
+    dump = fetch_json(API_DUMP_URL)
     print("Downloaded API dump successfully.")
+
+    print(f"Downloading Roblox API docs from {API_DOCS_URL}...")
+    docs_map = fetch_json(API_DOCS_URL)
+    print("Downloaded API docs successfully.")
         
     overrides = {}
     overrides_path = os.path.join(os.path.dirname(__file__), 'overrides.json')
@@ -179,6 +294,13 @@ def generate():
                 if getter_name not in generated_funcs:
                     generated_funcs.add(getter_name)
                     m_name_escaped = m_name.replace('"', '\\"')
+                    append_doc(body_lines, build_member_doc_lines(
+                        docs_map,
+                        name,
+                        m_name,
+                        member,
+                        f'Gets Roblox property `{name}.{m_name}`.',
+                    ))
                     body_lines.append(f'@luau.property("{m_name_escaped}")')
                     body_lines.append(f'pub fn get_{m_snake}(instance: {name}) -> {val_type}')
                     body_lines.append('')
@@ -187,6 +309,13 @@ def generate():
                     setter_name = f'set_{m_snake_lower}'
                     if setter_name not in generated_funcs:
                         generated_funcs.add(setter_name)
+                        append_doc(body_lines, build_member_doc_lines(
+                            docs_map,
+                            name,
+                            m_name,
+                            member,
+                            f'Sets Roblox property `{name}.{m_name}`.',
+                        ))
                         body_lines.append(f'@luau.set_property("{m_name_escaped}")')
                         body_lines.append(f'pub fn set_{m_snake}(instance: {name}, value: {val_type}) -> {name}')
                         body_lines.append('')
@@ -240,6 +369,7 @@ def generate():
                 args_str = ', '.join([f'instance: {name}'] + args)
                 
                 m_name_escaped = m_name.replace('"', '\\"')
+                append_doc(body_lines, build_member_doc_lines(docs_map, name, m_name, member))
                 body_lines.append(f'@luau.method("{m_name_escaped}")')
                 body_lines.append(f'pub fn {m_snake}({args_str}) -> {ret_type}')
                 body_lines.append('')
@@ -255,6 +385,7 @@ def generate():
                 needs_signal = True
                 needs_dynamic = True
                 m_name_escaped = m_name.replace('"', '\\"')
+                append_doc(body_lines, build_member_doc_lines(docs_map, name, m_name, member))
                 body_lines.append(f'@luau.event("{m_name_escaped}")')
                 body_lines.append(f'pub fn {m_snake}(instance: {name}) -> RBXScriptSignal(Dynamic)')
                 body_lines.append('')

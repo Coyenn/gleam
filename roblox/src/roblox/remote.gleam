@@ -3,6 +3,7 @@ import roblox/remote_event
 import roblox/types.{type RemoteEvent, type RemoteFunction, type Player}
 import roblox/signal.{type RBXScriptConnection}
 
+/// Typed wrapper for a `RemoteEvent` plus payload codec functions.
 pub type TypedRemoteEvent(payload) {
   TypedRemoteEvent(
     instance: RemoteEvent,
@@ -11,20 +12,26 @@ pub type TypedRemoteEvent(payload) {
   )
 }
 
+/// Encodes and fires an event from client to server.
 pub fn fire_server(event: TypedRemoteEvent(payload), payload: payload) -> Nil {
   remote_event.fire_server(event.instance, event.encoder(payload))
 }
 
+/// Encodes and fires an event from server to one client.
 pub fn fire_client(event: TypedRemoteEvent(payload), player: Player, payload: payload) -> Nil {
   remote_event.fire_client(event.instance, player, event.encoder(payload))
 }
 
+/// Encodes and fires an event from server to all clients.
 pub fn fire_all_clients(event: TypedRemoteEvent(payload), payload: payload) -> Nil {
   remote_event.fire_all_clients(event.instance, event.encoder(payload))
 }
 
 import roblox/remote_internal
 
+/// Connects a typed server event callback.
+///
+/// Decode failures are ignored and do not invoke `callback`.
 pub fn on_server_event(
   event: TypedRemoteEvent(payload),
   callback: fn(Player, payload) -> Nil,
@@ -37,6 +44,9 @@ pub fn on_server_event(
   })
 }
 
+/// Connects a typed client event callback.
+///
+/// Decode failures are ignored and do not invoke `callback`.
 pub fn on_client_event(
   event: TypedRemoteEvent(payload),
   callback: fn(payload) -> Nil,
@@ -49,6 +59,7 @@ pub fn on_client_event(
   })
 }
 
+/// Typed wrapper for a `RemoteFunction` with request/response codecs.
 pub type TypedRemoteFunction(req, res) {
   TypedRemoteFunction(
     instance: RemoteFunction,
@@ -59,6 +70,7 @@ pub type TypedRemoteFunction(req, res) {
   )
 }
 
+/// Invokes the server-side handler and decodes the typed response.
 pub fn invoke_server_typed(
   func: TypedRemoteFunction(req, res),
   req: req,
@@ -67,6 +79,7 @@ pub fn invoke_server_typed(
   func.res_decoder(res_dyn)
 }
 
+/// Invokes a client-side handler and decodes the typed response.
 pub fn invoke_client_typed(
   func: TypedRemoteFunction(req, res),
   player: Player,
@@ -76,6 +89,9 @@ pub fn invoke_client_typed(
   func.res_decoder(res_dyn)
 }
 
+/// Registers the server-side invoke callback for a typed remote function.
+///
+/// This asserts request decoding success and will panic on invalid payloads.
 pub fn on_server_invoke(
   func: TypedRemoteFunction(req, res),
   callback: fn(Player, req) -> res,
@@ -87,6 +103,9 @@ pub fn on_server_invoke(
   })
 }
 
+/// Registers the client-side invoke callback for a typed remote function.
+///
+/// This asserts request decoding success and will panic on invalid payloads.
 pub fn on_client_invoke(
   func: TypedRemoteFunction(req, res),
   callback: fn(req) -> res,
