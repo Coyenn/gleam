@@ -707,6 +707,29 @@ pub fn one(x: Int) -> Int {
 }
 
 #[test]
+fn multiple_external_for_same_project_luau() {
+    assert_module_error!(
+        r#"
+@external(luau, "one", "two")
+@external(luau, "three", "four")
+pub fn one(x: Int) -> Int {
+  todo
+}
+"#
+    );
+}
+
+#[test]
+fn luau_external() {
+    assert_parse_module!(
+        r#"
+@external(luau, "one", "two")
+pub fn one(x: Int) -> Int
+"#
+    );
+}
+
+#[test]
 fn unknown_external_target() {
     assert_module_error!(
         r#"

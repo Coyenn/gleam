@@ -52,8 +52,10 @@ pub fn pure_gleam_2() { pure_gleam_1() * 2 }
                     gleam: true,
                     uses_erlang_externals: false,
                     uses_javascript_externals: false,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: true,
+                    can_run_on_luau: true,
                 }
             ),
             (
@@ -62,8 +64,10 @@ pub fn pure_gleam_2() { pure_gleam_1() * 2 }
                     gleam: true,
                     uses_erlang_externals: false,
                     uses_javascript_externals: false,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: true,
+                    can_run_on_luau: true,
                 }
             )
         ],
@@ -86,8 +90,10 @@ pub fn erlang_only_2() { erlang_only_1() * 2 }
                     gleam: false,
                     uses_erlang_externals: true,
                     uses_javascript_externals: false,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: false,
+                    can_run_on_luau: false,
                 }
             ),
             (
@@ -96,11 +102,35 @@ pub fn erlang_only_2() { erlang_only_1() * 2 }
                     gleam: false,
                     uses_erlang_externals: true,
                     uses_javascript_externals: false,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: false,
+                    can_run_on_luau: false,
                 }
             )
         ],
+    );
+}
+
+#[test]
+pub fn luau_only_function() {
+    assert_targets!(
+        r#"
+@external(luau, "wibble", "wobble")
+fn luau_only_1() -> Int
+"#,
+        [(
+            "luau_only_1",
+            Implementations {
+                gleam: false,
+                uses_erlang_externals: false,
+                uses_javascript_externals: false,
+                uses_luau_externals: true,
+                can_run_on_erlang: false,
+                can_run_on_javascript: false,
+                can_run_on_luau: true,
+            }
+        )],
     );
 }
 
@@ -121,8 +151,10 @@ pub fn all_externals_2() { all_externals_1() * 2 }
                     gleam: false,
                     uses_erlang_externals: true,
                     uses_javascript_externals: true,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: true,
+                    can_run_on_luau: false,
                 }
             ),
             (
@@ -131,8 +163,10 @@ pub fn all_externals_2() { all_externals_1() * 2 }
                     gleam: false,
                     uses_erlang_externals: true,
                     uses_javascript_externals: true,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: true,
+                    can_run_on_luau: false,
                 }
             )
         ],
@@ -160,8 +194,10 @@ pub fn pure_gleam() {
                     gleam: true,
                     uses_erlang_externals: true,
                     uses_javascript_externals: false,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: true,
+                    can_run_on_luau: true,
                 }
             ),
             (
@@ -170,8 +206,10 @@ pub fn pure_gleam() {
                     gleam: true,
                     uses_erlang_externals: false,
                     uses_javascript_externals: true,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: true,
+                    can_run_on_luau: true,
                 }
             ),
             (
@@ -180,8 +218,10 @@ pub fn pure_gleam() {
                     gleam: true,
                     uses_erlang_externals: true,
                     uses_javascript_externals: true,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: true,
+                    can_run_on_luau: true,
                 }
             )
         ],
@@ -207,8 +247,10 @@ pub fn all_externals() -> Int { erlang_external_and_javascript_body() }
                     gleam: false,
                     uses_erlang_externals: true,
                     uses_javascript_externals: true,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: true,
+                    can_run_on_luau: false,
                 }
             ),
             (
@@ -217,8 +259,10 @@ pub fn all_externals() -> Int { erlang_external_and_javascript_body() }
                     gleam: false,
                     uses_erlang_externals: true,
                     uses_javascript_externals: true,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: true,
+                    can_run_on_luau: false,
                 }
             ),
             (
@@ -227,8 +271,10 @@ pub fn all_externals() -> Int { erlang_external_and_javascript_body() }
                     gleam: false,
                     uses_erlang_externals: false,
                     uses_javascript_externals: true,
+                    uses_luau_externals: false,
                     can_run_on_erlang: false,
                     can_run_on_javascript: true,
+                    can_run_on_luau: false,
                 }
             )
         ],
@@ -254,8 +300,10 @@ pub fn all_externals() -> Int { javascript_external_and_erlang_body() }
                     gleam: false,
                     uses_erlang_externals: true,
                     uses_javascript_externals: true,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: true,
+                    can_run_on_luau: false,
                 }
             ),
             (
@@ -264,8 +312,10 @@ pub fn all_externals() -> Int { javascript_external_and_erlang_body() }
                     gleam: false,
                     uses_erlang_externals: true,
                     uses_javascript_externals: false,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: false,
+                    can_run_on_luau: false,
                 }
             ),
             (
@@ -274,8 +324,10 @@ pub fn all_externals() -> Int { javascript_external_and_erlang_body() }
                     gleam: false,
                     uses_erlang_externals: true,
                     uses_javascript_externals: true,
+                    uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: true,
+                    can_run_on_luau: false,
                 }
             )
         ],
@@ -466,4 +518,25 @@ pub fn no_valid_luau_impl() {
 }
 "#
     );
+}
+
+#[test]
+pub fn luau_external_compiles_for_luau() {
+    let _ = compile_module_with_opts(
+        "test_module",
+        r#"
+@external(luau, "wibble", "wobble")
+fn luau_only() -> Int
+
+pub fn main() {
+  luau_only()
+}
+"#,
+        None,
+        vec![],
+        Target::Luau,
+        TargetSupport::Enforced,
+        None,
+    )
+    .expect("compile luau external");
 }

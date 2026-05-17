@@ -126,19 +126,22 @@ struct Attributes {
     deprecated: Deprecation,
     external_erlang: Option<(EcoString, EcoString, SrcSpan)>,
     external_javascript: Option<(EcoString, EcoString, SrcSpan)>,
+    external_luau: Option<(EcoString, EcoString, SrcSpan)>,
     internal: InternalAttribute,
 }
 
 impl Attributes {
     fn has_function_only(&self) -> bool {
-        self.external_erlang.is_some() || self.external_javascript.is_some()
+        self.external_erlang.is_some()
+            || self.external_javascript.is_some()
+            || self.external_luau.is_some()
     }
 
     fn has_external_for(&self, target: Target) -> bool {
         match target {
             Target::Erlang => self.external_erlang.is_some(),
             Target::JavaScript => self.external_javascript.is_some(),
-            Target::Luau => false,
+            Target::Luau => self.external_luau.is_some(),
         }
     }
 
@@ -146,7 +149,7 @@ impl Attributes {
         match target {
             Target::Erlang => self.external_erlang = ext,
             Target::JavaScript => self.external_javascript = ext,
-            Target::Luau => {}
+            Target::Luau => self.external_luau = ext,
         }
     }
 }
@@ -2238,12 +2241,15 @@ where
             deprecation: std::mem::take(&mut attributes.deprecated),
             external_erlang: attributes.external_erlang.take(),
             external_javascript: attributes.external_javascript.take(),
+            external_luau: attributes.external_luau.take(),
             implementations: Implementations {
                 gleam: true,
                 can_run_on_erlang: true,
                 can_run_on_javascript: true,
+                can_run_on_luau: true,
                 uses_erlang_externals: false,
                 uses_javascript_externals: false,
+                uses_luau_externals: false,
             },
             purity: Purity::Pure,
         })))
@@ -2533,6 +2539,7 @@ where
                         // Expecting all but the deprecated atterbutes to be default
                         if attributes.external_erlang.is_some()
                             || attributes.external_javascript.is_some()
+                            || attributes.external_luau.is_some()
                             || attributes.target.is_some()
                             || attributes.internal != InternalAttribute::Missing
                         {
@@ -2621,6 +2628,7 @@ where
             deprecation: std::mem::take(&mut attributes.deprecated),
             external_erlang: std::mem::take(&mut attributes.external_erlang),
             external_javascript: std::mem::take(&mut attributes.external_javascript),
+            external_luau: std::mem::take(&mut attributes.external_luau),
         })))
     }
 
@@ -3184,8 +3192,10 @@ where
                         gleam: true,
                         can_run_on_erlang: true,
                         can_run_on_javascript: true,
+                        can_run_on_luau: true,
                         uses_erlang_externals: false,
                         uses_javascript_externals: false,
+                        uses_luau_externals: false,
                     },
                 })))
             }
@@ -4562,7 +4572,7 @@ functions are declared separately from types.";
         let target = match name.as_str() {
             "erlang" => Target::Erlang,
             "javascript" => Target::JavaScript,
-            "luau" => return parse_error(ParseErrorType::UnknownTarget, SrcSpan::new(start, end)),
+            "luau" => Target::Luau,
             _ => return parse_error(ParseErrorType::UnknownTarget, SrcSpan::new(start, end)),
         };
 

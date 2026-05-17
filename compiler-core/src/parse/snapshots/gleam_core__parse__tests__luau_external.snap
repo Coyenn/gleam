@@ -1,0 +1,136 @@
+---
+source: compiler-core/src/parse/tests.rs
+expression: "\n@external(luau, \"one\", \"two\")\npub fn one(x: Int) -> Int\n"
+---
+Parsed {
+    module: Module {
+        name: "",
+        documentation: [],
+        type_info: (),
+        definitions: [
+            TargetedDefinition {
+                definition: Function(
+                    Function {
+                        location: SrcSpan {
+                            start: 31,
+                            end: 49,
+                        },
+                        body_start: None,
+                        end_position: 49,
+                        name: Some(
+                            (
+                                SrcSpan {
+                                    start: 38,
+                                    end: 41,
+                                },
+                                "one",
+                            ),
+                        ),
+                        arguments: [
+                            Arg {
+                                names: Named {
+                                    name: "x",
+                                    location: SrcSpan {
+                                        start: 42,
+                                        end: 43,
+                                    },
+                                },
+                                location: SrcSpan {
+                                    start: 42,
+                                    end: 48,
+                                },
+                                annotation: Some(
+                                    Constructor(
+                                        TypeAstConstructor {
+                                            location: SrcSpan {
+                                                start: 45,
+                                                end: 48,
+                                            },
+                                            name: Unqualified {
+                                                name: "Int",
+                                                location: SrcSpan {
+                                                    start: 45,
+                                                    end: 48,
+                                                },
+                                            },
+                                            arguments: [],
+                                            start_parentheses: None,
+                                        },
+                                    ),
+                                ),
+                                type_: (),
+                            },
+                        ],
+                        body: [],
+                        publicity: Public,
+                        deprecation: NotDeprecated,
+                        return_annotation: Some(
+                            Constructor(
+                                TypeAstConstructor {
+                                    location: SrcSpan {
+                                        start: 53,
+                                        end: 56,
+                                    },
+                                    name: Unqualified {
+                                        name: "Int",
+                                        location: SrcSpan {
+                                            start: 53,
+                                            end: 56,
+                                        },
+                                    },
+                                    arguments: [],
+                                    start_parentheses: None,
+                                },
+                            ),
+                        ),
+                        return_type: (),
+                        documentation: None,
+                        external_erlang: None,
+                        external_javascript: None,
+                        external_luau: Some(
+                            (
+                                "one",
+                                "two",
+                                SrcSpan {
+                                    start: 1,
+                                    end: 30,
+                                },
+                            ),
+                        ),
+                        implementations: Implementations {
+                            gleam: true,
+                            can_run_on_erlang: true,
+                            can_run_on_javascript: true,
+                            uses_erlang_externals: false,
+                            uses_javascript_externals: false,
+                            can_run_on_luau: true,
+                            uses_luau_externals: false,
+                        },
+                        purity: Pure,
+                    },
+                ),
+                target: None,
+            },
+        ],
+        names: Names {
+            local_types: {},
+            imported_modules: {},
+            type_variables: {},
+            local_value_constructors: {},
+            reexport_aliases: {},
+        },
+        unused_definition_positions: {},
+    },
+    extra: ModuleExtra {
+        module_comments: [],
+        doc_comments: [],
+        comments: [],
+        empty_lines: [],
+        new_lines: [
+            0,
+            30,
+            56,
+        ],
+        trailing_commas: [],
+    },
+}

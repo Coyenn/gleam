@@ -63,6 +63,7 @@ Parsed {
                                 },
                             ),
                         ),
+                        external_luau: None,
                     },
                 ),
                 target: None,

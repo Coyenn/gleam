@@ -887,6 +887,7 @@ impl<'comments> Formatter<'comments> {
             documentation: _,
             external_erlang,
             external_javascript,
+            external_luau,
             implementations: _,
             purity: _,
         } = function;
@@ -896,6 +897,7 @@ impl<'comments> Formatter<'comments> {
             .set_internal(*publicity)
             .set_external_erlang(external_erlang)
             .set_external_javascript(external_javascript)
+            .set_external_luau(external_luau)
             .to_doc();
 
         // Fn name and args
@@ -1900,6 +1902,7 @@ impl<'comments> Formatter<'comments> {
             typed_parameters: _,
             external_erlang,
             external_javascript,
+            external_luau,
         } = type_;
 
         let _ = self.pop_empty_lines(location.end);
@@ -1909,6 +1912,7 @@ impl<'comments> Formatter<'comments> {
             .set_internal(*publicity)
             .set_external_erlang(external_erlang)
             .set_external_javascript(external_javascript)
+            .set_external_luau(external_luau)
             .to_doc();
 
         let doc = attributes
@@ -3684,6 +3688,7 @@ fn constant_call_arg_formatting<A, B>(
 struct AttributesPrinter<'a> {
     external_erlang: &'a Option<(EcoString, EcoString, SrcSpan)>,
     external_javascript: &'a Option<(EcoString, EcoString, SrcSpan)>,
+    external_luau: &'a Option<(EcoString, EcoString, SrcSpan)>,
     deprecation: &'a Deprecation,
     internal: bool,
 }
@@ -3693,6 +3698,7 @@ impl<'a> AttributesPrinter<'a> {
         Self {
             external_erlang: &None,
             external_javascript: &None,
+            external_luau: &None,
             deprecation: &Deprecation::NotDeprecated,
             internal: false,
         }
@@ -3711,6 +3717,14 @@ impl<'a> AttributesPrinter<'a> {
         external: &'a Option<(EcoString, EcoString, SrcSpan)>,
     ) -> Self {
         self.external_javascript = external;
+        self
+    }
+
+    pub fn set_external_luau(
+        mut self,
+        external: &'a Option<(EcoString, EcoString, SrcSpan)>,
+    ) -> Self {
+        self.external_luau = external;
         self
     }
 
@@ -3741,6 +3755,10 @@ impl<'a> Documentable<'a> for AttributesPrinter<'a> {
 
         if let Some((m, f, _)) = self.external_javascript {
             attributes.push(docvec!["@external(javascript, \"", m, "\", \"", f, "\")"])
+        };
+
+        if let Some((m, f, _)) = self.external_luau {
+            attributes.push(docvec!["@external(luau, \"", m, "\", \"", f, "\")"])
         };
 
         // @internal attribute
