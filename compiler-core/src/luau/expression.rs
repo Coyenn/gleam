@@ -3,9 +3,7 @@ use std::collections::HashMap;
 use ecow::{EcoString, eco_format};
 
 use crate::{
-    ast::{
-        Assignment, BinOp, TypedArg, TypedExpr, TypedStatement, Pattern,
-    },
+    ast::{Assignment, BinOp, Pattern, TypedArg, TypedExpr, TypedStatement},
     docvec,
     line_numbers::LineNumbers,
     pretty::*,
@@ -24,7 +22,11 @@ pub struct Generator<'a, 'b> {
 }
 
 impl<'a, 'b> Generator<'a, 'b> {
-    pub fn new(module_name: EcoString, line_numbers: &'a LineNumbers, tracker: &'b mut crate::luau::UsageTracker) -> Self {
+    pub fn new(
+        module_name: EcoString,
+        line_numbers: &'a LineNumbers,
+        tracker: &'b mut crate::luau::UsageTracker,
+    ) -> Self {
         Self {
             module_name,
             line_numbers,
@@ -69,7 +71,10 @@ impl<'a, 'b> Generator<'a, 'b> {
         join(docs, line())
     }
 
-    fn assignment(&mut self, assignment: &'a Assignment<std::sync::Arc<Type>, TypedExpr>) -> Document<'a> {
+    fn assignment(
+        &mut self,
+        assignment: &'a Assignment<std::sync::Arc<Type>, TypedExpr>,
+    ) -> Document<'a> {
         let value_doc = self.expression(&assignment.value);
         if let Pattern::Variable { name, .. } = &assignment.pattern {
             docvec!["local ", name.as_str().to_doc(), " = ", value_doc]
@@ -85,12 +90,7 @@ impl<'a, 'b> Generator<'a, 'b> {
             TypedExpr::String { value, .. } => string(value.as_str()),
             TypedExpr::Block { statements, .. } => {
                 let body = self.statements(statements);
-                docvec![
-                    "do",
-                    docvec![line(), body].nest(INDENT),
-                    line(),
-                    "end",
-                ]
+                docvec!["do", docvec![line(), body].nest(INDENT), line(), "end",]
             }
             TypedExpr::Tuple { elements, .. } => {
                 let elements_doc = join(
@@ -114,13 +114,15 @@ impl<'a, 'b> Generator<'a, 'b> {
                     None => docvec!["_gleam.toList(", elements_array, ")"],
                 }
             }
-            TypedExpr::Fn { arguments, body, .. } => {
-                let arg_names = arguments.iter().map(|arg| {
-                    match arg.names.get_variable_name() {
+            TypedExpr::Fn {
+                arguments, body, ..
+            } => {
+                let arg_names = arguments
+                    .iter()
+                    .map(|arg| match arg.names.get_variable_name() {
                         Some(name) => name.to_doc(),
                         None => "_".to_doc(),
-                    }
-                });
+                    });
                 let args_doc = join(arg_names, break_(",", ", "));
                 let body_doc = self.statements(body);
                 docvec![
@@ -132,10 +134,16 @@ impl<'a, 'b> Generator<'a, 'b> {
                     "end"
                 ]
             }
-            TypedExpr::ModuleSelect { label, module_alias, .. } => {
+            TypedExpr::ModuleSelect {
+                label,
+                module_alias,
+                ..
+            } => {
                 docvec![module_alias.as_str().to_doc(), ".", label.as_str().to_doc()]
             }
-            TypedExpr::Var { name, constructor, .. } => {
+            TypedExpr::Var {
+                name, constructor, ..
+            } => {
                 let type_ = constructor.type_.clone();
                 if type_.is_bool() && name == "True" {
                     "true".to_doc()
@@ -150,14 +158,20 @@ impl<'a, 'b> Generator<'a, 'b> {
             TypedExpr::Call { fun, arguments, .. } => {
                 let external_luau = match &**fun {
                     TypedExpr::Var { constructor, .. } => {
-                        if let crate::type_::ValueConstructorVariant::ModuleFn { external_luau, .. } = &constructor.variant {
+                        if let crate::type_::ValueConstructorVariant::ModuleFn {
+                            external_luau,
+                            ..
+                        } = &constructor.variant
+                        {
                             external_luau.as_ref()
                         } else {
                             None
                         }
                     }
                     TypedExpr::ModuleSelect { constructor, .. } => {
-                        if let crate::type_::ModuleValueConstructor::Fn { external_luau, .. } = constructor {
+                        if let crate::type_::ModuleValueConstructor::Fn { external_luau, .. } =
+                            constructor
+                        {
                             external_luau.as_ref()
                         } else {
                             None
@@ -184,7 +198,11 @@ impl<'a, 'b> Generator<'a, 'b> {
                         }
                         crate::type_::ExternalLuauFunction::Property { property } => {
                             if args_docs.len() == 1 {
-                                return docvec![args_docs[0].clone(), ".", property.clone().to_doc()];
+                                return docvec![
+                                    args_docs[0].clone(),
+                                    ".",
+                                    property.clone().to_doc()
+                                ];
                             }
                         }
                         crate::type_::ExternalLuauFunction::SetProperty { property } => {
@@ -206,7 +224,14 @@ impl<'a, 'b> Generator<'a, 'b> {
                             if args_docs.len() >= 1 {
                                 let target = args_docs.remove(0);
                                 let args_doc = join(args_docs, break_(",", ", "));
-                                return docvec![target, ":", method.clone().to_doc(), "(", args_doc, ")"];
+                                return docvec![
+                                    target,
+                                    ":",
+                                    method.clone().to_doc(),
+                                    "(",
+                                    args_doc,
+                                    ")"
+                                ];
                             }
                         }
                         crate::type_::ExternalLuauFunction::Event { event } => {
@@ -225,7 +250,9 @@ impl<'a, 'b> Generator<'a, 'b> {
                 let args_doc = join(args_docs, break_(",", ", "));
                 docvec![fun_doc, "(", args_doc, ")"]
             }
-            TypedExpr::BinOp { name, left, right, .. } => {
+            TypedExpr::BinOp {
+                name, left, right, ..
+            } => {
                 let left_doc = self.expression(left);
                 let right_doc = self.expression(right);
                 match name {
@@ -266,58 +293,66 @@ impl<'a, 'b> Generator<'a, 'b> {
             TypedExpr::Echo { message, .. } => {
                 let msg = match message {
                     Some(m) => self.expression(m),
-                    None => "nil".to_doc()
+                    None => "nil".to_doc(),
                 };
                 docvec!["print(", msg, ")"]
             }
-            TypedExpr::Case { subjects, clauses, .. } => {
+            TypedExpr::Case {
+                subjects, clauses, ..
+            } => {
                 let mut docs = vec![];
-                
+
                 // assign subjects to local variables
                 let mut subject_vars = vec![];
                 for (i, subject) in subjects.iter().enumerate() {
                     let var = eco_format!("_subject_{}", i);
-                    docs.push(docvec!["local ", var.clone().to_doc(), " = ", self.expression(subject)]);
+                    docs.push(docvec![
+                        "local ",
+                        var.clone().to_doc(),
+                        " = ",
+                        self.expression(subject)
+                    ]);
                     subject_vars.push(var.to_doc());
                 }
-                
+
                 let mut is_first = true;
                 for clause in clauses {
                     let mut condition = vec![];
-                    
+
                     for (i, pattern) in clause.pattern.iter().enumerate() {
                         let subject_var = subject_vars[i].clone();
                         if let Some(c) = self.pattern_condition(pattern, subject_var) {
                             condition.push(c);
                         }
                     }
-                    
+
                     let condition_doc = if condition.is_empty() {
                         "true".to_doc()
                     } else {
                         join(condition, break_(" and ", " and "))
                     };
-                    
+
                     if is_first {
                         docs.push(docvec!["if ", condition_doc, " then"]);
                         is_first = false;
                     } else {
                         docs.push(docvec!["elseif ", condition_doc, " then"]);
                     }
-                    
+
                     let mut branch_body = vec![];
                     // assign variables from pattern
                     for (i, pattern) in clause.pattern.iter().enumerate() {
-                        branch_body.extend(self.pattern_assignments(pattern, subject_vars[i].clone()));
+                        branch_body
+                            .extend(self.pattern_assignments(pattern, subject_vars[i].clone()));
                     }
-                    
+
                     branch_body.push(docvec!["return ", self.expression(&clause.then)]);
-                    
+
                     docs.push(docvec![line(), join(branch_body, line())].nest(INDENT));
                 }
-                
+
                 docs.push("end".to_doc());
-                
+
                 docvec![
                     "(function()",
                     docvec![line(), join(docs, line())].nest(INDENT),
@@ -331,17 +366,39 @@ impl<'a, 'b> Generator<'a, 'b> {
             _ => docvec!["-- TODO: unhandled expression type"],
         }
     }
-    fn pattern_condition(&mut self, pattern: &'a Pattern<std::sync::Arc<Type>>, subject: Document<'a>) -> Option<Document<'a>> {
+    fn pattern_condition(
+        &mut self,
+        pattern: &'a Pattern<std::sync::Arc<Type>>,
+        subject: Document<'a>,
+    ) -> Option<Document<'a>> {
         match pattern {
-            Pattern::Int { value, .. } => Some(docvec![subject.clone(), " == ", value.as_str().to_doc()]),
-            Pattern::Float { value, .. } => Some(docvec![subject.clone(), " == ", value.as_str().to_doc()]),
-            Pattern::String { value, .. } => Some(docvec![subject.clone(), " == ", string(value.as_str())]),
+            Pattern::Int { value, .. } => {
+                Some(docvec![subject.clone(), " == ", value.as_str().to_doc()])
+            }
+            Pattern::Float { value, .. } => {
+                Some(docvec![subject.clone(), " == ", value.as_str().to_doc()])
+            }
+            Pattern::String { value, .. } => {
+                Some(docvec![subject.clone(), " == ", string(value.as_str())])
+            }
             Pattern::Variable { .. } | Pattern::Discard { .. } => None,
-            Pattern::Constructor { name, arguments, .. } => {
+            Pattern::Constructor {
+                name, arguments, ..
+            } => {
                 if arguments.is_empty() {
-                    Some(docvec![subject.clone(), ".tag == \"", name.as_str().to_doc(), "\""])
+                    Some(docvec![
+                        subject.clone(),
+                        ".tag == \"",
+                        name.as_str().to_doc(),
+                        "\""
+                    ])
                 } else {
-                    let mut conds = vec![docvec![subject.clone(), ".tag == \"", name.as_str().to_doc(), "\""]];
+                    let mut conds = vec![docvec![
+                        subject.clone(),
+                        ".tag == \"",
+                        name.as_str().to_doc(),
+                        "\""
+                    ]];
                     for (i, arg) in arguments.iter().enumerate() {
                         let field = if let Some(label) = &arg.label {
                             label.clone()
@@ -356,15 +413,24 @@ impl<'a, 'b> Generator<'a, 'b> {
                     Some(join(conds, break_(" and ", " and ")))
                 }
             }
-            _ => None
+            _ => None,
         }
     }
 
-    fn pattern_assignments(&mut self, pattern: &'a Pattern<std::sync::Arc<Type>>, subject: Document<'a>) -> Vec<Document<'a>> {
+    fn pattern_assignments(
+        &mut self,
+        pattern: &'a Pattern<std::sync::Arc<Type>>,
+        subject: Document<'a>,
+    ) -> Vec<Document<'a>> {
         let mut docs = vec![];
         match pattern {
             Pattern::Variable { name, .. } => {
-                docs.push(docvec!["local ", name.as_str().to_doc(), " = ", subject.clone()]);
+                docs.push(docvec![
+                    "local ",
+                    name.as_str().to_doc(),
+                    " = ",
+                    subject.clone()
+                ]);
             }
             Pattern::Constructor { arguments, .. } => {
                 for (i, arg) in arguments.iter().enumerate() {
@@ -385,9 +451,14 @@ impl<'a, 'b> Generator<'a, 'b> {
 
 fn string(value: &str) -> Document<'_> {
     if value.contains('\n') || value.contains('"') || value.contains('\\') {
-        EcoString::from(value.replace('\\', "\\\\").replace('"', "\\\"").replace('\n', "\\n"))
-            .to_doc()
-            .surround("\"", "\"")
+        EcoString::from(
+            value
+                .replace('\\', "\\\\")
+                .replace('"', "\\\"")
+                .replace('\n', "\\n"),
+        )
+        .to_doc()
+        .surround("\"", "\"")
     } else {
         value.to_doc().surround("\"", "\"")
     }

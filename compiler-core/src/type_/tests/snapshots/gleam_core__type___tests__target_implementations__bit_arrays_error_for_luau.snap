@@ -1,0 +1,22 @@
+---
+source: compiler-core/src/type_/tests/target_implementations.rs
+expression: "\npub fn main() {\n  <<1>>\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  <<1>>
+}
+
+
+----- ERROR
+error: Unsupported target feature
+  ┌─ /src/one/two.gleam:3:3
+  │
+3 │   <<1>>
+  │   ^^^^^
+
+The bit arrays feature is not currently supported when compiling to the
+Luau target.
+
+Hint: Use a target-specific external or avoid this feature for this target.

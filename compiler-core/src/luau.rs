@@ -2,15 +2,9 @@ mod expression;
 #[cfg(test)]
 mod tests;
 
-
 use sourcemap::SourceMap;
 
-use crate::{
-    ast::*,
-    docvec,
-    line_numbers::LineNumbers,
-    pretty::*,
-};
+use crate::{ast::*, docvec, line_numbers::LineNumbers, pretty::*};
 use camino::Utf8Path;
 use ecow::{EcoString, eco_format};
 
@@ -30,7 +24,11 @@ pub struct ModuleConfig<'a> {
 }
 
 pub fn module(config: ModuleConfig<'_>) -> (String, Option<SourceMap>) {
-    let mut generator = Generator::new(config.module.name.clone(), config.line_numbers, config.runtime);
+    let mut generator = Generator::new(
+        config.module.name.clone(),
+        config.line_numbers,
+        config.runtime,
+    );
     let document = generator.compile_module(config.module);
     (document.to_pretty_string(80), None)
 }
@@ -113,7 +111,7 @@ impl<'a> Generator<'a> {
                     let mut args = vec![];
                     let mut fields = vec![];
                     fields.push(docvec!["tag = \"", name.as_str().to_doc(), "\""]);
-                    
+
                     for (i, arg) in constructor.arguments.iter().enumerate() {
                         let arg_name = if let Some((_, label)) = &arg.label {
                             label.clone()
@@ -123,10 +121,10 @@ impl<'a> Generator<'a> {
                         args.push(arg_name.clone().to_doc());
                         fields.push(docvec![arg_name.clone().to_doc(), " = ", arg_name.to_doc()]);
                     }
-                    
+
                     let args_doc = join(args, break_(",", ", "));
                     let fields_doc = join(fields, docvec![",", line()]);
-                    
+
                     statements.push(docvec![
                         "local ",
                         name.as_str().to_doc(),
@@ -139,12 +137,13 @@ impl<'a> Generator<'a> {
                             docvec![line(), fields_doc].nest(INDENT),
                             line(),
                             "}"
-                        ].nest(INDENT),
+                        ]
+                        .nest(INDENT),
                         line(),
                         "end"
                     ]);
                 }
-                
+
                 if custom_type.publicity.is_public() && !custom_type.opaque {
                     exports.push(docvec![
                         name.as_str().to_doc(),
@@ -157,36 +156,68 @@ impl<'a> Generator<'a> {
 
         for function in &module.definitions.functions {
             if let Some((_, name)) = &function.name {
-                let mut expr_gen = expression::Generator::new(self.module_name.clone(), self.line_numbers, &mut self.tracker);
-                
-                let arg_names: Vec<_> = function.arguments.iter().map(|arg| {
-                    match arg.names.get_variable_name() {
+                let mut expr_gen = expression::Generator::new(
+                    self.module_name.clone(),
+                    self.line_numbers,
+                    &mut self.tracker,
+                );
+
+                let arg_names: Vec<_> = function
+                    .arguments
+                    .iter()
+                    .map(|arg| match arg.names.get_variable_name() {
                         Some(name) => name.to_doc(),
                         None => "_".to_doc(),
-                    }
-                }).collect();
-                
+                    })
+                    .collect();
+
                 let args = docvec!["(", join(arg_names.clone(), break_(",", ", ")), ")"];
-                
+
                 if let Some(ext) = &function.external_luau {
                     match ext {
-                        ExternalLuauFunction::Module { module, function: ext_fn, .. } => {
+                        ExternalLuauFunction::Module {
+                            module,
+                            function: ext_fn,
+                            ..
+                        } => {
                             statements.push(docvec![
-                                "local ", name.clone(), " = ", self.require_expr(module), ".", ext_fn.clone()
+                                "local ",
+                                name.clone(),
+                                " = ",
+                                self.require_expr(module),
+                                ".",
+                                ext_fn.clone()
                             ]);
                         }
                         ExternalLuauFunction::Property { property, .. } => {
                             statements.push(docvec![
-                                "local function ", name.clone(), args, line(),
-                                "return ", arg_names[0].clone(), ".", property.clone(), line(),
+                                "local function ",
+                                name.clone(),
+                                args,
+                                line(),
+                                "return ",
+                                arg_names[0].clone(),
+                                ".",
+                                property.clone(),
+                                line(),
                                 "end"
                             ]);
                         }
                         ExternalLuauFunction::SetProperty { property, .. } => {
                             statements.push(docvec![
-                                "local function ", name.clone(), args, line(),
-                                arg_names[0].clone(), ".", property.clone(), " = ", arg_names[1].clone(), line(),
-                                "return ", arg_names[0].clone(), line(),
+                                "local function ",
+                                name.clone(),
+                                args,
+                                line(),
+                                arg_names[0].clone(),
+                                ".",
+                                property.clone(),
+                                " = ",
+                                arg_names[1].clone(),
+                                line(),
+                                "return ",
+                                arg_names[0].clone(),
+                                line(),
                                 "end"
                             ]);
                         }
@@ -194,28 +225,43 @@ impl<'a> Generator<'a> {
                             let mut args_without_first = arg_names.clone();
                             let first = args_without_first.remove(0);
                             statements.push(docvec![
-                                "local function ", name.clone(), args, line(),
-                                "return ", first, ":", method.clone(), "(", join(args_without_first, break_(",", ", ")), ")", line(),
+                                "local function ",
+                                name.clone(),
+                                args,
+                                line(),
+                                "return ",
+                                first,
+                                ":",
+                                method.clone(),
+                                "(",
+                                join(args_without_first, break_(",", ", ")),
+                                ")",
+                                line(),
                                 "end"
                             ]);
                         }
                         ExternalLuauFunction::Event { event, .. } => {
                             statements.push(docvec![
-                                "local function ", name.clone(), args, line(),
-                                "return ", arg_names[0].clone(), ".", event.clone(), line(),
+                                "local function ",
+                                name.clone(),
+                                args,
+                                line(),
+                                "return ",
+                                arg_names[0].clone(),
+                                ".",
+                                event.clone(),
+                                line(),
                                 "end"
                             ]);
                         }
                         ExternalLuauFunction::Global { global, .. } => {
-                            statements.push(docvec![
-                                "local ", name.clone(), " = ", global.clone()
-                            ]);
+                            statements.push(docvec!["local ", name.clone(), " = ", global.clone()]);
                         }
                     }
                 } else {
                     let head = "local function ";
                     let body = expr_gen.function_body(&function.body, &function.arguments);
-                    
+
                     statements.push(docvec![
                         head,
                         name.clone(),
@@ -227,11 +273,7 @@ impl<'a> Generator<'a> {
                 }
 
                 if function.publicity.is_public() {
-                    exports.push(docvec![
-                        name.clone(),
-                        " = ",
-                        name.clone(),
-                    ]);
+                    exports.push(docvec![name.clone(), " = ", name.clone(),]);
                 }
             }
         }
@@ -244,19 +286,16 @@ impl<'a> Generator<'a> {
                 let prefix = "../".repeat(current_module_name_segments_count - 1);
                 eco_format!("{prefix}gleam")
             };
-            imports.push(docvec![
-                "local _gleam = ",
-                self.require_expr(&prelude_path),
-            ]);
+            imports.push(docvec!["local _gleam = ", self.require_expr(&prelude_path),]);
         }
 
         for import in &module.definitions.imports {
             let module_name = import.module.clone();
             let alias = match &import.as_name {
                 Some((AssignName::Variable(name), _)) => name.clone(),
-                _ => EcoString::from(module_name.split('/').next_back().unwrap())
+                _ => EcoString::from(module_name.split('/').next_back().unwrap()),
             };
-            
+
             let path = if import.package == module.type_info.package || import.package.is_empty() {
                 match current_module_name_segments_count {
                     1 => eco_format!("./{module_name}"),
@@ -269,14 +308,14 @@ impl<'a> Generator<'a> {
                 let prefix = "../".repeat(current_module_name_segments_count);
                 eco_format!("{prefix}{}/{module_name}", import.package)
             };
-            
+
             imports.push(docvec![
                 "local ",
                 alias.clone(),
                 " = ",
                 self.require_expr(&path),
             ]);
-            
+
             for unqualified in &import.unqualified_values {
                 let unq_name = unqualified.used_name();
                 let original_name = &unqualified.name;
@@ -309,12 +348,7 @@ impl<'a> Generator<'a> {
         if statements.is_empty() {
             export_table
         } else {
-            docvec![
-                join(statements, lines(2)),
-                lines(2),
-                export_table,
-                line(),
-            ]
+            docvec![join(statements, lines(2)), lines(2), export_table, line(),]
         }
     }
 }

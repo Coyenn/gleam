@@ -43,12 +43,31 @@ pub const ASSERT_FAIL_VARIABLE: &str = "_assert_fail";
 pub const ASSERT_SUBJECT_VARIABLE: &str = "_assert_subject";
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum ExternalLuauFunction {
-    Module { module: EcoString, function: EcoString, location: SrcSpan },
-    Property { property: EcoString, location: SrcSpan },
-    SetProperty { property: EcoString, location: SrcSpan },
-    Method { method: EcoString, location: SrcSpan },
-    Event { event: EcoString, location: SrcSpan },
-    Global { global: EcoString, location: SrcSpan },
+    Module {
+        module: EcoString,
+        function: EcoString,
+        location: SrcSpan,
+    },
+    Property {
+        property: EcoString,
+        location: SrcSpan,
+    },
+    SetProperty {
+        property: EcoString,
+        location: SrcSpan,
+    },
+    Method {
+        method: EcoString,
+        location: SrcSpan,
+    },
+    Event {
+        event: EcoString,
+        location: SrcSpan,
+    },
+    Global {
+        global: EcoString,
+        location: SrcSpan,
+    },
 }
 
 impl ExternalLuauFunction {

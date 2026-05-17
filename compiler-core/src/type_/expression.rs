@@ -555,6 +555,7 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
             } => self.infer_tuple_index(*tuple, index, location),
 
             UntypedExpr::BitArray { location, segments } => {
+                self.mark_unsupported_target_feature(location, Target::Luau, "bit arrays");
                 self.infer_bit_array(segments, location)
             }
 
@@ -563,7 +564,10 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 constructor,
                 record,
                 arguments,
-            } => self.infer_record_update(*constructor, record, arguments, location),
+            } => {
+                self.mark_unsupported_target_feature(location, Target::Luau, "record updates");
+                self.infer_record_update(*constructor, record, arguments, location)
+            }
 
             UntypedExpr::NegateBool { location, value } => {
                 Ok(self.infer_negate_bool(location, *value))
@@ -1349,6 +1353,42 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
             })
         } else {
             Ok(())
+        }
+    }
+
+    fn mark_unsupported_target_feature(
+        &mut self,
+        location: SrcSpan,
+        target: Target,
+        feature: &'static str,
+    ) {
+        self.implementations.gleam = false;
+        match target {
+            Target::Erlang => {
+                self.implementations.can_run_on_erlang =
+                    self.current_function_definition.has_erlang_external;
+            }
+            Target::JavaScript => {
+                self.implementations.can_run_on_javascript =
+                    self.current_function_definition.has_javascript_external;
+            }
+            Target::Luau => {
+                self.implementations.can_run_on_luau =
+                    self.current_function_definition.has_luau_external;
+            }
+        }
+
+        if self.environment.target == target
+            && self.environment.target_support.is_enforced()
+            && !self
+                .current_function_definition
+                .has_external_for_target(target)
+        {
+            self.problems.error(Error::UnsupportedTargetFeature {
+                location,
+                target,
+                feature: feature.into(),
+            });
         }
     }
 
@@ -3797,6 +3837,7 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
             } => self.infer_const_list(elements, location, tail),
 
             Constant::BitArray { location, segments } => {
+                self.mark_unsupported_target_feature(location, Target::Luau, "bit arrays");
                 match self.infer_constant_bit_array(segments, location) {
                     Ok(inferred) => inferred,
                     Err(error) => {
@@ -3819,6 +3860,7 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 arguments,
                 ..
             } => {
+                self.mark_unsupported_target_feature(location, Target::Luau, "record updates");
                 self.track_feature_usage(FeatureKind::ConstantRecordUpdate, location);
                 let first_argument_start =
                     arguments.first().map(|argument| argument.location.start);

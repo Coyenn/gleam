@@ -149,7 +149,15 @@ impl Attributes {
         match target {
             Target::Erlang => self.external_erlang = ext,
             Target::JavaScript => self.external_javascript = ext,
-            Target::Luau => self.external_luau = ext.map(|(module, function, location)| crate::ast::ExternalLuauFunction::Module { module, function, location }),
+            Target::Luau => {
+                self.external_luau = ext.map(|(module, function, location)| {
+                    crate::ast::ExternalLuauFunction::Module {
+                        module,
+                        function,
+                        location,
+                    }
+                })
+            }
         }
     }
 }
@@ -4545,7 +4553,6 @@ functions are declared separately from types.";
         Ok(end)
     }
 
-    
     fn parse_luau_attribute(
         &mut self,
         start: u32,
@@ -4562,11 +4569,26 @@ functions are declared separately from types.";
 
         let location = SrcSpan { start, end };
         let ext = match name.as_str() {
-            "property" => crate::ast::ExternalLuauFunction::Property { property: value, location },
-            "set_property" => crate::ast::ExternalLuauFunction::SetProperty { property: value, location },
-            "method" => crate::ast::ExternalLuauFunction::Method { method: value, location },
-            "event" => crate::ast::ExternalLuauFunction::Event { event: value, location },
-            "global" => crate::ast::ExternalLuauFunction::Global { global: value, location },
+            "property" => crate::ast::ExternalLuauFunction::Property {
+                property: value,
+                location,
+            },
+            "set_property" => crate::ast::ExternalLuauFunction::SetProperty {
+                property: value,
+                location,
+            },
+            "method" => crate::ast::ExternalLuauFunction::Method {
+                method: value,
+                location,
+            },
+            "event" => crate::ast::ExternalLuauFunction::Event {
+                event: value,
+                location,
+            },
+            "global" => crate::ast::ExternalLuauFunction::Global {
+                global: value,
+                location,
+            },
             _ => return parse_error(ParseErrorType::UnknownAttribute, location),
         };
 

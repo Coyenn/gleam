@@ -16,12 +16,25 @@ use ecow::EcoString;
 
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub enum ExternalLuauFunction {
-    Module { module: EcoString, function: EcoString },
-    Property { property: EcoString },
-    SetProperty { property: EcoString },
-    Method { method: EcoString },
-    Event { event: EcoString },
-    Global { global: EcoString },
+    Module {
+        module: EcoString,
+        function: EcoString,
+    },
+    Property {
+        property: EcoString,
+    },
+    SetProperty {
+        property: EcoString,
+    },
+    Method {
+        method: EcoString,
+    },
+    Event {
+        event: EcoString,
+    },
+    Global {
+        global: EcoString,
+    },
 }
 
 pub use environment::*;
@@ -41,7 +54,6 @@ use crate::{
     },
     bit_array,
     build::{Origin, Target},
-
     inline::InlinableFunction,
     line_numbers::LineNumbers,
     reference::ReferenceMap,

@@ -4309,6 +4309,39 @@ and there is no implementation for the {} target.",
             }
         }
 
+        TypeError::UnsupportedTargetFeature {
+            location,
+            target,
+            feature,
+        } => {
+            let target = match target {
+                Target::Erlang => "Erlang",
+                Target::JavaScript => "JavaScript",
+                Target::Luau => "Luau",
+            };
+            let text = wrap_format!(
+                "The {feature} feature is not currently supported when compiling \
+to the {target} target."
+            );
+            Diagnostic {
+                title: "Unsupported target feature".into(),
+                text,
+                hint: Some(wrap(
+                    "Use a target-specific external or avoid this feature for this target.",
+                )),
+                level: Level::Error,
+                location: Some(Location {
+                    path: path.clone(),
+                    src: src.clone(),
+                    label: Label {
+                        text: None,
+                        span: *location,
+                    },
+                    extra_labels: vec![],
+                }),
+            }
+        }
+
         TypeError::UnsupportedPublicFunctionTarget {
             location,
             name,
@@ -4849,7 +4882,12 @@ modules should not import them. Perhaps change `{package}` to a regular dependen
             }),
         },
 
-        TypeError::InvalidLuauExternalArity { location, expected, actual, kind } => {
+        TypeError::InvalidLuauExternalArity {
+            location,
+            expected,
+            actual,
+            kind,
+        } => {
             let expected_str = if *kind == "method" {
                 format!("at least {}", expected)
             } else {
@@ -4857,7 +4895,10 @@ modules should not import them. Perhaps change `{package}` to a regular dependen
             };
             Diagnostic {
                 title: "Invalid Luau external arity".into(),
-                text: format!("A Luau {} external must have {} argument(s), but it has {}.", kind, expected_str, actual),
+                text: format!(
+                    "A Luau {} external must have {} argument(s), but it has {}.",
+                    kind, expected_str, actual
+                ),
                 hint: None,
                 level: Level::Error,
                 location: Some(Location {
@@ -4870,7 +4911,7 @@ modules should not import them. Perhaps change `{package}` to a regular dependen
                     extra_labels: vec![],
                 }),
             }
-        },
+        }
         TypeError::ExternalTypeWithConstructors { location } => Diagnostic {
             title: "External type with constructors".to_string(),
             text: wrap_format!(

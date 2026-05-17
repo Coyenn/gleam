@@ -3720,10 +3720,7 @@ impl<'a> AttributesPrinter<'a> {
         self
     }
 
-    pub fn set_external_luau(
-        mut self,
-        external: &'a Option<ExternalLuauFunction>,
-    ) -> Self {
+    pub fn set_external_luau(mut self, external: &'a Option<ExternalLuauFunction>) -> Self {
         self.external_luau = external;
         self
     }
@@ -3759,9 +3756,11 @@ impl<'a> Documentable<'a> for AttributesPrinter<'a> {
 
         if let Some(ext) = self.external_luau {
             match ext {
-                ExternalLuauFunction::Module { module: m, function: f, .. } => {
-                    attributes.push(docvec!["@external(luau, \"", m, "\", \"", f, "\")"])
-                }
+                ExternalLuauFunction::Module {
+                    module: m,
+                    function: f,
+                    ..
+                } => attributes.push(docvec!["@external(luau, \"", m, "\", \"", f, "\")"]),
                 ExternalLuauFunction::Property { property, .. } => {
                     attributes.push(docvec!["@luau.property(\"", property, "\")"])
                 }

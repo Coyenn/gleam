@@ -574,16 +574,18 @@ Acceptance:
 
 Some Gleam features may need explicit diagnostics before implementation.
 
+Status: completed for the first diagnostics pass. Luau target support metadata now marks unsupported target features so they fail in root modules and when called through dependencies. Bit arrays and record updates are currently rejected for Luau with explicit diagnostics instead of being lowered to placeholder code. JavaScript/Erlang-only externals continue to use the standard target-support diagnostics, including through dependencies. Basic case expressions and integer/float operations remain supported by the current Luau backend/prelude path, while deeper performance/TCO work is deferred to later optimization phases.
+
 Audit and decide support for:
 
-- bit arrays
-- JavaScript-specific externals in dependencies
-- Erlang-specific externals in dependencies
-- tail-call-heavy recursion and stack behavior in Luau
-- integer/float semantic differences
-- module cyclic dependencies under Luau `require`
-- pattern matching performance for large cases
-- record update semantics
+- bit arrays: unsupported for Luau, explicit diagnostic
+- JavaScript-specific externals in dependencies: unsupported when used from Luau, existing target diagnostic
+- Erlang-specific externals in dependencies: unsupported when used from Luau, existing target diagnostic
+- tail-call-heavy recursion and stack behavior in Luau: supported as normal calls for now; optimization/TCO diagnostics deferred
+- integer/float semantic differences: supported through current Luau lowering and prelude helpers
+- module cyclic dependencies under Luau `require`: no extra diagnostic yet; module dependency ordering remains the current compiler behavior
+- pattern matching performance for large cases: supported for the currently lowered pattern subset; performance work deferred
+- record update semantics: unsupported for Luau, explicit diagnostic
 
 Acceptance:
 

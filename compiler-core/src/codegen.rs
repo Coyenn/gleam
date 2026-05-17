@@ -7,8 +7,8 @@ use crate::{
     erlang,
     io::FileSystemWriter,
     javascript::{self, ModuleConfig},
-    luau::{self, ModuleConfig as LuauModuleConfig},
     line_numbers::LineNumbers,
+    luau::{self, ModuleConfig as LuauModuleConfig},
 };
 use ecow::EcoString;
 use erlang::escape_atom_string;
@@ -326,11 +326,7 @@ impl<'a> Luau<'a> {
         }
     }
 
-    pub fn render(
-        &self,
-        writer: &impl FileSystemWriter,
-        modules: &[Module],
-    ) -> Result<()> {
+    pub fn render(&self, writer: &impl FileSystemWriter, modules: &[Module]) -> Result<()> {
         for module in modules {
             if module.is_declaration {
                 continue;

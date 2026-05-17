@@ -211,7 +211,11 @@ pub fn let_test() {
 #[test]
 fn imports() {
     assert_luau!(
-        ("my_package", "other_module", "pub fn do_something() { Nil }"),
+        (
+            "my_package",
+            "other_module",
+            "pub fn do_something() { Nil }"
+        ),
         r#"
 import other_module
 import other_module.{do_something} as renamed_module
@@ -325,10 +329,13 @@ pub fn main() {
   other_module.my_func()
 }
 "#;
-    let ast = compile(src, vec![
-        ("my_package", "other_module", "pub fn my_func() { Nil }"),
-        ("my_gleam", "my_gleam", "pub fn my_func() { Nil }")
-    ]);
+    let ast = compile(
+        src,
+        vec![
+            ("my_package", "other_module", "pub fn my_func() { Nil }"),
+            ("my_gleam", "my_gleam", "pub fn my_func() { Nil }"),
+        ],
+    );
     let line_numbers = LineNumbers::new(src);
     let (output, _) = module(ModuleConfig {
         module: &ast,

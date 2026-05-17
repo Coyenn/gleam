@@ -421,6 +421,13 @@ pub enum Error {
         target: Target,
     },
 
+    /// A language feature is not currently supported for a compilation target.
+    UnsupportedTargetFeature {
+        location: SrcSpan,
+        target: Target,
+        feature: EcoString,
+    },
+
     /// A function's JavaScript implementation has been given but it does not
     /// have a valid module name.
     InvalidExternalJavascriptModule {
@@ -1353,6 +1360,7 @@ impl Error {
             | Error::ExternalMissingAnnotation { location, .. }
             | Error::NoImplementation { location, .. }
             | Error::UnsupportedExpressionTarget { location, .. }
+            | Error::UnsupportedTargetFeature { location, .. }
             | Error::InvalidExternalJavascriptModule { location, .. }
             | Error::InvalidExternalJavascriptFunction { location, .. }
             | Error::InexhaustiveCaseExpression { location, .. }

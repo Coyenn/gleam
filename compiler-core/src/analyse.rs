@@ -790,9 +790,39 @@ impl<'a, A> ModuleAnalyzer<'a, A> {
             external_javascript: external_javascript
                 .as_ref()
                 .map(|(m, f, _)| (m.clone(), f.clone())),
-            external_luau: external_luau
-                .as_ref()
-                .map(|ext| match ext { ast::ExternalLuauFunction::Module { module, function, .. } => type_::ExternalLuauFunction::Module { module: module.clone(), function: function.clone() }, ast::ExternalLuauFunction::Property { property, .. } => type_::ExternalLuauFunction::Property { property: property.clone() }, ast::ExternalLuauFunction::SetProperty { property, .. } => type_::ExternalLuauFunction::SetProperty { property: property.clone() }, ast::ExternalLuauFunction::Method { method, .. } => type_::ExternalLuauFunction::Method { method: method.clone() }, ast::ExternalLuauFunction::Event { event, .. } => type_::ExternalLuauFunction::Event { event: event.clone() }, ast::ExternalLuauFunction::Global { global, .. } => type_::ExternalLuauFunction::Global { global: global.clone() } }),
+            external_luau: external_luau.as_ref().map(|ext| match ext {
+                ast::ExternalLuauFunction::Module {
+                    module, function, ..
+                } => type_::ExternalLuauFunction::Module {
+                    module: module.clone(),
+                    function: function.clone(),
+                },
+                ast::ExternalLuauFunction::Property { property, .. } => {
+                    type_::ExternalLuauFunction::Property {
+                        property: property.clone(),
+                    }
+                }
+                ast::ExternalLuauFunction::SetProperty { property, .. } => {
+                    type_::ExternalLuauFunction::SetProperty {
+                        property: property.clone(),
+                    }
+                }
+                ast::ExternalLuauFunction::Method { method, .. } => {
+                    type_::ExternalLuauFunction::Method {
+                        method: method.clone(),
+                    }
+                }
+                ast::ExternalLuauFunction::Event { event, .. } => {
+                    type_::ExternalLuauFunction::Event {
+                        event: event.clone(),
+                    }
+                }
+                ast::ExternalLuauFunction::Global { global, .. } => {
+                    type_::ExternalLuauFunction::Global {
+                        global: global.clone(),
+                    }
+                }
+            }),
             field_map,
             module: environment.current_module.clone(),
             arity: typed_arguments.len(),
@@ -1649,7 +1679,7 @@ impl<'a, A> ModuleAnalyzer<'a, A> {
                 ast::ExternalLuauFunction::Event { .. } => (1, "event"),
                 _ => (0, ""),
             };
-            
+
             if expected > 0 {
                 let actual = arguments.len();
                 if (kind == "method" && actual < 1) || (kind != "method" && actual != expected) {
@@ -1703,9 +1733,39 @@ impl<'a, A> ModuleAnalyzer<'a, A> {
             external_javascript: external_javascript
                 .as_ref()
                 .map(|(m, f, _)| (m.clone(), f.clone())),
-            external_luau: external_luau
-                .as_ref()
-                .map(|ext| match ext { ast::ExternalLuauFunction::Module { module, function, .. } => type_::ExternalLuauFunction::Module { module: module.clone(), function: function.clone() }, ast::ExternalLuauFunction::Property { property, .. } => type_::ExternalLuauFunction::Property { property: property.clone() }, ast::ExternalLuauFunction::SetProperty { property, .. } => type_::ExternalLuauFunction::SetProperty { property: property.clone() }, ast::ExternalLuauFunction::Method { method, .. } => type_::ExternalLuauFunction::Method { method: method.clone() }, ast::ExternalLuauFunction::Event { event, .. } => type_::ExternalLuauFunction::Event { event: event.clone() }, ast::ExternalLuauFunction::Global { global, .. } => type_::ExternalLuauFunction::Global { global: global.clone() } }),
+            external_luau: external_luau.as_ref().map(|ext| match ext {
+                ast::ExternalLuauFunction::Module {
+                    module, function, ..
+                } => type_::ExternalLuauFunction::Module {
+                    module: module.clone(),
+                    function: function.clone(),
+                },
+                ast::ExternalLuauFunction::Property { property, .. } => {
+                    type_::ExternalLuauFunction::Property {
+                        property: property.clone(),
+                    }
+                }
+                ast::ExternalLuauFunction::SetProperty { property, .. } => {
+                    type_::ExternalLuauFunction::SetProperty {
+                        property: property.clone(),
+                    }
+                }
+                ast::ExternalLuauFunction::Method { method, .. } => {
+                    type_::ExternalLuauFunction::Method {
+                        method: method.clone(),
+                    }
+                }
+                ast::ExternalLuauFunction::Event { event, .. } => {
+                    type_::ExternalLuauFunction::Event {
+                        event: event.clone(),
+                    }
+                }
+                ast::ExternalLuauFunction::Global { global, .. } => {
+                    type_::ExternalLuauFunction::Global {
+                        global: global.clone(),
+                    }
+                }
+            }),
             module: environment.current_module.clone(),
             arity: arguments.len(),
             location: *location,
@@ -2002,9 +2062,37 @@ fn generalise_function(
         external_javascript: external_javascript
             .as_ref()
             .map(|(m, f, _)| (m.clone(), f.clone())),
-        external_luau: external_luau
-            .as_ref()
-            .map(|ext| match ext { ast::ExternalLuauFunction::Module { module, function, .. } => type_::ExternalLuauFunction::Module { module: module.clone(), function: function.clone() }, ast::ExternalLuauFunction::Property { property, .. } => type_::ExternalLuauFunction::Property { property: property.clone() }, ast::ExternalLuauFunction::SetProperty { property, .. } => type_::ExternalLuauFunction::SetProperty { property: property.clone() }, ast::ExternalLuauFunction::Method { method, .. } => type_::ExternalLuauFunction::Method { method: method.clone() }, ast::ExternalLuauFunction::Event { event, .. } => type_::ExternalLuauFunction::Event { event: event.clone() }, ast::ExternalLuauFunction::Global { global, .. } => type_::ExternalLuauFunction::Global { global: global.clone() } }),
+        external_luau: external_luau.as_ref().map(|ext| match ext {
+            ast::ExternalLuauFunction::Module {
+                module, function, ..
+            } => type_::ExternalLuauFunction::Module {
+                module: module.clone(),
+                function: function.clone(),
+            },
+            ast::ExternalLuauFunction::Property { property, .. } => {
+                type_::ExternalLuauFunction::Property {
+                    property: property.clone(),
+                }
+            }
+            ast::ExternalLuauFunction::SetProperty { property, .. } => {
+                type_::ExternalLuauFunction::SetProperty {
+                    property: property.clone(),
+                }
+            }
+            ast::ExternalLuauFunction::Method { method, .. } => {
+                type_::ExternalLuauFunction::Method {
+                    method: method.clone(),
+                }
+            }
+            ast::ExternalLuauFunction::Event { event, .. } => type_::ExternalLuauFunction::Event {
+                event: event.clone(),
+            },
+            ast::ExternalLuauFunction::Global { global, .. } => {
+                type_::ExternalLuauFunction::Global {
+                    global: global.clone(),
+                }
+            }
+        }),
         module: module_name.clone(),
         arity: arguments.len(),
         location,

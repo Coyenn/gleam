@@ -540,3 +540,148 @@ pub fn main() {
     )
     .expect("compile luau external");
 }
+
+#[test]
+pub fn bit_arrays_do_not_support_luau() {
+    assert_targets!(
+        r#"
+pub fn main() {
+  <<1>>
+}
+"#,
+        [(
+            "main",
+            Implementations {
+                gleam: false,
+                uses_erlang_externals: false,
+                uses_javascript_externals: false,
+                uses_luau_externals: false,
+                can_run_on_erlang: true,
+                can_run_on_javascript: true,
+                can_run_on_luau: false,
+            }
+        )],
+    );
+}
+
+#[test]
+pub fn record_updates_do_not_support_luau() {
+    assert_targets!(
+        r#"
+pub type Person {
+  Person(name: String, age: Int)
+}
+
+pub fn main(person: Person) {
+  Person(..person, age: 10)
+}
+"#,
+        [
+            (
+                "Person",
+                Implementations {
+                    gleam: true,
+                    uses_erlang_externals: false,
+                    uses_javascript_externals: false,
+                    uses_luau_externals: false,
+                    can_run_on_erlang: true,
+                    can_run_on_javascript: true,
+                    can_run_on_luau: true,
+                }
+            ),
+            (
+                "main",
+                Implementations {
+                    gleam: false,
+                    uses_erlang_externals: false,
+                    uses_javascript_externals: false,
+                    uses_luau_externals: false,
+                    can_run_on_erlang: true,
+                    can_run_on_javascript: true,
+                    can_run_on_luau: false,
+                }
+            )
+        ],
+    );
+}
+
+#[test]
+pub fn bit_arrays_error_for_luau() {
+    assert_luau_module_error!(
+        r#"
+pub fn main() {
+  <<1>>
+}
+"#
+    );
+}
+
+#[test]
+pub fn record_updates_error_for_luau() {
+    assert_luau_module_error!(
+        r#"
+pub type Person {
+  Person(name: String, age: Int)
+}
+
+pub fn main(person: Person) {
+  Person(..person, age: 10)
+}
+"#
+    );
+}
+
+#[test]
+pub fn unsupported_luau_dependency_feature_errors_when_used() {
+    let out = compile_module_with_opts(
+        "test_module",
+        r#"
+import dep
+
+pub fn main() {
+  dep.bits()
+}
+"#,
+        None,
+        vec![(
+            "dep",
+            "dep",
+            r#"
+pub fn bits() {
+  <<1>>
+}
+"#,
+        )],
+        Target::Luau,
+        TargetSupport::NotEnforced,
+        None,
+    );
+    assert!(out.into_result().is_err());
+}
+
+#[test]
+pub fn unsupported_luau_dependency_external_errors_when_used() {
+    let out = compile_module_with_opts(
+        "test_module",
+        r#"
+import dep
+
+pub fn main() {
+  dep.javascript_only()
+}
+"#,
+        None,
+        vec![(
+            "dep",
+            "dep",
+            r#"
+@external(javascript, "dep", "javascriptOnly")
+pub fn javascript_only() -> Int
+"#,
+        )],
+        Target::Luau,
+        TargetSupport::NotEnforced,
+        None,
+    );
+    assert!(out.into_result().is_err());
+}
