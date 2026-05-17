@@ -12,8 +12,8 @@ pub fn let_test() {
 
 ----- COMPILED LUAU
 local function let_test()
-  error("TODO")
-  return error("panic")
+  error("`todo` expression evaluated. This code has not yet been implemented.")
+  return error("`panic` expression evaluated.")
 end
 
 return {

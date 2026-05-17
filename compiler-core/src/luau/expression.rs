@@ -3,7 +3,9 @@ use std::collections::HashMap;
 use ecow::{EcoString, eco_format};
 
 use crate::{
-    ast::{Assignment, BinOp, Pattern, TypedArg, TypedExpr, TypedStatement},
+    ast::{
+        Assignment, BinOp, Pattern, TypedArg, TypedExpr, TypedPipelineAssignment, TypedStatement,
+    },
     docvec,
     line_numbers::LineNumbers,
     pretty::*,
@@ -19,6 +21,7 @@ pub struct Generator<'a, 'b> {
     pub module_scope: HashMap<EcoString, usize>,
     pub tracker: &'b mut crate::luau::UsageTracker,
     tail_recursion_used: bool,
+    assignment_subject_id: usize,
 }
 
 impl<'a, 'b> Generator<'a, 'b> {
@@ -33,6 +36,7 @@ impl<'a, 'b> Generator<'a, 'b> {
             module_scope: HashMap::new(),
             tracker,
             tail_recursion_used: false,
+            assignment_subject_id: 0,
         }
     }
 
@@ -60,11 +64,11 @@ impl<'a, 'b> Generator<'a, 'b> {
                 crate::ast::Statement::Assignment(assignment) => {
                     docs.push(self.assignment(assignment));
                 }
-                crate::ast::Statement::Use(_) => {
-                    docs.push("-- TODO: use statement".to_doc());
+                crate::ast::Statement::Use(use_) => {
+                    docs.push(self.expression(&use_.call));
                 }
-                crate::ast::Statement::Assert(_) => {
-                    docs.push("-- TODO: assert statement".to_doc());
+                crate::ast::Statement::Assert(assert) => {
+                    docs.push(self.assert_statement(assert));
                 }
             }
         }
@@ -79,7 +83,24 @@ impl<'a, 'b> Generator<'a, 'b> {
         if let Pattern::Variable { name, .. } = &assignment.pattern {
             docvec!["local ", name.as_str().to_doc(), " = ", value_doc]
         } else {
-            docvec!["-- TODO: complex assignment"]
+            let subject_name = eco_format!("_assignment_{}", self.assignment_subject_id);
+            self.assignment_subject_id += 1;
+            let subject_doc = subject_name.clone().to_doc();
+
+            let mut docs = vec![docvec!["local ", subject_doc.clone(), " = ", value_doc]];
+
+            if let Some(condition) =
+                self.pattern_condition(&assignment.pattern, subject_doc.clone())
+            {
+                docs.push(docvec![
+                    "if not (",
+                    condition,
+                    ") then error(\"Pattern match failed in assignment\") end"
+                ]);
+            }
+
+            docs.extend(self.pattern_assignments(&assignment.pattern, subject_doc));
+            join(docs, line())
         }
     }
 
@@ -90,7 +111,12 @@ impl<'a, 'b> Generator<'a, 'b> {
             TypedExpr::String { value, .. } => string(value.as_str()),
             TypedExpr::Block { statements, .. } => {
                 let body = self.statements(statements);
-                docvec!["do", docvec![line(), body].nest(INDENT), line(), "end",]
+                docvec![
+                    "(function()",
+                    docvec![line(), body].nest(INDENT),
+                    line(),
+                    "end)()",
+                ]
             }
             TypedExpr::Tuple { elements, .. } => {
                 let elements_doc = join(
@@ -98,6 +124,10 @@ impl<'a, 'b> Generator<'a, 'b> {
                     break_(",", ", "),
                 );
                 docvec!["{", elements_doc, "}"]
+            }
+            TypedExpr::TupleIndex { tuple, index, .. } => {
+                let tuple_doc = self.expression(tuple);
+                docvec![tuple_doc, "[", *index + 1, "]"]
             }
             TypedExpr::List { elements, tail, .. } => {
                 self.tracker.prelude_used = true;
@@ -141,6 +171,15 @@ impl<'a, 'b> Generator<'a, 'b> {
             } => {
                 docvec![module_alias.as_str().to_doc(), ".", label.as_str().to_doc()]
             }
+            TypedExpr::RecordAccess { record, label, .. } => {
+                let record_doc = self.expression(record);
+                docvec![record_doc, ".", label.as_str().to_doc()]
+            }
+            TypedExpr::PositionalAccess { record, index, .. } => {
+                let record_doc = self.expression(record);
+                let field = eco_format!("arg_{}", index);
+                docvec![record_doc, ".", field]
+            }
             TypedExpr::Var {
                 name, constructor, ..
             } => {
@@ -155,7 +194,12 @@ impl<'a, 'b> Generator<'a, 'b> {
                     name.as_str().to_doc()
                 }
             }
-            TypedExpr::Call { fun, arguments, .. } => {
+            TypedExpr::Call {
+                fun,
+                arguments,
+                type_,
+                ..
+            } => {
                 let external_luau = match &**fun {
                     TypedExpr::Var { constructor, .. } => {
                         if let crate::type_::ValueConstructorVariant::ModuleFn {
@@ -209,6 +253,11 @@ impl<'a, 'b> Generator<'a, 'b> {
                             if args_docs.len() == 2 {
                                 // x.Name = value; return x
                                 // Since Luau doesn't have assignment expressions, we need to wrap it in an IIFE
+                                let return_doc = if type_.is_nil() {
+                                    "nil".to_doc()
+                                } else {
+                                    "_x".to_doc()
+                                };
                                 return docvec![
                                     "(function() local _x = ",
                                     args_docs[0].clone(),
@@ -216,7 +265,9 @@ impl<'a, 'b> Generator<'a, 'b> {
                                     property.clone().to_doc(),
                                     " = ",
                                     args_docs[1].clone(),
-                                    "; return _x end)()"
+                                    "; return ",
+                                    return_doc,
+                                    " end)()"
                                 ];
                             }
                         }
@@ -240,8 +291,12 @@ impl<'a, 'b> Generator<'a, 'b> {
                             }
                         }
                         crate::type_::ExternalLuauFunction::Global { global } => {
+                            let global = luau_raw_fragment(global);
+                            if args_docs.is_empty() {
+                                return global.to_doc();
+                            }
                             let args_doc = join(args_docs, break_(",", ", "));
-                            return docvec![global.clone().to_doc(), "(", args_doc, ")"];
+                            return docvec![global.to_doc(), "(", args_doc, ")"];
                         }
                     }
                 }
@@ -288,8 +343,39 @@ impl<'a, 'b> Generator<'a, 'b> {
                     BinOp::Concatenate => docvec![left_doc, " .. ", right_doc],
                 }
             }
-            TypedExpr::Todo { .. } => "error(\"TODO\")".to_doc(),
-            TypedExpr::Panic { .. } => "error(\"panic\")".to_doc(),
+            TypedExpr::Pipeline {
+                first_value,
+                assignments,
+                finally,
+                ..
+            } => self.pipeline(first_value, assignments.as_slice(), finally),
+            TypedExpr::NegateBool { value, .. } => {
+                let value_doc = self.expression(value);
+                docvec!["not ", value_doc]
+            }
+            TypedExpr::NegateInt { value, .. } => {
+                let value_doc = self.expression(value);
+                docvec!["-(", value_doc, ")"]
+            }
+            TypedExpr::RecordUpdate { .. } => {
+                docvec!["error(\"Record update unsupported in Luau\")"]
+            }
+            TypedExpr::Todo { message, .. } => {
+                let message = match message {
+                    Some(message) => self.expression(message),
+                    None => string(
+                        "`todo` expression evaluated. This code has not yet been implemented.",
+                    ),
+                };
+                docvec!["error(", message, ")"]
+            }
+            TypedExpr::Panic { message, .. } => {
+                let message = match message {
+                    Some(message) => self.expression(message),
+                    None => string("`panic` expression evaluated."),
+                };
+                docvec!["error(", message, ")"]
+            }
             TypedExpr::Echo { message, .. } => {
                 let msg = match message {
                     Some(m) => self.expression(m),
@@ -363,8 +449,59 @@ impl<'a, 'b> Generator<'a, 'b> {
             TypedExpr::BitArray { .. } => {
                 docvec!["error(\"BitArray unsupported in Luau\")"]
             }
-            _ => docvec!["-- TODO: unhandled expression type"],
+            TypedExpr::Invalid { .. } => {
+                panic!("invalid expressions should not reach Luau code generation")
+            }
         }
+    }
+
+    fn assert_statement(&mut self, assert: &'a crate::ast::Assert<TypedExpr>) -> Document<'a> {
+        let condition_doc = self.expression(&assert.value);
+        let message_doc = match &assert.message {
+            Some(message) => self.expression(message),
+            None => string("Assertion failed"),
+        };
+
+        docvec![
+            "if not (",
+            condition_doc,
+            ") then",
+            docvec![line(), "error(", message_doc, ")"].nest(INDENT),
+            line(),
+            "end"
+        ]
+    }
+
+    fn pipeline(
+        &mut self,
+        first_value: &'a TypedPipelineAssignment,
+        assignments: &'a [(TypedPipelineAssignment, crate::ast::PipelineAssignmentKind)],
+        finally: &'a TypedExpr,
+    ) -> Document<'a> {
+        let mut docs = vec![docvec![
+            "local ",
+            first_value.name.as_str().to_doc(),
+            " = ",
+            self.expression(first_value.value.as_ref())
+        ]];
+
+        for (assignment, _) in assignments {
+            docs.push(docvec![
+                "local ",
+                assignment.name.as_str().to_doc(),
+                " = ",
+                self.expression(assignment.value.as_ref())
+            ]);
+        }
+
+        docs.push(docvec!["return ", self.expression(finally)]);
+
+        docvec![
+            "(function()",
+            docvec![line(), join(docs, line())].nest(INDENT),
+            line(),
+            "end)()"
+        ]
     }
     fn pattern_condition(
         &mut self,
@@ -462,4 +599,8 @@ fn string(value: &str) -> Document<'_> {
     } else {
         value.to_doc().surround("\"", "\"")
     }
+}
+
+fn luau_raw_fragment(value: &str) -> EcoString {
+    value.replace("\\\"", "\"").into()
 }

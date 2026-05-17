@@ -92,7 +92,7 @@ pub fn set_position(instance: BodyPosition, value: Vector3) -> BodyPosition
 ///
 /// Parameters:
 /// - `instance`: Deprecated: This object is deprecated and should not be used for new work. Use AlignPosition instead, and see the legacy conversion notes.
-Applies a force to maintain a constant position.
+/// Applies a force to maintain a constant position.
 @luau.method("GetLastForce")
 pub fn get_last_force(instance: BodyPosition) -> Vector3
 

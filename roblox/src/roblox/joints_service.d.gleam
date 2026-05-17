@@ -12,7 +12,7 @@ import roblox/types.{type Actor, type Instance, type JointsService, type OptionD
 ///
 /// Parameters:
 /// - `instance`: Deprecated: This service has been deprecated in favor of constraints which should be used for surface connections instead
-A service that stores joints created by surface connections.
+/// A service that stores joints created by surface connections.
 @luau.method("ClearJoinAfterMoveJoints")
 pub fn clear_join_after_move_joints(instance: JointsService) -> Nil
 
@@ -24,7 +24,7 @@ pub fn clear_join_after_move_joints(instance: JointsService) -> Nil
 ///
 /// Parameters:
 /// - `instance`: Deprecated: This service has been deprecated in favor of constraints which should be used for surface connections instead
-A service that stores joints created by surface connections.
+/// A service that stores joints created by surface connections.
 @luau.method("CreateJoinAfterMoveJoints")
 pub fn create_join_after_move_joints(instance: JointsService) -> Nil
 
@@ -36,7 +36,7 @@ pub fn create_join_after_move_joints(instance: JointsService) -> Nil
 ///
 /// Parameters:
 /// - `instance`: Deprecated: This service has been deprecated in favor of constraints which should be used for surface connections instead
-A service that stores joints created by surface connections.
+/// A service that stores joints created by surface connections.
 @luau.method("SetJoinAfterMoveInstance")
 pub fn set_join_after_move_instance(instance: JointsService, join_instance: Instance) -> Nil
 
@@ -48,7 +48,7 @@ pub fn set_join_after_move_instance(instance: JointsService, join_instance: Inst
 ///
 /// Parameters:
 /// - `instance`: Deprecated: This service has been deprecated in favor of constraints which should be used for surface connections instead
-A service that stores joints created by surface connections.
+/// A service that stores joints created by surface connections.
 @luau.method("SetJoinAfterMoveTarget")
 pub fn set_join_after_move_target(instance: JointsService, join_target: Instance) -> Nil
 
@@ -60,7 +60,7 @@ pub fn set_join_after_move_target(instance: JointsService, join_target: Instance
 ///
 /// Parameters:
 /// - `instance`: Deprecated: This service has been deprecated in favor of constraints which should be used for surface connections instead
-A service that stores joints created by surface connections.
+/// A service that stores joints created by surface connections.
 @luau.method("ShowPermissibleJoints")
 pub fn show_permissible_joints(instance: JointsService) -> Nil
 

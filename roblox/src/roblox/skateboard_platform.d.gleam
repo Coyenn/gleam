@@ -94,7 +94,7 @@ pub fn set_throttle(instance: SkateboardPlatform, value: Int) -> SkateboardPlatf
 ///
 /// Parameters:
 /// - `instance`: Deprecated: The SkateboardPlatform object has been deprecated and is no longer supported by Roblox. Developers looking to create skateboards or similar vehicles are advised to program their own systems. Additionally, the VehicleSeat object can be used to quickly create simple vehicles.
-A SkateboardPlatform can be used to create a skateboard. When characters get on a skateboard, they are stuck to it until they press the escape key. Until then, the character uses skateboard animations and travels faster than a walking character.
+/// A SkateboardPlatform can be used to create a skateboard. When characters get on a skateboard, they are stuck to it until they press the escape key. Until then, the character uses skateboard animations and travels faster than a walking character.
 @luau.method("ApplySpecificImpulse")
 pub fn apply_specific_impulse(instance: SkateboardPlatform, impulse_world: Vector3) -> Nil
 

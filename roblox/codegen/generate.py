@@ -56,10 +56,15 @@ def append_doc(lines, doc_lines):
         return
 
     for line in doc_lines:
-        if line:
-            lines.append(f'/// {line}')
-        else:
+        if not line:
             lines.append('///')
+            continue
+
+        for part in line.split('\n'):
+            if part:
+                lines.append(f'/// {part}')
+            else:
+                lines.append('///')
 
 
 def build_member_doc_lines(docs_map, class_name, member_name, member, leading=None):

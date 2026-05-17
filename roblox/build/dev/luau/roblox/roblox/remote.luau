@@ -1,9 +1,3 @@
-local dynamic = require(script.Parent.Parent.roblox.dynamic)
-local remote_event = require(script.Parent.Parent.roblox.remote_event)
-local types = require(script.Parent.Parent.roblox.types)
-local signal = require(script.Parent.Parent.roblox.signal)
-local remote_internal = require(script.Parent.Parent.roblox.remote_internal)
-
 local TypedRemoteEvent = function(instance, encoder, decoder)
   return {
     tag = "TypedRemoteEvent",
@@ -25,21 +19,21 @@ local TypedRemoteFunction = function(instance, req_encoder, req_decoder, res_enc
 end
 
 local function fire_server(event, payload)
-  return -- TODO: unhandled expression type:FireServer(-- TODO: unhandled expression type(payload))
+  return event.instance:FireServer(event.encoder(payload))
 end
 
 local function fire_client(event, player, payload)
-  return -- TODO: unhandled expression type:FireClient(player, -- TODO: unhandled expression type(payload))
+  return event.instance:FireClient(player, event.encoder(payload))
 end
 
 local function fire_all_clients(event, payload)
-  return -- TODO: unhandled expression type:FireAllClients(-- TODO: unhandled expression type(payload))
+  return event.instance:FireAllClients(event.encoder(payload))
 end
 
 local function on_server_event(event, callback)
-  return -- TODO: unhandled expression type.OnServerEvent:Connect(function(player, dyn_payload)
+  return event.instance.OnServerEvent:Connect(function(player, dyn_payload)
     return (function()
-      local _subject_0 = -- TODO: unhandled expression type(dyn_payload)
+      local _subject_0 = event.decoder(dyn_payload)
       if _subject_0.tag == "Ok" then
       
         local payload = _subject_0.arg_0
@@ -53,9 +47,9 @@ local function on_server_event(event, callback)
 end
 
 local function on_client_event(event, callback)
-  return -- TODO: unhandled expression type.OnClientEvent:Connect(function(dyn_payload)
+  return event.instance.OnClientEvent:Connect(function(dyn_payload)
     return (function()
-      local _subject_0 = -- TODO: unhandled expression type(dyn_payload)
+      local _subject_0 = event.decoder(dyn_payload)
       if _subject_0.tag == "Ok" then
       
         local payload = _subject_0.arg_0
@@ -69,29 +63,51 @@ local function on_client_event(event, callback)
 end
 
 local function invoke_server_typed(func, req)
-  local res_dyn = -- TODO: unhandled expression type:InvokeServer(-- TODO: unhandled expression type(req))
-  return -- TODO: unhandled expression type(res_dyn)
+  local res_dyn = func.instance:InvokeServer(func.req_encoder(req))
+  return func.res_decoder(res_dyn)
 end
 
 local function invoke_client_typed(func, player, req)
-  local res_dyn = -- TODO: unhandled expression type:InvokeClient(player, -- TODO: unhandled expression type(req))
-  return -- TODO: unhandled expression type(res_dyn)
+  local res_dyn = func.instance:InvokeClient(player, func.req_encoder(req))
+  return func.res_decoder(res_dyn)
 end
 
 local function on_server_invoke(func, callback)
-  return (function() local _x = -- TODO: unhandled expression type; _x.OnServerInvoke = function(player, req_dyn)
-    -- TODO: complex assignment
-    local res = callback(player, req)
-    return -- TODO: unhandled expression type(res)
-  end; return _x end)()
+  return (function() local _x = func.instance; _x.OnServerInvoke = function(player, req_dyn)
+    return (function()
+      local _subject_0 = func.req_decoder(req_dyn)
+      if _subject_0.tag == "Ok" then
+      
+        local req = _subject_0.arg_0
+        return (function()
+          local res = callback(player, req)
+          return func.res_encoder(res)
+        end)()
+      elseif _subject_0.tag == "Error" then
+      
+        return error("Failed to decode server invoke request payload")
+      end
+    end)()
+  end; return nil end)()
 end
 
 local function on_client_invoke(func, callback)
-  return (function() local _x = -- TODO: unhandled expression type; _x.OnClientInvoke = function(req_dyn)
-    -- TODO: complex assignment
-    local res = callback(req)
-    return -- TODO: unhandled expression type(res)
-  end; return _x end)()
+  return (function() local _x = func.instance; _x.OnClientInvoke = function(req_dyn)
+    return (function()
+      local _subject_0 = func.req_decoder(req_dyn)
+      if _subject_0.tag == "Ok" then
+      
+        local req = _subject_0.arg_0
+        return (function()
+          local res = callback(req)
+          return func.res_encoder(res)
+        end)()
+      elseif _subject_0.tag == "Error" then
+      
+        return error("Failed to decode client invoke request payload")
+      end
+    end)()
+  end; return nil end)()
 end
 
 return {

@@ -232,7 +232,7 @@ pub fn set_turn_p(instance: RocketPropulsion, value: Float) -> RocketPropulsion
 ///
 /// Parameters:
 /// - `instance`: Deprecated: This object is deprecated and should not be used for new work. Use LineForce instead, and see the legacy conversion notes.
-Applies a force so that an assembly follows and faces a target part.
+/// Applies a force so that an assembly follows and faces a target part.
 @luau.method("Abort")
 pub fn abort(instance: RocketPropulsion) -> Nil
 
@@ -244,7 +244,7 @@ pub fn abort(instance: RocketPropulsion) -> Nil
 ///
 /// Parameters:
 /// - `instance`: Deprecated: This object is deprecated and should not be used for new work. Use LineForce instead, and see the legacy conversion notes.
-Applies a force so that an assembly follows and faces a target part.
+/// Applies a force so that an assembly follows and faces a target part.
 @luau.method("Fire")
 pub fn fire(instance: RocketPropulsion) -> Nil
 

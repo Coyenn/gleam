@@ -97,9 +97,13 @@ pub fn on_server_invoke(
   callback: fn(Player, req) -> res,
 ) -> Nil {
   remote_internal.set_on_server_invoke(func.instance, fn(player, req_dyn) {
-    let assert Ok(req) = func.req_decoder(req_dyn)
-    let res = callback(player, req)
-    func.res_encoder(res)
+    case func.req_decoder(req_dyn) {
+      Ok(req) -> {
+        let res = callback(player, req)
+        func.res_encoder(res)
+      }
+      Error(_) -> panic as "Failed to decode server invoke request payload"
+    }
   })
 }
 
@@ -111,8 +115,12 @@ pub fn on_client_invoke(
   callback: fn(req) -> res,
 ) -> Nil {
   remote_internal.set_on_client_invoke(func.instance, fn(req_dyn) {
-    let assert Ok(req) = func.req_decoder(req_dyn)
-    let res = callback(req)
-    func.res_encoder(res)
+    case func.req_decoder(req_dyn) {
+      Ok(req) -> {
+        let res = callback(req)
+        func.res_encoder(res)
+      }
+      Error(_) -> panic as "Failed to decode client invoke request payload"
+    }
   })
 }

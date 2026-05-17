@@ -105,6 +105,7 @@ where
         // add a special case for `.gleam`.
         if extension == "gleam" {
             self.check_for_conflicting_javascript_modules(&relative_path)?;
+            self.check_for_conflicting_luau_modules(&relative_path)?;
             self.check_for_conflicting_erlang_modules(&relative_path)?;
 
             return Ok(());
@@ -125,6 +126,11 @@ where
         // also cause a conflict, despite not being native files, as they are
         // compiled to `.mjs`.
         self.check_for_conflicting_javascript_modules(&relative_path)?;
+
+        // Check for Luau modules conflicting between each other within the
+        // same relative path. Like JavaScript modules, Gleam files are compiled
+        // to target-native source files with a matching relative path.
+        self.check_for_conflicting_luau_modules(&relative_path)?;
 
         // Check for Erlang modules conflicting between each other anywhere in
         // the tree.
@@ -213,6 +219,44 @@ where
         return Err(Error::DuplicateSourceFile {
             file: existing.to_string(),
         });
+    }
+
+    fn check_for_conflicting_luau_modules(
+        &mut self,
+        relative_path: &Utf8PathBuf,
+    ) -> Result<(), Error> {
+        let luau_path = match relative_path.extension() {
+            Some("gleam") => eco_format!("{}", relative_path.with_extension("luau")),
+            Some("luau") => eco_format!("{}", relative_path),
+            _ => return Ok(()),
+        };
+
+        let existing = self
+            .seen_modules
+            .insert(luau_path.clone(), relative_path.clone());
+
+        let Some(existing) = existing else {
+            return Ok(());
+        };
+
+        let existing_is_gleam = existing.extension() == Some("gleam");
+        if existing_is_gleam || relative_path.extension() == Some("gleam") {
+            let (gleam_file, native_file) = if existing_is_gleam {
+                (&existing, relative_path)
+            } else {
+                (relative_path, &existing)
+            };
+            return Err(Error::ClashingGleamModuleAndNativeFileName {
+                module: eco_format!("{}", gleam_file.with_extension("")),
+                gleam_file: gleam_file.clone(),
+                native_file: native_file.clone(),
+            });
+        }
+
+        assert_eq!(&existing, relative_path);
+        Err(Error::DuplicateSourceFile {
+            file: existing.to_string(),
+        })
     }
 
     /// Erlang module files cannot have the same name regardless of their

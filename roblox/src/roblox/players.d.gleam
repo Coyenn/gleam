@@ -340,7 +340,7 @@ pub fn get_user_thumbnail_async(instance: Players, user_id: OptionInt64, thumbna
 /// Parameters:
 /// - `instance`: A service that contains presently connected Player objects.
 /// - `config`: Name Type Description UserIds array UserIDs to be force allowed into the experience(s).
-Max size is 50. ApplyToUniverse boolean Propagates the unban to all places within this universe.
+/// Max size is 50. ApplyToUniverse boolean Propagates the unban to all places within this universe.
 @luau.method("UnbanAsync")
 pub fn unban_async(instance: Players, config: Dynamic) -> Nil
 

@@ -72,7 +72,7 @@ pub fn set_velocity(instance: BodyVelocity, value: Vector3) -> BodyVelocity
 ///
 /// Parameters:
 /// - `instance`: Deprecated: This object is deprecated and should not be used for new work. Use LinearVelocity instead, and see the legacy conversion notes.
-Applies a force to maintain a constant velocity.
+/// Applies a force to maintain a constant velocity.
 @luau.method("GetLastForce")
 pub fn get_last_force(instance: BodyVelocity) -> Vector3
 
@@ -84,7 +84,7 @@ pub fn get_last_force(instance: BodyVelocity) -> Vector3
 ///
 /// Parameters:
 /// - `instance`: Deprecated: This object is deprecated and should not be used for new work. Use LinearVelocity instead, and see the legacy conversion notes.
-Applies a force to maintain a constant velocity.
+/// Applies a force to maintain a constant velocity.
 @luau.method("lastForce")
 pub fn last_force(instance: BodyVelocity) -> Vector3
 

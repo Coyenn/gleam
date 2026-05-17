@@ -424,6 +424,13 @@ where
 
     fn perform_luau_codegen(&mut self, modules: &[Module]) -> Result<(), Error> {
         let mut written = HashSet::new();
+
+        if self.copy_native_files {
+            self.copy_project_native_files(&self.out, &mut written)?;
+        } else {
+            tracing::debug!("skipping_native_file_copying");
+        }
+
         crate::codegen::Luau::new(
             &self.out,
             false,
@@ -450,12 +457,6 @@ where
                 );
                 self.io.write(&meta_path, &meta_json)?;
             }
-        }
-
-        if self.copy_native_files {
-            self.copy_project_native_files(&self.out, &mut written)?;
-        } else {
-            tracing::debug!("skipping_native_file_copying");
         }
 
         Ok(())

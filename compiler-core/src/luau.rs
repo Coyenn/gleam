@@ -2,6 +2,8 @@ mod expression;
 #[cfg(test)]
 mod tests;
 
+use std::collections::HashSet;
+
 use sourcemap::SourceMap;
 
 use crate::{ast::*, docvec, line_numbers::LineNumbers, pretty::*};
@@ -94,6 +96,7 @@ impl<'a> Generator<'a> {
         let mut statements = vec![];
         let mut exports = vec![];
         let current_module_name_segments_count = module.name.split('/').count();
+        let runtime_imports = self.runtime_imports(module);
 
         // Generate custom types (records)
         for custom_type in &module.definitions.custom_types {
@@ -255,7 +258,12 @@ impl<'a> Generator<'a> {
                             ]);
                         }
                         ExternalLuauFunction::Global { global, .. } => {
-                            statements.push(docvec!["local ", name.clone(), " = ", global.clone()]);
+                            statements.push(docvec![
+                                "local ",
+                                name.clone(),
+                                " = ",
+                                luau_raw_fragment(global)
+                            ]);
                         }
                     }
                 } else {
@@ -296,6 +304,17 @@ impl<'a> Generator<'a> {
                 _ => EcoString::from(module_name.split('/').next_back().unwrap()),
             };
 
+            let import_alias_needed = runtime_imports.module_aliases.contains(&alias);
+            let needed_unqualified_values = import
+                .unqualified_values
+                .iter()
+                .filter(|unqualified| runtime_imports.values.contains(unqualified.used_name()))
+                .collect::<Vec<_>>();
+
+            if !import_alias_needed && needed_unqualified_values.is_empty() {
+                continue;
+            }
+
             let path = if import.package == module.type_info.package || import.package.is_empty() {
                 match current_module_name_segments_count {
                     1 => eco_format!("./{module_name}"),
@@ -316,7 +335,7 @@ impl<'a> Generator<'a> {
                 self.require_expr(&path),
             ]);
 
-            for unqualified in &import.unqualified_values {
+            for unqualified in needed_unqualified_values {
                 let unq_name = unqualified.used_name();
                 let original_name = &unqualified.name;
                 imports.push(docvec![
@@ -351,4 +370,201 @@ impl<'a> Generator<'a> {
             docvec![join(statements, lines(2)), lines(2), export_table, line(),]
         }
     }
+
+    fn runtime_imports(&self, module: &'a TypedModule) -> RuntimeImports {
+        let mut imports = RuntimeImports::default();
+
+        for function in &module.definitions.functions {
+            for statement in &function.body {
+                self.collect_statement_runtime_imports(statement, &mut imports);
+            }
+        }
+
+        imports
+    }
+
+    fn collect_statement_runtime_imports(
+        &self,
+        statement: &'a TypedStatement,
+        imports: &mut RuntimeImports,
+    ) {
+        match statement {
+            Statement::Expression(expression) => {
+                self.collect_expression_runtime_imports(expression, imports)
+            }
+            Statement::Assignment(assignment) => {
+                self.collect_expression_runtime_imports(&assignment.value, imports)
+            }
+            Statement::Use(use_) => self.collect_expression_runtime_imports(&use_.call, imports),
+            Statement::Assert(assert) => {
+                self.collect_expression_runtime_imports(&assert.value, imports);
+                if let Some(message) = &assert.message {
+                    self.collect_expression_runtime_imports(message, imports);
+                }
+            }
+        }
+    }
+
+    fn collect_expression_runtime_imports(
+        &self,
+        expression: &'a TypedExpr,
+        imports: &mut RuntimeImports,
+    ) {
+        match expression {
+            TypedExpr::Var {
+                name, constructor, ..
+            } => match &constructor.variant {
+                crate::type_::ValueConstructorVariant::ModuleFn {
+                    module,
+                    external_luau,
+                    ..
+                } if module != &self.module_name && !luau_external_is_inlined(external_luau) => {
+                    _ = imports.values.insert(name.clone());
+                }
+                crate::type_::ValueConstructorVariant::ModuleConstant { module, .. }
+                | crate::type_::ValueConstructorVariant::Record { module, .. }
+                    if module != &self.module_name =>
+                {
+                    _ = imports.values.insert(name.clone());
+                }
+                _ => {}
+            },
+
+            TypedExpr::ModuleSelect {
+                module_alias,
+                constructor,
+                ..
+            } => match constructor {
+                crate::type_::ModuleValueConstructor::Fn { external_luau, .. }
+                    if luau_external_is_inlined(external_luau) => {}
+                _ => {
+                    _ = imports.module_aliases.insert(module_alias.clone());
+                }
+            },
+
+            TypedExpr::Block { statements, .. } => {
+                for statement in statements {
+                    self.collect_statement_runtime_imports(statement, imports);
+                }
+            }
+            TypedExpr::Pipeline {
+                first_value,
+                assignments,
+                finally,
+                ..
+            } => {
+                self.collect_expression_runtime_imports(&first_value.value, imports);
+                for (assignment, _) in assignments {
+                    self.collect_expression_runtime_imports(&assignment.value, imports);
+                }
+                self.collect_expression_runtime_imports(finally, imports);
+            }
+            TypedExpr::Fn { body, .. } => {
+                for statement in body {
+                    self.collect_statement_runtime_imports(statement, imports);
+                }
+            }
+            TypedExpr::List { elements, tail, .. } => {
+                for element in elements {
+                    self.collect_expression_runtime_imports(element, imports);
+                }
+                if let Some(tail) = tail {
+                    self.collect_expression_runtime_imports(tail, imports);
+                }
+            }
+            TypedExpr::Call { fun, arguments, .. } => {
+                self.collect_expression_runtime_imports(fun, imports);
+                for argument in arguments {
+                    self.collect_expression_runtime_imports(&argument.value, imports);
+                }
+            }
+            TypedExpr::BinOp { left, right, .. } => {
+                self.collect_expression_runtime_imports(left, imports);
+                self.collect_expression_runtime_imports(right, imports);
+            }
+            TypedExpr::Case {
+                subjects, clauses, ..
+            } => {
+                for subject in subjects {
+                    self.collect_expression_runtime_imports(subject, imports);
+                }
+                for clause in clauses {
+                    self.collect_expression_runtime_imports(&clause.then, imports);
+                }
+            }
+            TypedExpr::RecordAccess { record, .. } | TypedExpr::PositionalAccess { record, .. } => {
+                self.collect_expression_runtime_imports(record, imports);
+            }
+            TypedExpr::Tuple { elements, .. } => {
+                for element in elements {
+                    self.collect_expression_runtime_imports(element, imports);
+                }
+            }
+            TypedExpr::TupleIndex { tuple, .. } => {
+                self.collect_expression_runtime_imports(tuple, imports);
+            }
+            TypedExpr::NegateBool { value, .. } | TypedExpr::NegateInt { value, .. } => {
+                self.collect_expression_runtime_imports(value, imports);
+            }
+            TypedExpr::Todo { message, .. } | TypedExpr::Panic { message, .. } => {
+                if let Some(message) = message {
+                    self.collect_expression_runtime_imports(message, imports);
+                }
+            }
+            TypedExpr::Echo {
+                expression,
+                message,
+                ..
+            } => {
+                if let Some(expression) = expression {
+                    self.collect_expression_runtime_imports(expression, imports);
+                }
+                if let Some(message) = message {
+                    self.collect_expression_runtime_imports(message, imports);
+                }
+            }
+            TypedExpr::RecordUpdate {
+                record_assignment,
+                constructor,
+                arguments,
+                ..
+            } => {
+                if let Some(record_assignment) = record_assignment {
+                    self.collect_expression_runtime_imports(&record_assignment.value, imports);
+                }
+                self.collect_expression_runtime_imports(constructor, imports);
+                for argument in arguments {
+                    self.collect_expression_runtime_imports(&argument.value, imports);
+                }
+            }
+            TypedExpr::Int { .. }
+            | TypedExpr::Float { .. }
+            | TypedExpr::String { .. }
+            | TypedExpr::BitArray { .. }
+            | TypedExpr::Invalid { .. } => {}
+        }
+    }
+}
+
+#[derive(Debug, Default)]
+struct RuntimeImports {
+    module_aliases: HashSet<EcoString>,
+    values: HashSet<EcoString>,
+}
+
+fn luau_external_is_inlined(external: &Option<crate::type_::ExternalLuauFunction>) -> bool {
+    matches!(
+        external,
+        Some(
+            crate::type_::ExternalLuauFunction::Property { .. }
+                | crate::type_::ExternalLuauFunction::SetProperty { .. }
+                | crate::type_::ExternalLuauFunction::Method { .. }
+                | crate::type_::ExternalLuauFunction::Event { .. }
+                | crate::type_::ExternalLuauFunction::Global { .. }
+        )
+    )
+}
+
+fn luau_raw_fragment(value: &str) -> EcoString {
+    value.replace("\\\"", "\"").into()
 }
