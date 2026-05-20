@@ -277,6 +277,62 @@ pub fn map(opt: Option(Int)) {
 }
 
 #[test]
+fn record_updates() {
+    assert_luau!(
+        r#"
+pub type Person {
+  Person(name: String, score: Int)
+}
+
+pub fn rename(person: Person) {
+  Person(..person, name: "Lucy")
+}
+
+pub fn rename_result(person: Person) {
+  Person(..{
+    let x = person
+    x
+  }, name: "Nubi")
+}
+"#
+    );
+}
+
+#[test]
+fn list_and_tuple_case_patterns() {
+    assert_luau!(
+        r#"
+pub fn list_score(xs: List(Int)) {
+  case xs {
+    [] -> 0
+    [one] -> one
+    [one, two, ..rest] -> one + two
+  }
+}
+
+pub fn tuple_score(x: #(Int, #(Int, Int))) {
+  case x {
+    #(0, _) -> 0
+    #(a, #(b, c)) -> a + b + c
+  }
+}
+"#
+    );
+}
+
+#[test]
+fn assignment_destructuring() {
+    assert_luau!(
+        r#"
+pub fn run(pair: #(Int, List(Int))) {
+  let assert #(first, [second, ..rest]) = pair
+  first + second
+}
+"#
+    );
+}
+
+#[test]
 fn externals() {
     assert_luau!(
         r#"

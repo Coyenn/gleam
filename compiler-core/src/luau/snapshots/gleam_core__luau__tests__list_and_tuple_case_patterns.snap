@@ -1,0 +1,65 @@
+---
+source: compiler-core/src/luau/tests.rs
+expression: "\npub fn list_score(xs: List(Int)) {\n  case xs {\n    [] -> 0\n    [one] -> one\n    [one, two, ..rest] -> one + two\n  }\n}\n\npub fn tuple_score(x: #(Int, #(Int, Int))) {\n  case x {\n    #(0, _) -> 0\n    #(a, #(b, c)) -> a + b + c\n  }\n}\n"
+---
+----- SOURCE CODE
+
+pub fn list_score(xs: List(Int)) {
+  case xs {
+    [] -> 0
+    [one] -> one
+    [one, two, ..rest] -> one + two
+  }
+}
+
+pub fn tuple_score(x: #(Int, #(Int, Int))) {
+  case x {
+    #(0, _) -> 0
+    #(a, #(b, c)) -> a + b + c
+  }
+}
+
+
+----- COMPILED LUAU
+local _gleam = require("../gleam")
+
+local function list_score(xs)
+  return (function()
+    local _subject_0 = xs
+    if _subject_0:hasLength(0) then
+    
+      return 0
+    elseif _subject_0:hasLength(1) then
+    
+      local one = _subject_0.head
+      return one
+    elseif _subject_0:atLeastLength(2) then
+    
+      local one = _subject_0.head
+      local two = _subject_0.tail.head
+      local rest = _subject_0.tail.tail
+      return one + two
+    end
+  end)()
+end
+
+local function tuple_score(x)
+  return (function()
+    local _subject_0 = x
+    if #_subject_0 == 2 and _subject_0[1] == 0 then
+    
+      return 0
+    elseif #_subject_0 == 2 and #_subject_0[2] == 2 then
+    
+      local a = _subject_0[1]
+      local b = _subject_0[2][1]
+      local c = _subject_0[2][2]
+      return a + b + c
+    end
+  end)()
+end
+
+return {
+  list_score = list_score,
+  tuple_score = tuple_score
+}

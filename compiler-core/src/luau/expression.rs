@@ -4,12 +4,13 @@ use ecow::{EcoString, eco_format};
 
 use crate::{
     ast::{
-        Assignment, BinOp, Pattern, TypedArg, TypedExpr, TypedPipelineAssignment, TypedStatement,
+        Assignment, BinOp, Pattern, RecordUpdateAssignment, TypedArg, TypedExpr,
+        TypedPipelineAssignment, TypedStatement,
     },
     docvec,
     line_numbers::LineNumbers,
     pretty::*,
-    type_::Type,
+    type_::{Type, TypedCallArg},
 };
 
 const INDENT: isize = 2;
@@ -199,112 +200,7 @@ impl<'a, 'b> Generator<'a, 'b> {
                 arguments,
                 type_,
                 ..
-            } => {
-                let external_luau = match &**fun {
-                    TypedExpr::Var { constructor, .. } => {
-                        if let crate::type_::ValueConstructorVariant::ModuleFn {
-                            external_luau,
-                            ..
-                        } = &constructor.variant
-                        {
-                            external_luau.as_ref()
-                        } else {
-                            None
-                        }
-                    }
-                    TypedExpr::ModuleSelect { constructor, .. } => {
-                        if let crate::type_::ModuleValueConstructor::Fn { external_luau, .. } =
-                            constructor
-                        {
-                            external_luau.as_ref()
-                        } else {
-                            None
-                        }
-                    }
-                    _ => None,
-                };
-
-                let mut args_docs = vec![];
-                for arg in arguments {
-                    args_docs.push(self.expression(&arg.value));
-                }
-
-                if let Some(ext) = external_luau {
-                    match ext {
-                        crate::type_::ExternalLuauFunction::Module { .. } => {
-                            // In a real implementation this would import the module if it's not already imported
-                            // For now we just emit a direct call if it's in the same module, or a require otherwise
-                            // Wait, actually, if it's an external module, we should emit `require("module").function(...)`
-                            // Or use the module alias if it was imported.
-                            // But `TypedExpr::ModuleSelect` already handles the module alias!
-                            // So if it's a ModuleSelect, `fun_doc` will be `alias.function`.
-                            // Let's just fall back to the default behavior for Module.
-                        }
-                        crate::type_::ExternalLuauFunction::Property { property } => {
-                            if args_docs.len() == 1 {
-                                return docvec![
-                                    args_docs[0].clone(),
-                                    ".",
-                                    property.clone().to_doc()
-                                ];
-                            }
-                        }
-                        crate::type_::ExternalLuauFunction::SetProperty { property } => {
-                            if args_docs.len() == 2 {
-                                // x.Name = value; return x
-                                // Since Luau doesn't have assignment expressions, we need to wrap it in an IIFE
-                                let return_doc = if type_.is_nil() {
-                                    "nil".to_doc()
-                                } else {
-                                    "_x".to_doc()
-                                };
-                                return docvec![
-                                    "(function() local _x = ",
-                                    args_docs[0].clone(),
-                                    "; _x.",
-                                    property.clone().to_doc(),
-                                    " = ",
-                                    args_docs[1].clone(),
-                                    "; return ",
-                                    return_doc,
-                                    " end)()"
-                                ];
-                            }
-                        }
-                        crate::type_::ExternalLuauFunction::Method { method } => {
-                            if args_docs.len() >= 1 {
-                                let target = args_docs.remove(0);
-                                let args_doc = join(args_docs, break_(",", ", "));
-                                return docvec![
-                                    target,
-                                    ":",
-                                    method.clone().to_doc(),
-                                    "(",
-                                    args_doc,
-                                    ")"
-                                ];
-                            }
-                        }
-                        crate::type_::ExternalLuauFunction::Event { event } => {
-                            if args_docs.len() == 1 {
-                                return docvec![args_docs[0].clone(), ".", event.clone().to_doc()];
-                            }
-                        }
-                        crate::type_::ExternalLuauFunction::Global { global } => {
-                            let global = luau_raw_fragment(global);
-                            if args_docs.is_empty() {
-                                return global.to_doc();
-                            }
-                            let args_doc = join(args_docs, break_(",", ", "));
-                            return docvec![global.to_doc(), "(", args_doc, ")"];
-                        }
-                    }
-                }
-
-                let fun_doc = self.expression(fun);
-                let args_doc = join(args_docs, break_(",", ", "));
-                docvec![fun_doc, "(", args_doc, ")"]
-            }
+            } => self.call(fun, arguments, type_),
             TypedExpr::BinOp {
                 name, left, right, ..
             } => {
@@ -357,9 +253,13 @@ impl<'a, 'b> Generator<'a, 'b> {
                 let value_doc = self.expression(value);
                 docvec!["-(", value_doc, ")"]
             }
-            TypedExpr::RecordUpdate { .. } => {
-                docvec!["error(\"Record update unsupported in Luau\")"]
-            }
+            TypedExpr::RecordUpdate {
+                record_assignment,
+                constructor,
+                arguments,
+                type_,
+                ..
+            } => self.record_update(record_assignment, constructor, arguments, type_),
             TypedExpr::Todo { message, .. } => {
                 let message = match message {
                     Some(message) => self.expression(message),
@@ -455,6 +355,132 @@ impl<'a, 'b> Generator<'a, 'b> {
         }
     }
 
+    fn call(
+        &mut self,
+        fun: &'a TypedExpr,
+        arguments: &'a [TypedCallArg],
+        type_: &std::sync::Arc<Type>,
+    ) -> Document<'a> {
+        let external_luau = match fun {
+            TypedExpr::Var { constructor, .. } => {
+                if let crate::type_::ValueConstructorVariant::ModuleFn {
+                    external_luau, ..
+                } = &constructor.variant
+                {
+                    external_luau.as_ref()
+                } else {
+                    None
+                }
+            }
+            TypedExpr::ModuleSelect { constructor, .. } => {
+                if let crate::type_::ModuleValueConstructor::Fn { external_luau, .. } =
+                    constructor
+                {
+                    external_luau.as_ref()
+                } else {
+                    None
+                }
+            }
+            _ => None,
+        };
+
+        let mut args_docs = vec![];
+        for arg in arguments {
+            args_docs.push(self.expression(&arg.value));
+        }
+
+        if let Some(ext) = external_luau {
+            match ext {
+                crate::type_::ExternalLuauFunction::Module { .. } => {}
+                crate::type_::ExternalLuauFunction::Property { property } => {
+                    if args_docs.len() == 1 {
+                        return docvec![args_docs[0].clone(), ".", property.clone().to_doc()];
+                    }
+                }
+                crate::type_::ExternalLuauFunction::SetProperty { property } => {
+                    if args_docs.len() == 2 {
+                        let return_doc = if type_.is_nil() {
+                            "nil".to_doc()
+                        } else {
+                            "_x".to_doc()
+                        };
+                        return docvec![
+                            "(function() local _x = ",
+                            args_docs[0].clone(),
+                            "; _x.",
+                            property.clone().to_doc(),
+                            " = ",
+                            args_docs[1].clone(),
+                            "; return ",
+                            return_doc,
+                            " end)()"
+                        ];
+                    }
+                }
+                crate::type_::ExternalLuauFunction::Method { method } => {
+                    if args_docs.len() >= 1 {
+                        let target = args_docs.remove(0);
+                        let args_doc = join(args_docs, break_(",", ", "));
+                        return docvec![
+                            target,
+                            ":",
+                            method.clone().to_doc(),
+                            "(",
+                            args_doc,
+                            ")"
+                        ];
+                    }
+                }
+                crate::type_::ExternalLuauFunction::Event { event } => {
+                    if args_docs.len() == 1 {
+                        return docvec![args_docs[0].clone(), ".", event.clone().to_doc()];
+                    }
+                }
+                crate::type_::ExternalLuauFunction::Global { global } => {
+                    let global = luau_raw_fragment(global);
+                    if args_docs.is_empty() {
+                        return global.to_doc();
+                    }
+                    let args_doc = join(args_docs, break_(",", ", "));
+                    return docvec![global.to_doc(), "(", args_doc, ")"];
+                }
+            }
+        }
+
+        let fun_doc = self.expression(fun);
+        let args_doc = join(args_docs, break_(",", ", "));
+        docvec![fun_doc, "(", args_doc, ")"]
+    }
+
+    fn record_update(
+        &mut self,
+        record: &'a Option<Box<RecordUpdateAssignment>>,
+        constructor: &'a TypedExpr,
+        arguments: &'a [TypedCallArg],
+        type_: &std::sync::Arc<Type>,
+    ) -> Document<'a> {
+        let call = self.call(constructor, arguments, type_);
+        match record.as_ref() {
+            Some(assignment) => docvec![
+                "(function()",
+                docvec![
+                    line(),
+                    "local ",
+                    assignment.name.as_str().to_doc(),
+                    " = ",
+                    self.expression(&assignment.value),
+                    line(),
+                    "return ",
+                    call
+                ]
+                .nest(INDENT),
+                line(),
+                "end)()"
+            ],
+            None => call,
+        }
+    }
+
     fn assert_statement(&mut self, assert: &'a crate::ast::Assert<TypedExpr>) -> Document<'a> {
         let condition_doc = self.expression(&assert.value);
         let message_doc = match &assert.message {
@@ -519,6 +545,43 @@ impl<'a, 'b> Generator<'a, 'b> {
                 Some(docvec![subject.clone(), " == ", string(value.as_str())])
             }
             Pattern::Variable { .. } | Pattern::Discard { .. } => None,
+            Pattern::Assign { pattern, .. } => self.pattern_condition(pattern, subject),
+            Pattern::Tuple { elements, .. } => {
+                let mut conds = vec![docvec!["#", subject.clone(), " == ", elements.len()]];
+                for (i, element) in elements.iter().enumerate() {
+                    let field_subject = docvec![subject.clone(), "[", i + 1, "]"];
+                    if let Some(c) = self.pattern_condition(element, field_subject) {
+                        conds.push(c);
+                    }
+                }
+                Some(join(conds, break_(" and ", " and ")))
+            }
+            Pattern::List { elements, tail, .. } => {
+                self.tracker.prelude_used = true;
+                let mut conds = vec![if tail.is_some() {
+                    docvec![subject.clone(), ":atLeastLength(", elements.len(), ")"]
+                } else {
+                    docvec![subject.clone(), ":hasLength(", elements.len(), ")"]
+                }];
+
+                let mut element_subject = subject.clone();
+                for element in elements {
+                    if let Some(c) =
+                        self.pattern_condition(element, docvec![element_subject.clone(), ".head"])
+                    {
+                        conds.push(c);
+                    }
+                    element_subject = docvec![element_subject, ".tail"];
+                }
+
+                if let Some(tail) = tail
+                    && let Some(c) = self.pattern_condition(&tail.pattern, element_subject)
+                {
+                    conds.push(c);
+                }
+
+                Some(join(conds, break_(" and ", " and ")))
+            }
             Pattern::Constructor {
                 name, arguments, ..
             } => {
@@ -550,7 +613,21 @@ impl<'a, 'b> Generator<'a, 'b> {
                     Some(join(conds, break_(" and ", " and ")))
                 }
             }
-            _ => None,
+            Pattern::BitArray { .. } | Pattern::BitArraySize(_) => {
+                Some(docvec!["error(\"BitArray pattern unsupported in Luau\")"])
+            }
+            Pattern::StringPrefix {
+                left_side_string,
+                ..
+            } => Some(docvec![
+                "string.sub(",
+                subject,
+                ", 1, ",
+                left_side_string.len(),
+                ") == ",
+                string(left_side_string)
+            ]),
+            Pattern::Invalid { .. } => None,
         }
     }
 
@@ -569,6 +646,33 @@ impl<'a, 'b> Generator<'a, 'b> {
                     subject.clone()
                 ]);
             }
+            Pattern::Assign { name, pattern, .. } => {
+                docs.push(docvec![
+                    "local ",
+                    name.as_str().to_doc(),
+                    " = ",
+                    subject.clone()
+                ]);
+                docs.extend(self.pattern_assignments(pattern, subject));
+            }
+            Pattern::Tuple { elements, .. } => {
+                for (i, element) in elements.iter().enumerate() {
+                    let field_subject = docvec![subject.clone(), "[", i + 1, "]"];
+                    docs.extend(self.pattern_assignments(element, field_subject));
+                }
+            }
+            Pattern::List { elements, tail, .. } => {
+                let mut element_subject = subject.clone();
+                for element in elements {
+                    docs.extend(
+                        self.pattern_assignments(element, docvec![element_subject.clone(), ".head"]),
+                    );
+                    element_subject = docvec![element_subject, ".tail"];
+                }
+                if let Some(tail) = tail {
+                    docs.extend(self.pattern_assignments(&tail.pattern, element_subject));
+                }
+            }
             Pattern::Constructor { arguments, .. } => {
                 for (i, arg) in arguments.iter().enumerate() {
                     let field = if let Some(label) = &arg.label {
@@ -578,6 +682,32 @@ impl<'a, 'b> Generator<'a, 'b> {
                     };
                     let field_subject = docvec![subject.clone(), ".", field.to_doc()];
                     docs.extend(self.pattern_assignments(&arg.value, field_subject));
+                }
+            }
+            Pattern::StringPrefix {
+                left_side_assignment,
+                left_side_string,
+                right_side_assignment,
+                ..
+            } => {
+                if let Some((name, _)) = left_side_assignment {
+                    docs.push(docvec![
+                        "local ",
+                        name.as_str().to_doc(),
+                        " = ",
+                        string(left_side_string)
+                    ]);
+                }
+                if let crate::ast::AssignName::Variable(name) = right_side_assignment {
+                    docs.push(docvec![
+                        "local ",
+                        name.as_str().to_doc(),
+                        " = string.sub(",
+                        subject,
+                        ", ",
+                        left_side_string.len() + 1,
+                        ")"
+                    ]);
                 }
             }
             _ => {}
