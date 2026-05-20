@@ -1,0 +1,27 @@
+---
+source: compiler-core/src/luau/tests/blocks.rs
+expression: "\npub fn main() {\n  {\n    {\n      1\n    }\n  }\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  {
+    {
+      1
+    }
+  }
+}
+
+
+----- COMPILED LUAU
+local function main()
+  return (function()
+    return (function()
+      return 1
+    end)()
+  end)()
+end
+
+return {
+  main = main
+}

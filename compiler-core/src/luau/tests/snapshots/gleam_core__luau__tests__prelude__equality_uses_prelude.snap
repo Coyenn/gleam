@@ -1,0 +1,21 @@
+---
+source: compiler-core/src/luau/tests/prelude.rs
+expression: "\npub fn main() {\n  [1] == [1]\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  [1] == [1]
+}
+
+
+----- COMPILED LUAU
+local _gleam = require("../gleam")
+
+local function main()
+  return _gleam.isEqual(_gleam.toList({1}), _gleam.toList({1}))
+end
+
+return {
+  main = main
+}

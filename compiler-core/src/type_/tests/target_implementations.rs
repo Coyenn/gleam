@@ -565,7 +565,7 @@ pub fn main() {
 }
 
 #[test]
-pub fn record_updates_do_not_support_luau() {
+pub fn record_updates_support_luau() {
     assert_targets!(
         r#"
 pub type Person {
@@ -592,13 +592,13 @@ pub fn main(person: Person) {
             (
                 "main",
                 Implementations {
-                    gleam: false,
+                    gleam: true,
                     uses_erlang_externals: false,
                     uses_javascript_externals: false,
                     uses_luau_externals: false,
                     can_run_on_erlang: true,
                     can_run_on_javascript: true,
-                    can_run_on_luau: false,
+                    can_run_on_luau: true,
                 }
             )
         ],
@@ -611,21 +611,6 @@ pub fn bit_arrays_error_for_luau() {
         r#"
 pub fn main() {
   <<1>>
-}
-"#
-    );
-}
-
-#[test]
-pub fn record_updates_error_for_luau() {
-    assert_luau_module_error!(
-        r#"
-pub type Person {
-  Person(name: String, age: Int)
-}
-
-pub fn main(person: Person) {
-  Person(..person, age: 10)
 }
 "#
     );

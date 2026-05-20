@@ -1,0 +1,37 @@
+---
+source: compiler-core/src/luau/tests/numbers.rs
+expression: "\npub fn go() {\n  1 + 1\n  5 - 1\n  3 * 3\n  5 / 2\n  5 % 2\n  2 > 1\n  2 < 1\n  2 >= 1\n  2 <= 1\n}\n"
+---
+----- SOURCE CODE
+
+pub fn go() {
+  1 + 1
+  5 - 1
+  3 * 3
+  5 / 2
+  5 % 2
+  2 > 1
+  2 < 1
+  2 >= 1
+  2 <= 1
+}
+
+
+----- COMPILED LUAU
+local _gleam = require("../gleam")
+
+local function go()
+  1 + 1
+  5 - 1
+  3 * 3
+  _gleam.divideInt(5, 2)
+  _gleam.remainderInt(5, 2)
+  2 > 1
+  2 < 1
+  2 >= 1
+  return 2 <= 1
+end
+
+return {
+  go = go
+}

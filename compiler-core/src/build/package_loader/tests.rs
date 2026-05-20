@@ -41,7 +41,6 @@ fn write_cache(
     let cache_metadata = CacheMetadata {
         mtime,
         codegen_performed: true,
-        is_declaration: false,
         dependencies: deps,
         fingerprint: SourceFingerprint::new(src),
         line_numbers: line_numbers.clone(),

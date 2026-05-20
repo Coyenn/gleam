@@ -1,0 +1,21 @@
+---
+source: compiler-core/src/luau/tests/numbers.rs
+expression: "\npub fn go() {\n  !False\n  -1\n}\n"
+---
+----- SOURCE CODE
+
+pub fn go() {
+  !False
+  -1
+}
+
+
+----- COMPILED LUAU
+local function go()
+  not false
+  return -1
+end
+
+return {
+  go = go
+}

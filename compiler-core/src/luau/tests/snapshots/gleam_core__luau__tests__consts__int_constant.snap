@@ -1,0 +1,24 @@
+---
+source: compiler-core/src/luau/tests/consts.rs
+expression: "\npub const answer = 42\n\npub fn main() {\n  answer\n}\n"
+---
+----- SOURCE CODE
+
+pub const answer = 42
+
+pub fn main() {
+  answer
+}
+
+
+----- COMPILED LUAU
+local answer = 42
+
+local function main()
+  return answer
+end
+
+return {
+  answer = answer,
+  main = main
+}

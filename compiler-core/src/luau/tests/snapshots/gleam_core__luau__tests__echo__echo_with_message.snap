@@ -1,0 +1,21 @@
+---
+source: compiler-core/src/luau/tests/echo.rs
+expression: "\npub fn main() {\n  echo \"hello\"\n  1\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  echo "hello"
+  1
+}
+
+
+----- COMPILED LUAU
+local function main()
+  print(nil)
+  return 1
+end
+
+return {
+  main = main
+}

@@ -1,0 +1,45 @@
+---
+source: compiler-core/src/luau/tests/use_.rs
+expression: "\npub fn main() {\n  use Box(x) <- apply(Box(1))\n  x\n}\n\npub type Box(a) {\n  Box(a)\n}\n\nfn apply(arg, fun) {\n  fun(arg)\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  use Box(x) <- apply(Box(1))
+  x
+}
+
+pub type Box(a) {
+  Box(a)
+}
+
+fn apply(arg, fun) {
+  fun(arg)
+}
+
+
+----- COMPILED LUAU
+local Box = function(arg_0)
+  return {
+    tag = "Box",
+    arg_0 = arg_0
+  }
+end
+
+local function apply(arg, fun)
+  return fun(arg)
+end
+
+local function main()
+  apply(Box(1), function(_use0)
+    local _assignment_0 = _use0
+    if not (_assignment_0.tag == "Box") then error("Pattern match failed in assignment") end
+    local x = _assignment_0.arg_0
+    return x
+  end)
+end
+
+return {
+  Box = Box,
+  main = main
+}

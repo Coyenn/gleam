@@ -1,0 +1,23 @@
+---
+source: compiler-core/src/luau/tests/numbers.rs
+expression: "\npub fn go() {\n  1 == 1\n  1 != 2\n}\n"
+---
+----- SOURCE CODE
+
+pub fn go() {
+  1 == 1
+  1 != 2
+}
+
+
+----- COMPILED LUAU
+local _gleam = require("../gleam")
+
+local function go()
+  _gleam.isEqual(1, 1)
+  return not _gleam.isEqual(1, 2)
+end
+
+return {
+  go = go
+}

@@ -1,0 +1,41 @@
+---
+source: compiler-core/src/luau/tests/consts.rs
+expression: "\npub type Crop {\n  Crop(name: String, stage: Int)\n}\n\npub const corn = Crop(\"corn\", 1)\n\npub fn main() {\n  corn\n}\n"
+---
+----- SOURCE CODE
+
+pub type Crop {
+  Crop(name: String, stage: Int)
+}
+
+pub const corn = Crop("corn", 1)
+
+pub fn main() {
+  corn
+}
+
+
+----- COMPILED LUAU
+local Crop = function(name, stage)
+  return {
+    tag = "Crop",
+    name = name,
+    stage = stage
+  }
+end
+
+local corn = {
+  tag = "Crop",
+  arg_0 = "corn",
+  arg_1 = 1
+}
+
+local function main()
+  return corn
+end
+
+return {
+  Crop = Crop,
+  corn = corn,
+  main = main
+}

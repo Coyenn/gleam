@@ -1,0 +1,27 @@
+---
+source: compiler-core/src/luau/tests/smoke.rs
+expression: "\npub fn run(pair: #(Int, List(Int))) {\n  let assert #(first, [second, ..rest]) = pair\n  first + second\n}\n"
+---
+----- SOURCE CODE
+
+pub fn run(pair: #(Int, List(Int))) {
+  let assert #(first, [second, ..rest]) = pair
+  first + second
+}
+
+
+----- COMPILED LUAU
+local _gleam = require("../gleam")
+
+local function run(pair)
+  local _assignment_0 = pair
+  if not (#_assignment_0 == 2 and _assignment_0[2]:atLeastLength(1)) then error("Pattern match failed in assignment") end
+  local first = _assignment_0[1]
+  local second = _assignment_0[2].head
+  local rest = _assignment_0[2].tail
+  return first + second
+end
+
+return {
+  run = run
+}

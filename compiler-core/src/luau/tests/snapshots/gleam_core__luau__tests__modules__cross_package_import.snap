@@ -1,0 +1,22 @@
+---
+source: compiler-core/src/luau/tests/modules.rs
+expression: "\nimport helper\npub fn main() {\n  helper.value()\n}\n"
+---
+----- SOURCE CODE
+
+import helper
+pub fn main() {
+  helper.value()
+}
+
+
+----- COMPILED LUAU
+local helper = require("../../other_package/helper")
+
+local function main()
+  return helper.value()
+end
+
+return {
+  main = main
+}

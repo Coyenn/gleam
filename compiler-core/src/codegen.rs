@@ -40,9 +40,6 @@ impl<'a> Erlang<'a> {
         root: &Utf8Path,
     ) -> Result<()> {
         for module in modules {
-            if module.is_declaration {
-                continue;
-            }
             let erl_name = module.erlang_name();
             self.erlang_module(&writer, module, &erl_name, root)?;
             self.erlang_record_headers(&writer, module, &erl_name)?;
@@ -206,9 +203,6 @@ impl<'a> JavaScript<'a> {
         stdlib_package: StdlibPackage,
     ) -> Result<()> {
         for module in modules {
-            if module.is_declaration {
-                continue;
-            }
             let js_name = module.name.clone();
             if self.typescript == TypeScriptDeclarations::Emit {
                 self.ts_declaration(writer, module, &js_name)?;
@@ -328,12 +322,22 @@ impl<'a> Luau<'a> {
 
     pub fn render(&self, writer: &impl FileSystemWriter, modules: &[Module]) -> Result<()> {
         for module in modules {
-            if module.is_declaration {
-                continue;
-            }
             let luau_name = module.name.clone();
             self.luau_module(writer, module, &luau_name)?
         }
+        self.write_prelude(writer)?;
+        Ok(())
+    }
+
+    fn write_prelude(&self, writer: &impl FileSystemWriter) -> Result<()> {
+        let gleam_path = self.output_directory.join("gleam.luau");
+
+        // This check skips unnecessary `gleam.luau` writes which confuse
+        // watchers and build tools
+        if !writer.exists(&gleam_path) {
+            writer.write(&gleam_path, "return require(\"../prelude\")\n")?;
+        }
+
         Ok(())
     }
 

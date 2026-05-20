@@ -1,0 +1,41 @@
+---
+source: compiler-core/src/luau/tests/pipelines.rs
+expression: "\npub fn add_one(x) {\n  x + 1\n}\n\npub fn double(x) {\n  x * 2\n}\n\npub fn main() {\n  1 |> add_one |> double\n}\n"
+---
+----- SOURCE CODE
+
+pub fn add_one(x) {
+  x + 1
+}
+
+pub fn double(x) {
+  x * 2
+}
+
+pub fn main() {
+  1 |> add_one |> double
+}
+
+
+----- COMPILED LUAU
+local function add_one(x)
+  return x + 1
+end
+
+local function double(x)
+  return x * 2
+end
+
+local function main()
+  return (function()
+    local _pipe = 1
+    local _pipe = add_one(_pipe)
+    return double(_pipe)
+  end)()
+end
+
+return {
+  add_one = add_one,
+  double = double,
+  main = main
+}

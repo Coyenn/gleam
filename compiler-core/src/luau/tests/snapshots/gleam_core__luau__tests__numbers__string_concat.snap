@@ -1,0 +1,19 @@
+---
+source: compiler-core/src/luau/tests/numbers.rs
+expression: "\npub fn go() {\n  \"hello\" <> \" world\"\n}\n"
+---
+----- SOURCE CODE
+
+pub fn go() {
+  "hello" <> " world"
+}
+
+
+----- COMPILED LUAU
+local function go()
+  return "hello" .. " world"
+end
+
+return {
+  go = go
+}

@@ -196,7 +196,6 @@ fn write_cache(
     let cache_metadata = CacheMetadata {
         mtime: SystemTime::UNIX_EPOCH + Duration::from_secs(seconds),
         codegen_performed,
-        is_declaration: false,
         dependencies: vec![],
         fingerprint: SourceFingerprint::new(source),
         line_numbers,

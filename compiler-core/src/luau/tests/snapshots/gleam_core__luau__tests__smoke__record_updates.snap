@@ -1,0 +1,50 @@
+---
+source: compiler-core/src/luau/tests/smoke.rs
+expression: "\npub type Person {\n  Person(name: String, score: Int)\n}\n\npub fn rename(person: Person) {\n  Person(..person, name: \"Lucy\")\n}\n\npub fn rename_result(person: Person) {\n  Person(..{\n    let x = person\n    x\n  }, name: \"Nubi\")\n}\n"
+---
+----- SOURCE CODE
+
+pub type Person {
+  Person(name: String, score: Int)
+}
+
+pub fn rename(person: Person) {
+  Person(..person, name: "Lucy")
+}
+
+pub fn rename_result(person: Person) {
+  Person(..{
+    let x = person
+    x
+  }, name: "Nubi")
+}
+
+
+----- COMPILED LUAU
+local Person = function(name, score)
+  return {
+    tag = "Person",
+    name = name,
+    score = score
+  }
+end
+
+local function rename(person)
+  return Person("Lucy", person.score)
+end
+
+local function rename_result(person)
+  return (function()
+    local _record = (function()
+      local x = person
+      return x
+    end)()
+    return Person("Nubi", _record.score)
+  end)()
+end
+
+return {
+  Person = Person,
+  rename = rename,
+  rename_result = rename_result
+}

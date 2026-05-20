@@ -338,7 +338,6 @@ where
             let info = CacheMetadata {
                 mtime: module.mtime,
                 codegen_performed: self.perform_codegen,
-                is_declaration: module.is_declaration,
                 dependencies: module.dependencies.clone(),
                 fingerprint: SourceFingerprint::new(&module.code),
                 line_numbers: module.ast.type_info.line_numbers.clone(),
@@ -622,7 +621,6 @@ fn analyse(
         path,
         mtime,
         origin,
-        is_declaration,
         package,
         dependencies,
         extra,
@@ -692,7 +690,6 @@ fn analyse(
                 let mut module = Module {
                     dependencies,
                     origin,
-                    is_declaration,
                     extra,
                     mtime,
                     name,
@@ -735,7 +732,6 @@ fn analyse(
                 let mut module = Module {
                     dependencies,
                     origin,
-                    is_declaration,
                     extra,
                     mtime,
                     name,
@@ -842,7 +838,6 @@ impl Input {
 pub(crate) struct CachedModule {
     pub name: EcoString,
     pub origin: Origin,
-    pub is_declaration: bool,
     pub dependencies: Vec<(EcoString, SrcSpan)>,
     pub source_path: Utf8PathBuf,
     pub line_numbers: LineNumbers,
@@ -852,7 +847,6 @@ pub(crate) struct CachedModule {
 pub(crate) struct CacheMetadata {
     pub mtime: SystemTime,
     pub codegen_performed: bool,
-    pub is_declaration: bool,
     pub dependencies: Vec<(EcoString, SrcSpan)>,
     pub fingerprint: SourceFingerprint,
     pub line_numbers: LineNumbers,
@@ -894,7 +888,6 @@ pub(crate) struct UncompiledModule {
     pub code: EcoString,
     pub mtime: SystemTime,
     pub origin: Origin,
-    pub is_declaration: bool,
     pub package: EcoString,
     pub dependencies: Vec<(EcoString, SrcSpan)>,
     pub ast: UntypedModule,

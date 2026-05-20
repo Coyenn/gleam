@@ -1,0 +1,38 @@
+---
+source: compiler-core/src/luau/tests/case_clause_guards.rs
+expression: "pub fn main(xs) {\n  case xs {\n    [a, b] if a == 1 -> a + b\n    _ -> 0\n  }\n}\n"
+---
+----- SOURCE CODE
+pub fn main(xs) {
+  case xs {
+    [a, b] if a == 1 -> a + b
+    _ -> 0
+  }
+}
+
+
+----- COMPILED LUAU
+local _gleam = require("../gleam")
+
+local function main(xs)
+  return (function()
+    local _subject_0 = xs
+    if _subject_0:hasLength(2) then
+    
+      local a = _subject_0.head
+      local b = _subject_0.tail.head
+      if _gleam.isEqual(a, 1) then
+      return a + b
+      end
+    end
+    if true then
+    
+      return 0
+    end
+    end
+  end)()
+end
+
+return {
+  main = main
+}

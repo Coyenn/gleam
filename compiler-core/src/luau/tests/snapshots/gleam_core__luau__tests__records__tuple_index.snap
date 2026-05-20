@@ -1,0 +1,21 @@
+---
+source: compiler-core/src/luau/tests/records.rs
+expression: "\npub fn main() {\n  let t = #(1, 2, 3)\n  t.1\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  let t = #(1, 2, 3)
+  t.1
+}
+
+
+----- COMPILED LUAU
+local function main()
+  local t = {1, 2, 3}
+  return t[2]
+end
+
+return {
+  main = main
+}

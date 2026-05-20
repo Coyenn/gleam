@@ -1,0 +1,32 @@
+---
+source: compiler-core/src/luau/tests/records.rs
+expression: "\npub type Person {\n  Person(name: String, score: Int)\n}\n\npub fn main(person: Person) {\n  person.name\n}\n"
+---
+----- SOURCE CODE
+
+pub type Person {
+  Person(name: String, score: Int)
+}
+
+pub fn main(person: Person) {
+  person.name
+}
+
+
+----- COMPILED LUAU
+local Person = function(name, score)
+  return {
+    tag = "Person",
+    name = name,
+    score = score
+  }
+end
+
+local function main(person)
+  return person.name
+end
+
+return {
+  Person = Person,
+  main = main
+}

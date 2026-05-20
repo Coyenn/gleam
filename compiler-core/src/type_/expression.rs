@@ -564,10 +564,7 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 constructor,
                 record,
                 arguments,
-            } => {
-                self.mark_unsupported_target_feature(location, Target::Luau, "record updates");
-                self.infer_record_update(*constructor, record, arguments, location)
-            }
+            } => self.infer_record_update(*constructor, record, arguments, location),
 
             UntypedExpr::NegateBool { location, value } => {
                 Ok(self.infer_negate_bool(location, *value))
@@ -3860,7 +3857,6 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 arguments,
                 ..
             } => {
-                self.mark_unsupported_target_feature(location, Target::Luau, "record updates");
                 self.track_feature_usage(FeatureKind::ConstantRecordUpdate, location);
                 let first_argument_start =
                     arguments.first().map(|argument| argument.location.start);

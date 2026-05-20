@@ -1,0 +1,23 @@
+---
+source: compiler-core/src/luau/tests/assert.rs
+expression: "\npub fn main() {\n  let x = True\n  assert x\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  let x = True
+  assert x
+}
+
+
+----- COMPILED LUAU
+local function main()
+  local x = true
+  if not (false) then
+    error("Assertion failed")
+  end
+end
+
+return {
+  main = main
+}

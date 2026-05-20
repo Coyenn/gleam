@@ -1,0 +1,24 @@
+---
+source: compiler-core/src/luau/tests/consts.rs
+expression: "\npub const greeting = \"hello\"\n\npub fn main() {\n  greeting\n}\n"
+---
+----- SOURCE CODE
+
+pub const greeting = "hello"
+
+pub fn main() {
+  greeting
+}
+
+
+----- COMPILED LUAU
+local greeting = "hello"
+
+local function main()
+  return greeting
+end
+
+return {
+  greeting = greeting,
+  main = main
+}

@@ -772,7 +772,6 @@ impl<'a, A> ModuleAnalyzer<'a, A> {
             // We don't emit this error if there is a body
             // since this would be caught at the statement level
             && !has_body
-            && !self.src_path.as_str().ends_with(".d.gleam")
         {
             self.problems.error(Error::UnsupportedPublicFunctionTarget {
                 name: name.clone(),
@@ -947,10 +946,6 @@ impl<'a, A> ModuleAnalyzer<'a, A> {
         external_luau: &Option<ast::ExternalLuauFunction>,
         location: SrcSpan,
     ) -> bool {
-        if self.src_path.as_str().ends_with(".d.gleam") {
-            return true;
-        }
-
         match (external_erlang, external_javascript, external_luau) {
             (None, None, None) if body.is_empty() => {
                 self.problems.error(Error::NoImplementation { location });

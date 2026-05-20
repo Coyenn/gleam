@@ -1,0 +1,21 @@
+---
+source: compiler-core/src/luau/tests/assert.rs
+expression: "\npub fn main() {\n  assert False as \"nope\"\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  assert False as "nope"
+}
+
+
+----- COMPILED LUAU
+local function main()
+  if not (false) then
+    error("nope")
+  end
+end
+
+return {
+  main = main
+}

@@ -1,0 +1,35 @@
+---
+source: compiler-core/src/luau/tests/strings.rs
+expression: "\npub fn main(x) {\n  case x {\n    \"yes\" -> True\n    \"no\" -> False\n    _ -> False\n  }\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main(x) {
+  case x {
+    "yes" -> True
+    "no" -> False
+    _ -> False
+  }
+}
+
+
+----- COMPILED LUAU
+local function main(x)
+  return (function()
+    local _subject_0 = x
+    if _subject_0 == "yes" then
+    
+      return true
+    elseif _subject_0 == "no" then
+    
+      return false
+    elseif true then
+    
+      return false
+    end
+  end)()
+end
+
+return {
+  main = main
+}

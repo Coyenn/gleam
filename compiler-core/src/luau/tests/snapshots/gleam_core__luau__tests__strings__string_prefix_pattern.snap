@@ -1,0 +1,32 @@
+---
+source: compiler-core/src/luau/tests/strings.rs
+expression: "\npub fn main(x) {\n  case x {\n    \"hello\" <> rest -> rest\n    _ -> x\n  }\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main(x) {
+  case x {
+    "hello" <> rest -> rest
+    _ -> x
+  }
+}
+
+
+----- COMPILED LUAU
+local function main(x)
+  return (function()
+    local _subject_0 = x
+    if string.sub(_subject_0, 1, 5) == "hello" then
+    
+      local rest = string.sub(_subject_0, 6)
+      return rest
+    elseif true then
+    
+      return x
+    end
+  end)()
+end
+
+return {
+  main = main
+}

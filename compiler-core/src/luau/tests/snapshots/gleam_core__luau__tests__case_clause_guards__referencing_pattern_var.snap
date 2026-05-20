@@ -1,0 +1,35 @@
+---
+source: compiler-core/src/luau/tests/case_clause_guards.rs
+expression: "pub fn main(xs) {\n  case xs {\n    #(x) if x -> 1\n    _ -> 0\n  }\n}\n"
+---
+----- SOURCE CODE
+pub fn main(xs) {
+  case xs {
+    #(x) if x -> 1
+    _ -> 0
+  }
+}
+
+
+----- COMPILED LUAU
+local function main(xs)
+  return (function()
+    local _subject_0 = xs
+    if #_subject_0 == 1 then
+    
+      local x = _subject_0[1]
+      if x then
+      return 1
+      end
+    end
+    if true then
+    
+      return 0
+    end
+    end
+  end)()
+end
+
+return {
+  main = main
+}

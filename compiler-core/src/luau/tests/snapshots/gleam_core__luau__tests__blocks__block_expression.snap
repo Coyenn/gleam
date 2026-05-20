@@ -1,0 +1,27 @@
+---
+source: compiler-core/src/luau/tests/blocks.rs
+expression: "\npub fn main() {\n  {\n    let a = 1\n    let b = 2\n    a + b\n  }\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  {
+    let a = 1
+    let b = 2
+    a + b
+  }
+}
+
+
+----- COMPILED LUAU
+local function main()
+  return (function()
+    local a = 1
+    local b = 2
+    return a + b
+  end)()
+end
+
+return {
+  main = main
+}

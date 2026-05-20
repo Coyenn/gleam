@@ -1,0 +1,32 @@
+---
+source: compiler-core/src/luau/tests/use_.rs
+expression: "\npub fn main() {\n  use <- pair()\n  123\n}\n\nfn pair(f) {\n  let x = f()\n  #(x, x)\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  use <- pair()
+  123
+}
+
+fn pair(f) {
+  let x = f()
+  #(x, x)
+}
+
+
+----- COMPILED LUAU
+local function pair(f)
+  local x = f()
+  return {x, x}
+end
+
+local function main()
+  pair(function()
+    return 123
+  end)
+end
+
+return {
+  main = main
+}

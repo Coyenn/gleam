@@ -1,0 +1,38 @@
+---
+source: compiler-core/src/luau/tests/case_clause_guards.rs
+expression: "\npub fn main(pair: #(String, Int)) {\n  case pair {\n    #(n, _) if n == \"Lucy\" -> 1\n    _ -> 0\n  }\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main(pair: #(String, Int)) {
+  case pair {
+    #(n, _) if n == "Lucy" -> 1
+    _ -> 0
+  }
+}
+
+
+----- COMPILED LUAU
+local _gleam = require("../gleam")
+
+local function main(pair)
+  return (function()
+    local _subject_0 = pair
+    if #_subject_0 == 2 then
+    
+      local n = _subject_0[1]
+      if _gleam.isEqual(n, "Lucy") then
+      return 1
+      end
+    end
+    if true then
+    
+      return 0
+    end
+    end
+  end)()
+end
+
+return {
+  main = main
+}

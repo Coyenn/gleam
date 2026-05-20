@@ -1,0 +1,27 @@
+---
+source: compiler-core/src/luau/tests/numbers.rs
+expression: "\npub fn go() {\n  1.0 +. 1.0\n  5.0 -. 1.0\n  3.0 *. 3.0\n  5.0 /. 2.0\n}\n"
+---
+----- SOURCE CODE
+
+pub fn go() {
+  1.0 +. 1.0
+  5.0 -. 1.0
+  3.0 *. 3.0
+  5.0 /. 2.0
+}
+
+
+----- COMPILED LUAU
+local _gleam = require("../gleam")
+
+local function go()
+  1.0 + 1.0
+  5.0 - 1.0
+  3.0 * 3.0
+  return _gleam.divideFloat(5.0, 2.0)
+end
+
+return {
+  go = go
+}

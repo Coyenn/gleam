@@ -1,0 +1,25 @@
+---
+source: compiler-core/src/luau/tests/smoke.rs
+expression: "\npub fn let_test() {\n  let a = True\n  let b = False\n  let c = Nil\n  a\n}\n"
+---
+----- SOURCE CODE
+
+pub fn let_test() {
+  let a = True
+  let b = False
+  let c = Nil
+  a
+}
+
+
+----- COMPILED LUAU
+local function let_test()
+  local a = true
+  local b = false
+  local c = nil
+  return false
+end
+
+return {
+  let_test = let_test
+}

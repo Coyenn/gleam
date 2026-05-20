@@ -1,0 +1,52 @@
+---
+source: compiler-core/src/luau/tests/smoke.rs
+expression: "\npub type Option(a) {\n  Some(value: a)\n  None\n}\n\npub type Crop {\n  Crop(seed_id: String, stage: Int)\n}\n\npub fn create() {\n  let a = None\n  let b = Some(1)\n  let c = Crop(\"corn\", 2)\n}\n"
+---
+----- SOURCE CODE
+
+pub type Option(a) {
+  Some(value: a)
+  None
+}
+
+pub type Crop {
+  Crop(seed_id: String, stage: Int)
+}
+
+pub fn create() {
+  let a = None
+  let b = Some(1)
+  let c = Crop("corn", 2)
+}
+
+
+----- COMPILED LUAU
+local Some = function(value)
+  return {
+    tag = "Some",
+    value = value
+  }
+end
+
+local None = { tag = "None" }
+
+local Crop = function(seed_id, stage)
+  return {
+    tag = "Crop",
+    seed_id = seed_id,
+    stage = stage
+  }
+end
+
+local function create()
+  local a = None
+  local b = Some(1)
+  local c = Crop("corn", 2)
+end
+
+return {
+  Some = Some,
+  None = None,
+  Crop = Crop,
+  create = create
+}

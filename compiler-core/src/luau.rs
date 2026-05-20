@@ -157,6 +157,36 @@ impl<'a> Generator<'a> {
             }
         }
 
+        for constant in &module.definitions.constants {
+            if module
+                .unused_definition_positions
+                .contains(&constant.location.start)
+            {
+                continue;
+            }
+
+            let mut expr_gen = expression::Generator::new(
+                self.module_name.clone(),
+                self.line_numbers,
+                &mut self.tracker,
+            );
+
+            statements.push(docvec![
+                "local ",
+                constant.name.as_str().to_doc(),
+                " = ",
+                expr_gen.constant(&constant.value)
+            ]);
+
+            if constant.publicity.is_public() {
+                exports.push(docvec![
+                    constant.name.as_str().to_doc(),
+                    " = ",
+                    constant.name.as_str().to_doc(),
+                ]);
+            }
+        }
+
         for function in &module.definitions.functions {
             if let Some((_, name)) = &function.name {
                 let mut expr_gen = expression::Generator::new(
@@ -490,6 +520,9 @@ impl<'a> Generator<'a> {
                 }
                 for clause in clauses {
                     self.collect_expression_runtime_imports(&clause.then, imports);
+                    if let Some(guard) = &clause.guard {
+                        self.collect_clause_guard_runtime_imports(guard, imports);
+                    }
                 }
             }
             TypedExpr::RecordAccess { record, .. } | TypedExpr::PositionalAccess { record, .. } => {
@@ -542,6 +575,36 @@ impl<'a> Generator<'a> {
             | TypedExpr::String { .. }
             | TypedExpr::BitArray { .. }
             | TypedExpr::Invalid { .. } => {}
+        }
+    }
+
+    fn collect_clause_guard_runtime_imports(
+        &self,
+        guard: &TypedClauseGuard,
+        imports: &mut RuntimeImports,
+    ) {
+        use crate::ast::ClauseGuard;
+        match guard {
+            ClauseGuard::Block { value, .. } => {
+                self.collect_clause_guard_runtime_imports(value, imports)
+            }
+            ClauseGuard::BinaryOperator { left, right, .. } => {
+                self.collect_clause_guard_runtime_imports(left, imports);
+                self.collect_clause_guard_runtime_imports(right, imports);
+            }
+            ClauseGuard::Not { expression, .. } => {
+                self.collect_clause_guard_runtime_imports(expression, imports);
+            }
+            ClauseGuard::TupleIndex { tuple, .. } => {
+                self.collect_clause_guard_runtime_imports(tuple, imports);
+            }
+            ClauseGuard::FieldAccess { container, .. } => {
+                self.collect_clause_guard_runtime_imports(container, imports);
+            }
+            ClauseGuard::ModuleSelect { module_alias, .. } => {
+                _ = imports.module_aliases.insert(module_alias.clone());
+            }
+            ClauseGuard::Var { .. } | ClauseGuard::Constant(_) => {}
         }
     }
 }

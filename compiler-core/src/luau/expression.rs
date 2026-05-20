@@ -4,8 +4,8 @@ use ecow::{EcoString, eco_format};
 
 use crate::{
     ast::{
-        Assignment, BinOp, Pattern, RecordUpdateAssignment, TypedArg, TypedExpr,
-        TypedPipelineAssignment, TypedStatement,
+        Assignment, BinOp, ClauseGuard, Constant, Pattern, RecordUpdateAssignment, TypedArg,
+        TypedClauseGuard, TypedConstant, TypedExpr, TypedPipelineAssignment, TypedStatement,
     },
     docvec,
     line_numbers::LineNumbers,
@@ -288,7 +288,6 @@ impl<'a, 'b> Generator<'a, 'b> {
             } => {
                 let mut docs = vec![];
 
-                // assign subjects to local variables
                 let mut subject_vars = vec![];
                 for (i, subject) in subjects.iter().enumerate() {
                     let var = eco_format!("_subject_{}", i);
@@ -301,7 +300,9 @@ impl<'a, 'b> Generator<'a, 'b> {
                     subject_vars.push(var.to_doc());
                 }
 
+                let has_guards = clauses.iter().any(|clause| clause.guard.is_some());
                 let mut is_first = true;
+
                 for clause in clauses {
                     let mut condition = vec![];
 
@@ -312,29 +313,60 @@ impl<'a, 'b> Generator<'a, 'b> {
                         }
                     }
 
-                    let condition_doc = if condition.is_empty() {
+                    let pattern_doc = if condition.is_empty() {
                         "true".to_doc()
                     } else {
                         join(condition, break_(" and ", " and "))
                     };
 
-                    if is_first {
-                        docs.push(docvec!["if ", condition_doc, " then"]);
+                    if has_guards {
+                        docs.push(docvec!["if ", pattern_doc, " then"]);
+
+                        let mut branch_body = vec![];
+                        for (i, pattern) in clause.pattern.iter().enumerate() {
+                            branch_body.extend(
+                                self.pattern_assignments(pattern, subject_vars[i].clone()),
+                            );
+                        }
+
+                        if let Some(guard) = &clause.guard {
+                            branch_body.push(docvec!["if ", self.clause_guard(guard), " then"]);
+                            branch_body
+                                .push(docvec!["return ", self.expression(&clause.then)]);
+                            branch_body.push("end".to_doc());
+                        } else {
+                            branch_body
+                                .push(docvec!["return ", self.expression(&clause.then)]);
+                        }
+
+                        docs.push(docvec![line(), join(branch_body, line())].nest(INDENT));
+                        docs.push("end".to_doc());
+                    } else if is_first {
+                        docs.push(docvec!["if ", pattern_doc, " then"]);
                         is_first = false;
+
+                        let mut branch_body = vec![];
+                        for (i, pattern) in clause.pattern.iter().enumerate() {
+                            branch_body.extend(
+                                self.pattern_assignments(pattern, subject_vars[i].clone()),
+                            );
+                        }
+                        branch_body.push(docvec!["return ", self.expression(&clause.then)]);
+
+                        docs.push(docvec![line(), join(branch_body, line())].nest(INDENT));
                     } else {
-                        docs.push(docvec!["elseif ", condition_doc, " then"]);
+                        docs.push(docvec!["elseif ", pattern_doc, " then"]);
+
+                        let mut branch_body = vec![];
+                        for (i, pattern) in clause.pattern.iter().enumerate() {
+                            branch_body.extend(
+                                self.pattern_assignments(pattern, subject_vars[i].clone()),
+                            );
+                        }
+                        branch_body.push(docvec!["return ", self.expression(&clause.then)]);
+
+                        docs.push(docvec![line(), join(branch_body, line())].nest(INDENT));
                     }
-
-                    let mut branch_body = vec![];
-                    // assign variables from pattern
-                    for (i, pattern) in clause.pattern.iter().enumerate() {
-                        branch_body
-                            .extend(self.pattern_assignments(pattern, subject_vars[i].clone()));
-                    }
-
-                    branch_body.push(docvec!["return ", self.expression(&clause.then)]);
-
-                    docs.push(docvec![line(), join(branch_body, line())].nest(INDENT));
                 }
 
                 docs.push("end".to_doc());
@@ -713,6 +745,171 @@ impl<'a, 'b> Generator<'a, 'b> {
             _ => {}
         }
         docs
+    }
+
+    pub fn constant(&mut self, constant: &'a TypedConstant) -> Document<'a> {
+        match constant {
+            Constant::Int { value, .. } => value.as_str().to_doc(),
+            Constant::Float { value, .. } => value.as_str().to_doc(),
+            Constant::String { value, .. } => string(value.as_str()),
+            Constant::Tuple { elements, .. } => {
+                let elements = elements
+                    .iter()
+                    .map(|element| self.constant(element))
+                    .collect::<Vec<_>>();
+                docvec!["{", join(elements, break_(",", ", ")), "}"]
+            }
+            Constant::List { elements, tail, .. } => {
+                self.tracker.prelude_used = true;
+                let elements = elements
+                    .iter()
+                    .map(|element| self.constant(element))
+                    .collect::<Vec<_>>();
+                let elements_doc = docvec!["{", join(elements, break_(",", ", ")), "}"];
+                match tail {
+                    Some(tail) => docvec!["_gleam.toList(", elements_doc, ", ", self.constant(tail), ")"],
+                    None => docvec!["_gleam.toList(", elements_doc, ")"],
+                }
+            }
+            Constant::Record { name, arguments, .. } => {
+                if arguments.is_empty() {
+                    docvec!["{ tag = \"", name.as_str().to_doc(), "\" }"]
+                } else {
+                    let mut fields = vec![docvec!["tag = \"", name.as_str().to_doc(), "\""]];
+                    for (i, arg) in arguments.iter().enumerate() {
+                        let field = if let Some(label) = &arg.label {
+                            label.clone()
+                        } else {
+                            eco_format!("arg_{}", i)
+                        };
+                        fields.push(docvec![field.to_doc(), " = ", self.constant(&arg.value)]);
+                    }
+                    docvec![
+                        "{",
+                        docvec![line(), join(fields, docvec![",", line()])].nest(INDENT),
+                        line(),
+                        "}"
+                    ]
+                }
+            }
+            Constant::RecordUpdate { .. } => {
+                docvec!["error(\"Record update constants unsupported in Luau\")"]
+            }
+            Constant::Var { name, .. } => name.as_str().to_doc(),
+            Constant::StringConcatenation { left, right, .. } => {
+                docvec![self.constant(left), " .. ", self.constant(right)]
+            }
+            Constant::BitArray { .. } => docvec!["error(\"BitArray unsupported in Luau\")"],
+            Constant::Todo { .. } => docvec!["error(\"todo constant evaluated\")"],
+            Constant::Invalid { .. } => {
+                panic!("invalid constants should not reach Luau code generation")
+            }
+        }
+    }
+
+    fn clause_guard(&mut self, guard: &'a TypedClauseGuard) -> Document<'a> {
+        match guard {
+            ClauseGuard::Block { value, .. } => self.clause_guard(value).surround("(", ")"),
+            ClauseGuard::BinaryOperator {
+                left,
+                right,
+                operator,
+                ..
+            } => {
+                let left_document = self.wrapped_clause_guard(left);
+                let right_document = self.wrapped_clause_guard(right);
+                match operator {
+                    BinOp::And => docvec![left_document, " and ", right_document],
+                    BinOp::Or => docvec![left_document, " or ", right_document],
+                    BinOp::Eq => {
+                        self.tracker.prelude_used = true;
+                        docvec![
+                            "_gleam.isEqual(",
+                            left_document,
+                            ", ",
+                            right_document,
+                            ")"
+                        ]
+                    }
+                    BinOp::NotEq => {
+                        self.tracker.prelude_used = true;
+                        docvec![
+                            "not _gleam.isEqual(",
+                            left_document,
+                            ", ",
+                            right_document,
+                            ")"
+                        ]
+                    }
+                    BinOp::LtInt | BinOp::LtFloat => docvec![left_document, " < ", right_document],
+                    BinOp::LtEqInt | BinOp::LtEqFloat => {
+                        docvec![left_document, " <= ", right_document]
+                    }
+                    BinOp::GtEqInt | BinOp::GtEqFloat => {
+                        docvec![left_document, " >= ", right_document]
+                    }
+                    BinOp::GtInt | BinOp::GtFloat => docvec![left_document, " > ", right_document],
+                    BinOp::AddInt | BinOp::AddFloat => docvec![left_document, " + ", right_document],
+                    BinOp::SubInt | BinOp::SubFloat => docvec![left_document, " - ", right_document],
+                    BinOp::MultInt | BinOp::MultFloat => {
+                        docvec![left_document, " * ", right_document]
+                    }
+                    BinOp::DivInt => {
+                        self.tracker.prelude_used = true;
+                        docvec!["_gleam.divideInt(", left_document, ", ", right_document, ")"]
+                    }
+                    BinOp::DivFloat => {
+                        self.tracker.prelude_used = true;
+                        docvec!["_gleam.divideFloat(", left_document, ", ", right_document, ")"]
+                    }
+                    BinOp::RemainderInt => {
+                        self.tracker.prelude_used = true;
+                        docvec!["_gleam.remainderInt(", left_document, ", ", right_document, ")"]
+                    }
+                    BinOp::Concatenate => docvec![left_document, " .. ", right_document],
+                }
+            }
+            ClauseGuard::Var { name, .. } => name.as_str().to_doc(),
+            ClauseGuard::TupleIndex { tuple, index, .. } => {
+                docvec![self.clause_guard(tuple), "[", (*index + 1).to_doc(), "]"]
+            }
+            ClauseGuard::FieldAccess { container, label, .. } => {
+                docvec![self.clause_guard(container), ".", label.as_str().to_doc()]
+            }
+            ClauseGuard::ModuleSelect {
+                module_alias,
+                label,
+                ..
+            } => docvec![module_alias.as_str().to_doc(), ".", label.as_str().to_doc()],
+            ClauseGuard::Not { expression, .. } => docvec!["not ", self.clause_guard(expression)],
+            ClauseGuard::Constant(constant) => self.guard_constant(constant),
+        }
+    }
+
+    fn wrapped_clause_guard(&mut self, guard: &'a TypedClauseGuard) -> Document<'a> {
+        match guard {
+            ClauseGuard::Var { .. }
+            | ClauseGuard::TupleIndex { .. }
+            | ClauseGuard::Constant(_)
+            | ClauseGuard::Not { .. }
+            | ClauseGuard::FieldAccess { .. }
+            | ClauseGuard::Block { .. }
+            | ClauseGuard::ModuleSelect { .. } => self.clause_guard(guard),
+            ClauseGuard::BinaryOperator { .. } => docvec!["(", self.clause_guard(guard), ")"],
+        }
+    }
+
+    fn guard_constant(&mut self, constant: &'a TypedConstant) -> Document<'a> {
+        match constant {
+            Constant::Record { type_, name, .. } if type_.is_bool() && name == "True" => {
+                "true".to_doc()
+            }
+            Constant::Record { type_, name, .. } if type_.is_bool() && name == "False" => {
+                "false".to_doc()
+            }
+            Constant::Record { type_, .. } if type_.is_nil() => "nil".to_doc(),
+            _ => self.constant(constant),
+        }
     }
 }
 

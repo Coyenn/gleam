@@ -1,0 +1,31 @@
+---
+source: compiler-core/src/luau/tests/pipelines.rs
+expression: "\npub fn double(x) {\n  x * 2\n}\n\npub fn main() {\n  1 |> double\n}\n"
+---
+----- SOURCE CODE
+
+pub fn double(x) {
+  x * 2
+}
+
+pub fn main() {
+  1 |> double
+}
+
+
+----- COMPILED LUAU
+local function double(x)
+  return x * 2
+end
+
+local function main()
+  return (function()
+    local _pipe = 1
+    return double(_pipe)
+  end)()
+end
+
+return {
+  double = double,
+  main = main
+}
