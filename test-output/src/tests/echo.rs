@@ -73,32 +73,64 @@ fn run_and_capture_output(
     )
     .expect("run setup");
 
+    let capture_stdout = target == Some(Target::Luau);
+
     let mut process = std::process::Command::new(&program)
         .args(args)
         .stdin(Stdio::null())
-        .stdout(Stdio::null())
-        .stderr(Stdio::piped())
+        .stdout(if capture_stdout {
+            Stdio::piped()
+        } else {
+            Stdio::null()
+        })
+        .stderr(if capture_stdout {
+            Stdio::null()
+        } else {
+            Stdio::piped()
+        })
         .envs(env.iter().map(|pair| (&pair.0, &pair.1)))
         .current_dir(paths.root())
         .spawn()
         .unwrap_or_else(|e| panic!("Failed to spawn process '{}': {}", &program, &e));
 
-    let mut stderr = process.stderr.take().expect("take stderr");
     let mut output = String::new();
-    let _ = stderr.read_to_string(&mut output).expect("read stderr");
+    if capture_stdout {
+        let mut stdout = process.stdout.take().expect("take stdout");
+        let _ = stdout.read_to_string(&mut output).expect("read stdout");
+    } else {
+        let mut stderr = process.stderr.take().expect("take stderr");
+        let _ = stderr.read_to_string(&mut output).expect("read stderr");
+    }
     let _ = process.wait().expect("run with no errors");
     output
 }
 
 macro_rules! assert_echo {
     ($project_name: expr) => {
-        let snapshot_name = snapshot_name(None, None, $project_name);
+        let shared_snapshot = snapshot_name(None, None, $project_name);
         insta::allow_duplicates! {
-            assert_echo!(&snapshot_name, Some(Target::Erlang), None, $project_name);
-            assert_echo!(&snapshot_name, Some(Target::JavaScript), Some(Runtime::Bun), $project_name);
-            assert_echo!(&snapshot_name, Some(Target::JavaScript), Some(Runtime::Deno), $project_name);
-            assert_echo!(&snapshot_name, Some(Target::JavaScript), Some(Runtime::NodeJs), $project_name);
+            assert_echo!(&shared_snapshot, Some(Target::Erlang), None, $project_name);
+            assert_echo!(
+                &shared_snapshot,
+                Some(Target::JavaScript),
+                Some(Runtime::Bun),
+                $project_name
+            );
+            assert_echo!(
+                &shared_snapshot,
+                Some(Target::JavaScript),
+                Some(Runtime::Deno),
+                $project_name
+            );
+            assert_echo!(
+                &shared_snapshot,
+                Some(Target::JavaScript),
+                Some(Runtime::NodeJs),
+                $project_name
+            );
         }
+        let luau_snapshot = snapshot_name(Some(Target::Luau), None, $project_name);
+        assert_echo!(&luau_snapshot, Some(Target::Luau), None, $project_name);
     };
 
     ($target: expr, $project_name: expr) => {
@@ -109,7 +141,7 @@ macro_rules! assert_echo {
                 assert_echo!(&snapshot_name, Some($target), Some(Runtime::Deno), $project_name);
                 assert_echo!(&snapshot_name, Some($target), Some(Runtime::NodeJs), $project_name);
             },
-            Target::Erlang => {
+            Target::Erlang | Target::Luau => {
                 assert_echo!(&snapshot_name, Some($target), None, $project_name);
             }
         }
@@ -127,6 +159,7 @@ fn snapshot_name(target: Option<Target>, runtime: Option<Runtime>, suffix: &str)
     let show_target = |target: Target| match target {
         Target::Erlang => "erlang",
         Target::JavaScript => "javascript",
+        Target::Luau => "luau",
     };
     let show_runtime = |runtime: Runtime| match runtime {
         Runtime::NodeJs => "nodejs",
@@ -164,17 +197,20 @@ fn echo_charlist() {
 fn echo_custom_type() {
     assert_echo!(Target::Erlang, "echo_custom_type");
     assert_echo!(Target::JavaScript, "echo_custom_type");
+    assert_echo!(Target::Luau, "echo_custom_type");
 }
 
 #[test]
 fn echo_dict() {
-    assert_echo!("echo_dict");
+    assert_echo!(Target::Erlang, "echo_dict");
+    assert_echo!(Target::JavaScript, "echo_dict");
 }
 
 #[test]
 fn echo_float() {
     assert_echo!(Target::Erlang, "echo_float");
     assert_echo!(Target::JavaScript, "echo_float");
+    assert_echo!(Target::Luau, "echo_float");
 }
 
 #[test]

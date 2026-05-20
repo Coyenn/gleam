@@ -1,11 +1,12 @@
 ---
 source: compiler-core/src/luau/tests/prelude.rs
-expression: "\npub fn main() {\n  [1, 2, 3]\n}\n"
+assertion_line: 16
+expression: "\npub fn main() {\n  [1] == [1]\n}\n"
 ---
 ----- SOURCE CODE
 
 pub fn main() {
-  [1, 2, 3]
+  [1] == [1]
 }
 
 
@@ -13,7 +14,7 @@ pub fn main() {
 local _gleam = require("../../prelude")
 
 local function main()
-  return _gleam.toList({1, 2, 3})
+  return _gleam.isEqual(_gleam.toList({1}), _gleam.toList({1}))
 end
 
 return {

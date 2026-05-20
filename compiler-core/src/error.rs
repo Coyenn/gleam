@@ -2274,7 +2274,10 @@ satisfying {required_version} but you are using v{gleam_version}.",
                         "You can not set a runtime for Erlang. Did you mean to target JavaScript?"
                             .into(),
                     ),
-                    Target::Luau => Some("Running Luau projects is not supported yet.".into()),
+                    Target::Luau => Some(
+                        "You can not set a runtime for Luau. Did you mean to target JavaScript?"
+                            .into(),
+                    ),
                 };
 
                 vec![Diagnostic {

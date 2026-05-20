@@ -176,8 +176,12 @@ impl FunctionDefinition {
         match target {
             Target::Erlang => self.has_erlang_external,
             Target::JavaScript => self.has_javascript_external,
-            Target::Luau => self.has_luau_external,
+            Target::Luau => self.has_luau_external || self.has_javascript_external,
         }
+    }
+
+    pub fn can_run_on_target(&self, target: Target) -> bool {
+        self.has_body || self.has_external_for_target(target)
     }
 }
 
@@ -218,8 +222,9 @@ impl Implementations {
             || (self.can_run_on_erlang && (*gleam || *other_can_run_on_erlang));
         self.can_run_on_javascript = *has_javascript_external
             || (self.can_run_on_javascript && (*gleam || *other_can_run_on_javascript));
-        self.can_run_on_luau =
-            *has_luau_external || (self.can_run_on_luau && (*gleam || *other_can_run_on_luau));
+        self.can_run_on_luau = *has_luau_external
+            || *has_javascript_external
+            || (self.can_run_on_luau && (*gleam || *other_can_run_on_luau));
 
         // If a function uses a function that relies on external code (be it
         // javascript or erlang) then it's considered as using external code as
@@ -331,9 +336,9 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
             // if we run into functions/constants that have only external
             // implementations for some of the targets.
             gleam: definition.has_body,
-            can_run_on_erlang: definition.has_body || definition.has_erlang_external,
-            can_run_on_javascript: definition.has_body || definition.has_javascript_external,
-            can_run_on_luau: definition.has_body || definition.has_luau_external,
+            can_run_on_erlang: definition.can_run_on_target(Target::Erlang),
+            can_run_on_javascript: definition.can_run_on_target(Target::JavaScript),
+            can_run_on_luau: definition.can_run_on_target(Target::Luau),
             uses_erlang_externals: definition.has_erlang_external,
             uses_javascript_externals: definition.has_javascript_external,
             uses_luau_externals: definition.has_luau_external,
@@ -342,7 +347,9 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
         let uses_externals = match environment.target {
             Target::Erlang => implementations.uses_erlang_externals,
             Target::JavaScript => implementations.uses_javascript_externals,
-            Target::Luau => implementations.uses_luau_externals,
+            Target::Luau => {
+                implementations.uses_luau_externals || implementations.uses_javascript_externals
+            }
         };
 
         let purity = if is_trusted_pure_module(environment) {
@@ -1370,8 +1377,12 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                     self.current_function_definition.has_javascript_external;
             }
             Target::Luau => {
-                self.implementations.can_run_on_luau =
-                    self.current_function_definition.has_luau_external;
+                self.implementations.can_run_on_luau = self
+                    .current_function_definition
+                    .has_luau_external
+                    || self
+                        .current_function_definition
+                        .has_javascript_external;
             }
         }
 

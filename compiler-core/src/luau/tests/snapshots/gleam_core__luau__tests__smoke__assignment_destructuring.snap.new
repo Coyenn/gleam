@@ -1,5 +1,6 @@
 ---
 source: compiler-core/src/luau/tests/smoke.rs
+assertion_line: 211
 expression: "\npub fn run(pair: #(Int, List(Int))) {\n  let assert #(first, [second, ..rest]) = pair\n  first + second\n}\n"
 ---
 ----- SOURCE CODE

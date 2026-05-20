@@ -20,6 +20,7 @@ test: ## Run the compiler unit tests
 	cargo clippy
 	cd test/language && make
 	cd test/javascript_prelude && make test
+	cd test/luau_prelude && make test
 	cd test/project_erlang && cargo run clean && cargo run check && cargo run test
 	cd test/project_javascript && cargo run clean && cargo run check && cargo run test
 	cd test/project_deno && cargo run clean && cargo run check && cargo run test
@@ -46,6 +47,7 @@ language-test-watch: ## Run the language integration tests for all targets when 
 .PHONY: javascript-prelude-test
 javascript-prelude-test: ## Run the JavaScript prelude core tests
 	cd test/javascript_prelude && make test
+	cd test/luau_prelude && make test
 
 .PHONY: javascript-prelude-test-watch
 javascript-prelude-test-watch: ## Run the JavaScript prelude core tests when files change

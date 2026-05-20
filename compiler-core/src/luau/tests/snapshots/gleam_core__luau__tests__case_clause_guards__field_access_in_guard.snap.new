@@ -1,5 +1,6 @@
 ---
 source: compiler-core/src/luau/tests/case_clause_guards.rs
+assertion_line: 44
 expression: "\npub fn main(pair: #(String, Int)) {\n  case pair {\n    #(n, _) if n == \"Lucy\" -> 1\n    _ -> 0\n  }\n}\n"
 ---
 ----- SOURCE CODE

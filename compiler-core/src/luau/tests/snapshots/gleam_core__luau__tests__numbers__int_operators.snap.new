@@ -1,5 +1,6 @@
 ---
 source: compiler-core/src/luau/tests/numbers.rs
+assertion_line: 5
 expression: "\npub fn go() {\n  1 + 1\n  5 - 1\n  3 * 3\n  5 / 2\n  5 % 2\n  2 > 1\n  2 < 1\n  2 >= 1\n  2 <= 1\n}\n"
 ---
 ----- SOURCE CODE

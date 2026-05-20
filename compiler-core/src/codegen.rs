@@ -325,16 +325,27 @@ impl<'a> Luau<'a> {
             let luau_name = module.name.clone();
             self.luau_module(writer, module, &luau_name)?
         }
-        self.write_prelude(writer)?;
+        self.write_prelude(writer, modules)?;
         Ok(())
     }
 
-    fn write_prelude(&self, writer: &impl FileSystemWriter) -> Result<()> {
+    fn write_prelude(&self, writer: &impl FileSystemWriter, modules: &[Module]) -> Result<()> {
         let gleam_path = self.output_directory.join("gleam.luau");
+        let gleam_directory = self.output_directory.join("gleam");
+        let has_gleam_modules = modules
+            .iter()
+            .any(|module| module.name.starts_with("gleam/"))
+            // Cached incremental builds pass an empty module list, so also
+            // check whether a previous compilation wrote a `gleam/` directory.
+            || writer.exists(&gleam_directory);
 
-        // This check skips unnecessary `gleam.luau` writes which confuse
-        // watchers and build tools
-        if !writer.exists(&gleam_path) {
+        // Luau cannot resolve `require(".../gleam/...")` when both `gleam.luau`
+        // and a `gleam/` directory exist in the same package output.
+        if has_gleam_modules {
+            if writer.exists(&gleam_path) {
+                writer.delete_file(&gleam_path)?;
+            }
+        } else if !writer.exists(&gleam_path) {
             writer.write(&gleam_path, "return require(\"../prelude\")\n")?;
         }
 

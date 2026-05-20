@@ -1,5 +1,6 @@
 ---
 source: compiler-core/src/luau/tests/smoke.rs
+assertion_line: 189
 expression: "\npub fn list_score(xs: List(Int)) {\n  case xs {\n    [] -> 0\n    [one] -> one\n    [one, two, ..rest] -> one + two\n  }\n}\n\npub fn tuple_score(x: #(Int, #(Int, Int))) {\n  case x {\n    #(0, _) -> 0\n    #(a, #(b, c)) -> a + b + c\n  }\n}\n"
 ---
 ----- SOURCE CODE

@@ -10,7 +10,7 @@ pub fn main() {
 
 
 ----- COMPILED LUAU
-local _gleam = require("../gleam")
+local _gleam = require("../../prelude")
 
 local function main()
   return _gleam.isEqual(_gleam.toList({1}), _gleam.toList({1}))

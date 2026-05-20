@@ -1,17 +1,3 @@
----
-source: compiler-core/src/luau/tests/echo.rs
-expression: "\npub fn main() {\n  echo \"hello\"\n  1\n}\n"
----
------ SOURCE CODE
-
-pub fn main() {
-  echo "hello"
-  1
-}
-
-
------ COMPILED LUAU
-
 local EchoInspector = {}
 EchoInspector.__index = EchoInspector
 
@@ -201,14 +187,3 @@ local function echo(value, message, file, line)
   print(grey .. file_line .. reset_color .. string_message .. "\n" .. string_value)
   return value
 end
-
-
-
-local function main()
-  echo("hello", nil, "src/module.gleam", 3)
-  return 1
-end
-
-return {
-  main = main
-}

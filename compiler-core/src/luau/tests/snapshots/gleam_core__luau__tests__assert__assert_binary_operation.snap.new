@@ -1,5 +1,6 @@
 ---
 source: compiler-core/src/luau/tests/assert.rs
+assertion_line: 28
 expression: "\npub fn eq(a, b) {\n  assert a == b\n}\n"
 ---
 ----- SOURCE CODE

@@ -4,8 +4,9 @@ use ecow::{EcoString, eco_format};
 
 use crate::{
     ast::{
-        Assignment, BinOp, ClauseGuard, Constant, Pattern, RecordUpdateAssignment, TypedArg,
-        TypedClauseGuard, TypedConstant, TypedExpr, TypedPipelineAssignment, TypedStatement,
+        Assignment, BinOp, ClauseGuard, Constant, Pattern, RecordUpdateAssignment, SrcSpan,
+        TypedArg, TypedClauseGuard, TypedConstant, TypedExpr, TypedPipelineAssignment,
+        TypedStatement,
     },
     docvec,
     line_numbers::LineNumbers,
@@ -19,6 +20,7 @@ const INDENT: isize = 2;
 pub struct Generator<'a, 'b> {
     pub module_name: EcoString,
     pub line_numbers: &'a LineNumbers,
+    pub src_path: EcoString,
     pub module_scope: HashMap<EcoString, usize>,
     pub tracker: &'b mut crate::luau::UsageTracker,
     tail_recursion_used: bool,
@@ -29,11 +31,13 @@ impl<'a, 'b> Generator<'a, 'b> {
     pub fn new(
         module_name: EcoString,
         line_numbers: &'a LineNumbers,
+        src_path: EcoString,
         tracker: &'b mut crate::luau::UsageTracker,
     ) -> Self {
         Self {
             module_name,
             line_numbers,
+            src_path,
             module_scope: HashMap::new(),
             tracker,
             tail_recursion_used: false,
@@ -276,12 +280,17 @@ impl<'a, 'b> Generator<'a, 'b> {
                 };
                 docvec!["error(", message, ")"]
             }
-            TypedExpr::Echo { message, .. } => {
-                let msg = match message {
-                    Some(m) => self.expression(m),
-                    None => "nil".to_doc(),
-                };
-                docvec!["print(", msg, ")"]
+            TypedExpr::Echo {
+                expression,
+                message,
+                location,
+                ..
+            } => {
+                let expression = expression
+                    .as_ref()
+                    .expect("echo with no expression outside of pipe");
+                let expression = self.expression(expression);
+                self.echo(expression, message.as_deref(), location)
             }
             TypedExpr::Case {
                 subjects, clauses, ..
@@ -543,22 +552,82 @@ impl<'a, 'b> Generator<'a, 'b> {
             self.expression(first_value.value.as_ref())
         ]];
 
+        let mut latest_local_var = first_value.name.clone();
+
         for (assignment, _) in assignments {
-            docs.push(docvec![
-                "local ",
-                assignment.name.as_str().to_doc(),
-                " = ",
-                self.expression(assignment.value.as_ref())
-            ]);
+            if let TypedExpr::Echo {
+                expression: None,
+                message,
+                location,
+                ..
+            } = assignment.value.as_ref()
+            {
+                let var = latest_local_var.clone();
+                docs.push(self.echo(
+                    Document::eco_string(var),
+                    message.as_deref(),
+                    location,
+                ));
+            } else {
+                docs.push(docvec![
+                    "local ",
+                    assignment.name.as_str().to_doc(),
+                    " = ",
+                    self.expression(assignment.value.as_ref())
+                ]);
+                latest_local_var = assignment.name.clone();
+            }
         }
 
-        docs.push(docvec!["return ", self.expression(finally)]);
+        if let TypedExpr::Echo {
+            expression: None,
+            message,
+            location,
+            ..
+        } = finally
+        {
+            let var = latest_local_var.clone();
+            docs.push(docvec![
+                "return ",
+                self.echo(Document::eco_string(var), message.as_deref(), location)
+            ]);
+        } else {
+            docs.push(docvec!["return ", self.expression(finally)]);
+        }
 
         docvec![
             "(function()",
             docvec![line(), join(docs, line())].nest(INDENT),
             line(),
             "end)()"
+        ]
+    }
+
+    fn echo(
+        &mut self,
+        expression: Document<'a>,
+        message: Option<&'a TypedExpr>,
+        location: &SrcSpan,
+    ) -> Document<'a> {
+        self.tracker.echo_used = true;
+
+        let message = match message {
+            Some(message) => self.expression(message),
+            None => "nil".to_doc(),
+        };
+
+        docvec![
+            "echo(",
+            expression,
+            ", ",
+            message,
+            ", ",
+            "\"",
+            self.src_path.clone().to_doc(),
+            "\"",
+            ", ",
+            self.line_numbers.line_number(location.start).to_doc(),
+            ")"
         ]
     }
     fn pattern_condition(

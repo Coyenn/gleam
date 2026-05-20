@@ -179,7 +179,14 @@ pub struct TargetedDefinition {
 
 impl TargetedDefinition {
     pub fn is_for(&self, target: Target) -> bool {
-        self.target.map(|t| t == target).unwrap_or(true)
+        match self.target {
+            None => true,
+            Some(definition_target) if definition_target == target => true,
+            // Until the standard library and other packages add Luau-specific
+            // definitions, use the JavaScript ones.
+            Some(Target::JavaScript) if target.is_luau() => true,
+            Some(_) => false,
+        }
     }
 }
 

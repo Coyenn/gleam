@@ -153,10 +153,13 @@ pub fn setup(
                 run_javascript_bun_command(paths, &main_function.package, &module, arguments)
             }
         },
-        Target::Luau => Err(Error::InvalidRuntime {
-            target: Target::Luau,
-            invalid_runtime: runtime.unwrap_or_default(),
-        }),
+        Target::Luau => match runtime {
+            Some(r) => Err(Error::InvalidRuntime {
+                target: Target::Luau,
+                invalid_runtime: r,
+            }),
+            None => run_luau_command(paths, &main_function.package, &module, arguments),
+        },
     }
 }
 
@@ -198,6 +201,49 @@ fn run_erlang_command(
         cwd: None,
         stdio: Stdio::Inherit,
     })
+}
+
+fn run_luau_command(
+    paths: &ProjectPaths,
+    package: &str,
+    module: &str,
+    arguments: Vec<String>,
+) -> Result<Command, Error> {
+    let mut args = vec![];
+    let entry = write_luau_entrypoint(paths, package, module)?;
+
+    args.push(entry.to_string());
+
+    if !arguments.is_empty() {
+        args.push("--program-args".into());
+        args.extend(arguments);
+    }
+
+    Ok(Command {
+        program: "luau".to_string(),
+        args,
+        env: vec![],
+        cwd: None,
+        stdio: Stdio::Inherit,
+    })
+}
+
+fn write_luau_entrypoint(
+    paths: &ProjectPaths,
+    package: &str,
+    module: &str,
+) -> Result<Utf8PathBuf, Error> {
+    let path = paths
+        .build_directory_for_package(Mode::Dev, Target::Luau, package)
+        .to_path_buf()
+        .join(format!("gleam@@private_main_v{}.luau", COMPILER_VERSION));
+    let module = format!(
+        r#"local main_module = require("./{module}")
+main_module.main()
+"#
+    );
+    crate::fs::write(&path, &module)?;
+    Ok(path)
 }
 
 fn run_javascript_bun_command(

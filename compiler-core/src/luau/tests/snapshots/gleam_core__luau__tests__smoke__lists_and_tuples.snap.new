@@ -1,5 +1,6 @@
 ---
 source: compiler-core/src/luau/tests/smoke.rs
+assertion_line: 45
 expression: "\npub fn let_test() {\n  let a = [1, 2, 3]\n  let b = #(1, \"a\", 3.0)\n  a\n}\n"
 ---
 ----- SOURCE CODE

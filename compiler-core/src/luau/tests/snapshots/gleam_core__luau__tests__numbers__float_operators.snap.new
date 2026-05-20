@@ -1,5 +1,6 @@
 ---
 source: compiler-core/src/luau/tests/numbers.rs
+assertion_line: 24
 expression: "\npub fn go() {\n  1.0 +. 1.0\n  5.0 -. 1.0\n  3.0 *. 3.0\n  5.0 /. 2.0\n}\n"
 ---
 ----- SOURCE CODE

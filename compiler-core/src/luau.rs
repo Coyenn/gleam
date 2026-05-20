@@ -26,9 +26,18 @@ pub struct ModuleConfig<'a> {
 }
 
 pub fn module(config: ModuleConfig<'_>) -> (String, Option<SourceMap>) {
+    let src_path = config
+        .module
+        .type_info
+        .src_path
+        .strip_prefix(config.project_root)
+        .unwrap_or(&config.module.type_info.src_path)
+        .as_str()
+        .into();
     let mut generator = Generator::new(
         config.module.name.clone(),
         config.line_numbers,
+        src_path,
         config.runtime,
     );
     let document = generator.compile_module(config.module);
@@ -38,11 +47,13 @@ pub fn module(config: ModuleConfig<'_>) -> (String, Option<SourceMap>) {
 #[derive(Debug, Default)]
 pub struct UsageTracker {
     pub prelude_used: bool,
+    pub echo_used: bool,
 }
 
 struct Generator<'a> {
     module_name: EcoString,
     line_numbers: &'a LineNumbers,
+    src_path: EcoString,
     tracker: UsageTracker,
     runtime: Option<EcoString>,
 }
@@ -51,14 +62,24 @@ impl<'a> Generator<'a> {
     fn new(
         module_name: EcoString,
         line_numbers: &'a LineNumbers,
+        src_path: EcoString,
         runtime: Option<EcoString>,
     ) -> Self {
         Self {
             module_name,
             line_numbers,
+            src_path,
             tracker: UsageTracker::default(),
             runtime,
         }
+    }
+
+    fn echo_definition(&self) -> Document<'a> {
+        if !self.tracker.echo_used {
+            return nil();
+        }
+
+        docvec![line(), std::include_str!("../templates/echo.luau"), line()]
     }
 
     fn require_expr(&self, path: &str) -> Document<'a> {
@@ -168,6 +189,7 @@ impl<'a> Generator<'a> {
             let mut expr_gen = expression::Generator::new(
                 self.module_name.clone(),
                 self.line_numbers,
+                self.src_path.clone(),
                 &mut self.tracker,
             );
 
@@ -192,6 +214,7 @@ impl<'a> Generator<'a> {
                 let mut expr_gen = expression::Generator::new(
                     self.module_name.clone(),
                     self.line_numbers,
+                    self.src_path.clone(),
                     &mut self.tracker,
                 );
 
@@ -296,6 +319,15 @@ impl<'a> Generator<'a> {
                             ]);
                         }
                     }
+                } else if function.body.is_empty() {
+                    if let Some((_, external_function, _)) = &function.external_javascript {
+                        statements.push(javascript_external_luau_definition(
+                            name.clone().to_doc(),
+                            args,
+                            &arg_names,
+                            external_function,
+                        ));
+                    }
                 } else {
                     let head = "local function ";
                     let body = expr_gen.function_body(&function.body, &function.arguments);
@@ -318,11 +350,9 @@ impl<'a> Generator<'a> {
 
         let mut imports = vec![];
         if self.tracker.prelude_used {
-            let prelude_path = if current_module_name_segments_count <= 1 {
-                eco_format!("./gleam")
-            } else {
-                let prefix = "../".repeat(current_module_name_segments_count - 1);
-                eco_format!("{prefix}gleam")
+            let prelude_path = {
+                let prefix = "../".repeat(current_module_name_segments_count);
+                eco_format!("{prefix}prelude")
             };
             imports.push(docvec!["local _gleam = ", self.require_expr(&prelude_path),]);
         }
@@ -379,9 +409,16 @@ impl<'a> Generator<'a> {
             }
         }
 
+        let echo_definition = self.echo_definition();
+
+        let mut module_body = vec![];
         if !imports.is_empty() {
-            statements.insert(0, join(imports, line()));
+            module_body.push(join(imports, line()));
         }
+        if self.tracker.echo_used {
+            module_body.push(echo_definition);
+        }
+        module_body.extend(statements);
 
         let export_table = if exports.is_empty() {
             "return {}".to_doc()
@@ -394,10 +431,10 @@ impl<'a> Generator<'a> {
             ]
         };
 
-        if statements.is_empty() {
+        if module_body.is_empty() {
             export_table
         } else {
-            docvec![join(statements, lines(2)), lines(2), export_table, line(),]
+            docvec![join(module_body, lines(2)), lines(2), export_table, line(),]
         }
     }
 
@@ -613,6 +650,82 @@ impl<'a> Generator<'a> {
 struct RuntimeImports {
     module_aliases: HashSet<EcoString>,
     values: HashSet<EcoString>,
+}
+
+fn javascript_external_luau_definition<'a>(
+    name: Document<'a>,
+    args: Document<'a>,
+    arg_names: &[Document<'a>],
+    external_function: &str,
+) -> Document<'a> {
+    let first_argument = arg_names.first().cloned();
+    let nil = "nil".to_doc();
+
+    match external_function {
+        "console_log" | "console_error" | "print" | "print_error" | "print_debug" => docvec![
+            "local function ",
+            name,
+            args,
+            line(),
+            "_G.print(",
+            first_argument.unwrap_or(nil),
+            ")",
+            line(),
+            "return nil",
+            line(),
+            "end",
+        ],
+        "crash" => docvec![
+            "local function ",
+            name,
+            args,
+            line(),
+            "_G.error(",
+            first_argument.unwrap_or_else(|| "\"crash\"".to_doc()),
+            ")",
+            line(),
+            "end",
+        ],
+        "identity" => docvec![
+            "local function ",
+            name,
+            args,
+            line(),
+            "return ",
+            first_argument.unwrap_or(nil),
+            line(),
+            "end",
+        ],
+        "make" => docvec![
+            "local function ",
+            name,
+            args,
+            line(),
+            "return {}",
+            line(),
+            "end",
+        ],
+        "random_uniform" => docvec![
+            "local function ",
+            name,
+            args,
+            line(),
+            "return math.random()",
+            line(),
+            "end",
+        ],
+        _ => docvec![
+            "local function ",
+            name,
+            args,
+            line(),
+            "_G.error(\"JavaScript external ",
+            Document::eco_string(external_function.into()),
+            " is not yet available on Luau\")",
+            line(),
+            "end",
+        ],
+    }
 }
 
 fn luau_external_is_inlined(external: &Option<crate::type_::ExternalLuauFunction>) -> bool {

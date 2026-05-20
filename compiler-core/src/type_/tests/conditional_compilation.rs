@@ -31,6 +31,32 @@ pub fn erlang_value() { 2 }
 }
 
 #[test]
+fn luau_uses_javascript_targeted_definitions() {
+    let constructors = infer_module_with_target(
+        "test_module",
+        "
+@target(javascript)
+type Token = Nil
+
+@target(javascript)
+const token = Nil
+
+@target(erlang)
+type Token = List(Nil)
+
+@target(erlang)
+const token = []
+
+pub fn main() { token }
+",
+        vec![],
+        Target::Luau,
+    );
+    let expected = crate::type_::tests::stringify_tuple_strs(vec![("main", "fn() -> Nil")]);
+    assert_eq!(constructors, expected);
+}
+
+#[test]
 fn alias() {
     assert_module_infer!(
         "@target(erlang)
