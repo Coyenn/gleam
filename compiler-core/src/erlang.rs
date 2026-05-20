@@ -1967,6 +1967,8 @@ fn bare_clause_guard<'a>(
     assignments: &HashMap<EcoString, &StringPatternAssignment<'a>>,
 ) -> Document<'a> {
     match guard {
+        ClauseGuard::Invalid { .. } => unreachable!("invalid guard made it to code generation"),
+
         ClauseGuard::Block { value, .. } => {
             bare_clause_guard(value, env, assignments).surround("(", ")")
         }
@@ -2049,6 +2051,8 @@ fn clause_guard_string_concatenate_argument<'a>(
     assignments: &HashMap<EcoString, &StringPatternAssignment<'a>>,
 ) -> Document<'a> {
     match guard {
+        ClauseGuard::Invalid { .. } => unreachable!("invalid guard made it to code generation"),
+
         ClauseGuard::Constant(Constant::String { value, .. }) => {
             docvec!['"', string_inner(value), "\"/utf8"]
         }
@@ -2119,6 +2123,7 @@ fn clause_guard<'a>(
     assignments: &HashMap<EcoString, &StringPatternAssignment<'a>>,
 ) -> Document<'a> {
     match guard {
+        ClauseGuard::Invalid { .. } => unreachable!("invalid guard made it to code generation"),
         // Binary operators are wrapped in parens
         ClauseGuard::BinaryOperator { .. } => "("
             .to_doc()
@@ -2349,16 +2354,17 @@ fn docs_arguments_call<'a>(
 }
 
 fn record_update<'a>(
-    record: &'a Option<Box<RecordUpdateAssignment>>,
+    updated_record: &'a TypedExpr,
+    updated_record_assigned_name: &'a Option<EcoString>,
     constructor: &'a TypedExpr,
     arguments: &'a [TypedCallArg],
     env: &mut Env<'a>,
 ) -> Document<'a> {
     let vars = env.current_scope_vars.clone();
 
-    let document = match record.as_ref() {
-        Some(record) => docvec![
-            simple_variable_let(&record.name, &record.value, env),
+    let document = match updated_record_assigned_name.as_ref() {
+        Some(name) => docvec![
+            simple_variable_let(name, updated_record, env),
             ",",
             line(),
             call(constructor, arguments, env)
@@ -2389,8 +2395,9 @@ fn needs_begin_end_wrapping(expression: &TypedExpr) -> bool {
     match expression {
         // Record updates are 1 expression if there's no assignment, multiple otherwise.
         TypedExpr::RecordUpdate {
-            record_assignment, ..
-        } => record_assignment.is_some(),
+            updated_record_assigned_name,
+            ..
+        } => updated_record_assigned_name.is_some(),
 
         TypedExpr::Pipeline { .. } => true,
 
@@ -2582,11 +2589,18 @@ fn expr<'a>(expression: &'a TypedExpr, env: &mut Env<'a>) -> Document<'a> {
         TypedExpr::PositionalAccess { record, index, .. } => tuple_index(record, index + 1, env),
 
         TypedExpr::RecordUpdate {
-            record_assignment,
+            updated_record_assigned_name,
+            updated_record,
             constructor,
             arguments,
             ..
-        } => record_update(record_assignment, constructor, arguments, env),
+        } => record_update(
+            updated_record,
+            updated_record_assigned_name,
+            constructor,
+            arguments,
+            env,
+        ),
 
         TypedExpr::Case {
             subjects, clauses, ..

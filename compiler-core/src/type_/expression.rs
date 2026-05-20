@@ -6,10 +6,10 @@ use crate::{
         Arg, Assert, Assignment, AssignmentKind, BinOp, BitArrayOption, BitArraySegment,
         CAPTURE_VARIABLE, CallArg, Clause, ClauseGuard, Constant, FunctionLiteralKind, HasLocation,
         ImplicitCallArgOrigin, InvalidExpression, Layer, RECORD_UPDATE_VARIABLE,
-        RecordBeingUpdated, RecordUpdateAssignment, SrcSpan, Statement, TodoKind, TypeAst,
-        TypedArg, TypedAssert, TypedAssignment, TypedClause, TypedClauseGuard, TypedConstant,
-        TypedExpr, TypedMultiPattern, TypedStatement, USE_ASSIGNMENT_VARIABLE, UntypedArg,
-        UntypedAssert, UntypedAssignment, UntypedClause, UntypedClauseGuard, UntypedConstant,
+        RecordBeingUpdated, SrcSpan, Statement, TodoKind, TypeAst, TypedArg, TypedAssert,
+        TypedAssignment, TypedClause, TypedClauseGuard, TypedConstant, TypedExpr,
+        TypedMultiPattern, TypedStatement, USE_ASSIGNMENT_VARIABLE, UntypedArg, UntypedAssert,
+        UntypedAssignment, UntypedClause, UntypedClauseGuard, UntypedConstant,
         UntypedConstantBitArraySegment, UntypedExpr, UntypedExprBitArraySegment,
         UntypedMultiPattern, UntypedStatement, UntypedUse, UntypedUseAssignment, Use,
         UseAssignment,
@@ -454,9 +454,12 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 message,
             } => Ok(self.infer_echo(location, keyword_end, expression, message)),
 
-            UntypedExpr::Var { location, name, .. } => {
-                self.infer_var(name, location, ReferenceRegistration::Register)
-            }
+            UntypedExpr::Var { location, name, .. } => self.infer_var(
+                name,
+                location,
+                ValueUsage::Other,
+                ReferenceRegistration::Register,
+            ),
 
             UntypedExpr::Int {
                 location,
@@ -568,10 +571,11 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
 
             UntypedExpr::RecordUpdate {
                 location,
+                spread_start,
                 constructor,
                 record,
                 arguments,
-            } => self.infer_record_update(*constructor, record, arguments, location),
+            } => self.infer_record_update(*constructor, record, arguments, location, spread_start),
 
             UntypedExpr::NegateBool { location, value } => {
                 Ok(self.infer_negate_bool(location, *value))
@@ -884,6 +888,14 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
         // We use `stacker` to prevent overflowing the stack when many `use`
         // expressions are chained. See https://github.com/gleam-lang/gleam/issues/4287
         let infer_call = || {
+            // We need this in the case where `call.function` has a special call path depending
+            // on the type such as `UntypedExpr::Var`. In these cases, `infer_call` does not call
+            // `infer_or_error`. `infer_or_error` is responsible for registering warnings about
+            // unreachable code and thus, warnings about unreachable code are not registered.
+            if self.previous_panics {
+                self.warn_for_unreachable_code(call_location, PanicPosition::PreviousExpression);
+            }
+
             self.infer_call(
                 *call.function,
                 call.arguments,
@@ -1311,10 +1323,16 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
         &mut self,
         name: EcoString,
         location: SrcSpan,
+        value_usage: ValueUsage,
         register_reference: ReferenceRegistration,
     ) -> Result<TypedExpr, Error> {
-        let constructor =
-            self.do_infer_value_constructor(&None, &name, &location, register_reference)?;
+        let constructor = self.do_infer_value_constructor(
+            &None,
+            &name,
+            &location,
+            value_usage,
+            register_reference,
+        )?;
         self.narrow_implementations(location, &constructor.variant)?;
         Ok(TypedExpr::Var {
             constructor,
@@ -1440,7 +1458,12 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
             // If the left-hand-side of the record access is a variable, this might actually be
             // module access. In that case, we only want to register a reference to the variable
             // if we actually referencing it in the record access.
-            self.infer_var(name, location, ReferenceRegistration::DoNotRegister)
+            self.infer_var(
+                name,
+                location,
+                ValueUsage::Other,
+                ReferenceRegistration::DoNotRegister,
+            )
         } else {
             self.infer_or_error(container)
         };
@@ -2472,14 +2495,7 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
             let (typed_pattern, typed_alternatives, error_encountered) =
                 this.infer_clause_pattern(pattern, alternative_patterns, subjects, &location);
 
-            let guard = match this.infer_optional_clause_guard(guard) {
-                Ok(guard) => guard,
-                // If an error occurs inferring guard then assume no guard
-                Err(error) => {
-                    this.problems.error(error);
-                    None
-                }
-            };
+            let guard = this.infer_optional_clause_guard(guard);
             let then = this.infer(then);
             let clause = Clause {
                 location,
@@ -2533,48 +2549,34 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
     fn infer_optional_clause_guard(
         &mut self,
         guard: Option<UntypedClauseGuard>,
-    ) -> Result<Option<TypedClauseGuard>, Error> {
-        match guard {
-            // If there is no guard we do nothing
-            None => Ok(None),
-
-            // If there is a guard we assert that it is of type Bool
-            Some(guard) => {
-                let guard = self.infer_clause_guard(guard)?;
-                unify(bool(), guard.type_())
-                    .map_err(|e| convert_unify_error(e, guard.location()))?;
-                Ok(Some(guard))
-            }
+    ) -> Option<TypedClauseGuard> {
+        // If there is a guard we type check it and assert that it is of type
+        // Bool.
+        let guard = self.infer_clause_guard(guard?);
+        if let Err(error) = unify(bool(), guard.type_()) {
+            self.problems
+                .error(convert_unify_error(error, guard.location()));
         }
+        Some(guard)
     }
 
-    fn infer_clause_guard(&mut self, guard: UntypedClauseGuard) -> Result<TypedClauseGuard, Error> {
+    fn infer_clause_guard(&mut self, guard: UntypedClauseGuard) -> TypedClauseGuard {
         match guard {
+            ClauseGuard::Invalid { .. } => {
+                unreachable!("untyped guard should never be invalid")
+            }
+
             ClauseGuard::Var { location, name, .. } => {
-                let constructor = self.infer_value_constructor(&None, &name, &location)?;
-
-                // We cannot support all values in guard expressions as the BEAM does not
-                let (definition_location, origin) = match &constructor.variant {
-                    ValueConstructorVariant::LocalVariable {
-                        location, origin, ..
-                    } => (*location, origin.clone()),
-                    ValueConstructorVariant::ModuleFn { .. }
-                    | ValueConstructorVariant::Record { .. } => {
-                        return Err(Error::NonLocalClauseGuardVariable { location, name });
+                match self.infer_clause_guard_variable(name, location) {
+                    Ok(variable) => variable,
+                    Err(error) => {
+                        self.problems.error(error);
+                        ClauseGuard::Invalid {
+                            location,
+                            type_: self.new_unbound_var(),
+                        }
                     }
-
-                    ValueConstructorVariant::ModuleConstant { literal, .. } => {
-                        return Ok(ClauseGuard::Constant(literal.clone()));
-                    }
-                };
-
-                Ok(ClauseGuard::Var {
-                    location,
-                    name,
-                    origin,
-                    type_: constructor.type_,
-                    definition_location,
-                })
+                }
             }
 
             ClauseGuard::TupleIndex {
@@ -2583,35 +2585,44 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 index,
                 ..
             } => {
-                let tuple = self.infer_clause_guard(*tuple)?;
-                match tuple.type_().as_ref() {
-                    Type::Tuple { elements } => {
-                        let type_ = elements
-                            .get(index as usize)
-                            .ok_or(Error::OutOfBoundsTupleIndex {
+                let tuple = self.infer_clause_guard(*tuple);
+                let index_type = match tuple.type_().as_ref() {
+                    Type::Tuple { elements } => match elements.get(index as usize) {
+                        Some(type_) => type_.clone(),
+                        // If the index is outside the tuple range, then we
+                        // report the error and return an unbound type to keep
+                        // going.
+                        None => {
+                            self.problems.error(Error::OutOfBoundsTupleIndex {
                                 location,
                                 index,
                                 size: elements.len(),
-                            })?
-                            .clone();
-                        Ok(ClauseGuard::TupleIndex {
-                            location,
-                            index,
-                            type_,
-                            tuple: Box::new(tuple),
-                        })
-                    }
+                            });
+                            self.new_unbound_var()
+                        }
+                    },
 
-                    type_ if type_.is_unbound() => Err(Error::NotATupleUnbound {
-                        location: tuple.location(),
-                    }),
+                    tuple_type if tuple_type.is_unbound() => {
+                        self.problems.error(Error::NotATupleUnbound {
+                            location: tuple.location(),
+                        });
+                        self.new_unbound_var()
+                    }
 
                     Type::Named { .. } | Type::Fn { .. } | Type::Var { .. } => {
-                        Err(Error::NotATuple {
+                        self.problems.error(Error::NotATuple {
                             location: tuple.location(),
                             given: tuple.type_(),
-                        })
+                        });
+                        self.new_unbound_var()
                     }
+                };
+
+                ClauseGuard::TupleIndex {
+                    location,
+                    index,
+                    type_: index_type,
+                    tuple: Box::new(tuple),
                 }
             }
 
@@ -2621,48 +2632,79 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 container,
                 index: _,
                 type_: (),
-            } => match self.infer_clause_guard(*container.clone()) {
-                Ok(container) => self.infer_guard_record_access(container, label, label_location),
+            } => {
+                let container_location = container.location();
+                let result = if let ClauseGuard::Var { name, location, .. } = *container {
+                    // If the container looks like a regular variable, then this
+                    // could either be a module select, or a record access.
+                    match self.infer_clause_guard_variable(name.clone(), location) {
+                        // If the variable itself cannot be inferred as one, then
+                        // it could really be a module select. We try that one
+                        // as an elternative.
+                        Err(error) => self.infer_guard_module_access(
+                            name,
+                            label,
+                            location,
+                            label_location,
+                            error,
+                        ),
+                        // Otherwise that's a proper variable and not a module name,
+                        // so the whole expression has to be inferred as a regular
+                        // record access.
+                        Ok(variable) => {
+                            self.infer_guard_record_access(variable, label.clone(), label_location)
+                        }
+                    }
+                } else {
+                    // If it doesn't this has to be a regular record access and
+                    // we try and inferr it as such.
+                    let inferred_container = self.infer_clause_guard(*container.clone());
+                    self.infer_guard_record_access(
+                        inferred_container,
+                        label.clone(),
+                        label_location,
+                    )
+                };
 
-                Err(err) => {
-                    if let ClauseGuard::Var { name, location, .. } = *container {
-                        self.infer_guard_module_access(name, label, location, label_location, err)
-                    } else {
-                        Err(Error::RecordAccessUnknownType {
-                            location: label_location,
-                        })
+                match result {
+                    Ok(inferred) => inferred,
+                    Err(error) => {
+                        self.problems.error(error);
+                        ClauseGuard::Invalid {
+                            location: container_location.merge(&label_location),
+                            type_: self.new_unbound_var(),
+                        }
                     }
                 }
-            },
+            }
 
-            ClauseGuard::ModuleSelect { location, .. } => {
-                Err(Error::RecordAccessUnknownType { location })
+            ClauseGuard::ModuleSelect { .. } => {
+                unreachable!("untyped guard should never be module select")
             }
 
             ClauseGuard::Not {
                 location,
                 expression,
             } => {
-                let expression = self.infer_clause_guard(*expression)?;
-                unify(bool(), expression.type_())
-                    .map_err(|e| convert_unify_error(e, expression.location()))?;
-                Ok(ClauseGuard::Not {
+                let expression = self.infer_clause_guard(*expression);
+                if let Err(error) = unify(bool(), expression.type_()) {
+                    self.problems
+                        .error(convert_unify_error(error, expression.location()))
+                };
+                ClauseGuard::Not {
                     location,
                     expression: Box::new(expression),
-                })
+                }
             }
 
             ClauseGuard::Constant(constant) => {
-                Ok(ClauseGuard::Constant(self.infer_const(&None, constant)))
+                ClauseGuard::Constant(self.infer_const(&None, constant))
             }
 
-            ClauseGuard::Block { value, location } => {
-                let value = self.infer_clause_guard(*value)?;
-                Ok(ClauseGuard::Block {
-                    location,
-                    value: Box::new(value),
-                })
-            }
+            ClauseGuard::Block { value, location } => ClauseGuard::Block {
+                location,
+                value: Box::new(self.infer_clause_guard(*value)),
+            },
 
             ClauseGuard::BinaryOperator {
                 location,
@@ -2670,20 +2712,26 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 left,
                 right,
             } => {
-                let left = self.infer_clause_guard(*left)?;
-                let right = self.infer_clause_guard(*right)?;
+                let left = self.infer_clause_guard(*left);
+                let right = self.infer_clause_guard(*right);
 
                 match operator {
                     BinOp::And | BinOp::Or => {
-                        unify(bool(), left.type_())
-                            .map_err(|e| convert_unify_error(e, left.location()))?;
-                        unify(bool(), right.type_())
-                            .map_err(|e| convert_unify_error(e, right.location()))?;
+                        if let Err(error) = unify(bool(), left.type_()) {
+                            self.problems
+                                .error(convert_unify_error(error, left.location()));
+                        }
+                        if let Err(error) = unify(bool(), right.type_()) {
+                            self.problems
+                                .error(convert_unify_error(error, right.location()));
+                        }
                     }
 
                     BinOp::Eq | BinOp::NotEq => {
-                        unify(left.type_(), right.type_())
-                            .map_err(|e| convert_unify_error(e, location))?;
+                        if let Err(error) = unify(left.type_(), right.type_()) {
+                            self.problems
+                                .error(convert_unify_error(error, right.location()));
+                        }
                     }
 
                     BinOp::GtInt
@@ -2696,15 +2744,21 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                     | BinOp::MultInt
                     | BinOp::RemainderInt => {
                         self.track_feature_usage(FeatureKind::ArithmeticInGuards, location);
-
+                        // If both operands are floats, then we use a more specialised
+                        // error.
                         if left.type_().is_float() && right.type_().is_float() {
-                            return Err(Error::IntOperatorOnFloats { operator, location });
+                            self.problems
+                                .error(Error::IntOperatorOnFloats { operator, location });
+                        } else {
+                            if let Err(error) = unify(int(), left.type_()) {
+                                self.problems
+                                    .error(convert_unify_error(error, left.location()));
+                            }
+                            if let Err(error) = unify(int(), right.type_()) {
+                                self.problems
+                                    .error(convert_unify_error(error, right.location()));
+                            }
                         }
-
-                        unify(int(), left.type_())
-                            .map_err(|e| convert_unify_error(e, left.location()))?;
-                        unify(int(), right.type_())
-                            .map_err(|e| convert_unify_error(e, right.location()))?;
                     }
 
                     BinOp::GtFloat
@@ -2717,34 +2771,77 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                     | BinOp::MultFloat => {
                         self.track_feature_usage(FeatureKind::ArithmeticInGuards, location);
 
+                        // If both operands are int then we use a more specialised
+                        // error
                         if left.type_().is_int() && right.type_().is_int() {
-                            return Err(Error::FloatOperatorOnInts { operator, location });
+                            self.problems
+                                .error(Error::FloatOperatorOnInts { operator, location });
+                        } else {
+                            if let Err(error) = unify(float(), left.type_()) {
+                                self.problems
+                                    .error(convert_unify_error(error, left.location()));
+                            }
+                            if let Err(error) = unify(float(), right.type_()) {
+                                self.problems
+                                    .error(convert_unify_error(error, right.location()));
+                            }
                         }
-
-                        unify(float(), left.type_())
-                            .map_err(|e| convert_unify_error(e, left.location()))?;
-                        unify(float(), right.type_())
-                            .map_err(|e| convert_unify_error(e, right.location()))?;
                     }
 
                     BinOp::Concatenate => {
                         self.track_feature_usage(FeatureKind::ConcatenateInGuards, location);
 
-                        unify(string(), left.type_())
-                            .map_err(|e| convert_unify_error(e, left.location()))?;
-                        unify(string(), right.type_())
-                            .map_err(|e| convert_unify_error(e, right.location()))?;
+                        if let Err(error) = unify(string(), left.type_()) {
+                            self.problems
+                                .error(convert_unify_error(error, left.location()));
+                        }
+                        if let Err(error) = unify(string(), right.type_()) {
+                            self.problems
+                                .error(convert_unify_error(error, right.location()));
+                        }
                     }
                 }
 
-                Ok(ClauseGuard::BinaryOperator {
+                ClauseGuard::BinaryOperator {
                     location,
                     operator,
                     left: Box::new(left),
                     right: Box::new(right),
-                })
+                }
             }
         }
+    }
+
+    fn infer_clause_guard_variable(
+        &mut self,
+        name: EcoString,
+        location: SrcSpan,
+    ) -> Result<TypedClauseGuard, Error> {
+        let constructor =
+            self.infer_value_constructor(&None, &name, &location, ValueUsage::Other)?;
+
+        // We cannot support all values in guard expressions as the BEAM does not
+        let (definition_location, origin) = match &constructor.variant {
+            ValueConstructorVariant::LocalVariable {
+                location, origin, ..
+            } => (*location, origin.clone()),
+
+            ValueConstructorVariant::ModuleFn { .. } | ValueConstructorVariant::Record { .. } => {
+                return Err(Error::NonLocalClauseGuardVariable { location, name });
+            }
+
+            ValueConstructorVariant::ModuleConstant { literal, .. } => {
+                return Ok(ClauseGuard::Constant(literal.clone()));
+            }
+        };
+
+        Ok(ClauseGuard::Var {
+            location,
+            name,
+            origin,
+            type_: constructor.type_,
+            definition_location,
+        })
     }
 
     fn infer_guard_record_access(
@@ -2786,7 +2883,7 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
     ) -> Result<TypedClauseGuard, Error> {
         let module_access = self
             .infer_module_access(&name, label, &module_location, label_location)
-            .and_then(|ma| {
+            .and_then(|module_select| {
                 if let TypedExpr::ModuleSelect {
                     location,
                     field_start: _,
@@ -2795,7 +2892,7 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                     module_name,
                     module_alias,
                     constructor,
-                } = ma
+                } = module_select
                 {
                     match constructor {
                         ModuleValueConstructor::Constant {
@@ -2871,13 +2968,13 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
 
             let constructor =
                 module
-                    .get_public_value(&label)
+                    .get_importable_value(&label)
                     .ok_or_else(|| Error::UnknownModuleValue {
                         name: label.clone(),
                         location: select_location,
                         module_name: module.name.clone(),
                         value_constructors: module.public_value_names(),
-                        type_with_same_name: module.get_public_type(&label).is_some(),
+                        type_with_same_name: module.get_importable_type(&label).is_some(),
                         context: ModuleValueUsageContext::ModuleAccess,
                     })?;
 
@@ -3064,6 +3161,7 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
         record: RecordBeingUpdated<UntypedExpr>,
         arguments: Vec<UntypedRecordUpdateArg>,
         location: SrcSpan,
+        spread_start: u32,
     ) -> Result<TypedExpr, Error> {
         // infer the constructor being used
         let typed_constructor = self.infer_or_error(constructor.clone())?;
@@ -3123,40 +3221,40 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
         let record_location = record.location();
         let record_type = record.type_();
 
-        let (record_var, record_assignment) = if record.is_var() {
-            (record, None)
-        } else {
-            // We create an Assignment for the old record expression and will
-            // use a Var expression to refer back to it while constructing the
-            // arguments.
-            let record_assignment = RecordUpdateAssignment {
-                name: RECORD_UPDATE_VARIABLE.into(),
-                value: record,
-            };
-
-            let record_var = TypedExpr::Var {
-                location: record_location,
-                constructor: ValueConstructor {
-                    publicity: Publicity::Private,
-                    deprecation: Deprecation::NotDeprecated,
-                    type_: record_type,
-                    variant: ValueConstructorVariant::LocalVariable {
-                        location: record_location,
-                        origin: VariableOrigin::generated(),
-                    },
-                },
-                name: RECORD_UPDATE_VARIABLE.into(),
-            };
-            (record_var, Some(Box::new(record_assignment)))
-        };
-
         // infer the fields of the variant we want to update
         let variant =
-            self.infer_record_update_variant(&typed_constructor, &value_constructor, &record_var)?;
+            self.infer_record_update_variant(&typed_constructor, &value_constructor, &record)?;
+
+        // The `infer_record_update_arguments` function wants as an argument the
+        // expression representing the variable that the fields will refer to
+        // when built.
+        let (updated_record_assigned_name, record_var) = match record.is_var() {
+            // If the record is a var we can reference it directly!
+            true => (None, &record),
+            // Otherwise we'll have to assign the record to a generated variable
+            // and then reference it multiple times.
+            // So we create a new variable from scratch to assign the record to.
+            false => (
+                Some(RECORD_UPDATE_VARIABLE.into()),
+                &TypedExpr::Var {
+                    location: record_location,
+                    constructor: ValueConstructor {
+                        publicity: Publicity::Private,
+                        deprecation: Deprecation::NotDeprecated,
+                        type_: record_type,
+                        variant: ValueConstructorVariant::LocalVariable {
+                            location: record_location,
+                            origin: VariableOrigin::generated(),
+                        },
+                    },
+                    name: RECORD_UPDATE_VARIABLE.into(),
+                },
+            ),
+        };
 
         let arguments = self.infer_record_update_arguments(
             &variant,
-            &record_var,
+            record_var,
             arguments,
             location,
             spread_location,
@@ -3164,8 +3262,10 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
 
         Ok(TypedExpr::RecordUpdate {
             location,
+            spread_start,
             type_: variant.return_type,
-            record_assignment,
+            updated_record: Box::new(record),
+            updated_record_assigned_name,
             constructor: Box::new(typed_constructor),
             arguments,
         })
@@ -3584,8 +3684,15 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
         module: &Option<(EcoString, SrcSpan)>,
         name: &EcoString,
         location: &SrcSpan,
+        value_usage: ValueUsage,
     ) -> Result<ValueConstructor, Error> {
-        self.do_infer_value_constructor(module, name, location, ReferenceRegistration::Register)
+        self.do_infer_value_constructor(
+            module,
+            name,
+            location,
+            value_usage,
+            ReferenceRegistration::Register,
+        )
     }
 
     fn do_infer_value_constructor(
@@ -3593,6 +3700,7 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
         module: &Option<(EcoString, SrcSpan)>,
         name: &EcoString,
         location: &SrcSpan,
+        value_usage: ValueUsage,
         register_reference: ReferenceRegistration,
     ) -> Result<ValueConstructor, Error> {
         let constructor = match module {
@@ -3601,7 +3709,7 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 .environment
                 .get_variable(name)
                 .cloned()
-                .ok_or_else(|| self.report_name_error(name, location))?,
+                .ok_or_else(|| self.report_name_error(name, location, value_usage))?,
 
             // Look in an imported module for a binding with this name
             Some((module_name, module_location)) => {
@@ -3630,7 +3738,7 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                         module_name: module_name.clone(),
                         name: name.clone(),
                         value_constructors: module.public_value_names(),
-                        type_with_same_name: module.get_public_type(name).is_some(),
+                        type_with_same_name: module.get_importable_type(name).is_some(),
                         context: ModuleValueUsageContext::ModuleAccess,
                     })?
             }
@@ -3768,7 +3876,12 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
         }
     }
 
-    fn report_name_error(&mut self, name: &EcoString, location: &SrcSpan) -> Error {
+    fn report_name_error(
+        &mut self,
+        name: &EcoString,
+        location: &SrcSpan,
+        value_usage: ValueUsage,
+    ) -> Error {
         // First try to see if this is a module alias:
         // `import gleam/io`
         // `io.debug(io)`
@@ -3779,21 +3892,35 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 location: *location,
                 name: name.clone(),
             },
-            None => Error::UnknownVariable {
-                location: *location,
-                name: name.clone(),
-                variables: self.environment.local_value_names(),
-                discarded_location: self
-                    .environment
-                    .discarded_names
-                    .get(&eco_format!("_{name}"))
-                    .cloned(),
-                type_with_name_in_scope: self
-                    .environment
-                    .module_types
-                    .keys()
-                    .any(|typ| typ == name),
-            },
+            None => {
+                let possible_modules = match value_usage {
+                    // This is a function call, we need to suggest a public
+                    // value which is a function with the correct arity
+                    ValueUsage::Call { arity } => self
+                        .environment
+                        .get_possible_modules_with_function(name, arity),
+                    // This is a reference to a variable, we need to suggest
+                    // a public value of any type
+                    ValueUsage::Other => self.environment.get_possible_modules_with_value(name),
+                };
+
+                Error::UnknownVariable {
+                    location: *location,
+                    name: name.clone(),
+                    variables: self.environment.local_value_names(),
+                    discarded_location: self
+                        .environment
+                        .discarded_names
+                        .get(&eco_format!("_{name}"))
+                        .cloned(),
+                    type_with_name_in_scope: self
+                        .environment
+                        .module_types
+                        .keys()
+                        .any(|typ| typ == name),
+                    possible_modules,
+                }
+            }
         }
     }
 
@@ -3871,8 +3998,14 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 self.track_feature_usage(FeatureKind::ConstantRecordUpdate, location);
                 let first_argument_start =
                     arguments.first().map(|argument| argument.location.start);
-
-                let constructor = match self.infer_value_constructor(&module, &name, &location) {
+                let constructor = match self.infer_value_constructor(
+                    &module,
+                    &name,
+                    &location,
+                    ValueUsage::Call {
+                        arity: arguments.len(),
+                    },
+                ) {
                     Ok(constructor) => constructor,
                     Err(error) => {
                         self.problems.error(error);
@@ -4115,7 +4248,12 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 ..
             } if arguments.is_empty() => {
                 // Type check the record constructor
-                let constructor = match self.infer_value_constructor(&module, &name, &location) {
+                let constructor = match self.infer_value_constructor(
+                    &module,
+                    &name,
+                    &location,
+                    ValueUsage::Other,
+                ) {
                     Ok(constructor) => constructor,
                     Err(error) => {
                         self.problems.error(error);
@@ -4166,7 +4304,14 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 mut arguments,
                 ..
             } => {
-                let constructor = match self.infer_value_constructor(&module, &name, &location) {
+                let constructor = match self.infer_value_constructor(
+                    &module,
+                    &name,
+                    &location,
+                    ValueUsage::Call {
+                        arity: arguments.len(),
+                    },
+                ) {
                     Ok(constructor) => constructor,
                     Err(error) => {
                         self.problems.error(error);
@@ -4351,7 +4496,12 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
                 ..
             } => {
                 // Infer the type of this constant
-                let constructor = match self.infer_value_constructor(&module, &name, &location) {
+                let constructor = match self.infer_value_constructor(
+                    &module,
+                    &name,
+                    &location,
+                    ValueUsage::Other,
+                ) {
                     Ok(constructor) => constructor,
                     Err(error) => {
                         self.problems.error(error);
@@ -4601,6 +4751,10 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
         kind: CallKind,
     ) -> (TypedExpr, Vec<TypedCallArg>, Arc<Type>) {
         let fun = match fun {
+            UntypedExpr::Var { location, name } => {
+                self.infer_called_var(name, location, arguments.len())
+            }
+
             UntypedExpr::FieldAccess {
                 label,
                 container,
@@ -4634,7 +4788,6 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
             | UntypedExpr::Float { .. }
             | UntypedExpr::String { .. }
             | UntypedExpr::Block { .. }
-            | UntypedExpr::Var { .. }
             | UntypedExpr::Fn { .. }
             | UntypedExpr::List { .. }
             | UntypedExpr::Call { .. }
@@ -4655,6 +4808,38 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
         let (fun, arguments, type_) =
             self.do_infer_call_with_known_fun(fun, arguments, location, kind);
         (fun, arguments, type_)
+    }
+
+    /// Return the type of a called variable.
+    ///
+    /// This function is used everywhere we try to infer the type of a variable
+    /// that is called such as function calls, records constructor, use
+    /// expression and pipelines.
+    ///
+    pub fn infer_called_var(
+        &mut self,
+        name: EcoString,
+        location: SrcSpan,
+        arity: usize,
+    ) -> TypedExpr {
+        match self.infer_var(
+            name.clone(),
+            location,
+            ValueUsage::Call { arity },
+            ReferenceRegistration::Register,
+        ) {
+            Ok(typed_expr) => typed_expr,
+            Err(error) => {
+                let information = if let Error::UnknownVariable { name, .. } = &error {
+                    Some(InvalidExpression::UnknownVariable { name: name.clone() })
+                } else {
+                    None
+                };
+
+                self.problems.error(error);
+                self.error_expr_with_information(location, information)
+            }
+        }
     }
 
     fn infer_fn_with_call_context(
@@ -5021,7 +5206,12 @@ impl<'a, 'b> ExprTyper<'a, 'b> {
             ReferenceRegistration::Register
         };
 
-        match self.infer_var(argument_name.clone(), argument_location, references) {
+        match self.infer_var(
+            argument_name.clone(),
+            argument_location,
+            ValueUsage::Other,
+            references,
+        ) {
             Ok(result) => result,
             Err(error) => {
                 self.problems.error(error);

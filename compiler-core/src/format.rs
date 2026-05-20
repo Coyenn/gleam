@@ -2681,6 +2681,8 @@ impl<'comments> Formatter<'comments> {
 
     fn clause_guard<'a>(&mut self, clause_guard: &'a UntypedClauseGuard) -> Document<'a> {
         match clause_guard {
+            ClauseGuard::Invalid { .. } => unreachable!("invalid guard made it to formatting"),
+
             ClauseGuard::BinaryOperator {
                 operator,
                 left,
