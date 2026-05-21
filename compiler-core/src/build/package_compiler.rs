@@ -438,26 +438,6 @@ where
         )
         .render(&self.io, modules)?;
 
-        if let Some(roblox) = &self.config.luau.roblox {
-            for script in &roblox.scripts {
-                let meta_path = self.out.join(format!("{}.meta.json", script.module));
-                let run_context = match script.run_context {
-                    crate::config::RobloxRunContext::Server => "Server",
-                    crate::config::RobloxRunContext::Client => "Client",
-                    crate::config::RobloxRunContext::Legacy => "Legacy",
-                };
-                let meta_json = format!(
-                    r#"{{
-  "className": "Script",
-  "properties": {{
-    "RunContext": "{run_context}"
-  }}
-}}"#
-                );
-                self.io.write(&meta_path, &meta_json)?;
-            }
-        }
-
         Ok(())
     }
 

@@ -123,8 +123,7 @@ runtime = "roblox"
     }
   },
   "luau": {
-    "runtime": "roblox",
-    "roblox": null
+    "runtime": "roblox"
   },
   "target": "erlang",
   "internal_modules": [

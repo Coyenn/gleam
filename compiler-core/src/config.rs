@@ -778,52 +778,6 @@ pub struct JavaScriptConfig {
 pub struct LuauConfig {
     #[serde(default)]
     pub runtime: Option<EcoString>,
-    #[serde(default)]
-    pub roblox: Option<RobloxConfig>,
-}
-
-#[derive(Deserialize, Serialize, Debug, PartialEq, Eq, Clone)]
-pub struct RobloxConfig {
-    #[serde(default = "default_rojo_project")]
-    pub rojo_project: EcoString,
-    #[serde(default = "default_source_directory")]
-    pub source_directory: EcoString,
-    #[serde(default)]
-    pub scripts: Vec<RobloxScript>,
-}
-
-impl Default for RobloxConfig {
-    fn default() -> Self {
-        Self {
-            rojo_project: default_rojo_project(),
-            source_directory: default_source_directory(),
-            scripts: vec![],
-        }
-    }
-}
-
-fn default_rojo_project() -> EcoString {
-    "default.project.json".into()
-}
-
-fn default_source_directory() -> EcoString {
-    "src".into()
-}
-
-#[derive(Deserialize, Serialize, Debug, PartialEq, Eq, Clone)]
-pub struct RobloxScript {
-    pub module: EcoString,
-    pub name: EcoString,
-    pub container: EcoString,
-    pub run_context: RobloxRunContext,
-}
-
-#[derive(Deserialize, Serialize, Debug, PartialEq, Eq, Clone, Copy)]
-#[serde(rename_all = "lowercase")]
-pub enum RobloxRunContext {
-    Server,
-    Client,
-    Legacy,
 }
 
 #[derive(Deserialize, Debug, PartialEq, Eq, Clone)]
@@ -1359,16 +1313,6 @@ target = "luau"
 
 [luau]
 runtime = "roblox"
-
-[luau.roblox]
-rojo_project = "default.project.json"
-source_directory = "src"
-
-[[luau.roblox.scripts]]
-module = "game/server/main"
-name = "Main"
-container = "ServerScriptService"
-run_context = "server"
 "#;
 
     let config = toml::from_str::<PackageConfig>(input).unwrap();
